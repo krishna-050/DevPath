@@ -1,5 +1,5 @@
 import 'package:dev_path/app/theme/app_color.dart';
-import 'package:dev_path/screens/home_screen.dart';
+import 'package:dev_path/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
@@ -137,7 +137,7 @@ class SplashScreen extends StatelessWidget {
                                     ),
                                   ),
                                   onPressed: () {
-                                    Get.to(() => const HomeScreen());
+                                    Get.offAll(() => const MainScreen());
                                   },
                                   child: const Row(
                                     mainAxisAlignment:

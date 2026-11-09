@@ -5,6 +5,7 @@ class RoadmapModel {
   final String imgUrl;
   final String duration;
   final String category;
+  final String level;
 
   RoadmapModel({
     required this.id,
@@ -12,6 +13,7 @@ class RoadmapModel {
     required this.description,
     required this.imgUrl,
     required this.duration,
-    required this.category
-});
+    required this.category,
+    this.level = 'Beginner to Advanced',
+  });
 }
