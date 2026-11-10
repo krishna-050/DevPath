@@ -1,3 +1,7 @@
+import 'package:dev_path/screens/explore_screen.dart';
+import 'package:dev_path/screens/home_screen.dart';
+import 'package:dev_path/screens/main_screen.dart';
+import 'package:dev_path/screens/roadmap_detail_screen.dart';
 import 'package:dev_path/screens/splash_screen.dart';
 import 'package:dev_path/app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +21,14 @@ class MyApp extends StatelessWidget {
         title: 'DevPath',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
-        home: SplashScreen()
+        initialRoute: '/',
+      getPages: [
+        GetPage(name: '/', page: ()=>SplashScreen()),
+        GetPage(name: '/home', page: ()=>HomeScreen()),
+        GetPage(name: '/explore', page: ()=>ExploreScreen()),
+        GetPage(name: '/mainScreen', page: ()=>MainScreen()),
+        GetPage(name: '/detailScreen', page: ()=>RoadmapDetailScreen())
+      ],
     );
   }
 }

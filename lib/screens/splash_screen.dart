@@ -137,8 +137,7 @@ class SplashScreen extends StatelessWidget {
                                     ),
                                   ),
                                   onPressed: () {
-                                    Get.offAll(() => const MainScreen());
-                                  },
+                                    Get.offAndToNamed('/mainScreen');                                  },
                                   child: const Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.center,

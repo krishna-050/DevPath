@@ -1,7 +1,7 @@
 
+import 'package:dev_path/Widgets/roadmap_list_widget.dart';
 import 'package:dev_path/app/theme/app_color.dart';
 import 'package:dev_path/controller/home_controller.dart';
-import 'package:dev_path/models/roadmap_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,6 +21,15 @@ class _ExploreScreenState extends State<ExploreScreen> {
     'Backend',
     'Mobile',
   ];
+  bool isSearching = false;
+
+  final TextEditingController searchController =
+  TextEditingController();
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,26 +57,38 @@ class _ExploreScreenState extends State<ExploreScreen> {
                 onPressed: () => Navigator.pop(context),
               )
             : null,
-        title: const Text(
-          'All Roadmaps',
-          style: TextStyle(
-            color: AppColor.textPrimary,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-            letterSpacing: -0.3,
-          ),
+         title: isSearching
+        ? TextField(
+        controller: searchController,
+        autofocus: true,
+        onChanged: controller.searchRoadmap,
+        decoration: const InputDecoration(
+          hintText: 'Search roadmaps...',
+          border: InputBorder.none,
         ),
+      )
+            : const Text('All Roadmaps'),
         actions: [
           IconButton(
-            icon: const Icon(
-              Icons.search_rounded,
+            onPressed: () {
+              setState(() {
+                isSearching = !isSearching;
+
+                if (!isSearching) {
+                  searchController.clear();
+                  controller.searchRoadmap('');
+                }
+              });
+            },
+            icon: Icon(
+              isSearching
+                  ? Icons.close_rounded
+                  : Icons.search_rounded,
               color: AppColor.textPrimary,
-              size: 24,
             ),
-            onPressed: () {},
           ),
           const SizedBox(width: 8),
-        ],
+        ]
       ),
       body: SafeArea(
         child: Column(
@@ -164,7 +185,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
             // Roadmaps List Section
             Expanded(
               child: Obx(() {
-                final allRoadmaps = controller.roadmapList;
+                final allRoadmaps = controller.filteredRoadmaps;
                 final filteredList = selectedCategory == 'All'
                     ? allRoadmaps
                     : allRoadmaps.where((item) {
@@ -198,7 +219,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                       childAspectRatio: 2.2,
                     ),
                     itemBuilder: (context, index) {
-                      return _RoadmapListItem(item: filteredList[index]);
+                      return RoadmapListWidget(item: filteredList[index]);
                     },
                   );
                 }
@@ -213,7 +234,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   separatorBuilder: (context, index) =>
                       const SizedBox(height: 12),
                   itemBuilder: (context, index) {
-                    return _RoadmapListItem(item: filteredList[index]);
+                    return RoadmapListWidget(item: filteredList[index]);
                   },
                 );
               }),
@@ -267,137 +288,4 @@ class _ExploreScreenState extends State<ExploreScreen> {
     );
   }
 }
-
-class _RoadmapListItem extends StatelessWidget {
-  final RoadmapModel item;
-
-  const _RoadmapListItem({required this.item});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColor.surface,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: AppColor.border.withValues(alpha: 0.6),
-          width: 1,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: AppColor.textPrimary.withValues(alpha: 0.03),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      padding: const EdgeInsets.all(12),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          // Logo Box
-          Container(
-            width: 52,
-            height: 52,
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: AppColor.lightBlue.withValues(alpha: 0.5),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Image.asset(
-              item.imgUrl,
-              fit: BoxFit.contain,
-              errorBuilder: (context, error, stackTrace) => const Icon(
-                Icons.code_rounded,
-                color: AppColor.secondary,
-                size: 26,
-              ),
-            ),
-          ),
-
-          const SizedBox(width: 12),
-
-          // Content Column
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  item.language,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: AppColor.textPrimary,
-                  ),
-                ),
-                const SizedBox(height: 3),
-                Text(
-                  item.description,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 12,
-                    color: AppColor.textSecondary,
-                    height: 1.3,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.access_time_rounded,
-                      size: 14,
-                      color: AppColor.primary,
-                    ),
-                    const SizedBox(width: 4),
-                    Text(
-                      item.duration,
-                      style: const TextStyle(
-                        fontSize: 11,
-                        color: AppColor.textSecondary,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    const Icon(
-                      Icons.workspace_premium_outlined,
-                      size: 14,
-                      color: AppColor.primary,
-                    ),
-                    const SizedBox(width: 4),
-                    Expanded(
-                      child: Text(
-                        item.level,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontSize: 11,
-                          color: AppColor.textSecondary,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-
-          const SizedBox(width: 8),
-
-          // Right Chevron Arrow
-          const Icon(
-            Icons.chevron_right_rounded,
-            color: AppColor.textSecondary,
-            size: 22,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 

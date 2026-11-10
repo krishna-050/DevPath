@@ -1,23 +1,35 @@
 
 import 'package:dev_path/app/theme/app_color.dart';
+import 'package:dev_path/controller/saved_controller.dart';
 import 'package:dev_path/screens/home_screen.dart';
 import 'package:dev_path/screens/explore_screen.dart';
+import 'package:dev_path/screens/saved_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
+
 }
 
 class _MainScreenState extends State<MainScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+
+    Get.put(SavedController(), permanent: true);
+  }
   int _currentIndex = 0;
 
   final List<Widget> _screens = const [
     HomeScreen(),
     ExploreScreen(),
-    _FavoritesTab(),
+    SavedScreen(),
     _ProfileTab(),
   ];
 
@@ -75,7 +87,7 @@ class _MainScreenState extends State<MainScreen> {
             BottomNavigationBarItem(
               icon: Icon(Icons.bookmark_outline_rounded),
               activeIcon: Icon(Icons.bookmark_rounded),
-              label: 'Favorites',
+              label: 'Saved',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person_outline_rounded),
@@ -88,35 +100,6 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
-
-class _FavoritesTab extends StatelessWidget {
-  const _FavoritesTab();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColor.background,
-      appBar: AppBar(
-        title: const Text(
-          'My Saved Roadmaps',
-          style: TextStyle(
-            color: AppColor.textPrimary,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        elevation: 0,
-        backgroundColor: AppColor.background,
-      ),
-      body: const Center(
-        child: Text(
-          'No saved roadmaps yet',
-          style: TextStyle(color: AppColor.textSecondary, fontSize: 16),
-        ),
-      ),
-    );
-  }
-}
-
 class _ProfileTab extends StatelessWidget {
   const _ProfileTab();
 
