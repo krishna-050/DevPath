@@ -1,13 +1,18 @@
 import 'package:dev_path/app/theme/app_color.dart';
+import 'package:dev_path/controller/progress_controller.dart';
 import 'package:dev_path/controller/saved_controller.dart';
 import 'package:dev_path/data/roadmap_data.dart';
+import 'package:dev_path/data/roadmap_resource_data.dart';
+import 'package:dev_path/data/roadmap_step_data.dart';
 import 'package:dev_path/models/roadmap_model.dart';
+import 'package:dev_path/models/roadmap_step_model.dart';
+import 'package:dev_path/screens/step_detail_screen.dart';
+import 'package:dev_path/screens/webview_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RoadmapDetailScreen extends StatefulWidget {
   final RoadmapModel? roadmap;
-
 
   const RoadmapDetailScreen({super.key, this.roadmap});
 
@@ -19,7 +24,6 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   int expandedStepIndex = 0;
-  List saved = [];
 
   @override
   void initState() {
@@ -36,8 +40,11 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
   @override
   Widget build(BuildContext context) {
     final roadmapItem = widget.roadmap ?? RoadmapData.roadmaps.first;
-    final learningTopics = _getTopicsForRoadmap(roadmapItem.language);
-    final savedController = Get.find<SavedController>();
+    final roadmapSteps =
+        RoadmapStepData.getStepsForLanguage(roadmapItem.language);
+    final savedController = Get.isRegistered<SavedController>()
+        ? Get.find<SavedController>()
+        : Get.put(SavedController());
 
     return Scaffold(
       backgroundColor: AppColor.background,
@@ -61,20 +68,21 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
           onPressed: () => Get.back(),
         ),
         actions: [
-          Obx((){
+          Obx(() {
             final isBookmarked = savedController.isSaved(roadmapItem);
             return IconButton(
-
               icon: Icon(
-             isBookmarked ? Icons.bookmark_rounded
-                  : Icons.bookmark_outline_rounded,
-              color: isBookmarked ? AppColor.primary : AppColor.textPrimary,
+                isBookmarked
+                    ? Icons.bookmark_rounded
+                    : Icons.bookmark_outline_rounded,
+                color: isBookmarked ? AppColor.primary : AppColor.textPrimary,
               ),
               onPressed: () {
-
-                  savedController.toggleSaved(roadmapItem);
+                savedController.toggleSaved(roadmapItem);
                 Get.snackbar(
-                  isBookmarked ?'Removed from Favorites':'Saved to Favorites',
+                  isBookmarked
+                      ? 'Removed from Favorites'
+                      : 'Saved to Favorites',
                   '${roadmapItem.language} Roadmap',
                   snackPosition: SnackPosition.BOTTOM,
                   duration: const Duration(seconds: 2),
@@ -99,7 +107,7 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
       body: SafeArea(
         child: Column(
           children: [
-            // Hero Card Section
+            // Top Hero Banner Card
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Container(
@@ -130,7 +138,7 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Icon + Title + Category Header
+                    // Icon + Title + Category Badge Header
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -379,8 +387,8 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                 controller: _tabController,
                 physics: const BouncingScrollPhysics(),
                 children: [
-                  _buildOverviewTab(roadmapItem, learningTopics),
-                  _buildRoadmapTab(roadmapItem, learningTopics),
+                  _buildOverviewTab(roadmapItem, roadmapSteps),
+                  _buildRoadmapTab(roadmapItem, roadmapSteps),
                   _buildResourcesTab(roadmapItem),
                 ],
               ),
@@ -392,13 +400,86 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
   }
 
   // Overview Tab View
-  Widget _buildOverviewTab(RoadmapModel roadmap, List<String> topics) {
+  Widget _buildOverviewTab(
+      RoadmapModel roadmap, List<RoadmapStepModel> steps) {
+    final progressController = Get.find<ProgressController>();
+
+    final totalTopics = progressController.getTotalTopicCount(steps);
+
+    final completedTopics = progressController.getCompletedTopicCount(
+      roadmap.language,
+      steps,
+    );
+
+    final progress = totalTopics > 0
+        ? completedTopics / totalTopics
+        : 0.0;
+
+    final percentage = (progress * 100).toInt();
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: AppColor.surface,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(
+                color: AppColor.border,
+              ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Your Learning Progress',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: AppColor.textPrimary,
+                      ),
+                    ),
+                    Text(
+                      '$percentage%',
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: AppColor.success,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                LinearProgressIndicator(
+                  value: progress,
+                  minHeight: 8,
+                  borderRadius: BorderRadius.circular(10),
+                  backgroundColor: AppColor.border,
+                  valueColor: const AlwaysStoppedAnimation<Color>(
+                    AppColor.success,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  '$completedTopics of $totalTopics topics completed',
+                  style: const TextStyle(
+                    fontSize: 12,
+                    color: AppColor.textSecondary,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 24),
+
           const Text(
             "What You'll Learn",
             style: TextStyle(
@@ -411,8 +492,8 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
           const SizedBox(height: 16),
 
           // Bullet Items List
-          ...topics.map(
-            (topic) => Container(
+          ...steps.map(
+            (step) => Container(
               margin: const EdgeInsets.only(bottom: 10),
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
               decoration: BoxDecoration(
@@ -438,13 +519,28 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                   ),
                   const SizedBox(width: 12),
                   Expanded(
-                    child: Text(
-                      topic,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: AppColor.textPrimary,
-                      ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          step.title,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: AppColor.textPrimary,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          step.description,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: AppColor.textSecondary,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -520,14 +616,28 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
   }
 
   // Interactive Step-by-Step Roadmap Tab View
-  Widget _buildRoadmapTab(RoadmapModel roadmap, List<String> topics) {
+  Widget _buildRoadmapTab(RoadmapModel roadmap, List<RoadmapStepModel> steps) {
+    final progressController = Get.isRegistered<ProgressController>()
+        ? Get.find<ProgressController>()
+        : Get.put(ProgressController());
+
     return ListView.builder(
       physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.all(20),
-      itemCount: topics.length,
+      itemCount: steps.length,
       itemBuilder: (context, index) {
-        final stepNumber = index + 1;
+        final step = steps[index];
+        final stepNumber = step.id;
         final isExpanded = expandedStepIndex == index;
+
+        final progressKey = '${roadmap.language}_${step.id}';
+        final completedTopics = progressController.loadProgress(
+          progressKey,
+          step.subtopics.length,
+        );
+
+        final isStepCompleted = step.subtopics.isNotEmpty &&
+            completedTopics.every((completed) => completed);
 
         return IntrinsicHeight(
           child: Row(
@@ -546,20 +656,27 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                       width: 34,
                       height: 34,
                       decoration: BoxDecoration(
-                        color:
-                            isExpanded ? AppColor.primary : AppColor.lightBlue,
+                        color: isStepCompleted
+                            ? AppColor.success
+                            : isExpanded
+                                ? AppColor.primary
+                                : AppColor.lightBlue,
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: isExpanded
-                              ? AppColor.primary
-                              : AppColor.secondary,
+                          color: isStepCompleted
+                              ? AppColor.success
+                              : isExpanded
+                                  ? AppColor.primary
+                                  : AppColor.secondary,
                           width: 1.8,
                         ),
-                        boxShadow: isExpanded
+                        boxShadow: isStepCompleted || isExpanded
                             ? [
                                 BoxShadow(
-                                  color:
-                                      AppColor.primary.withValues(alpha: 0.3),
+                                  color: (isStepCompleted
+                                          ? AppColor.success
+                                          : AppColor.primary)
+                                      .withValues(alpha: 0.3),
                                   blurRadius: 8,
                                   offset: const Offset(0, 3),
                                 ),
@@ -567,19 +684,26 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                             : null,
                       ),
                       child: Center(
-                        child: Text(
-                          '$stepNumber',
-                          style: TextStyle(
-                            color:
-                                isExpanded ? Colors.white : AppColor.secondary,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
-                          ),
-                        ),
+                        child: isStepCompleted
+                            ? const Icon(
+                                Icons.check_rounded,
+                                color: Colors.white,
+                                size: 20,
+                              )
+                            : Text(
+                                '$stepNumber',
+                                style: TextStyle(
+                                  color: isExpanded
+                                      ? Colors.white
+                                      : AppColor.secondary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                ),
+                              ),
                       ),
                     ),
                   ),
-                  if (index < topics.length - 1)
+                  if (index < steps.length - 1)
                     Expanded(
                       child: Container(
                         width: 2,
@@ -606,19 +730,25 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                       duration: const Duration(milliseconds: 250),
                       padding: const EdgeInsets.all(14),
                       decoration: BoxDecoration(
-                        color: AppColor.surface,
+                        color: isStepCompleted
+                            ? AppColor.success.withValues(alpha: 0.08)
+                            : AppColor.surface,
                         borderRadius: BorderRadius.circular(16),
                         border: Border.all(
-                          color: isExpanded
-                              ? AppColor.primary.withValues(alpha: 0.6)
-                              : AppColor.border.withValues(alpha: 0.7),
-                          width: isExpanded ? 1.5 : 1,
+                          color: isStepCompleted
+                              ? AppColor.success.withValues(alpha: 0.55)
+                              : isExpanded
+                                  ? AppColor.primary.withValues(alpha: 0.6)
+                                  : AppColor.border.withValues(alpha: 0.7),
+                          width: isStepCompleted || isExpanded ? 1.5 : 1,
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: AppColor.textPrimary.withValues(
-                              alpha: isExpanded ? 0.06 : 0.03,
-                            ),
+                            color: (isStepCompleted
+                                    ? AppColor.success
+                                    : AppColor.textPrimary)
+                                .withValues(
+                                    alpha: isStepCompleted ? 0.06 : 0.03),
                             blurRadius: isExpanded ? 12 : 6,
                             offset: const Offset(0, 4),
                           ),
@@ -632,7 +762,7 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                             children: [
                               Expanded(
                                 child: Text(
-                                  topics[index],
+                                  step.title,
                                   style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
@@ -653,21 +783,105 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                             ],
                           ),
                           const SizedBox(height: 4),
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.schedule_rounded,
+                                size: 14,
+                                color: AppColor.primary,
+                              ),
+                              const SizedBox(width: 4),
+                              Text(
+                                step.duration,
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  color: AppColor.textSecondary,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 6),
                           Text(
-                            '${1 + index}-${2 + index} weeks',
+                            step.description,
                             style: const TextStyle(
-                              fontSize: 12,
+                              fontSize: 13,
                               color: AppColor.textSecondary,
-                              fontWeight: FontWeight.w500,
+                              height: 1.35,
                             ),
                           ),
                           if (isExpanded) ...[
                             const SizedBox(height: 12),
                             const Divider(color: AppColor.border, height: 1),
                             const SizedBox(height: 12),
-                            _buildSubTopicCheck('Syntax & Key Concepts'),
-                            _buildSubTopicCheck('Functions & Logic'),
-                            _buildSubTopicCheck('Practice & Exercises'),
+                            ...step.subtopics.map(
+                              (subtopic) => _buildSubTopicCheck(subtopic),
+                            ),
+                            if (step.resources != null &&
+                                step.resources!.isNotEmpty) ...[
+                              const SizedBox(height: 12),
+                              const Text(
+                                'Step Resources:',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColor.textPrimary,
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              ...step.resources!.map((resString) {
+                                final parts = resString.split(': http');
+                                final title = parts[0].trim();
+                                final url = parts.length > 1
+                                    ? 'http${parts[1]}'.trim()
+                                    : '';
+
+                                return InkWell(
+                                  onTap: () {
+                                    if (url.isNotEmpty) {
+                                      Get.to(
+                                        () => WebViewScreen(
+                                          url: url,
+                                          title: title,
+                                        ),
+                                      );
+                                    }
+                                  },
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: Padding(
+                                    padding:
+                                        const EdgeInsets.symmetric(vertical: 4),
+                                    child: Row(
+                                      children: [
+                                        const Icon(
+                                          Icons.link_rounded,
+                                          size: 14,
+                                          color: AppColor.secondary,
+                                        ),
+                                        const SizedBox(width: 6),
+                                        Expanded(
+                                          child: Text(
+                                            title,
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: const TextStyle(
+                                              fontSize: 12,
+                                              color: AppColor.secondary,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
+                                        const Icon(
+                                          Icons.open_in_new_rounded,
+                                          size: 12,
+                                          color: AppColor.secondary,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              }),
+                            ],
                             const SizedBox(height: 14),
                             SizedBox(
                               width: double.infinity,
@@ -683,7 +897,18 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                 ),
-                                onPressed: () {},
+                                onPressed: () async {
+                                  await Get.to(
+                                    () => StepDetailScreen(
+                                      step: step,
+                                      roadmapTitle: roadmap.language,
+                                    ),
+                                  );
+
+                                  if (mounted) {
+                                    setState(() {});
+                                  }
+                                },
                                 child: Text(
                                   'Start Step $stepNumber →',
                                   style: const TextStyle(
@@ -733,12 +958,8 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
 
   // Resources Tab View
   Widget _buildResourcesTab(RoadmapModel roadmap) {
-    final resources = [
-      {'title': 'Official Documentation', 'icon': Icons.description_outlined},
-      {'title': 'Recommended Video Courses', 'icon': Icons.play_circle_outline},
-      {'title': 'Hands-on Practice Projects', 'icon': Icons.code_rounded},
-      {'title': 'Community & Forum Discussions', 'icon': Icons.forum_outlined},
-    ];
+    final resources =
+        RoadmapResourceData.getResourcesForLanguage(roadmap.language);
 
     return ListView.separated(
       physics: const BouncingScrollPhysics(),
@@ -748,7 +969,22 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
       itemBuilder: (context, index) {
         final res = resources[index];
         return InkWell(
-          onTap: () {},
+          onTap: () {
+            if (res.url.isNotEmpty) {
+              Get.to(
+                () => WebViewScreen(
+                  url: res.url,
+                  title: res.title,
+                ),
+              );
+            } else {
+              Get.snackbar(
+                'Could not open link',
+                res.url,
+                snackPosition: SnackPosition.BOTTOM,
+              );
+            }
+          },
           borderRadius: BorderRadius.circular(14),
           child: Container(
             padding: const EdgeInsets.all(16),
@@ -772,26 +1008,43 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                     color: AppColor.lightBlue,
                     shape: BoxShape.circle,
                   ),
-                  child: Icon(
-                    res['icon'] as IconData,
+                  child: const Icon(
+                    Icons.description_outlined,
                     color: AppColor.secondary,
                     size: 20,
                   ),
                 ),
                 const SizedBox(width: 14),
                 Expanded(
-                  child: Text(
-                    res['title'] as String,
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                      color: AppColor.textPrimary,
-                    ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        res.title,
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          color: AppColor.textPrimary,
+                        ),
+                      ),
+                      if (res.url.isNotEmpty) ...[
+                        const SizedBox(height: 2),
+                        Text(
+                          res.url,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: 11,
+                            color: AppColor.secondary,
+                          ),
+                        ),
+                      ],
+                    ],
                   ),
                 ),
                 const Icon(
                   Icons.open_in_new_rounded,
-                  color: AppColor.textSecondary,
+                  color: AppColor.secondary,
                   size: 18,
                 ),
               ],
@@ -801,50 +1054,4 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
       },
     );
   }
-
-  List<String> _getTopicsForRoadmap(String language) {
-    if (language.contains('Flutter')) {
-      return [
-        'Dart Language Basics',
-        'Flutter Environment Setup',
-        'Widgets and UI',
-        'State Management',
-        'API Integration',
-        'Firebase & Backend',
-        'Build & Deploy',
-      ];
-    } else if (language.contains('Web') || language.contains('React')) {
-      return [
-        'HTML5 & Modern CSS3',
-        'JavaScript ES6+ Fundamentals',
-        'Git & GitHub Version Control',
-        'React Components & Hooks',
-        'State Management (Redux/Zustand)',
-        'RESTful API & Axios',
-        'Web Hosting & Deployment',
-      ];
-    } else if (language.contains('Python')) {
-      return [
-        'Python Basics & Syntax',
-        'Data Structures & Algorithms',
-        'Object-Oriented Programming (OOP)',
-        'File Handling & Exception Control',
-        'FastAPI / Django Web Framework',
-        'Database Integration (PostgreSQL)',
-        'API Testing & Deployment',
-      ];
-    } else {
-      return [
-        'Core Language Basics',
-        'Environment & Tooling Setup',
-        'Fundamentals & Data Structures',
-        'Frameworks & Libraries',
-        'Backend & Database Integration',
-        'Testing & Debugging',
-        'Production Deployment',
-      ];
-    }
-  }
 }
-
-

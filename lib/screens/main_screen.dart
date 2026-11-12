@@ -1,5 +1,6 @@
 
 import 'package:dev_path/app/theme/app_color.dart';
+import 'package:dev_path/controller/progress_controller.dart';
 import 'package:dev_path/controller/saved_controller.dart';
 import 'package:dev_path/screens/home_screen.dart';
 import 'package:dev_path/screens/explore_screen.dart';
@@ -21,17 +22,22 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-
     Get.put(SavedController(), permanent: true);
+    Get.put(ProgressController(), permanent: true);
   }
   int _currentIndex = 0;
 
-  final List<Widget> _screens = const [
-    HomeScreen(),
+  late final List<Widget> _screens =  [
+    HomeScreen(onExploreTap: _goToExplore),
     ExploreScreen(),
     SavedScreen(),
     _ProfileTab(),
   ];
+  void _goToExplore() {
+    setState(() {
+      _currentIndex = 1;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

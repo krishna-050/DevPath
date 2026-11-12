@@ -1,11 +1,13 @@
 import 'package:dev_path/app/theme/app_color.dart';
 import 'package:dev_path/controller/home_controller.dart';
 import 'package:dev_path/screens/roadmap_detail_screen.dart';
+import 'package:dev_path/widgets/roadmap_progress_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  VoidCallback onExploreTap;
+   HomeScreen({super.key,required this.onExploreTap});
 
   @override
   Widget build(BuildContext context) {
@@ -237,7 +239,9 @@ class HomeScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(12),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              onExploreTap();
+                            },
                             child: const Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
@@ -289,7 +293,9 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        onExploreTap();
+                      },
                       borderRadius: BorderRadius.circular(8),
                       child: const Padding(
                         padding: EdgeInsets.symmetric(
@@ -432,23 +438,28 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(height: 6),
-                              Row(
-                                children: [
-                                  const Icon(
-                                    Icons.watch_later_outlined,
-                                    color: AppColor.primary,
-                                    size: 15,
-                                  ),
-                                  const SizedBox(width: 4),
-                                  Text(
-                                    item.duration,
-                                    style: const TextStyle(
-                                      color: AppColor.textPrimary,
-                                      fontSize: 11,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ],
+                              // Row(
+                              //   children: [
+                              //     const Icon(
+                              //       Icons.watch_later_outlined,
+                              //       color: AppColor.primary,
+                              //       size: 15,
+                              //     ),
+                              //     const SizedBox(width: 4),
+                              //     Text(
+                              //       item.duration,
+                              //       style: const TextStyle(
+                              //         color: AppColor.textPrimary,
+                              //         fontSize: 11,
+                              //         fontWeight: FontWeight.w600,
+                              //       ),
+                              //     ),
+                              //   ],
+                              // ),
+                              const SizedBox(height: 10),
+
+                              RoadmapProgressWidget(
+                                roadmap: item,
                               ),
                             ],
                           ),
