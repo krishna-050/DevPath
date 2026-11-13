@@ -2,8 +2,10 @@
 import 'package:dev_path/app/theme/app_color.dart';
 import 'package:dev_path/controller/progress_controller.dart';
 import 'package:dev_path/controller/saved_controller.dart';
+import 'package:dev_path/data/roadmap_data.dart';
 import 'package:dev_path/screens/home_screen.dart';
 import 'package:dev_path/screens/explore_screen.dart';
+import 'package:dev_path/screens/profile_screen.dart';
 import 'package:dev_path/screens/saved_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -22,7 +24,12 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-    Get.put(SavedController(), permanent: true);
+    final savedController = Get.isRegistered<SavedController>()
+        ? Get.find<SavedController>()
+        : Get.put(SavedController(), permanent: true);
+
+    // Restore saved roadmaps from local storage
+    savedController.loadSavedRoadmaps(RoadmapData.roadmaps);
     Get.put(ProgressController(), permanent: true);
   }
   int _currentIndex = 0;
@@ -31,7 +38,7 @@ class _MainScreenState extends State<MainScreen> {
     HomeScreen(onExploreTap: _goToExplore),
     ExploreScreen(),
     SavedScreen(),
-    _ProfileTab(),
+    ProfileScreen(),
   ];
   void _goToExplore() {
     setState(() {
@@ -101,33 +108,6 @@ class _MainScreenState extends State<MainScreen> {
               label: 'Profile',
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-class _ProfileTab extends StatelessWidget {
-  const _ProfileTab();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColor.background,
-      appBar: AppBar(
-        title: const Text(
-          'Profile',
-          style: TextStyle(
-            color: AppColor.textPrimary,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        elevation: 0,
-        backgroundColor: AppColor.background,
-      ),
-      body: const Center(
-        child: Text(
-          'User Profile Screen',
-          style: TextStyle(color: AppColor.textSecondary, fontSize: 16),
         ),
       ),
     );

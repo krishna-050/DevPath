@@ -16,68 +16,76 @@ class RoadmapProgressWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<ProgressController>();
+    final controller = Get.isRegistered<ProgressController>()
+        ? Get.find<ProgressController>()
+        : Get.put(ProgressController());
 
     final steps = RoadmapStepData.getStepsForLanguage(
       roadmap.language,
     );
 
-    final totalTopics = controller.getTotalTopicCount(steps);
+    return Obx(() {
+      // Reactive trigger so Obx rebuilds when progress is saved anywhere!
+      controller.progressUpdateTrigger.value;
 
-    final completedTopics = controller.getCompletedTopicCount(
-      roadmap.language,
-      steps,
-    );
+      final totalTopics = controller.getTotalTopicCount(steps);
+      final completedTopics = controller.getCompletedTopicCount(
+        roadmap.language,
+        steps,
+      );
 
-    final progress = totalTopics > 0
-        ? completedTopics / totalTopics
-        : 0.0;
+      final progress =
+          totalTopics > 0 ? completedTopics / totalTopics : 0.0;
+      final percentage = (progress * 100).toInt();
 
-    final percentage = (progress * 100).toInt();
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              'Progress',
-              style: TextStyle(
-                fontSize: 11,
-                color: AppColor.textSecondary,
-                fontWeight: FontWeight.w500,
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'Progress',
+                style: TextStyle(
+                  fontSize: 11,
+                  color: AppColor.textSecondary,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              Text(
+                '$percentage%',
+                style: const TextStyle(
+                  fontSize: 11,
+                  color: AppColor.success,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 4),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: LinearProgressIndicator(
+              value: progress,
+              minHeight: 5,
+              backgroundColor: AppColor.border,
+              valueColor: const AlwaysStoppedAnimation<Color>(
+                AppColor.success,
               ),
             ),
-            Text(
-              '$percentage%',
-              style: const TextStyle(
-                fontSize: 11,
-                color: AppColor.success,
-                fontWeight: FontWeight.bold,
-              ),
+          ),
+          const SizedBox(height: 3),
+          Text(
+            '$completedTopics/$totalTopics completed',
+            style: const TextStyle(
+              fontSize: 10,
+              color: AppColor.textSecondary,
+              fontWeight: FontWeight.w500,
             ),
-          ],
-        ),
-        const SizedBox(height: 5),
-        LinearProgressIndicator(
-          value: progress,
-          minHeight: 5,
-          borderRadius: BorderRadius.circular(10),
-          backgroundColor: AppColor.border,
-          valueColor: const AlwaysStoppedAnimation<Color>(
-            AppColor.success,
           ),
-        ),
-        const SizedBox(height: 4),
-        Text(
-          '$completedTopics/$totalTopics topics completed',
-          style: const TextStyle(
-            fontSize: 10,
-            color: AppColor.textSecondary,
-          ),
-        ),
-      ],
-    );
+        ],
+      );
+    });
   }
 }

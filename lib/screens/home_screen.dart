@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
-  VoidCallback onExploreTap;
-   HomeScreen({super.key,required this.onExploreTap});
+  final VoidCallback onExploreTap;
+  const HomeScreen({super.key, required this.onExploreTap});
 
   @override
   Widget build(BuildContext context) {
@@ -343,8 +343,10 @@ class HomeScreen extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final item = filteredList[index];
                       return InkWell(
-                        onTap: () =>
-                            Get.to(() => RoadmapDetailScreen(roadmap: item)),
+                        onTap: () async {
+                          await Get.to(
+                              () => RoadmapDetailScreen(roadmap: item));
+                        },
                         borderRadius: BorderRadius.circular(16),
                         child: Container(
                           decoration: BoxDecoration(
@@ -371,7 +373,7 @@ class HomeScreen extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    width: 44,
+                                   width: 44,
                                     height: 44,
                                     padding: const EdgeInsets.all(6),
                                     decoration: BoxDecoration(
@@ -456,7 +458,7 @@ class HomeScreen extends StatelessWidget {
                               //     ),
                               //   ],
                               // ),
-                              const SizedBox(height: 10),
+                              const SizedBox(height: 4),
 
                               RoadmapProgressWidget(
                                 roadmap: item,

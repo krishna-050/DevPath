@@ -1,4 +1,5 @@
 import 'package:dev_path/app/theme/app_color.dart';
+import 'package:dev_path/screens/login_screen.dart';
 import 'package:dev_path/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,6 +17,9 @@ class SplashScreen extends StatelessWidget {
             child: Image.asset(
               'assets/images/splash2.png',
               fit: BoxFit.cover,
+              width: double.infinity,
+              height: double.infinity,
+              alignment: Alignment.center,
             ),
           ),
 
@@ -114,7 +118,8 @@ class SplashScreen extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            Get.offAll(() => const MainScreen());
+                            // Get.offAll(() => const MainScreen());
+                            Get.to(() => const LoginScreen());
                           },
                           child: const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -152,7 +157,8 @@ class SplashScreen extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap: () {
-                              Get.offAll(() => const MainScreen());
+                              // Get.offAll(() => const MainScreen());
+                              Get.to(() => const LoginScreen());
                             },
                             child: const Text(
                               'Login',
