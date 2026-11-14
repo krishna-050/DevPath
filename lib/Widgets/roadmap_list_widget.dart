@@ -5,7 +5,6 @@ import 'package:dev_path/screens/roadmap_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class RoadmapListWidget extends StatelessWidget {
   final RoadmapModel item;
 
@@ -13,24 +12,31 @@ class RoadmapListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final savedController = Get.isRegistered<SavedController>()
         ? Get.find<SavedController>()
         : Get.put(SavedController());
+
+    final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
+    final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
+    final textSecondaryColor =
+        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
 
     return InkWell(
       onTap: () => Get.to(() => RoadmapDetailScreen(roadmap: item)),
       borderRadius: BorderRadius.circular(16),
       child: Container(
         decoration: BoxDecoration(
-          color: AppColor.surface,
+          color: surfaceColor,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: AppColor.border.withValues(alpha: 0.6),
+            color: borderColor,
             width: 1,
           ),
           boxShadow: [
             BoxShadow(
-              color: AppColor.textPrimary.withValues(alpha: 0.03),
+              color: textPrimaryColor.withValues(alpha: 0.03),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -46,15 +52,17 @@ class RoadmapListWidget extends StatelessWidget {
               height: 52,
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: AppColor.lightBlue.withValues(alpha: 0.5),
+                color: isDark
+                    ? const Color(0xFF1E293B)
+                    : AppColor.lightBlue.withValues(alpha: 0.5),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Image.asset(
                 item.imgUrl,
                 fit: BoxFit.contain,
-                errorBuilder: (context, error, stackTrace) => const Icon(
+                errorBuilder: (context, error, stackTrace) => Icon(
                   Icons.code_rounded,
-                  color: AppColor.secondary,
+                  color: isDark ? const Color(0xFF60A5FA) : AppColor.secondary,
                   size: 26,
                 ),
               ),
@@ -76,10 +84,10 @@ class RoadmapListWidget extends StatelessWidget {
                           item.language,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
-                            color: AppColor.textPrimary,
+                            color: textPrimaryColor,
                           ),
                         ),
                       ),
@@ -97,7 +105,7 @@ class RoadmapListWidget extends StatelessWidget {
                                   : Icons.bookmark_outline_rounded,
                               color: isBookmarked
                                   ? AppColor.primary
-                                  : AppColor.textPrimary,
+                                  : textPrimaryColor,
                               size: 22,
                             ),
                             onPressed: () {
@@ -109,8 +117,8 @@ class RoadmapListWidget extends StatelessWidget {
                                 '${item.language} Roadmap',
                                 snackPosition: SnackPosition.BOTTOM,
                                 duration: const Duration(seconds: 2),
-                                backgroundColor: AppColor.surface,
-                                colorText: AppColor.textPrimary,
+                                backgroundColor: surfaceColor,
+                                colorText: textPrimaryColor,
                                 margin: const EdgeInsets.all(16),
                                 borderRadius: 12,
                               );
@@ -125,9 +133,9 @@ class RoadmapListWidget extends StatelessWidget {
                     item.description,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 12,
-                      color: AppColor.textSecondary,
+                      color: textSecondaryColor,
                       height: 1.3,
                     ),
                   ),
@@ -142,9 +150,9 @@ class RoadmapListWidget extends StatelessWidget {
                       const SizedBox(width: 4),
                       Text(
                         item.duration,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 11,
-                          color: AppColor.textSecondary,
+                          color: textSecondaryColor,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -160,9 +168,9 @@ class RoadmapListWidget extends StatelessWidget {
                           item.level,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 11,
-                            color: AppColor.textSecondary,
+                            color: textSecondaryColor,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -176,9 +184,9 @@ class RoadmapListWidget extends StatelessWidget {
             const SizedBox(width: 8),
 
             // Right Chevron Arrow
-            const Icon(
+            Icon(
               Icons.chevron_right_rounded,
-              color: AppColor.textSecondary,
+              color: textSecondaryColor,
               size: 22,
             ),
           ],
@@ -187,5 +195,3 @@ class RoadmapListWidget extends StatelessWidget {
     );
   }
 }
-
-

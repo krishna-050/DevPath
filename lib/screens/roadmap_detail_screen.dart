@@ -39,6 +39,7 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final roadmapItem = widget.roadmap ?? RoadmapData.roadmaps.first;
     final roadmapSteps =
         RoadmapStepData.getStepsForLanguage(roadmapItem.language);
@@ -46,24 +47,31 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
         ? Get.find<SavedController>()
         : Get.put(SavedController());
 
+    final bgColor = isDark ? const Color(0xFF0B1220) : AppColor.background;
+    final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
+    final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
+    final textSecondaryColor =
+        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
+
     return Scaffold(
-      backgroundColor: AppColor.background,
+      backgroundColor: bgColor,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: AppColor.background,
+        backgroundColor: bgColor,
         centerTitle: true,
         title: Text(
           roadmapItem.language,
-          style: const TextStyle(
-            color: AppColor.textPrimary,
+          style: TextStyle(
+            color: textPrimaryColor,
             fontWeight: FontWeight.bold,
             fontSize: 18,
           ),
         ),
         leading: IconButton(
-          icon: const Icon(
+          icon: Icon(
             Icons.arrow_back_rounded,
-            color: AppColor.textPrimary,
+            color: textPrimaryColor,
           ),
           onPressed: () => Get.back(),
         ),
@@ -75,7 +83,7 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                 isBookmarked
                     ? Icons.bookmark_rounded
                     : Icons.bookmark_outline_rounded,
-                color: isBookmarked ? AppColor.primary : AppColor.textPrimary,
+                color: isBookmarked ? AppColor.primary : textPrimaryColor,
               ),
               onPressed: () {
                 savedController.toggleSaved(roadmapItem);
@@ -86,8 +94,8 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                   '${roadmapItem.language} Roadmap',
                   snackPosition: SnackPosition.BOTTOM,
                   duration: const Duration(seconds: 2),
-                  backgroundColor: AppColor.surface,
-                  colorText: AppColor.textPrimary,
+                  backgroundColor: surfaceColor,
+                  colorText: textPrimaryColor,
                   margin: const EdgeInsets.all(16),
                   borderRadius: 12,
                 );
@@ -95,9 +103,9 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
             );
           }),
           IconButton(
-            icon: const Icon(
+            icon: Icon(
               Icons.share_outlined,
-              color: AppColor.textPrimary,
+              color: textPrimaryColor,
             ),
             onPressed: () {},
           ),
@@ -115,17 +123,19 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                 padding: const EdgeInsets.all(18),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [
-                      AppColor.lightBlue,
-                      AppColor.lightBlue.withValues(alpha: 0.5),
-                      Colors.white,
-                    ],
+                    colors: isDark
+                        ? [const Color(0xFF1E293B), const Color(0xFF0F172A)]
+                        : [
+                            AppColor.lightBlue,
+                            AppColor.lightBlue.withValues(alpha: 0.5),
+                            Colors.white,
+                          ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
                   borderRadius: BorderRadius.circular(22),
                   border: Border.all(
-                    color: AppColor.border.withValues(alpha: 0.8),
+                    color: borderColor,
                   ),
                   boxShadow: [
                     BoxShadow(
@@ -138,7 +148,6 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Icon + Title + Category Badge Header
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -147,27 +156,23 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                           height: 54,
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: isDark
+                                ? const Color(0xFF172235)
+                                : Colors.white,
                             borderRadius: BorderRadius.circular(16),
                             border: Border.all(
-                              color: AppColor.border.withValues(alpha: 0.6),
+                              color: borderColor,
                             ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: AppColor.textPrimary
-                                    .withValues(alpha: 0.05),
-                                blurRadius: 10,
-                                offset: const Offset(0, 4),
-                              ),
-                            ],
                           ),
                           child: Image.asset(
                             roadmapItem.imgUrl,
                             fit: BoxFit.contain,
                             errorBuilder: (context, error, stackTrace) =>
-                                const Icon(
+                                Icon(
                               Icons.code_rounded,
-                              color: AppColor.secondary,
+                              color: isDark
+                                  ? const Color(0xFF60A5FA)
+                                  : AppColor.secondary,
                               size: 28,
                             ),
                           ),
@@ -184,10 +189,10 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                                   Expanded(
                                     child: Text(
                                       roadmapItem.language,
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                         fontSize: 22,
                                         fontWeight: FontWeight.bold,
-                                        color: AppColor.textPrimary,
+                                        color: textPrimaryColor,
                                         letterSpacing: -0.5,
                                       ),
                                     ),
@@ -217,9 +222,9 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                                 roadmapItem.description,
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 13,
-                                  color: AppColor.textSecondary,
+                                  color: textSecondaryColor,
                                   height: 1.35,
                                 ),
                               ),
@@ -231,7 +236,6 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
 
                     const SizedBox(height: 16),
 
-                    // Metadata Pill Badges
                     Row(
                       children: [
                         Container(
@@ -240,10 +244,10 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                             vertical: 5,
                           ),
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: surfaceColor,
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(
-                              color: AppColor.border.withValues(alpha: 0.6),
+                              color: borderColor,
                             ),
                           ),
                           child: Row(
@@ -256,10 +260,10 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                               const SizedBox(width: 5),
                               Text(
                                 roadmapItem.duration,
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
-                                  color: AppColor.textPrimary,
+                                  color: textPrimaryColor,
                                 ),
                               ),
                             ],
@@ -273,10 +277,10 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                               vertical: 5,
                             ),
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: surfaceColor,
                               borderRadius: BorderRadius.circular(10),
                               border: Border.all(
-                                color: AppColor.border.withValues(alpha: 0.6),
+                                color: borderColor,
                               ),
                             ),
                             child: Row(
@@ -292,10 +296,10 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                                     roadmapItem.level,
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w600,
-                                      color: AppColor.textPrimary,
+                                      color: textPrimaryColor,
                                     ),
                                   ),
                                 ),
@@ -308,7 +312,6 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
 
                     const SizedBox(height: 16),
 
-                    // Start Learning CTA Button
                     SizedBox(
                       width: double.infinity,
                       height: 50,
@@ -354,9 +357,9 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
 
             // Tab Bar Header
             Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(color: AppColor.border, width: 1),
+                  bottom: BorderSide(color: borderColor, width: 1),
                 ),
               ),
               child: TabBar(
@@ -364,7 +367,7 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                 indicatorColor: AppColor.primary,
                 indicatorWeight: 3,
                 labelColor: AppColor.primary,
-                unselectedLabelColor: AppColor.textSecondary,
+                unselectedLabelColor: textSecondaryColor,
                 labelStyle: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 15,
@@ -387,9 +390,9 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                 controller: _tabController,
                 physics: const BouncingScrollPhysics(),
                 children: [
-                  _buildOverviewTab(roadmapItem, roadmapSteps),
-                  _buildRoadmapTab(roadmapItem, roadmapSteps),
-                  _buildResourcesTab(roadmapItem),
+                  _buildOverviewTab(roadmapItem, roadmapSteps, isDark),
+                  _buildRoadmapTab(roadmapItem, roadmapSteps, isDark),
+                  _buildResourcesTab(roadmapItem, isDark),
                 ],
               ),
             ),
@@ -399,108 +402,40 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
     );
   }
 
-  // Overview Tab View
   Widget _buildOverviewTab(
-      RoadmapModel roadmap, List<RoadmapStepModel> steps) {
-    final progressController = Get.find<ProgressController>();
+      RoadmapModel roadmap, List<RoadmapStepModel> steps, bool isDark) {
+    final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
+    final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
+    final textSecondaryColor =
+        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
 
-    final totalTopics = progressController.getTotalTopicCount(steps);
-
-    final completedTopics = progressController.getCompletedTopicCount(
-      roadmap.language,
-      steps,
-    );
-
-    final progress = totalTopics > 0
-        ? completedTopics / totalTopics
-        : 0.0;
-
-    final percentage = (progress * 100).toInt();
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: AppColor.surface,
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(
-                color: AppColor.border,
-              ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      'Your Learning Progress',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: AppColor.textPrimary,
-                      ),
-                    ),
-                    Text(
-                      '$percentage%',
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: AppColor.success,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 12),
-                LinearProgressIndicator(
-                  value: progress,
-                  minHeight: 8,
-                  borderRadius: BorderRadius.circular(10),
-                  backgroundColor: AppColor.border,
-                  valueColor: const AlwaysStoppedAnimation<Color>(
-                    AppColor.success,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  '$completedTopics of $totalTopics topics completed',
-                  style: const TextStyle(
-                    fontSize: 12,
-                    color: AppColor.textSecondary,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 24),
-
-          const Text(
+          Text(
             "What You'll Learn",
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
-              color: AppColor.textPrimary,
+              color: textPrimaryColor,
               letterSpacing: -0.3,
             ),
           ),
           const SizedBox(height: 16),
 
-          // Bullet Items List
           ...steps.map(
             (step) => Container(
               margin: const EdgeInsets.only(bottom: 10),
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
               decoration: BoxDecoration(
-                color: AppColor.surface,
+                color: surfaceColor,
                 borderRadius: BorderRadius.circular(14),
                 border: Border.all(
-                  color: AppColor.border.withValues(alpha: 0.6),
+                  color: borderColor,
                 ),
               ),
               child: Row(
@@ -524,10 +459,10 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                       children: [
                         Text(
                           step.title,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
-                            color: AppColor.textPrimary,
+                            color: textPrimaryColor,
                           ),
                         ),
                         const SizedBox(height: 2),
@@ -535,9 +470,9 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                           step.description,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 12,
-                            color: AppColor.textSecondary,
+                            color: textSecondaryColor,
                           ),
                         ),
                       ],
@@ -550,22 +485,16 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
 
           const SizedBox(height: 16),
 
-          // Pro Tip Card
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: AppColor.lightBlue,
+              color: isDark ? const Color(0xFF1E293B) : AppColor.lightBlue,
               borderRadius: BorderRadius.circular(18),
               border: Border.all(
-                color: AppColor.secondary.withValues(alpha: 0.25),
+                color: isDark
+                    ? const Color(0xFF334155)
+                    : AppColor.secondary.withValues(alpha: 0.25),
               ),
-              boxShadow: [
-                BoxShadow(
-                  color: AppColor.secondary.withValues(alpha: 0.05),
-                  blurRadius: 10,
-                  offset: const Offset(0, 4),
-                ),
-              ],
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -583,7 +512,7 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                   ),
                 ),
                 const SizedBox(width: 14),
-                const Expanded(
+                Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -592,15 +521,15 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: AppColor.textPrimary,
+                          color: textPrimaryColor,
                         ),
                       ),
-                      SizedBox(height: 4),
+                      const SizedBox(height: 4),
                       Text(
                         'Start with the basics and build small projects. Practice regularly to become job ready!',
                         style: TextStyle(
                           fontSize: 13,
-                          color: AppColor.textSecondary,
+                          color: textSecondaryColor,
                           height: 1.35,
                         ),
                       ),
@@ -615,8 +544,14 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
     );
   }
 
-  // Interactive Step-by-Step Roadmap Tab View
-  Widget _buildRoadmapTab(RoadmapModel roadmap, List<RoadmapStepModel> steps) {
+  Widget _buildRoadmapTab(
+      RoadmapModel roadmap, List<RoadmapStepModel> steps, bool isDark) {
+    final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
+    final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
+    final textSecondaryColor =
+        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
+
     final progressController = Get.isRegistered<ProgressController>()
         ? Get.find<ProgressController>()
         : Get.put(ProgressController());
@@ -643,7 +578,6 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Timeline Badge & Line
               Column(
                 children: [
                   GestureDetector(
@@ -660,28 +594,20 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                             ? AppColor.success
                             : isExpanded
                                 ? AppColor.primary
-                                : AppColor.lightBlue,
+                                : (isDark
+                                    ? const Color(0xFF1E293B)
+                                    : AppColor.lightBlue),
                         shape: BoxShape.circle,
                         border: Border.all(
                           color: isStepCompleted
                               ? AppColor.success
                               : isExpanded
                                   ? AppColor.primary
-                                  : AppColor.secondary,
+                                  : (isDark
+                                      ? const Color(0xFF60A5FA)
+                                      : AppColor.secondary),
                           width: 1.8,
                         ),
-                        boxShadow: isStepCompleted || isExpanded
-                            ? [
-                                BoxShadow(
-                                  color: (isStepCompleted
-                                          ? AppColor.success
-                                          : AppColor.primary)
-                                      .withValues(alpha: 0.3),
-                                  blurRadius: 8,
-                                  offset: const Offset(0, 3),
-                                ),
-                              ]
-                            : null,
                       ),
                       child: Center(
                         child: isStepCompleted
@@ -695,7 +621,9 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                                 style: TextStyle(
                                   color: isExpanded
                                       ? Colors.white
-                                      : AppColor.secondary,
+                                      : (isDark
+                                          ? const Color(0xFF60A5FA)
+                                          : AppColor.secondary),
                                   fontWeight: FontWeight.bold,
                                   fontSize: 14,
                                 ),
@@ -707,7 +635,7 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                     Expanded(
                       child: Container(
                         width: 2,
-                        color: AppColor.border,
+                        color: borderColor,
                         margin: const EdgeInsets.symmetric(vertical: 4),
                       ),
                     ),
@@ -715,7 +643,6 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
               ),
               const SizedBox(width: 14),
 
-              // Expandable Step Card
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 16),
@@ -731,28 +658,17 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                       padding: const EdgeInsets.all(14),
                       decoration: BoxDecoration(
                         color: isStepCompleted
-                            ? AppColor.success.withValues(alpha: 0.08)
-                            : AppColor.surface,
+                            ? AppColor.success.withValues(alpha: 0.12)
+                            : surfaceColor,
                         borderRadius: BorderRadius.circular(16),
                         border: Border.all(
                           color: isStepCompleted
-                              ? AppColor.success.withValues(alpha: 0.55)
+                              ? AppColor.success
                               : isExpanded
-                                  ? AppColor.primary.withValues(alpha: 0.6)
-                                  : AppColor.border.withValues(alpha: 0.7),
+                                  ? AppColor.primary
+                                  : borderColor,
                           width: isStepCompleted || isExpanded ? 1.5 : 1,
                         ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: (isStepCompleted
-                                    ? AppColor.success
-                                    : AppColor.textPrimary)
-                                .withValues(
-                                    alpha: isStepCompleted ? 0.06 : 0.03),
-                            blurRadius: isExpanded ? 12 : 6,
-                            offset: const Offset(0, 4),
-                          ),
-                        ],
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -768,7 +684,7 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                                     fontWeight: FontWeight.bold,
                                     color: isExpanded
                                         ? AppColor.primary
-                                        : AppColor.textPrimary,
+                                        : textPrimaryColor,
                                   ),
                                 ),
                               ),
@@ -778,7 +694,7 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                                     : Icons.keyboard_arrow_down_rounded,
                                 color: isExpanded
                                     ? AppColor.primary
-                                    : AppColor.textSecondary,
+                                    : textSecondaryColor,
                               ),
                             ],
                           ),
@@ -793,9 +709,9 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                               const SizedBox(width: 4),
                               Text(
                                 step.duration,
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 12,
-                                  color: AppColor.textSecondary,
+                                  color: textSecondaryColor,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -804,28 +720,29 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                           const SizedBox(height: 6),
                           Text(
                             step.description,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 13,
-                              color: AppColor.textSecondary,
+                              color: textSecondaryColor,
                               height: 1.35,
                             ),
                           ),
                           if (isExpanded) ...[
                             const SizedBox(height: 12),
-                            const Divider(color: AppColor.border, height: 1),
+                            Divider(color: borderColor, height: 1),
                             const SizedBox(height: 12),
                             ...step.subtopics.map(
-                              (subtopic) => _buildSubTopicCheck(subtopic),
+                              (subtopic) =>
+                                  _buildSubTopicCheck(subtopic, isDark),
                             ),
                             if (step.resources != null &&
                                 step.resources!.isNotEmpty) ...[
                               const SizedBox(height: 12),
-                              const Text(
+                              Text(
                                 'Step Resources:',
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,
-                                  color: AppColor.textPrimary,
+                                  color: textPrimaryColor,
                                 ),
                               ),
                               const SizedBox(height: 4),
@@ -853,10 +770,12 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                                         const EdgeInsets.symmetric(vertical: 4),
                                     child: Row(
                                       children: [
-                                        const Icon(
+                                        Icon(
                                           Icons.link_rounded,
                                           size: 14,
-                                          color: AppColor.secondary,
+                                          color: isDark
+                                              ? const Color(0xFF60A5FA)
+                                              : AppColor.secondary,
                                         ),
                                         const SizedBox(width: 6),
                                         Expanded(
@@ -864,17 +783,21 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                                             title,
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
-                                            style: const TextStyle(
+                                            style: TextStyle(
                                               fontSize: 12,
-                                              color: AppColor.secondary,
+                                              color: isDark
+                                                  ? const Color(0xFF60A5FA)
+                                                  : AppColor.secondary,
                                               fontWeight: FontWeight.w600,
                                             ),
                                           ),
                                         ),
-                                        const Icon(
+                                        Icon(
                                           Icons.open_in_new_rounded,
                                           size: 12,
-                                          color: AppColor.secondary,
+                                          color: isDark
+                                              ? const Color(0xFF60A5FA)
+                                              : AppColor.secondary,
                                         ),
                                       ],
                                     ),
@@ -932,7 +855,7 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
     );
   }
 
-  Widget _buildSubTopicCheck(String title) {
+  Widget _buildSubTopicCheck(String title, bool isDark) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 6),
       child: Row(
@@ -945,9 +868,9 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
           const SizedBox(width: 8),
           Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 12,
-              color: AppColor.textPrimary,
+              color: isDark ? Colors.white : AppColor.textPrimary,
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -956,8 +879,11 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
     );
   }
 
-  // Resources Tab View
-  Widget _buildResourcesTab(RoadmapModel roadmap) {
+  Widget _buildResourcesTab(RoadmapModel roadmap, bool isDark) {
+    final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
+    final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
+    final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
+
     final resources =
         RoadmapResourceData.getResourcesForLanguage(roadmap.language);
 
@@ -989,28 +915,25 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
           child: Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: AppColor.surface,
+              color: surfaceColor,
               borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: AppColor.border),
-              boxShadow: [
-                BoxShadow(
-                  color: AppColor.textPrimary.withValues(alpha: 0.03),
-                  blurRadius: 8,
-                  offset: const Offset(0, 3),
-                ),
-              ],
+              border: Border.all(color: borderColor),
             ),
             child: Row(
               children: [
                 Container(
                   padding: const EdgeInsets.all(10),
-                  decoration: const BoxDecoration(
-                    color: AppColor.lightBlue,
+                  decoration: BoxDecoration(
+                    color: isDark
+                        ? const Color(0xFF1E293B)
+                        : AppColor.lightBlue,
                     shape: BoxShape.circle,
                   ),
-                  child: const Icon(
+                  child: Icon(
                     Icons.description_outlined,
-                    color: AppColor.secondary,
+                    color: isDark
+                        ? const Color(0xFF60A5FA)
+                        : AppColor.secondary,
                     size: 20,
                   ),
                 ),
@@ -1021,10 +944,10 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                     children: [
                       Text(
                         res.title,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w600,
-                          color: AppColor.textPrimary,
+                          color: textPrimaryColor,
                         ),
                       ),
                       if (res.url.isNotEmpty) ...[
@@ -1033,18 +956,22 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                           res.url,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 11,
-                            color: AppColor.secondary,
+                            color: isDark
+                                ? const Color(0xFF60A5FA)
+                                : AppColor.secondary,
                           ),
                         ),
                       ],
                     ],
                   ),
                 ),
-                const Icon(
+                Icon(
                   Icons.open_in_new_rounded,
-                  color: AppColor.secondary,
+                  color: isDark
+                      ? const Color(0xFF60A5FA)
+                      : AppColor.secondary,
                   size: 18,
                 ),
               ],

@@ -12,7 +12,7 @@ class StepDetailScreen extends StatefulWidget {
   const StepDetailScreen({
     super.key,
     required this.step,
-    this.roadmapTitle = 'Roadmap',
+    required this.roadmapTitle,
   });
 
   @override
@@ -20,61 +20,67 @@ class StepDetailScreen extends StatefulWidget {
 }
 
 class _StepDetailScreenState extends State<StepDetailScreen> {
-  late ProgressController progressController;
-  late String progressKey;
   late List<bool> _completedTopics;
 
   @override
   void initState() {
     super.initState();
-    // _completedTopics = List<bool>.filled(widget.step.subtopics.length, false);
-    progressController = Get.find<ProgressController>();
+    final progressController = Get.find<ProgressController>();
+    final progressKey = '${widget.roadmapTitle}_${widget.step.id}';
 
-    progressKey = '${widget.roadmapTitle}_${widget.step.id}';
-
+    // Load saved topics state from ProgressController
     _completedTopics = progressController.loadProgress(
-        progressKey,
-        widget.step.subtopics.length,
+      progressKey,
+      widget.step.subtopics.length,
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final step = widget.step;
+    final progressController = Get.find<ProgressController>();
+    final progressKey = '${widget.roadmapTitle}_${step.id}';
+
     final totalTopics = step.subtopics.length;
     final completedCount =
         _completedTopics.where((completed) => completed).length;
     final progress = totalTopics > 0 ? completedCount / totalTopics : 0.0;
     final isAllCompleted = totalTopics > 0 && completedCount == totalTopics;
 
+    final bgColor = isDark ? const Color(0xFF0B1220) : AppColor.background;
+    final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
+    final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
+    final textSecondaryColor =
+        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
+
     return Scaffold(
-      backgroundColor: AppColor.background,
+      backgroundColor: bgColor,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: AppColor.background,
-        centerTitle: false,
-        titleSpacing: 0,
+        backgroundColor: bgColor,
+        centerTitle: true,
+        title: Text(
+          'Step ${step.id}: ${step.title}',
+          style: TextStyle(
+            color: textPrimaryColor,
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+        ),
         leading: IconButton(
-          icon: const Icon(
+          icon: Icon(
             Icons.arrow_back_rounded,
-            color: AppColor.textPrimary,
+            color: textPrimaryColor,
           ),
           onPressed: () => Get.back(),
         ),
-        title: Text(
-          widget.roadmapTitle,
-          style: const TextStyle(
-            color: AppColor.textPrimary,
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-            letterSpacing: -0.3,
-          ),
-        ),
         actions: [
           IconButton(
-            icon: const Icon(
+            icon: Icon(
               Icons.share_outlined,
-              color: AppColor.textPrimary,
+              color: textPrimaryColor,
             ),
             onPressed: () {},
           ),
@@ -134,66 +140,50 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
                                       borderRadius: BorderRadius.circular(20),
                                     ),
                                     child: Text(
-                                      'STEP ${step.id}',
+                                      'Step ${step.id}',
                                       style: const TextStyle(
                                         color: Colors.white,
-                                        fontSize: 11,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.bold,
-                                        letterSpacing: 0.8,
                                       ),
                                     ),
                                   ),
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 10,
-                                      vertical: 4,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color:
-                                          Colors.white.withValues(alpha: 0.15),
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        const Icon(
-                                          Icons.schedule_rounded,
-                                          size: 14,
+                                  Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.schedule_rounded,
+                                        color: Colors.white70,
+                                        size: 14,
+                                      ),
+                                      const SizedBox(width: 4),
+                                      Text(
+                                        step.duration,
+                                        style: const TextStyle(
                                           color: Colors.white70,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w500,
                                         ),
-                                        const SizedBox(width: 5),
-                                        Text(
-                                          step.duration,
-                                          style: const TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
-
-                              const SizedBox(height: 16),
-
+                              const SizedBox(height: 14),
                               Text(
                                 step.title,
                                 style: const TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
-                                  letterSpacing: -0.5,
+                                  letterSpacing: -0.4,
                                 ),
                               ),
-
                               const SizedBox(height: 8),
-
                               Text(
                                 step.description,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 13,
-                                  color: Colors.white.withValues(alpha: 0.85),
+                                  color: Colors.white70,
                                   height: 1.4,
                                 ),
                               ),
@@ -263,21 +253,21 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
+                        Text(
                           'Topics to Master',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
-                            color: AppColor.textPrimary,
+                            color: textPrimaryColor,
                             letterSpacing: -0.3,
                           ),
                         ),
                         Text(
                           '$completedCount/$totalTopics completed',
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
-                            color: AppColor.textSecondary,
+                            color: textSecondaryColor,
                           ),
                         ),
                       ],
@@ -298,6 +288,10 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
                               progressKey,
                               _completedTopics,
                             );
+                            progressController.saveLastOpenedStep(
+                              widget.roadmapTitle,
+                              step.id,
+                            );
                           },
                           borderRadius: BorderRadius.circular(16),
                           child: AnimatedContainer(
@@ -306,22 +300,14 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
                             decoration: BoxDecoration(
                               color: isChecked
                                   ? AppColor.lightOrange.withValues(alpha: 0.5)
-                                  : AppColor.surface,
+                                  : surfaceColor,
                               borderRadius: BorderRadius.circular(16),
                               border: Border.all(
                                 color: isChecked
                                     ? AppColor.primary.withValues(alpha: 0.5)
-                                    : AppColor.border.withValues(alpha: 0.7),
+                                    : borderColor,
                                 width: isChecked ? 1.5 : 1,
                               ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: AppColor.textPrimary
-                                      .withValues(alpha: 0.03),
-                                  blurRadius: 8,
-                                  offset: const Offset(0, 3),
-                                ),
-                              ],
                             ),
                             child: Row(
                               children: [
@@ -337,7 +323,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
                                     border: Border.all(
                                       color: isChecked
                                           ? AppColor.primary
-                                          : AppColor.border,
+                                          : borderColor,
                                       width: 2,
                                     ),
                                   ),
@@ -356,13 +342,11 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
                                     style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w600,
-                                      color: isChecked
-                                          ? AppColor.textPrimary
-                                          : AppColor.textPrimary,
+                                      color: textPrimaryColor,
                                       decoration: isChecked
                                           ? TextDecoration.lineThrough
                                           : TextDecoration.none,
-                                      decorationColor: AppColor.textSecondary,
+                                      decorationColor: textSecondaryColor,
                                     ),
                                   ),
                                 ),
@@ -378,12 +362,12 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
                     // Step Resources Section
                     if (step.resources != null &&
                         step.resources!.isNotEmpty) ...[
-                      const Text(
+                      Text(
                         'Recommended Resources',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: AppColor.textPrimary,
+                          color: textPrimaryColor,
                           letterSpacing: -0.3,
                         ),
                       ),
@@ -408,29 +392,25 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
                             child: Container(
                               padding: const EdgeInsets.all(16),
                               decoration: BoxDecoration(
-                                color: AppColor.surface,
+                                color: surfaceColor,
                                 borderRadius: BorderRadius.circular(16),
-                                border: Border.all(color: AppColor.border),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: AppColor.textPrimary
-                                        .withValues(alpha: 0.03),
-                                    blurRadius: 8,
-                                    offset: const Offset(0, 3),
-                                  ),
-                                ],
+                                border: Border.all(color: borderColor),
                               ),
                               child: Row(
                                 children: [
                                   Container(
                                     padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
-                                      color: AppColor.lightBlue,
+                                      color: isDark
+                                          ? const Color(0xFF1E293B)
+                                          : AppColor.lightBlue,
                                       borderRadius: BorderRadius.circular(12),
                                     ),
-                                    child: const Icon(
+                                    child: Icon(
                                       Icons.description_outlined,
-                                      color: AppColor.secondary,
+                                      color: isDark
+                                          ? const Color(0xFF60A5FA)
+                                          : AppColor.secondary,
                                       size: 22,
                                     ),
                                   ),
@@ -442,10 +422,10 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
                                       children: [
                                         Text(
                                           title,
-                                          style: const TextStyle(
+                                          style: TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.bold,
-                                            color: AppColor.textPrimary,
+                                            color: textPrimaryColor,
                                           ),
                                         ),
                                         if (url.isNotEmpty) ...[
@@ -454,9 +434,11 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
                                             url,
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
-                                            style: const TextStyle(
+                                            style: TextStyle(
                                               fontSize: 11,
-                                              color: AppColor.secondary,
+                                              color: isDark
+                                                  ? const Color(0xFF60A5FA)
+                                                  : AppColor.secondary,
                                             ),
                                           ),
                                         ],
@@ -464,9 +446,11 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
                                     ),
                                   ),
                                   const SizedBox(width: 8),
-                                  const Icon(
+                                  Icon(
                                     Icons.open_in_new_rounded,
-                                    color: AppColor.secondary,
+                                    color: isDark
+                                        ? const Color(0xFF60A5FA)
+                                        : AppColor.secondary,
                                     size: 18,
                                   ),
                                 ],
@@ -487,10 +471,10 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: AppColor.surface,
+                color: surfaceColor,
                 boxShadow: [
                   BoxShadow(
-                    color: AppColor.textPrimary.withValues(alpha: 0.08),
+                    color: textPrimaryColor.withValues(alpha: 0.08),
                     blurRadius: 16,
                     offset: const Offset(0, -4),
                   ),
@@ -522,12 +506,16 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
                         progressKey,
                         _completedTopics,
                       );
+                      progressController.saveLastOpenedStep(
+                        widget.roadmapTitle,
+                        step.id,
+                      );
                       Get.snackbar(
                         'Step Mastered! 🎉',
                         'Great job finishing all topics for ${step.title}!',
                         snackPosition: SnackPosition.BOTTOM,
-                        backgroundColor: AppColor.surface,
-                        colorText: AppColor.textPrimary,
+                        backgroundColor: surfaceColor,
+                        colorText: textPrimaryColor,
                         margin: const EdgeInsets.all(16),
                         borderRadius: 12,
                       );
@@ -565,4 +553,3 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
     );
   }
 }
-

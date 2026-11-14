@@ -14,20 +14,29 @@ class SavedScreen extends StatefulWidget {
 class _SavedScreenState extends State<SavedScreen> {
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final controller = Get.isRegistered<SavedController>()
         ? Get.find<SavedController>()
         : Get.put(SavedController());
 
+    final bgColor = isDark ? const Color(0xFF0B1220) : AppColor.background;
+    final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
+    final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
+    final textSecondaryColor =
+        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final cardBgColor =
+        isDark ? const Color(0xFF1E293B) : AppColor.lightBlue;
+
     return Scaffold(
-      backgroundColor: AppColor.background,
+      backgroundColor: bgColor,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: AppColor.background,
+        backgroundColor: bgColor,
         centerTitle: false,
-        title: const Text(
+        title: Text(
           'Saved Roadmaps',
           style: TextStyle(
-            color: AppColor.textPrimary,
+            color: textPrimaryColor,
             fontWeight: FontWeight.bold,
             fontSize: 22,
             letterSpacing: -0.5,
@@ -35,7 +44,7 @@ class _SavedScreenState extends State<SavedScreen> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.search_rounded, color: AppColor.textPrimary),
+            icon: Icon(Icons.search_rounded, color: textPrimaryColor),
             onPressed: () {},
           ),
           const SizedBox(width: 8),
@@ -54,20 +63,22 @@ class _SavedScreenState extends State<SavedScreen> {
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: AppColor.lightBlue,
+                  color: cardBgColor,
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
-                    color: AppColor.secondary.withValues(alpha: 0.2),
+                    color: isDark
+                        ? const Color(0xFF334155)
+                        : AppColor.secondary.withValues(alpha: 0.2),
                   ),
                 ),
-                child: const Row(
+                child: Row(
                   children: [
                     Icon(
                       Icons.bookmark_rounded,
-                      color: AppColor.secondary,
+                      color: isDark ? const Color(0xFF60A5FA) : AppColor.secondary,
                       size: 28,
                     ),
-                    SizedBox(width: 12),
+                    const SizedBox(width: 12),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,15 +88,15 @@ class _SavedScreenState extends State<SavedScreen> {
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
-                              color: AppColor.textPrimary,
+                              color: textPrimaryColor,
                             ),
                           ),
-                          SizedBox(height: 2),
+                          const SizedBox(height: 2),
                           Text(
                             'Access your bookmarked learning paths anytime',
                             style: TextStyle(
                               fontSize: 12,
-                              color: AppColor.textSecondary,
+                              color: textSecondaryColor,
                             ),
                           ),
                         ],
@@ -108,41 +119,43 @@ class _SavedScreenState extends State<SavedScreen> {
                           Container(
                             padding: const EdgeInsets.all(24),
                             decoration: BoxDecoration(
-                              color: AppColor.surface,
+                              color: surfaceColor,
                               shape: BoxShape.circle,
                               boxShadow: [
                                 BoxShadow(
-                                  color:
-                                  AppColor.textPrimary.withValues(alpha: 0.05),
+                                  color: textPrimaryColor
+                                      .withValues(alpha: 0.05),
                                   blurRadius: 20,
                                   offset: const Offset(0, 8),
                                 ),
                               ],
                             ),
-                            child: const Icon(
+                            child: Icon(
                               Icons.bookmark_outline_rounded,
                               size: 56,
-                              color: AppColor.secondary,
+                              color: isDark
+                                  ? const Color(0xFF60A5FA)
+                                  : AppColor.secondary,
                             ),
                           ),
                           const SizedBox(height: 20),
-                          const Text(
+                          Text(
                             'No Saved Roadmaps Yet',
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              color: AppColor.textPrimary,
+                              color: textPrimaryColor,
                             ),
                           ),
                           const SizedBox(height: 8),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 32),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 32),
                             child: Text(
                               'Explore roadmaps and tap the bookmark icon to save them for quick access later.',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 13,
-                                color: AppColor.textSecondary,
+                                color: textSecondaryColor,
                                 height: 1.4,
                               ),
                             ),
@@ -163,8 +176,6 @@ class _SavedScreenState extends State<SavedScreen> {
                   );
                 }),
               ),
-              // Empty State UI Container
-
             ],
           ),
         ),

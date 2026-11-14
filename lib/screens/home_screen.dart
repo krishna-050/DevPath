@@ -11,6 +11,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final mediaQuery = MediaQuery.of(context);
     final screenHeight = mediaQuery.size.height;
     final screenWidth = mediaQuery.size.width;
@@ -22,6 +23,14 @@ class HomeScreen extends StatelessWidget {
     final horizontalPadding = screenWidth * 0.045;
     final gridCrossAxisCount = isTablet ? 3 : 2;
 
+    final bgColor = isDark ? const Color(0xFF0B1220) : AppColor.background;
+    final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
+    final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
+    final textSecondaryColor =
+        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final borderColor =
+        isDark ? const Color(0xFF334155) : AppColor.border;
+
     final categoryItems = [
       {'name': 'All', 'icon': Icons.apps_rounded},
       {'name': 'Frontend', 'icon': Icons.code_rounded},
@@ -31,10 +40,10 @@ class HomeScreen extends StatelessWidget {
     ];
 
     return Scaffold(
-      backgroundColor: AppColor.background,
+      backgroundColor: bgColor,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: AppColor.background,
+        backgroundColor: bgColor,
         titleSpacing: 0,
         leading: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -43,10 +52,10 @@ class HomeScreen extends StatelessWidget {
             fit: BoxFit.contain,
           ),
         ),
-        title: const Text(
+        title: Text(
           'DevPath',
           style: TextStyle(
-            color: AppColor.textPrimary,
+            color: textPrimaryColor,
             fontWeight: FontWeight.bold,
             fontSize: 22,
             letterSpacing: -0.5,
@@ -57,9 +66,9 @@ class HomeScreen extends StatelessWidget {
             onPressed: () {},
             icon: Stack(
               children: [
-                const Icon(
+                Icon(
                   Icons.notifications_none_rounded,
-                  color: AppColor.textPrimary,
+                  color: textPrimaryColor,
                   size: 26,
                 ),
                 Positioned(
@@ -80,10 +89,12 @@ class HomeScreen extends StatelessWidget {
             padding: const EdgeInsets.only(right: 16.0, left: 4.0),
             child: CircleAvatar(
               radius: 18,
-              backgroundColor: AppColor.lightBlue,
-              child: const Icon(
+              backgroundColor: isDark
+                  ? const Color(0xFF1E293B)
+                  : AppColor.lightBlue,
+              child: Icon(
                 Icons.person_outline_rounded,
-                color: AppColor.secondary,
+                color: isDark ? const Color(0xFF60A5FA) : AppColor.secondary,
                 size: 22,
               ),
             ),
@@ -106,47 +117,49 @@ class HomeScreen extends StatelessWidget {
                   height: 52,
                   child: TextField(
                     onChanged: controller.searchRoadmap,
-                    style: const TextStyle(
-                      color: AppColor.textPrimary,
+                    style: TextStyle(
+                      color: textPrimaryColor,
                       fontSize: 15,
                     ),
                     decoration: InputDecoration(
                       filled: true,
-                      fillColor: AppColor.surface,
+                      fillColor: surfaceColor,
                       contentPadding: const EdgeInsets.symmetric(
                         vertical: 14,
                         horizontal: 16,
                       ),
                       hintText: 'Search for a roadmap...',
-                      hintStyle: const TextStyle(
-                        color: AppColor.textSecondary,
+                      hintStyle: TextStyle(
+                        color: textSecondaryColor,
                         fontSize: 14,
                       ),
-                      prefixIcon: const Icon(
+                      prefixIcon: Icon(
                         Icons.search_rounded,
-                        color: AppColor.secondary,
+                        color: isDark ? const Color(0xFF60A5FA) : AppColor.secondary,
                         size: 22,
                       ),
                       suffixIcon: Container(
                         margin: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          color: AppColor.lightBlue,
+                          color: isDark
+                              ? const Color(0xFF1E293B)
+                              : AppColor.lightBlue,
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: const Icon(
+                        child: Icon(
                           Icons.tune_rounded,
-                          color: AppColor.secondary,
+                          color: isDark ? const Color(0xFF60A5FA) : AppColor.secondary,
                           size: 18,
                         ),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
-                        borderSide: const BorderSide(color: AppColor.border),
+                        borderSide: BorderSide(color: borderColor),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
-                        borderSide: const BorderSide(
-                          color: AppColor.secondary,
+                        borderSide: BorderSide(
+                          color: isDark ? const Color(0xFF60A5FA) : AppColor.secondary,
                           width: 1.5,
                         ),
                       ),
@@ -283,12 +296,12 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       'Popular Roadmaps',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 19,
-                        color: AppColor.textPrimary,
+                        color: textPrimaryColor,
                         letterSpacing: -0.3,
                       ),
                     ),
@@ -327,8 +340,8 @@ class HomeScreen extends StatelessWidget {
 
                 // Roadmaps Grid
                 Obx(() {
-                    final filteredList = controller.filteredRoadmaps;
-                    return GridView.builder(
+                  final filteredList = controller.filteredRoadmaps;
+                  return GridView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: filteredList.length > 6
@@ -350,15 +363,14 @@ class HomeScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: AppColor.surface,
+                            color: surfaceColor,
                             borderRadius: BorderRadius.circular(16),
                             border: Border.all(
-                              color: AppColor.border.withValues(alpha: 0.7),
+                              color: borderColor,
                             ),
                             boxShadow: [
                               BoxShadow(
-                                color: AppColor.textPrimary
-                                    .withValues(alpha: 0.04),
+                                color: textPrimaryColor.withValues(alpha: 0.04),
                                 blurRadius: 10,
                                 offset: const Offset(0, 4),
                               ),
@@ -373,11 +385,13 @@ class HomeScreen extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                   width: 44,
+                                    width: 44,
                                     height: 44,
                                     padding: const EdgeInsets.all(6),
                                     decoration: BoxDecoration(
-                                      color: AppColor.lightBlue,
+                                      color: isDark
+                                          ? const Color(0xFF1E293B)
+                                          : AppColor.lightBlue,
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                     child: Image.asset(
@@ -385,9 +399,11 @@ class HomeScreen extends StatelessWidget {
                                       fit: BoxFit.contain,
                                       errorBuilder:
                                           (context, error, stackTrace) =>
-                                              const Icon(
+                                              Icon(
                                         Icons.code_rounded,
-                                        color: AppColor.secondary,
+                                        color: isDark
+                                            ? const Color(0xFF60A5FA)
+                                            : AppColor.secondary,
                                       ),
                                     ),
                                   ),
@@ -420,10 +436,10 @@ class HomeScreen extends StatelessWidget {
                                 item.language,
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 15,
-                                  color: AppColor.textPrimary,
+                                  color: textPrimaryColor,
                                 ),
                               ),
                               const SizedBox(height: 4),
@@ -432,32 +448,13 @@ class HomeScreen extends StatelessWidget {
                                   item.description,
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
-                                  style: const TextStyle(
-                                    color: AppColor.textSecondary,
+                                  style: TextStyle(
+                                    color: textSecondaryColor,
                                     fontSize: 12,
                                     height: 1.3,
                                   ),
                                 ),
                               ),
-                              const SizedBox(height: 6),
-                              // Row(
-                              //   children: [
-                              //     const Icon(
-                              //       Icons.watch_later_outlined,
-                              //       color: AppColor.primary,
-                              //       size: 15,
-                              //     ),
-                              //     const SizedBox(width: 4),
-                              //     Text(
-                              //       item.duration,
-                              //       style: const TextStyle(
-                              //         color: AppColor.textPrimary,
-                              //         fontSize: 11,
-                              //         fontWeight: FontWeight.w600,
-                              //       ),
-                              //     ),
-                              //   ],
-                              // ),
                               const SizedBox(height: 4),
 
                               RoadmapProgressWidget(
@@ -469,18 +466,17 @@ class HomeScreen extends StatelessWidget {
                       );
                     },
                   );
-                }
-                ),
+                }),
 
                 SizedBox(height: screenHeight * 0.03),
 
                 // Categories Header & Filter List
-                const Text(
+                Text(
                   'Categories',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 19,
-                    color: AppColor.textPrimary,
+                    color: textPrimaryColor,
                     letterSpacing: -0.3,
                   ),
                 ),
@@ -507,12 +503,12 @@ class HomeScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: isSelected
                               ? AppColor.primary
-                              : AppColor.surface,
+                              : surfaceColor,
                           borderRadius: BorderRadius.circular(22),
                           border: Border.all(
                             color: isSelected
                                 ? AppColor.primary
-                                : AppColor.border,
+                                : borderColor,
                           ),
                           boxShadow: isSelected
                               ? [
@@ -532,7 +528,9 @@ class HomeScreen extends StatelessWidget {
                               size: 18,
                               color: isSelected
                                   ? Colors.white
-                                  : AppColor.secondary,
+                                  : (isDark
+                                      ? const Color(0xFF60A5FA)
+                                      : AppColor.secondary),
                             ),
                             const SizedBox(width: 8),
                             Text(
@@ -540,7 +538,7 @@ class HomeScreen extends StatelessWidget {
                               style: TextStyle(
                                 color: isSelected
                                     ? Colors.white
-                                    : AppColor.textPrimary,
+                                    : textPrimaryColor,
                                 fontWeight: isSelected
                                     ? FontWeight.bold
                                     : FontWeight.w600,
@@ -563,4 +561,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-

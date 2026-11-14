@@ -48,6 +48,11 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final navBgColor = isDark ? AppColor.darkSurface : AppColor.surface;
+    final unselectedColor =
+        isDark ? AppColor.darkTextSecondary : AppColor.textSecondary;
+
     return Scaffold(
       body: IndexedStack(
         index: _currentIndex,
@@ -55,10 +60,12 @@ class _MainScreenState extends State<MainScreen> {
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: AppColor.surface,
+          color: navBgColor,
           boxShadow: [
             BoxShadow(
-              color: AppColor.textPrimary.withValues(alpha: 0.08),
+              color: isDark
+                  ? Colors.black.withValues(alpha: 0.2)
+                  : AppColor.textPrimary.withValues(alpha: 0.08),
               blurRadius: 16,
               offset: const Offset(0, -4),
             ),
@@ -72,9 +79,9 @@ class _MainScreenState extends State<MainScreen> {
             });
           },
           type: BottomNavigationBarType.fixed,
-          backgroundColor: AppColor.surface,
+          backgroundColor: navBgColor,
           selectedItemColor: AppColor.primary,
-          unselectedItemColor: AppColor.textSecondary,
+          unselectedItemColor: unselectedColor,
           selectedFontSize: 12,
           unselectedFontSize: 12,
           selectedLabelStyle: const TextStyle(

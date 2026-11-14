@@ -7,6 +7,7 @@ import 'package:dev_path/app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:dev_path/controller/theme_controller.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,10 +21,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+  Get.put(ThemeController(), permanent: true);
     return GetMaterialApp(
         title: 'DevPath',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: ThemeMode.light,
         initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: ()=>SplashScreen()),

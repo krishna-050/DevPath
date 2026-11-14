@@ -1,4 +1,3 @@
-
 import 'package:dev_path/Widgets/roadmap_list_widget.dart';
 import 'package:dev_path/app/theme/app_color.dart';
 import 'package:dev_path/controller/home_controller.dart';
@@ -23,8 +22,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
   ];
   bool isSearching = false;
 
-  final TextEditingController searchController =
-  TextEditingController();
+  final TextEditingController searchController = TextEditingController();
+
   @override
   void dispose() {
     searchController.dispose();
@@ -33,6 +32,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
     final isTablet = screenWidth > 600;
@@ -41,33 +41,48 @@ class _ExploreScreenState extends State<ExploreScreen> {
         ? Get.find<HomeController>()
         : Get.put(HomeController());
 
+    final bgColor = isDark ? const Color(0xFF0B1220) : AppColor.background;
+    final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
+    final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
+    final textSecondaryColor =
+        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
+
     return Scaffold(
-      backgroundColor: AppColor.background,
+      backgroundColor: bgColor,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: AppColor.background,
+        backgroundColor: bgColor,
         centerTitle: false,
         titleSpacing: 16,
         leading: Navigator.canPop(context)
             ? IconButton(
-                icon: const Icon(
+                icon: Icon(
                   Icons.arrow_back_rounded,
-                  color: AppColor.textPrimary,
+                  color: textPrimaryColor,
                 ),
                 onPressed: () => Navigator.pop(context),
               )
             : null,
-         title: isSearching
-        ? TextField(
-        controller: searchController,
-        autofocus: true,
-        onChanged: controller.searchRoadmap,
-        decoration: const InputDecoration(
-          hintText: 'Search roadmaps...',
-          border: InputBorder.none,
-        ),
-      )
-            : const Text('All Roadmaps'),
+        title: isSearching
+            ? TextField(
+                controller: searchController,
+                autofocus: true,
+                onChanged: controller.searchRoadmap,
+                style: TextStyle(color: textPrimaryColor),
+                decoration: InputDecoration(
+                  hintText: 'Search roadmaps...',
+                  hintStyle: TextStyle(color: textSecondaryColor),
+                  border: InputBorder.none,
+                ),
+              )
+            : Text(
+                'All Roadmaps',
+                style: TextStyle(
+                  color: textPrimaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
         actions: [
           IconButton(
             onPressed: () {
@@ -81,14 +96,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
               });
             },
             icon: Icon(
-              isSearching
-                  ? Icons.close_rounded
-                  : Icons.search_rounded,
-              color: AppColor.textPrimary,
+              isSearching ? Icons.close_rounded : Icons.search_rounded,
+              color: textPrimaryColor,
             ),
           ),
           const SizedBox(width: 8),
-        ]
+        ],
       ),
       body: SafeArea(
         child: Column(
@@ -127,12 +140,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
                               decoration: BoxDecoration(
                                 color: isSelected
                                     ? AppColor.primary
-                                    : AppColor.surface,
+                                    : surfaceColor,
                                 borderRadius: BorderRadius.circular(20),
                                 border: Border.all(
                                   color: isSelected
                                       ? AppColor.primary
-                                      : AppColor.border,
+                                      : borderColor,
                                   width: 1,
                                 ),
                               ),
@@ -142,7 +155,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                   style: TextStyle(
                                     color: isSelected
                                         ? Colors.white
-                                        : AppColor.textPrimary,
+                                        : textPrimaryColor,
                                     fontWeight: isSelected
                                         ? FontWeight.bold
                                         : FontWeight.w500,
@@ -162,15 +175,15 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     width: 38,
                     height: 38,
                     decoration: BoxDecoration(
-                      color: AppColor.surface,
+                      color: surfaceColor,
                       borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: AppColor.border),
+                      border: Border.all(color: borderColor),
                     ),
                     child: IconButton(
                       padding: EdgeInsets.zero,
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.tune_rounded,
-                        color: AppColor.textPrimary,
+                        color: textPrimaryColor,
                         size: 20,
                       ),
                       onPressed: () {},
@@ -201,7 +214,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                       }).toList();
 
                 if (filteredList.isEmpty) {
-                  return _buildEmptyState(selectedCategory);
+                  return _buildEmptyState(selectedCategory, isDark);
                 }
 
                 if (isTablet) {
@@ -245,7 +258,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
     );
   }
 
-  Widget _buildEmptyState(String category) {
+  Widget _buildEmptyState(String category, bool isDark) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(32.0),
@@ -254,32 +267,34 @@ class _ExploreScreenState extends State<ExploreScreen> {
           children: [
             Container(
               padding: const EdgeInsets.all(20),
-              decoration: const BoxDecoration(
-                color: AppColor.lightBlue,
+              decoration: BoxDecoration(
+                color: isDark ? const Color(0xFF1E293B) : AppColor.lightBlue,
                 shape: BoxShape.circle,
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.alt_route_rounded,
                 size: 44,
-                color: AppColor.secondary,
+                color: isDark ? const Color(0xFF60A5FA) : AppColor.secondary,
               ),
             ),
             const SizedBox(height: 16),
             Text(
               'No $category Roadmaps Yet',
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.bold,
-                color: AppColor.textPrimary,
+                color: isDark ? Colors.white : AppColor.textPrimary,
               ),
             ),
             const SizedBox(height: 6),
-            const Text(
+            Text(
               'Check back soon for updated learning paths.',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 13,
-                color: AppColor.textSecondary,
+                color: isDark
+                    ? const Color(0xFF94A3B8)
+                    : AppColor.textSecondary,
               ),
             ),
           ],
@@ -288,4 +303,3 @@ class _ExploreScreenState extends State<ExploreScreen> {
     );
   }
 }
-
