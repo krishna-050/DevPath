@@ -1,0 +1,632 @@
+import 'package:dev_path/models/roadmap_step_model.dart';
+
+final List<RoadmapStepModel> pythonRoadmapSteps = [
+  // Phase 1: Python Fundamentals
+  RoadmapStepModel(
+    id: 1,
+    title: 'Python Setup & Language Architecture',
+    description:
+        'Understand CPython interpreter architecture, install Python 3, set up modern IDEs, virtual environments, and run scripts.',
+    duration: '1 week',
+    phase: 'Phase 1: Getting Started',
+    level: 'Beginner',
+    learningObjectives:
+        'Install Python 3, configure virtual environments, use the interactive REPL, and understand how Python bytecode executes.',
+    subtopics: [
+      'What is Python? History, philosophy (The Zen of Python - import this), use cases',
+      'CPython architecture: source code (.py) -> bytecode (.pyc) -> Python Virtual Machine (PVM)',
+      'Installing Python 3 on Windows, macOS, and Linux',
+      'Configuring system PATH and verifying python3 and pip in terminal',
+      'Interactive Python REPL (Read-Eval-Print Loop) for rapid prototyping',
+      'Setting up professional IDEs: VS Code (Python extension) and PyCharm',
+      'Virtual environments: why isolation matters, python -m venv .venv, activate / deactivate',
+      'Running Python scripts from the terminal and passing command-line arguments (sys.argv)',
+      'Python code formatting and style guidelines: PEP 8, Black formatter, and flake8 linter',
+    ],
+    exercises: [
+      'Set up a dedicated virtual environment, install the requests package, and run a script displaying Python version.',
+      'Print the Zen of Python in the terminal and format a multi-line script according to PEP 8 standards.',
+    ],
+    resources: [
+      'Python Official Documentation: https://docs.python.org/3/',
+      'Python Beginner Guide: https://www.python.org/about/gettingstarted/',
+      'Real Python Getting Started: https://realpython.com/start-here/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 2,
+    title: 'Variables, Types & Type Hinting',
+    description:
+        'Master Python dynamic typing, primitive data types, memory references, immutable vs mutable types, and modern type annotations.',
+    duration: '1 week',
+    phase: 'Phase 1: Getting Started',
+    level: 'Beginner',
+    learningObjectives:
+        'Declare variables, navigate dynamic typing safely, inspect types with type() and isinstance(), and annotate functions with type hints.',
+    subtopics: [
+      'Variables as object references rather than memory containers in Python',
+      'Dynamic typing mechanics and duck typing philosophy',
+      'Numeric types: int (arbitrary precision), float (IEEE 754 double precision), complex',
+      'Boolean type (bool) as a subclass of int (True == 1, False == 0)',
+      'The NoneType and the None singleton for representing absence of value',
+      'Type conversion / casting functions: int(), float(), str(), bool()',
+      'Checking types: type() equality vs isinstance() inheritance checking',
+      'Memory inspection: id() function and reference equality with is operator',
+      'Modern type hinting (PEP 484): annotating variables and functions (name: str = "Alice")',
+      'The typing module: Union, Optional, Any, and Python 3.10+ pipe syntax (int | None)',
+    ],
+    exercises: [
+      'Write a program demonstrating that integer values have arbitrary precision without overflow.',
+      'Create a type-annotated temperature converter function and verify it with mypy.',
+    ],
+    resources: [
+      'Python Built-in Types: https://docs.python.org/3/library/stdtypes.html',
+      'Python Type Hinting Guide: https://realpython.com/python-type-checking/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 3,
+    title: 'Operators & Mathematical Logic',
+    description:
+        'Execute calculations, evaluate boolean logic, work with identity and membership operators, and use the standard math module.',
+    duration: '1 week',
+    phase: 'Phase 1: Getting Started',
+    level: 'Beginner',
+    learningObjectives:
+        'Write complex conditional expressions, differentiate is from ==, and apply bitwise operations and mathematical constants.',
+    subtopics: [
+      'Arithmetic operators: +, -, *, /, // (floor division), % (modulo), ** (exponentiation)',
+      'Comparison operators: ==, !=, <, >, <=, >= and chained comparisons (1 < x < 10)',
+      'Logical operators: and, or, not and short-circuit evaluation behavior',
+      'Identity operators: is and is not for object identity checking',
+      'Membership operators: in and not in for sequence / collection lookups',
+      'Bitwise operators: &, |, ^, ~, <<, >>',
+      'Operator precedence and using parentheses for clarity and predictability',
+      'Mathematical functions: abs(), round(), min(), max(), sum(), pow()',
+      'The math module: math.sqrt(), math.ceil(), math.floor(), math.pi, math.sin()',
+    ],
+    exercises: [
+      'Calculate the roots of a quadratic equation ax² + bx + c = 0 using math.sqrt().',
+      'Demonstrate why floating-point arithmetic (0.1 + 0.2 == 0.3) evaluates to False and how math.isclose() solves it.',
+    ],
+    resources: [
+      'Python Math Module Documentation: https://docs.python.org/3/library/math.html',
+      'W3Schools Python Operators: https://www.w3schools.com/python/python_operators.asp',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 4,
+    title: 'Console I/O & String Manipulation',
+    description:
+        'Interact with users via input and print, master string immutability, format strings with f-strings, and perform advanced slicing.',
+    duration: '1-2 weeks',
+    phase: 'Phase 1: Getting Started',
+    level: 'Beginner',
+    learningObjectives:
+        'Format dynamic strings with modern f-strings, manipulate text using slicing syntax [start:stop:step], and parse user input.',
+    subtopics: [
+      'Reading console input: input() and type casting input strings to numbers',
+      'The print() function: custom separators with sep, custom line terminators with end',
+      'String immutability and UTF-8 encoding in Python 3',
+      'Formatted string literals (f-strings): expressions inside {var}, formatting numbers ({pi:.2f})',
+      'Legacy string formatting: str.format() and %-formatting',
+      'String indexing and slicing: string[start:stop:step], negative indices, reversing strings ([::-1])',
+      'Case transformation: lower(), upper(), title(), capitalize(), swapcase()',
+      'Trimming and searching: strip(), lstrip(), rstrip(), find(), index(), count()',
+      'Checking string properties: startswith(), endswith(), isdigit(), isalpha(), isalnum()',
+      'Joining and splitting: str.split(), str.rsplit(), str.splitlines(), and delimiter.join(list)',
+    ],
+    exercises: [
+      'Build a palindrome detector that strips whitespace and punctuation before checking.',
+      'Write a program that takes a paragraph and outputs word count, character count, and average word length.',
+      'Format a financial tabular receipt using f-string width alignment (:>10, :<20).',
+    ],
+    resources: [
+      'Python String Methods: https://docs.python.org/3/library/stdtypes.html#string-methods',
+      'Real Python Guide to F-Strings: https://realpython.com/python-f-strings/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 5,
+    title: 'Control Flow & Pattern Matching',
+    description:
+        'Control execution paths with if, elif, else, truthy/falsy evaluation, ternary expressions, and structural pattern matching.',
+    duration: '1 week',
+    phase: 'Phase 1: Getting Started',
+    level: 'Beginner',
+    learningObjectives:
+        'Write clean multi-branch conditional logic, evaluate truthiness, and leverage match-case pattern matching introduced in Python 3.10.',
+    subtopics: [
+      'The if statement: indentation-based code blocks (4 spaces convention)',
+      'Two-way branching with if-else and multi-branch decision trees with elif',
+      'Truthy and Falsy values: empty collections, 0, None, empty strings evaluate to False',
+      'Conditional expressions (Ternary operator): x = a if condition else b',
+      'Nested conditionals and refactoring using guard clauses',
+      'Structural Pattern Matching (match-case) introduced in Python 3.10',
+      'Matching literals, variables, and sequence patterns in match-case',
+      'Pattern guards: using if conditions inside case branches (case [x, y] if x > 0:)',
+      'Wildcard pattern (case _:) for default fallback matching',
+    ],
+    exercises: [
+      'Create a rock-paper-scissors game using structural pattern matching.',
+      'Write an order processing system that applies tiered discounts based on order volume and customer membership.',
+    ],
+    resources: [
+      'Python Control Flow: https://docs.python.org/3/tutorial/controlflow.html',
+      'Structural Pattern Matching Tutorial: https://peps.python.org/pep-0636/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 6,
+    title: 'Loops, Iteration & Comprehensions',
+    description:
+        'Automate repetitive tasks with for loops, while loops, range(), enumerate(), zip(), loop control statements, and list comprehensions.',
+    duration: '1-2 weeks',
+    phase: 'Phase 1: Getting Started',
+    level: 'Beginner',
+    learningObjectives:
+        'Iterate across sequences with for and while loops, use loop helper functions, and write concise list comprehensions.',
+    subtopics: [
+      'The while loop: condition-based looping and preventing infinite loops',
+      'The for loop: iterating directly over iterables (strings, lists, ranges)',
+      'The range() function: range(stop), range(start, stop), range(start, stop, step)',
+      'Loop control: early breakout with break and skipping iterations with continue',
+      'The unique else clause on loops (executes only when loop completes without break)',
+      'Iteration helpers: enumerate() for index-value pairs, zip() for parallel sequence iteration',
+      'Reversed iteration with reversed() and sorted iteration with sorted()',
+      'Introduction to List Comprehensions: [expr for item in iterable if condition]',
+      'Nested list comprehensions and flattening 2D matrices',
+    ],
+    exercises: [
+      'Generate all prime numbers between 1 and 100 using a loop with an else clause.',
+      'Transform a matrix into its transpose using a nested list comprehension.',
+      'Iterate simultaneously through two lists (students and marks) using zip() and print a ranking table.',
+    ],
+    resources: [
+      'Python for Loops: https://docs.python.org/3/tutorial/controlflow.html#for-statements',
+      'Real Python List Comprehensions: https://realpython.com/list-comprehension-python/',
+    ],
+  ),
+
+  // Phase 2: Core Data Structures & Functional Python
+  RoadmapStepModel(
+    id: 7,
+    title: 'Lists & Tuples in Depth',
+    description:
+        'Store and manipulate ordered sequences: dynamic arrays with lists and immutable sequences with tuples, packing and unpacking.',
+    duration: '2 weeks',
+    phase: 'Phase 2: Core Data Structures',
+    level: 'Intermediate',
+    learningObjectives:
+        'Perform list operations efficiently, apply slicing tricks, use tuples for immutable records, and master unpacking syntax.',
+    subtopics: [
+      'Lists in Python: dynamic arrays, heterogeneous elements, zero-indexed ordering',
+      'Modifying lists: append(), extend(), insert(), remove(), pop(), clear()',
+      'Searching and sorting: index(), count(), sort() in-place vs sorted() returning a new list',
+      'Shallow copy vs Deep copy: list.copy(), copy.copy(), copy.deepcopy()',
+      'Tuples in Python: immutable sequences, memory efficiency, and hashability',
+      'Single-element tuples (val,) and parenthesized expressions nuance',
+      'Tuple packing and sequence unpacking: a, b = 10, 20',
+      'Extended unpacking with starred expressions: head, *middle, tail = [1, 2, 3, 4, 5]',
+      'Named tuples: collections.namedtuple and typing.NamedTuple for structured records',
+    ],
+    exercises: [
+      'Implement an in-place list deduplication algorithm without preserving order, then with preserving order.',
+      'Create a student record system using typing.NamedTuple with named fields for id, name, and grades.',
+    ],
+    resources: [
+      'Python Data Structures Tutorial: https://docs.python.org/3/tutorial/datastructures.html',
+      'Real Python Lists and Tuples: https://realpython.com/python-lists-tuples/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 8,
+    title: 'Dictionaries & Sets',
+    description:
+        'Harness the power of hash tables in Python: key-value mapping with dict and mathematical set operations with set.',
+    duration: '2 weeks',
+    phase: 'Phase 2: Core Data Structures',
+    level: 'Intermediate',
+    learningObjectives:
+        'Utilize dictionaries for fast O(1) lookups, master dictionary methods, apply set mathematics, and write dict comprehensions.',
+    subtopics: [
+      'Dictionaries in Python: key-value hash maps, insertion-order preservation (Python 3.7+)',
+      'Dictionary keys requirement: keys must be hashable (immutable types)',
+      'Accessing values: dict[key] vs safe retrieval with dict.get(key, default)',
+      'Dictionary manipulation: update(), pop(), popitem(), setdefault()',
+      'Iterating dictionaries: keys(), values(), items() returning view objects',
+      'Dictionary comprehensions: {k: v for item in iterable}',
+      'Merging dictionaries: dict1 | dict2 operator (Python 3.9+) and **kwargs unpacking',
+      'Sets in Python: unordered collections of unique hashable elements',
+      'Mathematical set operations: union (|), intersection (&), difference (-), symmetric difference (^)',
+      'Set methods: add(), discard(), remove(), issubset(), issuperset()',
+      'Frozen sets: collections.frozenset for immutable, hashable sets',
+    ],
+    exercises: [
+      'Count word frequencies in a text document using a dictionary, then find the top 5 most common words.',
+      'Find common mutual friends between two social media user sets using set intersection.',
+    ],
+    resources: [
+      'Python Dictionaries: https://docs.python.org/3/tutorial/datastructures.html#dictionaries',
+      'Real Python Dictionaries Guide: https://realpython.com/python-dicts/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 9,
+    title: 'Functions, Scopes & Closures',
+    description:
+        'Write modular, reusable code with functions, default arguments, *args, **kwargs, keyword-only parameters, scope rules, and closures.',
+    duration: '2 weeks',
+    phase: 'Phase 2: Core Data Structures',
+    level: 'Intermediate',
+    learningObjectives:
+        'Define clean functions, understand argument binding, apply the LEGB scope hierarchy, and build functional closures.',
+    subtopics: [
+      'Defining functions with def, the return statement, and default return value of None',
+      'Positional parameters vs keyword arguments',
+      'Default parameter values and the infamous mutable default argument trap (def f(lst=[]):)',
+      'Arbitrary positional arguments (*args) and arbitrary keyword arguments (**kwargs)',
+      'Keyword-only parameters using bare * and positional-only parameters using /',
+      'Docstrings (PEP 257) for function documentation and help() introspection',
+      'Variable scope and the LEGB rule: Local, Enclosing, Global, Built-in',
+      'Modifying outer scopes: the global keyword and the nonlocal keyword',
+      'First-class functions: passing functions as arguments and returning functions from functions',
+      'Closures: inner functions retaining access to enclosing scope variables after outer execution',
+    ],
+    exercises: [
+      'Write a function that accepts arbitrary numbers and optional operation="add"|"multiply" using *args and **kwargs.',
+      'Build a closure-based counter function make_counter() that maintains its private internal count.',
+    ],
+    resources: [
+      'Defining Functions in Python: https://docs.python.org/3/tutorial/controlflow.html#defining-functions',
+      'Real Python Defining Your Own Functions: https://realpython.com/defining-your-own-python-function/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 10,
+    title: 'Functional Programming & Built-ins',
+    description:
+        'Embrace functional programming paradigms: lambda anonymous functions, map(), filter(), reduce(), and powerful built-in functions.',
+    duration: '1-2 weeks',
+    phase: 'Phase 2: Core Data Structures',
+    level: 'Intermediate',
+    learningObjectives:
+        'Write anonymous lambda functions, apply map/filter/reduce, sort complex nested objects with key functions, and use itertools.',
+    subtopics: [
+      'Lambda functions: syntax (lambda x: x * 2), single expression limitations, and usage contexts',
+      'The map() function for element-wise transformation vs list comprehensions',
+      'The filter() function for conditional element extraction',
+      'The functools.reduce() function for rolling cumulative computation',
+      'Custom sorting with the sorted() function and list.sort() using key=lambda x: ...',
+      'The operator module: operator.itemgetter, operator.attrgetter for fast key extraction',
+      'Essential built-ins: any(), all(), zip(), enumerate(), reversed(), chr(), ord()',
+      'The itertools module: count(), cycle(), repeat(), chain(), islice(), combinations(), permutations()',
+      'The functools module: lru_cache for memoization, partial for pre-filling function arguments',
+    ],
+    exercises: [
+      'Sort a list of dictionaries representing employees by department ascending, then salary descending using lambda.',
+      'Implement an efficient recursive Fibonacci function memoized with @functools.lru_cache.',
+    ],
+    resources: [
+      'Python Functional Programming HOWTO: https://docs.python.org/3/howto/functional.html',
+      'Real Python Lambda Functions: https://realpython.com/python-lambda/',
+    ],
+  ),
+
+  // Phase 3: Object-Oriented Python & Advanced Features
+  RoadmapStepModel(
+    id: 11,
+    title: 'Object-Oriented Programming (OOP)',
+    description:
+        'Structure applications around classes and objects: encapsulation, instance methods, class methods, static methods, and properties.',
+    duration: '2 weeks',
+    phase: 'Phase 3: OOP & Advanced Features',
+    level: 'Intermediate',
+    learningObjectives:
+        'Model domains with classes, initialize attributes in __init__, differentiate self from cls, and manage attributes with @property.',
+    subtopics: [
+      'Classes and Objects: modeling real-world entities with state and behavior',
+      'The __init__() initializer method and the self parameter (explicit instance reference)',
+      'Instance attributes vs Class attributes (shared across all instances)',
+      'Encapsulation conventions in Python: public, protected (_var), and private with name mangling (__var)',
+      'Instance methods vs Class methods (@classmethod with cls) vs Static methods (@staticmethod)',
+      'Alternative constructors using @classmethod (e.g. from_dict, from_json)',
+      'The @property decorator: creating managed attributes, getters, setters (@prop.setter), and deleters',
+      'Python dataclasses module (Python 3.7+): auto-generating __init__, __repr__, __eq__ with @dataclass',
+    ],
+    exercises: [
+      'Build a BankAccount class with @property balance preventing negative balances on withdrawal.',
+      'Create a User class with a @classmethod from_csv_string() constructor.',
+      'Declare an inventory Item using @dataclass with automatic equality checking.',
+    ],
+    resources: [
+      'Python Classes Tutorial: https://docs.python.org/3/tutorial/classes.html',
+      'Real Python Object-Oriented Programming: https://realpython.com/python3-object-oriented-programming/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 12,
+    title: 'Inheritance, Polymorphism & Dunder Methods',
+    description:
+        'Extend classes with single and multiple inheritance, understand Method Resolution Order (MRO), super(), and customize behavior with magic methods.',
+    duration: '2 weeks',
+    phase: 'Phase 3: OOP & Advanced Features',
+    level: 'Intermediate',
+    learningObjectives:
+        'Implement class inheritance, call superclass methods with super(), inspect MRO with C3 linearization, and overload operators with dunder methods.',
+    subtopics: [
+      'Inheritance syntax: class Child(Parent) and the object root class',
+      'Overriding parent methods in subclasses',
+      'The super() function: calling parent methods and constructors cooperatively',
+      'Multiple inheritance in Python and resolving method lookup',
+      'Method Resolution Order (MRO) and C3 Linearization (Class.__mro__ and Class.mro())',
+      'Polymorphism in Python: treating different objects through common method interfaces',
+      'Abstract Base Classes (ABC): the abc module, @abstractmethod decorator',
+      'Magic / Dunder (Double Underscore) methods: customizing class behavior',
+      'String representation: __str__() (human-readable) vs __repr__() (unambiguous / developer)',
+      'Length and indexing: __len__(), __getitem__(), __setitem__(), __contains__()',
+      'Operator overloading: __add__, __sub__, __mul__, __eq__, __lt__, __gt__',
+      'Context management dunder methods: __enter__() and __exit__()',
+    ],
+    exercises: [
+      'Create a custom Vector2D class that overloads +, -, * and implements __repr__ and __str__.',
+      'Build a custom DeckOfCards class that implements __len__ and __getitem__ to support indexing and slicing.',
+    ],
+    resources: [
+      'Python Data Model & Special Methods: https://docs.python.org/3/reference/datamodel.html#special-method-names',
+      'Real Python Operator Overloading: https://realpython.com/operator-function-overloading/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 13,
+    title: 'Error & Exception Handling',
+    description:
+        'Write resilient software that catches and handles runtime exceptions gracefully with try, except, else, finally, and custom exception classes.',
+    duration: '1-2 weeks',
+    phase: 'Phase 3: OOP & Advanced Features',
+    level: 'Intermediate',
+    learningObjectives:
+        'Handle runtime errors, distinguish specific exception types, create custom exception hierarchies, and chain exceptions with raise ... from.',
+    subtopics: [
+      'Syntax errors (parsing time) vs Exceptions (runtime errors)',
+      'The try-except block: intercepting exceptions without crashing the program',
+      'Catching specific exceptions vs the anti-pattern of bare except:',
+      'Handling multiple exception types: except (ValueError, TypeError) as e:',
+      'The else block: executing code only when no exceptions occurred in try',
+      'The finally block: guaranteed cleanup routines (closing files, releasing locks)',
+      'The raise statement: manually triggering exceptions',
+      'Exception hierarchy: BaseException -> Exception -> Standard exceptions (ValueError, KeyError, TypeError, IndexError)',
+      'Creating custom exception classes inheriting from Exception',
+      'Exception chaining: raise CustomError from original_error for transparent debugging',
+      'Exception groups and except* syntax for handling multiple concurrent exceptions (Python 3.11+)',
+    ],
+    exercises: [
+      'Build a safe user input parser that retries on ValueError until a valid integer within a range is supplied.',
+      'Create a custom AuthenticationError hierarchy for an API client and chain caught HTTP errors.',
+    ],
+    resources: [
+      'Python Errors and Exceptions: https://docs.python.org/3/tutorial/errors.html',
+      'Real Python Exception Handling: https://realpython.com/python-exceptions/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 14,
+    title: 'Modules, Packages & Virtual Environments',
+    description:
+        'Structure Python applications into modular codebases: imports, __name__ == "__main__", package creation, pip, and modern packaging with pyproject.toml.',
+    duration: '1-2 weeks',
+    phase: 'Phase 3: OOP & Advanced Features',
+    level: 'Intermediate',
+    learningObjectives:
+        'Organize multi-file projects, manage dependencies with pip and virtual environments, and build reusable Python packages.',
+    subtopics: [
+      'What is a module? Creating and importing single .py files',
+      'Import styles: import math, from math import sqrt, import numpy as np',
+      'Module search path: sys.path and how Python locates imported files',
+      'The __name__ variable and the if __name__ == "__main__": boilerplate idiom',
+      'Packages: directories containing modules and the role of __init__.py',
+      'Relative imports (.module, ..package) vs absolute imports',
+      'Managing external dependencies with pip: pip install, pip freeze > requirements.txt',
+      'Modern dependency isolation: venv, pipenv, and poetry',
+      'Standard project directory structure for production Python applications',
+      'Modern packaging standards: pyproject.toml replacing setup.py',
+    ],
+    exercises: [
+      'Refactor a monolithic script into a clean package with submodules for models, utils, and services.',
+      'Generate a requirements.txt file in a virtual environment and reproduce the environment on another machine.',
+    ],
+    resources: [
+      'Python Modules Tutorial: https://docs.python.org/3/tutorial/modules.html',
+      'Python Packaging User Guide: https://packaging.python.org/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 15,
+    title: 'File I/O, Serialization & Context Managers',
+    description:
+        'Read and write text, CSV, and binary files, serialize data with JSON and Pickle, and implement custom context managers with the with statement.',
+    duration: '1-2 weeks',
+    phase: 'Phase 3: OOP & Advanced Features',
+    level: 'Intermediate',
+    learningObjectives:
+        'Safely open and close files using with statements, read/write JSON and CSV data, and create custom context managers using contextlib.',
+    subtopics: [
+      'The open() function: file paths, modes (r, w, a, x, b, +), and UTF-8 encoding parameter',
+      'Reading files: read(), readline(), readlines(), and memory-efficient line iteration',
+      'Writing to files: write() and writelines()',
+      'The with statement and Context Managers: automatic file closing and resource cleanup',
+      'The pathlib module: modern object-oriented filesystem path manipulation (Path(__file__).parent)',
+      'Working with CSV files using the csv module: csv.reader, csv.writer, csv.DictReader, csv.DictWriter',
+      'JSON serialization with the json module: json.dumps(), json.loads(), json.dump(), json.load()',
+      'Binary serialization with the pickle module and security risks of unpickling untrusted data',
+      'Creating custom context managers: class-based (__enter__, __exit__) and generator-based (@contextlib.contextmanager)',
+    ],
+    exercises: [
+      'Read a CSV file of sales records, compute total revenue per product, and write the summary to a JSON file.',
+      'Create a custom Timer context manager that measures and prints execution time of code blocks.',
+    ],
+    resources: [
+      'Reading and Writing Files: https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files',
+      'Real Python Working with Files: https://realpython.com/working-with-files-in-python/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 16,
+    title: 'Generators, Iterators & Decorators',
+    description:
+        'Master Python advanced functional mechanisms: iterables and iterators protocol, lazy evaluation with generators, and metaprogramming with decorators.',
+    duration: '2 weeks',
+    phase: 'Phase 3: OOP & Advanced Features',
+    level: 'Advanced',
+    learningObjectives:
+        'Implement the iterator protocol, write memory-efficient generator functions with yield, and wrap functions with custom decorators.',
+    subtopics: [
+      'The Iterable and Iterator protocol: __iter__() returning an iterator, __next__() raising StopIteration',
+      'Creating custom iterator classes',
+      'Generator functions: the yield keyword and state suspension',
+      'Generator expressions: (x**2 for x in range(1000000)) saving gigabytes of memory',
+      'Generator methods: send(), throw(), close() for coroutine-style pipelines',
+      'Function decorators: functions that take functions and return modified functions',
+      'The @decorator syntax sugar and preserving function metadata with @functools.wraps',
+      'Decorators that accept arguments (decorator factories)',
+      'Class decorators: modifying or registering classes dynamically',
+      'Common decorator patterns: logging, timing execution, authentication checks, retry logic',
+    ],
+    exercises: [
+      'Write a generator function that yields an infinite sequence of prime numbers on demand.',
+      'Create a @retry(max_attempts=3, delay=1.0) decorator that retries failed network functions.',
+    ],
+    resources: [
+      'Python Generators Guide: https://realpython.com/introduction-to-python-generators/',
+      'Primer on Python Decorators: https://realpython.com/primer-on-python-decorators/',
+    ],
+  ),
+
+  // Phase 4: Concurrency & Intermediate/Advanced Topics
+  RoadmapStepModel(
+    id: 17,
+    title: 'Asynchronous Programming with Asyncio',
+    description:
+        'Build high-performance asynchronous, non-blocking I/O applications using coroutines, the event loop, async/await, and aiohttp.',
+    duration: '2 weeks',
+    phase: 'Phase 4: Concurrency & Web',
+    level: 'Advanced',
+    learningObjectives:
+        'Understand event-driven non-blocking I/O, write async/await coroutines, execute concurrent tasks with asyncio.gather, and use async generators.',
+    subtopics: [
+      'Synchronous vs Asynchronous execution: CPU-bound vs I/O-bound bottlenecks',
+      'The Asyncio architecture: Event Loop, Coroutines, Tasks, and Futures',
+      'Defining coroutines with async def and pausing execution with await',
+      'Running the event loop: asyncio.run(main())',
+      'Concurrent task execution: asyncio.create_task() and asyncio.gather()',
+      'Handling timeouts and cancellations: asyncio.wait_for() and task.cancel()',
+      'Asynchronous context managers (async with) and asynchronous iterators (async for)',
+      'Asynchronous HTTP networking with the aiohttp or httpx library',
+      'Common pitfalls: accidentally calling blocking synchronous code inside async functions (asyncio.to_thread solution)',
+    ],
+    exercises: [
+      'Build an asynchronous web scraper that fetches 20 web pages concurrently in seconds using aiohttp and asyncio.gather.',
+      'Implement an async rate-limited worker queue using asyncio.Queue.',
+    ],
+    resources: [
+      'Asyncio Official Documentation: https://docs.python.org/3/library/asyncio.html',
+      'Real Python Async IO in Python: https://realpython.com/async-io-python/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 18,
+    title: 'Threading, Multiprocessing & GIL',
+    description:
+        'Understand the Global Interpreter Lock (GIL), utilize threads for I/O concurrency, and leverage multiprocessing for true CPU-bound parallelism.',
+    duration: '2 weeks',
+    phase: 'Phase 4: Concurrency & Web',
+    level: 'Advanced',
+    learningObjectives:
+        'Analyze GIL implications, choose between threading and multiprocessing, and utilize the concurrent.futures high-level API.',
+    subtopics: [
+      'The Global Interpreter Lock (GIL) in CPython: what it is and why it limits multi-threaded CPU execution',
+      'The threading module: Thread class, start(), join(), daemon threads',
+      'Thread synchronization: threading.Lock, RLock, Semaphore, and avoiding deadlocks',
+      'Thread-safe queues with the queue.Queue data structure',
+      'The multiprocessing module: bypassing the GIL with separate OS processes and separate memory spaces',
+      'Inter-process communication (IPC): multiprocessing.Queue, Pipe, and Value/Array shared memory',
+      'High-level concurrency with concurrent.futures: ThreadPoolExecutor and ProcessPoolExecutor',
+      'Mapping tasks over pools: executor.map() and executor.submit() returning Futures',
+      'Python 3.13+ free-threaded (No-GIL) mode developments',
+    ],
+    exercises: [
+      'Benchmark image resizing across 1, 2, 4, and 8 CPU cores using ProcessPoolExecutor and compare speedups.',
+      'Implement a multi-threaded file downloader with progress tracking.',
+    ],
+    resources: [
+      'Python Concurrency Overview: https://realpython.com/python-concurrency/',
+      'Multiprocessing in Python: https://docs.python.org/3/library/multiprocessing.html',
+    ],
+  ),
+
+  // Phase 5: Databases, Web APIs & Production Projects
+  RoadmapStepModel(
+    id: 19,
+    title: 'Database Access: SQL & SQLAlchemy ORM',
+    description:
+        'Connect Python to relational databases: execute raw queries with sqlite3 and psycopg2, and master Object-Relational Mapping with SQLAlchemy.',
+    duration: '2-3 weeks',
+    phase: 'Phase 5: Databases & Web APIs',
+    level: 'Advanced',
+    learningObjectives:
+        'Connect to relational databases, execute parameterized queries, model tables with SQLAlchemy ORM, and manage database migrations with Alembic.',
+    subtopics: [
+      'The Python DB-API 2.0 standard (PEP 249): connection, cursor, execute, fetchone, fetchall, commit',
+      'Using the built-in sqlite3 module: creating tables, parameterized inserts, preventing SQL injection',
+      'Connecting to production PostgreSQL using psycopg (version 3) / psycopg2',
+      'Introduction to Object-Relational Mapping (ORM): mapping database tables to Python classes',
+      'SQLAlchemy 2.0 Core vs ORM: DeclarativeBase, Mapped[], mapped_column()',
+      'Defining relationships in SQLAlchemy: relationship(), ForeignKey, cascade options',
+      'Querying with modern SQLAlchemy 2.0 select() statements and session management (Session, sessionmaker)',
+      'Database connection pooling and engine configuration',
+      'Database schema migrations using Alembic: alembic init, revision --autogenerate, upgrade head',
+    ],
+    exercises: [
+      'Build a complete library inventory system using SQLite and parameterized SQL queries.',
+      'Model an e-commerce database (Users, Orders, Items) in SQLAlchemy 2.0 and write complex queries with joins and filters.',
+    ],
+    resources: [
+      'SQLAlchemy 2.0 Documentation: https://docs.sqlalchemy.org/en/20/',
+      'Real Python SQLite and Python: https://realpython.com/python-sqlite-sqlalchemy/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 20,
+    title: 'FastAPI Web APIs, Testing & Deployment',
+    description:
+        'Build production-ready asynchronous REST APIs with FastAPI, validate data with Pydantic, write automated tests with pytest, and containerize with Docker.',
+    duration: '3-4 weeks',
+    phase: 'Phase 5: Databases & Web APIs',
+    level: 'Advanced',
+    learningObjectives:
+        'Create high-performance web APIs with FastAPI, define Pydantic schemas, write unit & integration tests with pytest, and package with Docker.',
+    subtopics: [
+      'Web APIs overview: HTTP verbs, status codes, request/response headers, REST architectural principles',
+      'FastAPI framework introduction: high performance, automatic interactive OpenAPI / Swagger docs',
+      'Routing in FastAPI: @app.get, @app.post, path parameters, query parameters, APIRouter modularization',
+      'Data validation and serialization with Pydantic v2: BaseModel, Field, EmailStr, custom validators',
+      'FastAPI Dependency Injection system: Depends() for database sessions, auth, and service decoupling',
+      'Authentication and security: password hashing with bcrypt, JWT token generation and verification',
+      'Automated testing with pytest: writing test functions, assertions, pytest fixtures, TestClient',
+      'Mocking dependencies in tests with pytest-mock and unittest.mock',
+      'Environment variable management with pydantic-settings (.env files)',
+      'Packaging with Docker: writing a multi-stage Dockerfile, docker-compose for app + PostgreSQL + Redis',
+      'Production deployment on cloud platforms (AWS, Render, DigitalOcean) using Uvicorn ASGI server',
+    ],
+    exercises: [
+      'Build a complete User Authentication and Profile API with registration, JWT login, and protected endpoints.',
+      'Write automated tests with pytest achieving over 85% test coverage for your API endpoints.',
+      'Containerize your FastAPI application with Docker and run it connected to a PostgreSQL database container.',
+    ],
+    resources: [
+      'FastAPI Official Documentation: https://fastapi.tiangolo.com/',
+      'Pydantic Official Documentation: https://docs.pydantic.dev/',
+      'Pytest Official Documentation: https://docs.pytest.org/',
+    ],
+  ),
+];

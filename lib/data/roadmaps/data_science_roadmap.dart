@@ -1,0 +1,322 @@
+import 'package:dev_path/models/roadmap_step_model.dart';
+
+final List<RoadmapStepModel> dataScienceRoadmapSteps = [
+  RoadmapStepModel(
+    id: 1,
+    title: 'Python Core & Scientific Computing',
+    description:
+        'Master Python fundamentals, NumPy N-dimensional arrays, and Pandas DataFrames for high-performance data processing.',
+    duration: '2-3 weeks',
+    phase: 'Phase 1: Foundations',
+    level: 'Beginner',
+    learningObjectives:
+        'Perform vectorized array computations with NumPy, manipulate tabular datasets with Pandas, and handle missing values.',
+    subtopics: [
+      'Python data structures for data science: lists, dicts, sets, tuples',
+      'NumPy ndarray creation, attributes, shapes, and data types',
+      'Vectorized array operations, broadcasting rules, & universal functions (ufuncs)',
+      'Indexing, slicing, boolean masking, & fancy indexing in NumPy',
+      'Pandas Series and DataFrame data structures',
+      'Reading & writing CSV, Excel, JSON, and SQL database formats',
+      'Data indexing, slicing, loc vs iloc selection',
+      'Handling missing data: isnull(), fillna(), dropna(), & imputation techniques',
+      'Data alignment, merging, joining (concat, merge), & reshaping (pivot, melt)',
+      'Groupby operations, aggregations, & custom transformations',
+    ],
+    exercises: [
+      'Clean a messy sales dataset in Pandas: handle missing values, correct data types, and group sales by region and month.',
+      'Vectorize a matrix calculation algorithm using NumPy broadcasting without using explicit Python for-loops.',
+    ],
+    resources: [
+      'NumPy Official Documentation: https://numpy.org/doc/stable/',
+      'Pandas Official User Guide: https://pandas.pydata.org/docs/user_guide/index.html',
+      'Python Data Science Handbook: https://jakevdp.github.io/PythonDataScienceHandbook/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 2,
+    title: 'Exploratory Data Analysis (EDA) & Visualization',
+    description:
+        'Uncover hidden patterns, relationships, and anomalies in datasets using Matplotlib, Seaborn, and Plotly graphics.',
+    duration: '2 weeks',
+    phase: 'Phase 1: Foundations',
+    level: 'Beginner',
+    learningObjectives:
+        'Create publication-grade statistical plots, perform univariate/bivariate analysis, and construct interactive dashboards.',
+    subtopics: [
+      'Principles of effective data visualization & chart selection',
+      'Matplotlib figure architecture: Subplots, axes, titles, legends, ticks',
+      'Line charts, bar plots, scatter plots, histograms, box plots',
+      'Seaborn statistical graphics: distribution plots (displot, kdeplot)',
+      'Categorical visual plots: catplot, boxplot, violinplot, countplot',
+      'Bivariate & Multivariate EDA: Pairplots, jointplots, & correlation heatmaps',
+      'Customizing color palettes, themes, and aesthetic styling in Seaborn',
+      'Interactive visualizations with Plotly (scatter, bar, 3D surface, choropleth maps)',
+      'Identifying outliers using IQR rule and Z-score methods',
+      'Summarizing dataset distributions: Skewness, Kurtosis, & summary statistics',
+    ],
+    exercises: [
+      'Perform a comprehensive EDA report on a housing price dataset, plotting price distributions, feature correlation heatmaps, and box plots.',
+      'Build an interactive Plotly dashboard visualizing country GDP trends over time.',
+    ],
+    resources: [
+      'Matplotlib Documentation: https://matplotlib.org/stable/contents.html',
+      'Seaborn User Guide: https://seaborn.pydata.org/tutorial.html',
+      'Plotly Python Open Source Graphing Library: https://plotly.com/python/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 3,
+    title: 'Applied Mathematics & Statistics',
+    description:
+        'Master the statistical foundations of Data Science: probability distributions, hypothesis testing, linear algebra, and calculus.',
+    duration: '3 weeks',
+    phase: 'Phase 1: Foundations',
+    level: 'Beginner to Intermediate',
+    learningObjectives:
+        'Conduct hypothesis tests (t-test, ANOVA, Chi-Square), compute Bayes theorem, and perform matrix operations.',
+    subtopics: [
+      'Descriptive statistics: Mean, Median, Mode, Variance, Standard Deviation, Percentiles',
+      'Probability theory: Conditional probability, Bayes Theorem, Independent events',
+      'Probability distributions: Normal (Gaussian), Binomial, Poisson, Exponential',
+      'Central Limit Theorem (CLT) & Standard Normal Distribution (Z-score)',
+      'Inferential statistics: Parameter estimation, Confidence Intervals',
+      'Hypothesis testing: Null vs Alternative hypothesis, Type I & Type II errors, p-values',
+      'Parametric tests: One-sample t-test, Two-sample t-test, Paired t-test, ANOVA',
+      'Non-parametric tests: Chi-Square test for independence, Mann-Whitney U test',
+      'Linear Algebra: Vectors, Matrices, Matrix multiplication, Transpose, Determinant',
+      'Eigenvalues, Eigenvectors, & Singular Value Decomposition (SVD)',
+    ],
+    exercises: [
+      'Run an A/B testing statistical evaluation comparing user conversion rates across two website variants using a two-sample t-test.',
+      'Implement Bayes Theorem in Python to calculate spam classification probabilities.',
+    ],
+    resources: [
+      'Khan Academy Statistics & Probability: https://www.khanacademy.org/math/statistics-probability',
+      '3Blue1Brown Essence of Linear Algebra: https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab',
+      'StatQuest with Josh Starmer: https://statquest.org/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 4,
+    title: 'SQL & Relational Data Engineering',
+    description:
+        'Query, extract, join, and aggregate massive relational datasets using SQL for business intelligence and data pipelines.',
+    duration: '2 weeks',
+    phase: 'Phase 2: Data Handling',
+    level: 'Beginner',
+    learningObjectives:
+        'Write complex SQL queries using INNER/LEFT joins, window functions (ROW_NUMBER, DENSE_RANK), and CTEs.',
+    subtopics: [
+      'Relational database concepts: Tables, Primary Keys, Foreign Keys, Schemas',
+      'SQL Data Querying: SELECT, WHERE, ORDER BY, LIMIT, DISTINCT',
+      'Filtering & Operators: LIKE, IN, BETWEEN, AND, OR, NOT, NULL handling',
+      'Data aggregation: GROUP BY, HAVING, COUNT, SUM, AVG, MIN, MAX',
+      'Table Joins: INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL OUTER JOIN, CROSS JOIN',
+      'Subqueries: Scalar, Column, Table, and Correlated subqueries',
+      'Common Table Expressions (CTEs) & WITH clauses for readable queries',
+      'SQL Window Functions: OVER(), PARTITION BY, ROW_NUMBER(), RANK(), DENSE_RANK(), LAG(), LEAD()',
+      'Database modification: INSERT, UPDATE, DELETE, CREATE TABLE, ALTER TABLE',
+      'Database indexing strategies, query execution plans (EXPLAIN ANALYZE), & performance tuning',
+    ],
+    exercises: [
+      'Write a SQL query using window functions to calculate 7-day rolling revenue averages and customer rank per region.',
+      'Design a normalized PostgreSQL database schema for an e-commerce platform.',
+    ],
+    resources: [
+      'PostgreSQL Official Documentation: https://www.postgresql.org/docs/',
+      'SQLZoo Interactive SQL Tutorial: https://sqlzoo.net/',
+      'Mode Analytics SQL Tutorial: https://mode.com/sql-tutorial/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 5,
+    title: 'Data Cleaning & Feature Engineering',
+    description:
+        'Preprocess raw unstructured data into high-quality features for machine learning using Scikit-Learn tools.',
+    duration: '2-3 weeks',
+    phase: 'Phase 2: Data Handling',
+    level: 'Intermediate',
+    learningObjectives:
+        'Encode categorical features, scale numerical data, handle imbalanced datasets, and extract features.',
+    subtopics: [
+      'Data quality auditing: Duplicates, inconsistent formatting, outliers',
+      'Feature Scaling: StandardScaling (Z-score), MinMaxScaling, RobustScaling',
+      'Categorical encoding: One-Hot Encoding, Label Encoding, Target Encoding, Ordinal Encoding',
+      'Handling numerical skewness: Log transformation, Box-Cox, Yeo-Johnson',
+      'Feature extraction: Polynomial features, Interaction terms, Binning',
+      'Handling imbalanced data: Resampling (SMOTE, ADASYN), Random Oversampling, Undersampling',
+      'Dimensionality Reduction: Principal Component Analysis (PCA) & t-SNE',
+      'Text feature extraction: Bag of Words, TF-IDF (Term Frequency-Inverse Document Frequency)',
+      'Date & Time feature engineering: Extracting cyclical features (sin/cos encoding)',
+      'Scikit-Learn ColumnTransformer and Pipeline integration',
+    ],
+    exercises: [
+      'Build a reusable Scikit-Learn Pipeline that imputes missing data, scales features, encodes categories, and reduces dimensions via PCA.',
+      'Apply SMOTE oversampling to an imbalanced credit card fraud dataset to balance target classes.',
+    ],
+    resources: [
+      'Scikit-Learn Preprocessing Docs: https://scikit-learn.org/stable/modules/preprocessing.html',
+      'Feature Engineering for Machine Learning Book (O\'Reilly): https://www.oreilly.com',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 6,
+    title: 'Supervised Machine Learning: Regression & Classification',
+    description:
+        'Build, evaluate, and tune predictive regression and classification models using Scikit-Learn.',
+    duration: '3-4 weeks',
+    phase: 'Phase 3: Machine Learning',
+    level: 'Intermediate',
+    learningObjectives:
+        'Train Linear/Logistic Regression, Decision Trees, Random Forests, XGBoost, and evaluate models using ROC-AUC and RMSE.',
+    subtopics: [
+      'Supervised Learning framework: Features (X), Labels (y), Train/Validation/Test split',
+      'Linear Regression: Ordinary Least Squares (OLS), Gradient Descent, Cost Function (MSE)',
+      'Regularization techniques: Ridge (L2), Lasso (L1), ElasticNet',
+      'Logistic Regression for binary & multiclass classification (Sigmoid & Softmax)',
+      'Evaluation metrics for Regression: MSE, RMSE, MAE, R-Squared, Adjusted R-Squared',
+      'Evaluation metrics for Classification: Confusion Matrix, Precision, Recall, F1-Score, ROC-AUC Curve',
+      'Decision Trees: Gini Impurity, Information Gain (Entropy), Pruning parameters',
+      'Ensemble Techniques (Bagging): Random Forest Classifier & Regressor',
+      'Ensemble Techniques (Boosting): AdaBoost, Gradient Boosting, XGBoost, LightGBM, CatBoost',
+      'Hyperparameter tuning: GridSearchCV, RandomizedSearchCV, Bayesian Optimization (Optuna)',
+    ],
+    exercises: [
+      'Train an XGBoost model on a customer churn dataset, perform hyperparameter tuning with Optuna, and evaluate ROC-AUC.',
+      'Build a Regularized Lasso Regression model to predict house prices, analyzing feature coefficients.',
+    ],
+    resources: [
+      'Scikit-Learn Machine Learning Guide: https://scikit-learn.org/stable/user_guide.html',
+      'XGBoost Documentation: https://xgboost.readthedocs.io/en/stable/',
+      'Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow (Book): https://github.com/ageron/handson-ml3',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 7,
+    title: 'Unsupervised Learning & Clustering',
+    description:
+        'Discover unlabelled structures, customer segments, and latent patterns using clustering and association mining algorithms.',
+    duration: '2 weeks',
+    phase: 'Phase 3: Machine Learning',
+    level: 'Intermediate',
+    learningObjectives:
+        'Segment customer groups using K-Means, Hierarchical Clustering, DBSCAN, and evaluate Silhouette scores.',
+    subtopics: [
+      'Unsupervised vs Supervised Learning paradigms',
+      'K-Means Clustering: Algorithm steps, Centroids, Distance metrics (Euclidean, Manhattan)',
+      'Determining optimal clusters: Elbow Method (Inertia) & Silhouette Score',
+      'Hierarchical Clustering: Agglomerative vs Divisive, Dendrograms, Linkage criteria (Single, Complete, Average, Ward)',
+      'Density-Based Clustering: DBSCAN (Eps, MinSamples, Noise points)',
+      'Anomaly & Outlier Detection: Isolation Forest, One-Class SVM, Local Outlier Factor (LOF)',
+      'Dimensionality Reduction for Visualization: t-SNE & UMAP',
+      'Market Basket Analysis: Association Rule Mining, Apriori Algorithm, Support, Confidence, Lift',
+      'Recommendation Systems: Collaborative Filtering (User-Item, Item-Item matrix factorization)',
+      'Content-Based Filtering using Cosine Similarity',
+    ],
+    exercises: [
+      'Perform customer market segmentation on a retail purchase dataset using K-Means, determining K via Silhouette score.',
+      'Build a movie recommendation engine using Collaborative Filtering matrix factorization in Python.',
+    ],
+    resources: [
+      'Scikit-Learn Clustering Docs: https://scikit-learn.org/stable/modules/clustering.html',
+      'UMAP Dimensionality Reduction Guide: https://umap-learn.readthedocs.io/en/latest/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 8,
+    title: 'Deep Learning & Neural Networks',
+    description:
+        'Architect deep neural networks, activation functions, backpropagation, and train PyTorch / TensorFlow models.',
+    duration: '3-4 weeks',
+    phase: 'Phase 4: Advanced AI',
+    level: 'Advanced',
+    learningObjectives:
+        'Construct Artificial Neural Networks (ANN), Convolutional Neural Networks (CNN), and Recurrent Neural Networks (RNN) in PyTorch.',
+    subtopics: [
+      'Biological Neuron vs Artificial Perceptron model',
+      'Neural Network Architecture: Input, Hidden, & Output layers',
+      'Activation Functions: ReLU, Leaky ReLU, Sigmoid, Tanh, Softmax',
+      'Forward Propagation & Matrix Operations in Deep Networks',
+      'Loss Functions: Cross-Entropy, Binary Cross-Entropy, Mean Squared Error',
+      'Backpropagation algorithm, Chain Rule, Gradient Descent, Adam/RMSprop Optimizers',
+      'Preventing Overfitting: Dropout layers, Batch Normalization, Weight Decay, Early Stopping',
+      'Convolutional Neural Networks (CNNs): Convolutions, Pooling, Stride, Padding, ResNet transfer learning',
+      'Recurrent Neural Networks (RNNs), LSTM (Long Short-Term Memory), & GRU for sequential data',
+      'Building deep learning pipelines with PyTorch (Tensors, nn.Module, DataLoader, autograd)',
+    ],
+    exercises: [
+      'Build a CNN image classifier in PyTorch to classify handwritten digits (MNIST) achieving >98% accuracy.',
+      'Fine-tune a pre-trained ResNet-50 model on a custom medical image dataset using transfer learning.',
+    ],
+    resources: [
+      'PyTorch Official Tutorials: https://pytorch.org/tutorials/',
+      'DeepLearning.AI Deep Learning Specialization: https://www.deeplearning.ai/',
+      'Fast.ai Practical Deep Learning for Coders: https://course.fast.ai/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 9,
+    title: 'Big Data Analytics with Apache Spark',
+    description:
+        'Process and analyze massive gigabyte to terabyte-scale distributed datasets using PySpark DataFrames.',
+    duration: '2-3 weeks',
+    phase: 'Phase 4: Advanced AI',
+    level: 'Advanced',
+    learningObjectives:
+        'Write distributed data transformations with PySpark SQL, manage Spark RDDs, and run distributed Machine Learning pipelines.',
+    subtopics: [
+      'Big Data Frameworks: Hadoop Ecosystem vs Apache Spark architecture',
+      'Spark Architecture: Driver, Cluster Manager, Worker Nodes, Executors',
+      'Resilient Distributed Datasets (RDDs): Transformations vs Actions, Lazy Evaluation',
+      'PySpark DataFrames API & Spark SQL query execution',
+      'Reading/Writing Parquet, ORC, Delta Lake big data storage formats',
+      'Distributed aggregations, window operations, & shuffle performance tuning',
+      'Spark MLlib: Distributed machine learning pipelines & feature transformers',
+      'Spark Structured Streaming for real-time streaming data processing',
+      'Optimizing Spark jobs: Partitioning, Coalesce, Repartition, Broadcast joins',
+      'Running PySpark jobs on cloud clusters (Databricks, AWS EMR, GCP Dataproc)',
+    ],
+    exercises: [
+      'Write a PySpark script to aggregate 10GB of web clickstream Parquet files and compute hourly active user metrics.',
+      'Build a distributed Gradient Boosted Tree classifier using Spark MLlib.',
+    ],
+    resources: [
+      'Apache Spark Documentation: https://spark.apache.org/docs/latest/',
+      'PySpark API Reference: https://spark.apache.org/docs/latest/api/python/',
+      'Databricks Free Community Edition: https://community.cloud.databricks.com/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 10,
+    title: 'MLOps, Model Deployment & Production ML',
+    description:
+        'Deploy, monitor, version, and maintain production Machine Learning models using MLflow, FastAPI, Docker, and Evidently AI.',
+    duration: '3 weeks',
+    phase: 'Phase 5: Production & MLOps',
+    level: 'Advanced',
+    learningObjectives:
+        'Package ML models into REST endpoints with FastAPI, track experiments with MLflow, and monitor Data/Model Drift in production.',
+    subtopics: [
+      'The MLOps Lifecycle: Experimentation, Packaging, Deployment, Monitoring, Retraining',
+      'Serializing ML Models: Pickle, Joblib, ONNX (Open Neural Network Exchange)',
+      'Building RESTful inference API endpoints using FastAPI & Pydantic',
+      'Containerizing ML inference APIs with Docker',
+      'Experiment Tracking & Model Registry with MLflow (mlflow.log_params, mlflow.log_metrics)',
+      'Data & Model Versioning with DVC (Data Version Control)',
+      'Batch Inference vs Real-time Streaming Inference architecture',
+      'Monitoring Data Drift & Concept Drift in production with Evidently AI',
+      'CI/CD Pipelines for ML model retraining & automated deployment (CVC / GitHub Actions)',
+      'Cloud Deployment: AWS SageMaker, GCP Vertex AI, or Railway / Render containers',
+    ],
+    exercises: [
+      'Build a FastAPI web service that loads a serialized Random Forest model and exposes a POST endpoint for real-time prediction.',
+      'Set up MLflow experiment tracking to log hyperparameters, metrics, and artifact models across 10 training runs.',
+    ],
+    resources: [
+      'MLflow Official Documentation: https://mlflow.org/docs/latest/index.html',
+      'FastAPI User Guide: https://fastapi.tiangolo.com/',
+      'Full Stack Deep Learning Course: https://fullstackdeeplearning.com/',
+    ],
+  ),
+];

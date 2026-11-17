@@ -1,0 +1,323 @@
+import 'package:dev_path/models/roadmap_step_model.dart';
+
+final List<RoadmapStepModel> cybersecurityRoadmapSteps = [
+  RoadmapStepModel(
+    id: 1,
+    title: 'Cybersecurity Fundamentals & Networking',
+    description:
+        'Understand the CIA Triad, threat landscape, OSI model security, TCP/IP protocols, and network defenses.',
+    duration: '2-3 weeks',
+    phase: 'Phase 1: Foundations',
+    level: 'Beginner',
+    learningObjectives:
+        'Understand Security CIA Triad, analyze network traffic, configure firewalls, and diagnose vulnerability vectors.',
+    subtopics: [
+      'The CIA Triad: Confidentiality, Integrity, and Availability',
+      'Threats, Vulnerabilities, Risks, and Exploits definitions',
+      'Network Security in OSI & TCP/IP model layers',
+      'Common Port Numbers & Services (HTTP/S, SSH, FTP, DNS, DHCP, RDP, SMB)',
+      'Network Devices: Routers, Switches, Firewalls, IDS/IPS, Proxy servers',
+      'Wireless Security: WPA2, WPA3, WEP vulnerabilities, & Enterprise 802.1X',
+      'Subnetting, VLANs, and Network Segmentation security boundary design',
+      'Common Cyber Attacks: Phishing, MITM, DDoS, Spoofing, Replay attacks',
+      'Security Operations Center (SOC) roles & Security Frameworks (NIST CSF, ISO 27001)',
+      'Basic Network Scanning with Nmap and Netcat',
+    ],
+    exercises: [
+      'Perform an Nmap network scan on a target subnet to discover active hosts, open ports, and running service versions.',
+      'Configure UFW firewall rules to allow inbound HTTP/HTTPS traffic while blocking unauthenticated SSH attempts.',
+    ],
+    resources: [
+      'NIST Cybersecurity Framework: https://www.nist.gov/cyberframework',
+      'Nmap Official Network Scanning Guide: https://nmap.org/book/man.html',
+      'Cybrary Free Cybersecurity Courses: https://www.cybrary.it/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 2,
+    title: 'Operating System Security & Hardening',
+    description:
+        'Harden Linux and Windows operating systems, configure access controls, manage privileges, and audit system logs.',
+    duration: '2 weeks',
+    phase: 'Phase 1: Foundations',
+    level: 'Beginner',
+    learningObjectives:
+        'Apply principle of least privilege, configure Linux SELinux/AppArmor, configure Windows Group Policy, and audit logs.',
+    subtopics: [
+      'Principle of Least Privilege (PoLP) & Separation of Duties',
+      'Linux User & Privilege Management (sudo, su, wheel group, passwd, shadow)',
+      'Linux File Permissions, SUID/SGID bits, & Sticky bits security risks',
+      'Mandatory Access Control (MAC) in Linux: SELinux & AppArmor',
+      'Windows Security Architecture: SAM database, Active Directory, NTLM, Kerberos',
+      'Windows User Account Control (UAC) & Group Policy Objects (GPO)',
+      'Windows Event Logs (Security, System, Application) & Sysmon',
+      'Linux System Logs (/var/log/auth.log, syslog, journalctl)',
+      'Patch Management & OS vulnerability updating strategies',
+      'Automated OS security hardening benchmarks (CIS Benchmarks)',
+    ],
+    exercises: [
+      'Harden an Ubuntu server following CIS Benchmarks: disable root SSH login, enforce strong password policies, and enable SELinux.',
+      'Configure Windows Sysmon to log process creation and network connections.',
+    ],
+    resources: [
+      'CIS Security Benchmarks: https://www.cisecurity.org/cis-benchmarks/',
+      'Linux Security Hardening Guide: https://devdocs.io',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 3,
+    title: 'Cryptography & Encryption Protocols',
+    description:
+        'Master Symmetric & Asymmetric encryption, Hashing algorithms, Digital Certificates, Public Key Infrastructure (PKI), and TLS.',
+    duration: '2-3 weeks',
+    phase: 'Phase 2: Core Defense',
+    level: 'Intermediate',
+    learningObjectives:
+        'Differentiate Symmetric vs Asymmetric algorithms, verify digital signatures, configure OpenSSL, and analyze TLS handshakes.',
+    subtopics: [
+      'Cryptography concepts: Plaintext, Ciphertext, Ciphers, Keys, & Cryptanalysis',
+      'Symmetric Encryption: AES (128/256-bit), DES, 3DES, Block Cipher modes (CBC, GCM)',
+      'Asymmetric Encryption: RSA, ECC (Elliptic Curve Cryptography), Diffie-Hellman Key Exchange',
+      'Cryptographic Hash Functions: SHA-256, SHA-3, MD5 (vulnerabilities), Collisions',
+      'Message Authentication Codes (HMAC) & Data Integrity verification',
+      'Digital Signatures: Non-repudiation & RSA/ECDSA signing mechanics',
+      'Public Key Infrastructure (PKI): Certificate Authorities (CA), Root & Intermediate CAs',
+      'X.509 Digital Certificates, CSR (Certificate Signing Request), & CRL / OCSP revocation',
+      'TLS 1.2 / TLS 1.3 protocol handshake & Perfect Forward Secrecy (PFS)',
+      'OpenSSL CLI: Generating keys, CSRs, self-signed certificates, & encrypting files',
+    ],
+    exercises: [
+      'Generate a 4096-bit RSA key pair with OpenSSL and sign/verify a file payload using digital signatures.',
+      'Inspect an HTTPS TLS handshake with Wireshark to verify cipher suite negotiation.',
+    ],
+    resources: [
+      'OpenSSL Official Documentation: https://www.openssl.org/docs/',
+      'Cryptopals Crypto Challenges: https://cryptopals.com/',
+      'Practical Cryptography for Developers: https://cryptobook.nakov.com/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 4,
+    title: 'Web Application Security & OWASP Top 10',
+    description:
+        'Identify, exploit, and remediate critical web vulnerabilities defined in the OWASP Top 10.',
+    duration: '3 weeks',
+    phase: 'Phase 3: Web Security',
+    level: 'Intermediate',
+    learningObjectives:
+        'Audit web apps for SQL Injection, Cross-Site Scripting (XSS), CSRF, SSRF, Broken Access Control, and apply secure coding fixes.',
+    subtopics: [
+      'OWASP Top 10 Web Vulnerabilities overview & methodology',
+      'A01: Broken Access Control (IDOR, Privilege Escalation, CORS misconfigurations)',
+      'A02: Cryptographic Failures (Sensitive data exposure, weak algorithms)',
+      'A03: Injection Attacks (SQL Injection - In-band, Blind, Error-based; Command Injection)',
+      'A04: Insecure Design & Threat Modeling',
+      'A05: Security Misconfiguration (Default credentials, exposed debug pages)',
+      'A06: Vulnerable & Outdated Components (Dependency scanning)',
+      'A07: Identification & Authentication Failures (Brute-force, credential stuffing, session hijacking)',
+      'A08: Software & Data Integrity Failures (Insecure Deserialization)',
+      'A09: Security Logging & Monitoring Failures',
+      'A10: Server-Side Request Forgery (SSRF) & Cross-Site Scripting (XSS - Reflected, Stored, DOM)',
+    ],
+    exercises: [
+      'Exploit and fix a SQL Injection vulnerability on PortSwigger Web Security Academy lab using parameterized queries.',
+      'Audit a web application for Reflected XSS and implement Content Security Policy (CSP) headers.',
+    ],
+    resources: [
+      'OWASP Top 10 Official Project: https://owasp.org/www-project-top-ten/',
+      'PortSwigger Web Security Academy (Free): https://portswigger.net/web-security',
+      'OWASP Cheat Sheet Series: https://cheatsheetseries.owasp.org/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 5,
+    title: 'Penetration Testing & Web Assessment with Burp Suite',
+    description:
+        'Conduct ethical penetration tests, intercept HTTP traffic, automate fuzzing, and analyze web vulnerabilities using Burp Suite.',
+    duration: '3 weeks',
+    phase: 'Phase 3: Web Security',
+    level: 'Intermediate to Advanced',
+    learningObjectives:
+        'Use Burp Suite Proxy, Repeater, Intruder, & Decoder to intercept web requests, test parameters, and write pentest reports.',
+    subtopics: [
+      'Penetration Testing Phases: Reconnaissance, Scanning, Exploitation, Post-Exploitation, Reporting',
+      'Ethical Hacking Rules of Engagement, Scope, & Legal boundaries',
+      'Burp Suite Architecture: Proxy, Target, Repeater, Intruder, Decoder, Sequencer',
+      'Configuring browser proxy & installing Burp Suite CA certificate',
+      'Intercepting & modifying HTTP/HTTPS requests in real-time',
+      'Burp Repeater: Manual request manipulation & API payload testing',
+      'Burp Intruder: Automated fuzzing, attack types (Sniper, Battering Ram, Pitchfork, Cluster Bomb)',
+      'Automated vulnerability scanning with Burp Scanner (Professional)',
+      'Subdomain enumeration (Sublist3r, Amass) & directory fuzzing (Gobuster, ffuf)',
+      'Writing professional penetration testing vulnerability reports & remediation steps',
+    ],
+    exercises: [
+      'Intercept and tamper with HTTP POST request parameters in Burp Suite Proxy to bypass price validation on a vulnerable lab.',
+      'Fuzz hidden directory paths on a web server using Gobuster and custom wordlists.',
+    ],
+    resources: [
+      'Burp Suite Official Documentation (PortSwigger): https://portswigger.net/burp/documentation',
+      'TryHackMe Pentesting Rooms: https://tryhackme.com/',
+      'Hack The Box Platform: https://www.hackthebox.com/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 6,
+    title: 'Network Traffic Analysis & Packet Inspection (Wireshark)',
+    description:
+        'Capture, filter, and inspect raw network packets using Wireshark and tcpdump to detect malware and network attacks.',
+    duration: '2 weeks',
+    phase: 'Phase 4: Defense & Analysis',
+    level: 'Intermediate',
+    learningObjectives:
+        'Capture network PCAP files, write Wireshark display filters, analyze protocol headers, and extract suspicious file payloads.',
+    subtopics: [
+      'Network Packet Capture fundamentals & Promiscuous Mode',
+      'Command-line packet capture with tcpdump (filters, flags, writing PCAP files)',
+      'Wireshark GUI Architecture: Packet List, Details, Bytes, and Status bar',
+      'Wireshark Capture Filters vs Display Filters syntax',
+      'Filtering traffic by IP, Protocol, Port, & String content (ip.addr, tcp.port, http.request)',
+      'Reconstructing TCP Streams & extracting transferred HTTP file objects',
+      'Analyzing DNS query anomalies, tunneling, & domain generation algorithms (DGA)',
+      'Detecting network attacks: Port scans, SYN floods, ARP poisoning, Rogue DHCP',
+      'Analyzing malware C2 (Command & Control) beaconing traffic in PCAPs',
+      'Decrypting HTTPS traffic in Wireshark using SSLKEYLOGFILE',
+    ],
+    exercises: [
+      'Analyze a PCAP file in Wireshark, filter HTTP traffic, and extract an unencrypted malware executable file payload.',
+      'Capture local network traffic with tcpdump while performing a DNS query and inspect the raw DNS packet bytes.',
+    ],
+    resources: [
+      'Wireshark User Guide: https://www.wireshark.org/docs/wsug_html_chunked/',
+      'Wireshark Sample Captures: https://wiki.wireshark.org/SampleCaptures',
+      'Malware Traffic Analysis (PCAP Practice): https://www.malware-traffic-analysis.net/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 7,
+    title: 'SIEM & Security Operations (Splunk & Elastic)',
+    description:
+        'Aggregate enterprise log sources into SIEM platforms (Splunk, Elastic Security) to detect threats and build SOC dashboards.',
+    duration: '2-3 weeks',
+    phase: 'Phase 4: Defense & Analysis',
+    level: 'Intermediate to Advanced',
+    learningObjectives:
+        'Ingest Windows/Linux/Network logs into Splunk, write Search Processing Language (SPL) queries, and configure SOC alert rules.',
+    subtopics: [
+      'SIEM (Security Information and Event Management) Core Architecture',
+      'Log Ingestion & Forwarding: Splunk Universal Forwarder, Elastic Filebeat / Winlogbeat',
+      'Splunk Architecture: Indexers, Search Heads, Forwarders, & Indexes',
+      'Splunk Search Processing Language (SPL): search, stats, eval, lookup, chart, timechart',
+      'Elastic Stack (ELK/EFK) for Security: Elasticsearch, Kibana Security App, Lucene queries',
+      'MITRE ATT&CK Framework: Tactic, Technique, and Procedure (TTP) mapping',
+      'Building custom SOC detection rules & automated alerts',
+      'Correlating multi-source events: Firewall + Windows Event + Web Server logs',
+      'SOC Incident Triage: Analyzing alert severity, false positives, & true positives',
+      'Building operational SOC security dashboards',
+    ],
+    exercises: [
+      'Write a Splunk SPL query to detect brute-force SSH attacks (more than 10 failed logins within 5 minutes followed by a successful login).',
+      'Map a series of Windows Event ID 4624/4625 log entries to the MITRE ATT&CK Credential Access framework in Kibana.',
+    ],
+    resources: [
+      'Splunk Documentation & Tutorials: https://docs.splunk.com/',
+      'Elastic Security Guide: https://www.elastic.co/guide/en/security/current/index.html',
+      'MITRE ATT&CK Matrix: https://attack.mitre.org/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 8,
+    title: 'Digital Forensics & Incident Response (DFIR)',
+    description:
+        'Investigate security breaches, collect digital evidence, analyze memory dumps, and perform malware triage.',
+    duration: '3 weeks',
+    phase: 'Phase 5: Advanced Ops',
+    level: 'Advanced',
+    learningObjectives:
+        'Acquire RAM memory dumps, perform volatility analysis, analyze Windows Registry artifacts, and build incident timelines.',
+    subtopics: [
+      'Incident Response Lifecycle: Preparation, Detection, Containment, Eradication, Recovery, Lessons Learned',
+      'Chain of Custody & Forensic Evidence Preservation principles',
+      'Memory Forensics: Acquiring RAM with FTK Imager / Belkasoft',
+      'Memory Analysis with Volatility 3: Identifying process trees (pslist, pstree), DLLs, and network sockets',
+      'Windows Registry Forensics: UserAssist, Run keys, Shimcache, Amcache, USB artifacts',
+      'Disk Forensics: File system analysis (NTFS MFT, USN Journal), carving files with Autopsy',
+      'Browser Forensics: History, Cookies, Cache, Downloads database analysis',
+      'Malware Triage & Static Analysis: Strings, PE headers (PEStudio), hashing (VirusTotal)',
+      'Dynamic Malware Analysis in Sandboxes (ANY.RUN, Cuckoo Sandbox)',
+      'Writing Evidence Timeline Analysis reports for legal compliance',
+    ],
+    exercises: [
+      'Perform memory analysis on a Volatility memory dump to extract malicious code injected into explorer.exe.',
+      'Analyze Windows Registry Hive files in Autopsy to determine when a specific USB device was connected to a machine.',
+    ],
+    resources: [
+      'SANS Digital Forensics & Incident Response Blog: https://www.sans.org/blog/',
+      'Volatility 3 Documentation: https://volatility3.readthedocs.io/en/latest/',
+      'Autopsy Digital Forensics Platform: https://www.autopsy.com/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 9,
+    title: 'Cloud Security & Identity (AWS Security)',
+    description:
+        'Secure cloud environments, manage IAM policies, configure KMS encryption, and audit cloud infrastructure vulnerabilities.',
+    duration: '2-3 weeks',
+    phase: 'Phase 5: Advanced Ops',
+    level: 'Advanced',
+    learningObjectives:
+        'Implement Shared Responsibility Model, configure AWS IAM least privilege, audit S3 bucket security, and manage CloudTrail alerts.',
+    subtopics: [
+      'Cloud Shared Responsibility Security Model (Provider vs Customer)',
+      'AWS IAM Security: Least Privilege, Least Privilege Policy Generator, IAM Roles vs Users',
+      'AWS Key Management Service (KMS): Envelope Encryption, KMS Customer Managed Keys',
+      'AWS Network Security: Security Groups vs Network ACLs, VPC Endpoint Security',
+      'Securing S3 Buckets: Public Access Block, S3 Bucket Policies, KMS Encryption, Versioning',
+      'Cloud Threat Detection: AWS GuardDuty (Machine learning threat detection), AWS Security Hub',
+      'Cloud Audit & Logging: AWS CloudTrail, VPC Flow Logs, CloudWatch Alarm integration',
+      'Infrastructure as Code (IaC) Security Scanning: tfsec, Checkov, KICS',
+      'Cloud Security Posture Management (CSPM) tools',
+      'Container & Kubernetes Cloud Security (EKS Security, Pod Security Admission)',
+    ],
+    exercises: [
+      'Run a Checkov IaC security audit on a Terraform repository to detect public S3 buckets and unencrypted EBS volumes.',
+      'Configure AWS GuardDuty to detect unauthorized IAM role assumption attempts and trigger SNS email alerts.',
+    ],
+    resources: [
+      'AWS Security Documentation: https://docs.aws.amazon.com/security/',
+      'Cloud Security Alliance (CSA): https://cloudsecurityalliance.org/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 10,
+    title: 'Ethical Hacking, Red Team Ops & OSCP Prep',
+    description:
+        'Conduct end-to-end Red Team engagements, privilege escalation, Active Directory exploitation, and prepare for industry certifications.',
+    duration: '4 weeks',
+    phase: 'Phase 5: Advanced Ops',
+    level: 'Advanced',
+    learningObjectives:
+        'Execute Active Directory attacks (Kerberoasting, AS-REP Roasting), Linux/Windows Privilege Escalation, and OSCP-style machine exploitation.',
+    subtopics: [
+      'Red Team vs Blue Team vs Purple Team operations methodology',
+      'Linux Privilege Escalation: SUID binaries, Sudo misconfigurations, Cron jobs, Kernel exploits',
+      'Windows Privilege Escalation: Unquoted Service Paths, Token Impersonation, DLL Hijacking',
+      'Active Directory Exploitation: Domain Enumeration (BloodHound, PowerView)',
+      'Kerberos Attacks: Kerberoasting, AS-REP Roasting, Golden Ticket, Silver Ticket attacks',
+      'Lateral Movement techniques: Pass-the-Hash (PtH), Pass-the-Ticket (PtT), WinRM, PsExec',
+      'Metasploit Framework: Listener setup, Payload generation (msfvenom), Post-exploitation modules',
+      'Evasion Techniques: Bypassing Antivirus (AV) with custom C/C++ shellcode wrappers',
+      'Command & Control (C2) Frameworks (Cobalt Strike, Havoc, Empire)',
+      'OSCP / CEH Certification preparation & PenTest Report Writing',
+    ],
+    exercises: [
+      'Perform Linux Privilege Escalation on a vulnerable target machine using a misconfigured SUID binary.',
+      'Execute a Kerberoasting attack on an Active Directory lab environment to extract service account password hashes.',
+    ],
+    resources: [
+      'OffSec OSCP Certification Guide: https://www.offsec.com/courses/pen-200/',
+      'PayloadsAllTheThings Pentest Repository: https://github.com/swisskyrepo/PayloadsAllTheThings',
+      'Hack The Box Academy: https://academy.hackthebox.com/',
+    ],
+  ),
+];

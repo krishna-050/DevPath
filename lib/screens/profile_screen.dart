@@ -4,6 +4,7 @@ import 'package:dev_path/data/roadmap_data.dart';
 import 'package:dev_path/data/roadmap_step_data.dart';
 import 'package:dev_path/screens/achievements_screen.dart';
 import 'package:dev_path/screens/learning_statistics_screen.dart';
+import 'package:dev_path/screens/my_notes_screen.dart';
 import 'package:dev_path/screens/setting_screen.dart';
 import 'package:dev_path/screens/step_detail_screen.dart';
 import 'package:flutter/material.dart';
@@ -584,6 +585,20 @@ class ProfileScreen extends StatelessWidget {
                           subtitle: 'View unlocked trophies and rewards',
                           onTap: () {
                             Get.to(() => const AchievementsScreen());
+                          },
+                        ),
+                        const SizedBox(height: 10),
+
+                        _buildMenuItem(
+                          isDark: isDark,
+                          icon: Icons.edit_note_rounded,
+                          iconColor: isDark
+                              ? const Color(0xFF60A5FA)
+                              : AppColor.secondary,
+                          title: 'My Learning Notes',
+                          subtitle: 'View and manage personal step notes',
+                          onTap: () {
+                            Get.to(() => const MyNotesScreen());
                           },
                         ),
                         const SizedBox(height: 10),

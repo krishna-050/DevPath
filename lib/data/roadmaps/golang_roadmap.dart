@@ -1,0 +1,319 @@
+import 'package:dev_path/models/roadmap_step_model.dart';
+
+final List<RoadmapStepModel> golangRoadmapSteps = [
+  RoadmapStepModel(
+    id: 1,
+    title: 'Go Language Syntax & Control Flow',
+    description:
+        'Master Go fundamental syntax, strong static typing, variable declarations, control structures, and pointers.',
+    duration: '1-2 weeks',
+    phase: 'Phase 1: Go Core',
+    level: 'Beginner',
+    learningObjectives:
+        'Declare typed variables using short declaration (:=), write loops, understand Go pointers, and handle explicit error returns.',
+    subtopics: [
+      'Go design goals: Simplicity, Fast compilation, & Native Concurrency',
+      'Go Toolchain CLI commands: go run, go build, go fmt, go vet',
+      'Variable declarations (var keyword vs short declaration operator :=)',
+      'Basic data types: int, float64, string, bool, byte, rune',
+      'Constants (const) & Type inference (iota enumerations)',
+      'Control flow: if-else statements (if with short initialization)',
+      'Loops in Go: The single for-loop keyword (while-like, infinite, range loops)',
+      'Switch statements: Expression switch, Type switch, & fallthrough behavior',
+      'Pointers in Go: Memory addresses (&) and dereferencing (*)',
+      'No pointer arithmetic rule in Go for memory safety',
+    ],
+    exercises: [
+      'Write a Go CLI tool to compute prime numbers up to N using short variable declarations and range loops.',
+      'Implement a pointer swapping function in Go that mutates integer values in place.',
+    ],
+    resources: [
+      'A Tour of Go (Interactive Official Tour): https://go.dev/tour/',
+      'Effective Go Guide: https://go.dev/doc/effective_go',
+      'Go by Example: https://gobyexample.com/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 2,
+    title: 'Arrays, Slices, Maps & Functions',
+    description:
+        'Master Go composite collection types: Slices, Maps, Arrays, Variadic Functions, and Multiple Return Values.',
+    duration: '2 weeks',
+    phase: 'Phase 1: Go Core',
+    level: 'Beginner',
+    learningObjectives:
+        'Manipulate Slices with make/append/copy, manage Maps with key lookups, and write Functions returning multiple values.',
+    subtopics: [
+      'Arrays in Go: Fixed size, Value semantics, & Memory layout',
+      'Slices in Go: Dynamic arrays (Length, Capacity, & Underlying Array pointer)',
+      'Slice operations: make(), append(), copy(), slicing [low:high]',
+      'Slice memory mechanics: Capacity growth & reallocation rules',
+      'Maps in Go: Hash table key-value pairs (make(map[K]V))',
+      'Map operations: Lookup, Insertion, Deletion (delete()), & comma-ok idiom',
+      'Functions: Parameters, return types, and multiple return values',
+      'Named Return Values & Naked returns',
+      'Variadic Functions (...type parameters)',
+      'Defer statement (defer) for clean-up execution & LIFO execution order',
+    ],
+    exercises: [
+      'Build a word frequency counter program in Go using Maps and String slicing.',
+      'Implement a dynamic slice resizing utility function demonstrating capacity doubling.',
+    ],
+    resources: [
+      'Go Slices Usage and Internals: https://go.dev/blog/slices-intro',
+      'Go Maps in Action: https://go.dev/blog/maps',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 3,
+    title: 'Structs, Methods & Interfaces',
+    description:
+        'Master Composition over Inheritance using Go Structs, Method Receivers, Empty Interfaces, and Implicit Interface Satisfaction.',
+    duration: '2 weeks',
+    phase: 'Phase 1: Go Core',
+    level: 'Intermediate',
+    learningObjectives:
+        'Construct Structs, embed struct fields for composition, write Value & Pointer receivers, and implement Interfaces implicitly.',
+    subtopics: [
+      'Structs: Defining custom data types & struct field tags (`json:"key"`)',
+      'Anonymous Structs & Struct Literals',
+      'Composition over Inheritance: Struct Embedding (Promoted fields)',
+      'Methods in Go: Functions attached to types',
+      'Value Receivers (func (r Type)) vs Pointer Receivers (func (r *Type))',
+      'Interfaces in Go: Implicit satisfaction (no "implements" keyword)',
+      'Designing small, single-method Interfaces (io.Reader, io.Writer)',
+      'Empty Interface (interface{} or any keyword) & Type Assertions (v, ok := i.(T))',
+      'Type Switches (switch v := i.(type)) for runtime type handling',
+      'Error Interface: The built-in error interface (errors.New, fmt.Errorf)',
+    ],
+    exercises: [
+      'Design a Shape interface (Area, Perimeter) implemented by Circle and Rectangle structs.',
+      'Implement a custom Logger struct that implements the io.Writer interface using pointer receivers.',
+    ],
+    resources: [
+      'Go Interfaces Guide: https://go.dev/doc/effective_go#interfaces',
+      'Go Code Review Comments - Receiver Type: https://github.com/golang/go/wiki/CodeReviewComments#receiver-type',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 4,
+    title: 'Packages, Modules & Error Handling',
+    description:
+        'Structure Go projects with Go Modules (go.mod), visibility rules, and idiomatically handle errors without exceptions.',
+    duration: '1-2 weeks',
+    phase: 'Phase 2: Tooling & Architecture',
+    level: 'Intermediate',
+    learningObjectives:
+        'Configure go.mod/go.sum, manage private/public export visibility via capitalization, and wrap errors using errors.Is / errors.As.',
+    subtopics: [
+      'Go Modules: go.mod file, go.sum checksum verification, & semantic versioning',
+      'Creating packages & package initialization with init() function',
+      'Exported (Capitalized) vs Unexported (lowercase) identifiers visibility',
+      'Import paths, aliasing imports, & blank imports (_ "package")',
+      'Go Error Handling philosophy: Errors as values vs Exception throwing',
+      'Creating custom error types & sentinel errors',
+      'Error Wrapping in Go 1.13+: %w verb with fmt.Errorf()',
+      'Unwrapping & Checking errors: errors.Is() and errors.As()',
+      'Panic and Recover mechanics (panic(), recover()) for critical crashes',
+      'Managing third-party dependencies with go get, go mod tidy, go mod vendor',
+    ],
+    exercises: [
+      'Structure a multi-package Go project with separate domain, service, and repository packages.',
+      'Implement custom error wrapping in an API service and handle specific error types using errors.Is().',
+    ],
+    resources: [
+      'Using Go Modules: https://go.dev/blog/using-go-modules',
+      'Working with Errors in Go 1.13: https://go.dev/blog/go1.13-errors',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 5,
+    title: 'Go Concurrency: Goroutines & Channels',
+    description:
+        'Master Go\'s native CSP concurrency model: Goroutines, Buffered/Unbuffered Channels, and Select statements.',
+    duration: '2-3 weeks',
+    phase: 'Phase 3: Native Concurrency',
+    level: 'Intermediate to Advanced',
+    learningObjectives:
+        'Spawn lightweight Goroutines with go keyword, communicate via Channels, and prevent deadlocks using Select statements.',
+    subtopics: [
+      'Communicating Sequential Processes (CSP) theory: "Don\'t communicate by sharing memory; share memory by communicating."',
+      'Goroutines: Lightweight green threads vs OS threads (M:N scheduler mechanics)',
+      'Spawning Goroutines with the go keyword (go func())',
+      'Unbuffered Channels: Synchronous blocking communication (make(chan T))',
+      'Buffered Channels: Asynchronous queue-based communication (make(chan T, capacity))',
+      'Channel Directions: Send-only (chan<- T) & Receive-only (<-chan T)',
+      'Closing Channels (close(ch)) & checking channel status (v, ok := <-ch)',
+      'Ranging over Channels (for v := range ch)',
+      'The Select Statement (select { case ... }): Multiplexing channel operations',
+      'Select default clause for non-blocking channel send/receive',
+    ],
+    exercises: [
+      'Build a concurrent web crawler in Go using Goroutines and Channels to fetch 10 URLs simultaneously.',
+      'Implement a Pipeline pattern using 3 chained Goroutine stages connected by Channels.',
+    ],
+    resources: [
+      'Go Concurrency Patterns (Go Blog): https://go.dev/blog/pipelines',
+      'Go Concurrency Visualized: https://divan.dev/posts/go_concurrency_visualize/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 6,
+    title: 'Advanced Concurrency: Sync Package & Context API',
+    description:
+        'Synchronize shared state with Mutexes, WaitGroups, Atomic operations, and manage cancellation signals with Context API.',
+    duration: '2-3 weeks',
+    phase: 'Phase 3: Native Concurrency',
+    level: 'Advanced',
+    learningObjectives:
+        'Synchronize Goroutine completion with sync.WaitGroup, prevent Data Races with sync.Mutex, and propagate deadlines via context.Context.',
+    subtopics: [
+      'The sync Package: sync.WaitGroup for waiting on Goroutines completion',
+      'Mutual Exclusion: sync.Mutex (Lock/Unlock) & sync.RWMutex (RLock/RUnlock)',
+      'Detecting Data Races using Go Race Detector (go run -race)',
+      'Atomic operations with sync/atomic package for thread-safe primitives',
+      'sync.Once for thread-safe one-time initialization',
+      'sync.Pool for object reuse & memory allocation reduction',
+      'The Context API (context.Context): Deadline, Cancellation, Request-scoped values',
+      'Creating Contexts: context.Background(), context.TODO()',
+      'Cancellation signals: context.WithCancel(), context.WithTimeout(), context.WithDeadline()',
+      'Propagating Context across HTTP handler chains & database queries',
+    ],
+    exercises: [
+      'Implement a Worker Pool design pattern in Go processing 100 jobs concurrently with 5 worker Goroutines and a sync.WaitGroup.',
+      'Write an HTTP request client with context.WithTimeout that aborts requests exceeding 2 seconds.',
+    ],
+    resources: [
+      'Go Concurrency Patterns - Context: https://go.dev/blog/context',
+      'Go sync Package Documentation: https://pkg.go.dev/sync',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 7,
+    title: 'Building REST APIs with Go (net/http, Gin, Fiber)',
+    description:
+        'Build high-performance RESTful microservices and Web APIs using Go standard net/http package, Gin, and Fiber frameworks.',
+    duration: '2-3 weeks',
+    phase: 'Phase 4: Web & Microservices',
+    level: 'Intermediate to Advanced',
+    learningObjectives:
+        'Construct HTTP servers with net/http, parse JSON payloads, create Middleware chains, and build REST APIs with Gin framework.',
+    subtopics: [
+      'The net/http package: http.ListenAndServe, http.Handler interface, http.Request, http.ResponseWriter',
+      'Routing with ServeMux (Go 1.22+ enhanced routing syntax)',
+      'JSON Encoding/Decoding: json.Marshal/Unmarshal & json.NewEncoder/NewDecoder',
+      'Writing HTTP Middleware: Request logging, CORS, Authentication, Recovery',
+      'Popular Go Web Frameworks: Gin, Fiber, Chi, Echo overview',
+      'Building REST APIs with Gin framework: Routing, Path params, Query params',
+      'Request Binding & Validation in Gin with binding tags',
+      'JWT Authentication & Authorization in Go web APIs',
+      'Structured Logging with log/slog (Go 1.21+ structured logging package)',
+      'Graceful Shutdown of Go HTTP servers on OS signals (SIGINT, SIGTERM)',
+    ],
+    exercises: [
+      'Build a full REST API for a task management service in Gin with JWT authentication and middleware logging.',
+      'Implement a custom rate-limiting middleware in Go using token bucket algorithm.',
+    ],
+    resources: [
+      'Gin Web Framework Official Docs: https://gin-gonic.com/docs/',
+      'Go Standard Library net/http Docs: https://pkg.go.dev/net/http',
+      'Log/Slog Package Guide: https://go.dev/blog/slog',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 8,
+    title: 'Database Access: SQL, GORM & PostgreSQL',
+    description:
+        'Interact with PostgreSQL databases using database/sql standard library, sqlx, and GORM ORM.',
+    duration: '2-3 weeks',
+    phase: 'Phase 4: Web & Microservices',
+    level: 'Intermediate to Advanced',
+    learningObjectives:
+        'Query databases using database/sql & connection pools, execute prepared statements, manage transactions, and use GORM.',
+    subtopics: [
+      'Database connectivity with database/sql package & pgx driver',
+      'Configuring connection pooling: SetMaxOpenConns, SetMaxIdleConns, SetConnMaxLifetime',
+      'Executing queries: db.Query(), db.QueryRow(), db.Exec()',
+      'Scanning rows into Go structs (rows.Scan())',
+      'Prepared Statements (db.Prepare()) to prevent SQL Injection',
+      'Managing Database Transactions (db.BeginTx(), tx.Commit(), tx.Rollback())',
+      'Sqlx library for struct scanning (db.Select(), db.Get())',
+      'GORM ORM: Defining models, auto-migrations, associations (Has Many, Belongs To)',
+      'GORM Hooks, Transactions, and Scopes',
+      'Database Migrations tools in Go (golang-migrate, goose)',
+    ],
+    exercises: [
+      'Build a PostgreSQL repository layer in Go using database/sql with multi-statement ACID database transactions.',
+      'Set up database migrations using golang-migrate CLI.',
+    ],
+    resources: [
+      'Go database/sql Tutorial: https://go.dev/doc/database/open-handle',
+      'GORM Official Documentation: https://gorm.io/docs/',
+      'Golang-Migrate Tool: https://github.com/golang-migrate/migrate',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 9,
+    title: 'Testing & Benchmarking in Go',
+    description:
+        'Write unit tests, table-driven tests, benchmarks, and mock interfaces using testing package and testify.',
+    duration: '2 weeks',
+    phase: 'Phase 5: Quality & Production',
+    level: 'Intermediate',
+    learningObjectives:
+        'Write Unit Tests with testing.T, construct Table-Driven Tests, write Performance Benchmarks (testing.B), and calculate code coverage.',
+    subtopics: [
+      'Go testing framework conventions: *_test.go files & TestXxx(t *testing.T) functions',
+      'Table-Driven Testing idiom: Defining test cases struct slices & iterating with t.Run()',
+      'Testing assertions with stretchr/testify package (assert, require)',
+      'Mocking Interfaces with testify/mock or gomock',
+      'Performance Benchmarking: BenchmarkXxx(b *testing.B) functions & b.N loops',
+      'Memory Allocation Benchmarking (b.ReportAllocs())',
+      'Fuzz Testing (Go 1.18+ FuzzXxx(f *testing.F)): Automated edge-case generation',
+      'Measuring Code Coverage (go test -cover -coverprofile=coverage.out)',
+      'Sub-tests, Parallel testing (t.Parallel()), and Test Helpers (t.Helper())',
+      'Testing HTTP Handlers with net/http/httptest (httptest.NewRecorder)',
+    ],
+    exercises: [
+      'Write table-driven unit tests for a string transformation package covering edge cases.',
+      'Benchmark two JSON parsing implementations in Go to measure memory allocations per operation.',
+    ],
+    resources: [
+      'Go Testing Package Docs: https://pkg.go.dev/testing',
+      'Go Fuzzing Official Guide: https://go.dev/doc/fuzz/',
+      'Testify Package Documentation: https://github.com/stretchr/testify',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 10,
+    title: 'Go Performance Optimization & Docker Deployment',
+    description:
+        'Optimize Go applications with pprof profiling, GC tuning, build minimal Docker static binaries, and deploy to Kubernetes.',
+    duration: '2-3 weeks',
+    phase: 'Phase 5: Quality & Production',
+    level: 'Advanced',
+    learningObjectives:
+        'Profile CPU/Memory usage using pprof, compile CGO_ENABLED=0 static binaries, write scratch Dockerfiles, and configure Kubernetes deployments.',
+    subtopics: [
+      'Go Memory Allocation: Stack allocation vs Heap allocation (Escape Analysis - gcflags="-m")',
+      'Go Garbage Collector (GC) tuning (GOGC environment variable & SetMemoryLimit)',
+      'Performance Profiling with net/http/pprof: CPU profiles, Heap profiles, Goroutine profiles',
+      'Analyzing pprof profiles using go tool pprof CLI and web visualization',
+      'Compiling minimal static binaries: CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w"',
+      'Building minimal Docker images using scratch or distroless base images (< 15MB total image size)',
+      'Graceful shutdown & liveness/readiness probes configuration for Kubernetes',
+      'gRPC & Protocol Buffers (protobuf) for high-performance inter-service communication in Go',
+      'Building CLI tools with Cobra & Viper libraries',
+      'Cross-compilation for different OS & CPU architectures',
+    ],
+    exercises: [
+      'Profile a CPU-heavy Go service using pprof, identify the bottleneck function, and optimize memory allocations.',
+      'Build a multi-stage Dockerfile compiling a Go application into a scratch container under 12MB.',
+    ],
+    resources: [
+      'Go Diagnostics & Profiling Guide: https://go.dev/doc/diagnostics',
+      'Google Distroless Container Images: https://github.com/GoogleContainerTools/distroless',
+      'Cobra CLI Library for Go: https://github.com/spf13/cobra',
+    ],
+  ),
+];

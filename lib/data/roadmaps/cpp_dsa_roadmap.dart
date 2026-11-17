@@ -1,0 +1,316 @@
+import 'package:dev_path/models/roadmap_step_model.dart';
+
+final List<RoadmapStepModel> cppDsaRoadmapSteps = [
+  RoadmapStepModel(
+    id: 1,
+    title: 'C++ Syntax, Control Flow & Pointers',
+    description:
+        'Master core C++ syntax, memory addresses, pointers, references, and control structures.',
+    duration: '2 weeks',
+    phase: 'Phase 1: C++ Core',
+    level: 'Beginner',
+    learningObjectives:
+        'Understand C++ compilation model, manipulate memory pointers & references, and control execution flow.',
+    subtopics: [
+      'C++ Compilation Model: Preprocessor, Compiler, Linker & executable binaries',
+      'Namespaces, iostream, std::cin, std::cout & std::endl',
+      'Fundamental data types: int, double, float, char, bool, long long',
+      'Type casting: static_cast, dynamic_cast, const_cast, reinterpret_cast',
+      'Control flow: if-else, switch-case, for, while, do-while loops',
+      'Pointers: Memory addresses (& operator), dereferencing (* operator), & nullptr',
+      'Pointer Arithmetic & Constant Pointers (const int* vs int* const)',
+      'References (int&) vs Pointers: Differences & usage rules',
+      'Dynamic Memory Allocation: new and delete operators, memory leaks',
+      'Basic error handling with try, catch, and throw',
+    ],
+    exercises: [
+      'Write a C++ program implementing dynamic memory allocation to swap two variables using pointers.',
+      'Build an array reverse function using pointer arithmetic without array indexing.',
+    ],
+    resources: [
+      'cppreference.com C++ Documentation: https://en.cppreference.com/w/',
+      'LearnCpp.com Free Course: https://www.learncpp.com/',
+      'C++ Tutorial - W3Schools: https://www.w3schools.com/cpp/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 2,
+    title: 'Functions, Arrays & Strings',
+    description:
+        'Write modular C++ functions, pass-by-value vs pass-by-reference, C-style arrays, and std::string.',
+    duration: '2 weeks',
+    phase: 'Phase 1: C++ Core',
+    level: 'Beginner',
+    learningObjectives:
+        'Pass parameters by value, reference, and const reference, manipulate multi-dimensional arrays, and perform string algorithms.',
+    subtopics: [
+      'Function prototypes, definitions, & default argument values',
+      'Pass-by-value vs Pass-by-reference vs Pass-by-pointer',
+      'Inline functions & Function overloading',
+      'Recursion fundamentals & Base cases',
+      'Single-dimensional & Multi-dimensional C-style Arrays',
+      'Array decay to pointers & passing arrays to functions',
+      'C-strings (char arrays) vs C++ std::string',
+      'std::string operations: concatenation, substr, find, replace, length',
+      'String streams (std::stringstream) for parsing formatted strings',
+      'Const parameters & const member functions',
+    ],
+    exercises: [
+      'Write a function to check if a matrix is symmetric using multi-dimensional arrays.',
+      'Implement a string palindrome checker ignoring spaces and case sensitivity.',
+    ],
+    resources: [
+      'C++ Functions Guide: https://en.cppreference.com/w/cpp/language/functions',
+      'std::string Reference: https://en.cppreference.com/w/cpp/string/basic_string',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 3,
+    title: 'Object-Oriented C++ (OOP)',
+    description:
+        'Master Classes, Encapsulation, Inheritance, Polymorphism, Virtual Functions, and Operator Overloading.',
+    duration: '2-3 weeks',
+    phase: 'Phase 1: C++ Core',
+    level: 'Intermediate',
+    learningObjectives:
+        'Design OOP classes, implement virtual functions for runtime polymorphism, and manage object lifecycles.',
+    subtopics: [
+      'Classes & Objects: Public, Private, & Protected access specifiers',
+      'Constructors (Default, Parameterized, Copy) & Destructors',
+      'Member Initializer Lists & Copy Constructor deep vs shallow copy',
+      'Encapsulation & Abstraction principles',
+      'Inheritance: Single, Multiple, Multilevel, & Diamond Problem (virtual inheritance)',
+      'Polymorphism: Compile-time (Function & Operator Overloading) vs Runtime',
+      'Virtual Functions, VTables, & Pure Virtual Functions (Abstract Classes)',
+      'Friend Functions & Friend Classes',
+      'Operator Overloading (operator+, operator<<, operator==)',
+      'Static Data Members & Static Methods in Classes',
+    ],
+    exercises: [
+      'Design a ComplexNumber class overloading +, -, and << operators for complex arithmetic.',
+      'Implement a Shape hierarchy (Circle, Rectangle) using Pure Virtual Functions to calculate area dynamically.',
+    ],
+    resources: [
+      'C++ OOP Tutorials: https://www.geeksforgeeks.org/object-oriented-programming-in-cpp/',
+      'LearnCpp OOP Chapter: https://www.learncpp.com/cpp-tutorial/welcome-to-object-oriented-programming/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 4,
+    title: 'Modern C++ (C++11 to C++20) & Smart Pointers',
+    description:
+        'Master Smart Pointers (unique_ptr, shared_ptr), Move Semantics, Lambda Expressions, and RAII.',
+    duration: '2 weeks',
+    phase: 'Phase 2: Modern C++',
+    level: 'Intermediate',
+    learningObjectives:
+        'Eliminate memory leaks using Smart Pointers, apply Move Semantics (rvalue references), and write Lambdas.',
+    subtopics: [
+      'RAII (Resource Acquisition Is Initialization) pattern',
+      'Smart Pointers: std::unique_ptr, std::shared_ptr, std::weak_ptr',
+      'std::make_unique & std::make_shared memory allocation optimization',
+      'Rvalue references (Type&&) & Move Semantics',
+      'std::move & Move Constructors / Move Assignment Operators',
+      'Lambda Expressions: Capture lists ([=], [&]), parameters, & return types',
+      'Auto keyword & decltype type deduction',
+      'Range-based for loops & constexpr compile-time calculations',
+      'std::optional, std::variant, and std::any (C++17)',
+      'Concepts & Ranges (C++20)',
+    ],
+    exercises: [
+      'Refactor a dynamic tree node structure to use std::unique_ptr and std::weak_ptr preventing cyclic memory leaks.',
+      'Implement a custom move constructor for a DynamicArray class to demonstrate move semantics.',
+    ],
+    resources: [
+      'Modern C++ Features Overview: https://github.com/AnthonyCalandra/modern-cpp-features',
+      'Smart Pointers Guide: https://en.cppreference.com/w/cpp/memory',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 5,
+    title: 'Standard Template Library (STL)',
+    description:
+        'Master C++ STL Sequence Containers, Associative Containers, Iterators, and Algorithms.',
+    duration: '2-3 weeks',
+    phase: 'Phase 2: Modern C++',
+    level: 'Intermediate',
+    learningObjectives:
+        'Utilize std::vector, std::map, std::unordered_map, std::set, std::sort, and Custom Comparators.',
+    subtopics: [
+      'STL Overview: Containers, Iterators, & Algorithms',
+      'Sequence Containers: std::vector, std::deque, std::list, std::array',
+      'Container Adapters: std::stack, std::queue, std::priority_queue',
+      'Associative Containers: std::set, std::multiset, std::map, std::multimap (Red-Black Trees)',
+      'Unordered Associative Containers: std::unordered_set, std::unordered_map (Hash Tables)',
+      'Iterators: Input, Output, Forward, Bidirectional, Random Access',
+      'STL Algorithms: std::sort, std::binary_search, std::find, std::count',
+      'Transform & Filter: std::transform, std::accumulate, std::remove_if',
+      'Custom Comparators with Lambda functions & Functors (struct with operator())',
+      'Time Complexity analysis of STL operations (O(1), O(log N), O(N))',
+    ],
+    exercises: [
+      'Solve an frequency counter problem using std::unordered_map and sort results by frequency using custom comparators.',
+      'Implement a custom priority queue sorting objects by multi-field priority.',
+    ],
+    resources: [
+      'C++ STL Reference: https://en.cppreference.com/w/cpp/container',
+      'GeeksforGeeks C++ STL: https://www.geeksforgeeks.org/cpp-stl-tutorial/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 6,
+    title: 'Data Structures: Linked Lists, Stacks & Queues',
+    description:
+        'Implement Singly Linked Lists, Doubly Linked Lists, Stacks, and Queues from scratch.',
+    duration: '2-3 weeks',
+    phase: 'Phase 3: Data Structures',
+    level: 'Intermediate',
+    learningObjectives:
+        'Construct linked list operations, implement stack & queue data structures, and solve memory pointer manipulation challenges.',
+    subtopics: [
+      'Singly Linked List: Node creation, insertion (head, tail, middle), deletion',
+      'Reversing a Linked List (Iterative & Recursive)',
+      'Finding Middle & Detecting Cycle in Linked List (Floyd\'s Tortoise and Hare)',
+      'Doubly Linked List & Circular Linked List implementation',
+      'Stack Data Structure: Push, Pop, Top, IsEmpty operations',
+      'Stack Applications: Balanced Parentheses matching, Infix to Postfix conversion',
+      'Monotonic Stack pattern (Next Greater Element)',
+      'Queue Data Structure: Enqueue, Dequeue, Front, Rear',
+      'Circular Queue & Double-Ended Queue (Deque) implementation',
+      'Sliding Window Maximum using Deque',
+    ],
+    exercises: [
+      'Implement a LRU (Least Recently Used) Cache using a Doubly Linked List and Hash Map.',
+      'Solve the Next Greater Element problem using a Monotonic Stack in O(N) time.',
+    ],
+    resources: [
+      'GeeksforGeeks Linked List: https://www.geeksforgeeks.org/data-structures/linked-list/',
+      'LeetCode Data Structures Practice: https://leetcode.com/explore/featured/card/leetcodes-interview-crash-course-data-structures-and-algorithms/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 7,
+    title: 'Trees & Binary Search Trees (BST)',
+    description:
+        'Master Binary Trees, Tree Traversals (Inorder, Preorder, Postorder, Level Order), and Binary Search Trees.',
+    duration: '3 weeks',
+    phase: 'Phase 3: Data Structures',
+    level: 'Intermediate to Advanced',
+    learningObjectives:
+        'Implement tree traversals, BST operations (insert, search, delete), and calculate tree height/diameter.',
+    subtopics: [
+      'Tree Terminology: Root, Parent, Child, Leaf, Height, Depth, Subtree',
+      'Binary Tree Representation using Node pointers',
+      'Depth-First Search (DFS) Traversals: Inorder, Preorder, Postorder (Recursive & Iterative)',
+      'Breadth-First Search (BFS) / Level-Order Traversal using Queue',
+      'Calculating Height, Diameter, & Max Path Sum of Binary Tree',
+      'Lowest Common Ancestor (LCA) in Binary Tree',
+      'Binary Search Tree (BST) properties & Search, Insertion, Deletion',
+      'Validate BST property & Find Inorder Successor/Predecessor',
+      'Balanced BST Concepts: AVL Trees (Rotations) & Red-Black Trees',
+      'Segment Trees & Fenwick Trees (Binary Indexed Tree) for range queries',
+    ],
+    exercises: [
+      'Write a function to check if a Binary Tree is Height-Balanced (AVL property).',
+      'Construct a Binary Tree from Preorder and Inorder traversal arrays.',
+    ],
+    resources: [
+      'GeeksforGeeks Tree Data Structure: https://www.geeksforgeeks.org/binary-tree-data-structure/',
+      'VisuAlgo Tree Visualizations: https://visualgo.net/en/bst',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 8,
+    title: 'Heaps, Tries & Hash Tables',
+    description:
+        'Master Min-Heap, Max-Heap, Heapify algorithm, Trie (Prefix Tree), and Hash Table collision resolution.',
+    duration: '2-3 weeks',
+    phase: 'Phase 3: Data Structures',
+    level: 'Advanced',
+    learningObjectives:
+        'Implement Heapify and HeapSort, construct a Trie for autocomplete, and handle Hash collisions.',
+    subtopics: [
+      'Heap Data Structure: Complete Binary Tree property & Array representation',
+      'Min-Heap & Max-Heap insertion and deletion (Sift-Up, Sift-Down)',
+      'Heapify Algorithm in O(N) time & HeapSort algorithm',
+      'Priority Queue applications (Kth Largest Element, Top K Frequent Elements)',
+      'Trie (Prefix Tree) Node structure: Insert, Search, and StartsWith',
+      'Trie Applications: Autocomplete, Spell Checker, & Longest Common Prefix',
+      'Hash Table Architecture: Hash Functions, Index calculation, Load Factor',
+      'Collision Resolution: Separate Chaining vs Open Addressing (Linear Probing, Quadratic Probing)',
+      'Rehashing & Dynamic Array Resizing',
+      'Disjoint Set Union (DSU) / Union-Find with Path Compression & Rank',
+    ],
+    exercises: [
+      'Implement an Autocomplete Search Engine using a Trie data structure.',
+      'Solve the Kth Largest Element in an Array problem using a Min-Heap in O(N log K) time.',
+    ],
+    resources: [
+      'GeeksforGeeks Heap: https://www.geeksforgeeks.org/heap-data-structure/',
+      'Trie Data Structure Guide: https://www.geeksforgeeks.org/trie-insert-and-search/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 9,
+    title: 'Graph Algorithms & Shortest Paths',
+    description:
+        'Represent Graphs (Adjacency Matrix/List), master BFS, DFS, Dijkstra, Bellman-Ford, and Minimum Spanning Trees.',
+    duration: '3-4 weeks',
+    phase: 'Phase 4: Algorithms',
+    level: 'Advanced',
+    learningObjectives:
+        'Represent graphs, perform BFS/DFS traversals, detect cycles, find shortest paths with Dijkstra, and compute MSTs.',
+    subtopics: [
+      'Graph Representations: Adjacency Matrix vs Adjacency List',
+      'Graph Types: Directed, Undirected, Weighted, Unweighted, DAG',
+      'Breadth-First Search (BFS) & Shortest Path in Unweighted Graph',
+      'Depth-First Search (DFS) & Connected Components detection',
+      'Cycle Detection in Undirected Graphs (BFS/DFS/DSU) & Directed Graphs (Kahn\'s / Colors)',
+      'Topological Sort in DAG: Kahn\'s Algorithm (BFS) vs DFS Stack',
+      'Single Source Shortest Path: Dijkstra\'s Algorithm using Priority Queue',
+      'Bellman-Ford Algorithm for Shortest Path with Negative Edge Weights',
+      'Minimum Spanning Tree (MST): Kruskal\'s Algorithm (DSU) & Prim\'s Algorithm',
+      'Floyd-Warshall Algorithm for All-Pairs Shortest Path',
+    ],
+    exercises: [
+      'Implement Dijkstra\'s Algorithm to find the shortest path between city nodes in a weighted graph.',
+      'Solve the Course Schedule problem (Topological Sort / Cycle Detection in DAG) using Kahn\'s Algorithm.',
+    ],
+    resources: [
+      'GeeksforGeeks Graph Data Structure: https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/',
+      'CP-Algorithms Graph Theory: https://cp-algorithms.com/graph/breadth-first-search.html',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 10,
+    title: 'Dynamic Programming & Algorithmic Patterns',
+    description:
+        'Master Dynamic Programming Memoization (Top-Down), Tabulation (Bottom-Up), Space Optimization, and Competitive Programming patterns.',
+    duration: '3-4 weeks',
+    phase: 'Phase 4: Algorithms',
+    level: 'Advanced',
+    learningObjectives:
+        'Identify DP patterns, solve 0/1 Knapsack, LCS, LIS, Matrix Chain Multiplication, and optimize space complexities.',
+    subtopics: [
+      'Dynamic Programming Principles: Overlapping Subproblems & Optimal Substructure',
+      'Top-Down (Recursion + Memoization) vs Bottom-Up (Tabulation)',
+      '1D DP Patterns: Fibonacci, Climbing Stairs, House Robber, Coin Change',
+      '0/1 Knapsack Problem & Unbounded Knapsack variations',
+      'Longest Common Subsequence (LCS) & String DP problems (Edit Distance)',
+      'Longest Increasing Subsequence (LIS) in O(N log N) with Binary Search',
+      'DP on Grids: Unique Paths, Minimum Path Sum, Dungeon Game',
+      'DP on Trees & Partition DP (Matrix Chain Multiplication)',
+      'Bitmask DP for subset state representation',
+      'Two Pointers, Sliding Window, & Binary Search on Answer patterns',
+    ],
+    exercises: [
+      'Solve the Edit Distance problem using 2D Dynamic Programming Tabulation.',
+      'Solve the Coin Change Minimum Coins problem using 1D Bottom-Up Dynamic Programming.',
+    ],
+    resources: [
+      'CSES Problem Set Algorithm Practice: https://cses.fi/problemset/',
+      'LeetCode Dynamic Programming Study Plan: https://leetcode.com/studyplan/dynamic-programming/',
+      'CP-Algorithms Dynamic Programming: https://cp-algorithms.com/dynamic_programming/intro-to-dp.html',
+    ],
+  ),
+];

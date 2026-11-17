@@ -1,0 +1,764 @@
+import 'package:dev_path/models/roadmap_step_model.dart';
+
+final List<RoadmapStepModel> javaRoadmapSteps = [
+  // Phase 1: Java Fundamentals
+  RoadmapStepModel(
+    id: 1,
+    title: 'Introduction to Java & Environment',
+    description:
+        'Understand what Java is, its architecture, history, JDK vs JRE vs JVM, compilation to bytecode, and write your first program.',
+    duration: '1 week',
+    phase: 'Phase 1: Java Fundamentals',
+    level: 'Beginner',
+    learningObjectives:
+        'Install OpenJDK, configure JAVA_HOME, understand how the JVM executes bytecode, and compile/run Java from the CLI.',
+    subtopics: [
+      'What is Java? History, core philosophy (WORA - Write Once, Run Anywhere)',
+      'Key features: Simple, Object-Oriented, Platform-Independent, Secure, Multi-threaded',
+      'Java editions: Java SE (Standard), Java EE / Jakarta EE (Enterprise), Java ME',
+      'JDK (Java Development Kit), JRE (Java Runtime Environment), and JVM (Java Virtual Machine)',
+      'Installing OpenJDK / Eclipse Temurin & configuring environment variables (JAVA_HOME, PATH)',
+      'How Java code executes: Source code (.java) -> Compiler (javac) -> Bytecode (.class) -> JVM execution',
+      'Just-In-Time (JIT) compilation vs interpretation inside the JVM',
+      'Structure of a Java program: class declaration, public static void main(String[] args)',
+      'Writing, compiling, and running code using the terminal command line',
+      'Setting up an IDE: IntelliJ IDEA, Eclipse, or Visual Studio Code',
+    ],
+    exercises: [
+      'Install JDK 21 and verify installation via java --version and javac --version in the terminal.',
+      'Write, compile, and execute a HelloWorld.java program using only a text editor and command line.',
+    ],
+    resources: [
+      'Oracle Java Documentation: https://docs.oracle.com/en/java/',
+      'Dev.java Official Tutorials: https://dev.java/learn/',
+      'Baeldung Java Getting Started: https://www.baeldung.com/category/java',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 2,
+    title: 'Variables & Data Types',
+    description:
+        'Learn variable declaration, primitive and reference types, memory sizes, type casting, constants, and variable scope.',
+    duration: '1 week',
+    phase: 'Phase 1: Java Fundamentals',
+    level: 'Beginner',
+    learningObjectives:
+        'Declare and initialize variables, choose appropriate primitive types, apply widening and narrowing type casts, and master variable scope.',
+    subtopics: [
+      'What are variables? Memory representation and identifiers',
+      'Java naming conventions (camelCase, PascalCase, UPPER_CASE for constants)',
+      'Primitive data types: byte, short, int, long, float, double, char, boolean',
+      'Memory footprints and min/max boundaries of primitive types (Integer.MAX_VALUE)',
+      'Literal representations: integer literals, floating-point suffixes (f, d, l), scientific notation',
+      'Type conversion and automatic widening casting (e.g. int to double)',
+      'Explicit narrowing type casting with syntax (int) and arithmetic overflow risks',
+      'Constants in Java: the final keyword and immutable values',
+      'Variable scope: Local variables, instance variables (fields), and static class variables',
+      'Variable initialization rules and default values of uninitialized fields',
+      'Modern type inference with the var keyword (Java 10+ local variable type inference)',
+    ],
+    exercises: [
+      'Write a program calculating simple interest and compound interest using double precision.',
+      'Demonstrate integer overflow by adding 1 to Integer.MAX_VALUE and inspect the result.',
+      'Create a program that converts Fahrenheit temperatures to Celsius using explicit type casting.',
+    ],
+    resources: [
+      'Java Primitive Data Types: https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html',
+      'Java Variables and Data Types on Dev.java: https://dev.java/learn/language-basics/primitive-types/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 3,
+    title: 'Operators & Expressions',
+    description:
+        'Master arithmetic, relational, logical, bitwise, assignment, and ternary operators, along with operator precedence rules.',
+    duration: '1 week',
+    phase: 'Phase 1: Java Fundamentals',
+    level: 'Beginner',
+    learningObjectives:
+        'Write complex boolean and arithmetic expressions, understand short-circuit evaluation, and apply bitwise operations.',
+    subtopics: [
+      'Arithmetic operators: +, -, *, /, % (modulus) and integer division nuances',
+      'Unary operators: increment (++), decrement (--), prefix vs postfix evaluation',
+      'Relational / Comparison operators: ==, !=, >, <, >=, <= and object reference comparison',
+      'Logical operators: AND (&&), OR (||), NOT (!) and short-circuit evaluation',
+      'Bitwise operators: &, |, ^ (XOR), ~ (NOT), left shift (<<), right shift (>>), unsigned right shift (>>>)',
+      'Compound assignment operators: +=, -=, *=, /=, %=',
+      'Ternary conditional operator: condition ? expression1 : expression2',
+      'Operator precedence and associativity order in Java expressions',
+    ],
+    exercises: [
+      'Write a program to check whether a given integer is even or odd using the bitwise & operator.',
+      'Build a leap year calculator using logical combinations of && and || operators.',
+      'Demonstrate the difference between prefix (++x) and postfix (x++) operators in complex expressions.',
+    ],
+    resources: [
+      'Java Operators Tutorial: https://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html',
+      'Baeldung Guide to Java Operators: https://www.baeldung.com/java-operators',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 4,
+    title: 'Input, Output & Formatting',
+    description:
+        'Read keyboard input from users, print formatted strings to the console, and handle character streams.',
+    duration: '1 week',
+    phase: 'Phase 1: Java Fundamentals',
+    level: 'Beginner',
+    learningObjectives:
+        'Use the Scanner class for robust user input, format text and numbers with printf, and handle input mismatches.',
+    subtopics: [
+      'Standard output streams: System.out.print() vs System.out.println()',
+      'Standard error stream: System.err for error reporting',
+      'Reading console input with java.util.Scanner: nextInt(), nextDouble(), next(), nextLine()',
+      'The infamous Scanner newline consumption bug and how to prevent it',
+      'High-performance console reading with BufferedReader and InputStreamReader',
+      'Formatted output with System.out.printf() and String.format()',
+      'Format specifiers: %d (integers), %f (floating-point), %s (strings), %c (characters), %b (booleans)',
+      'Width, precision, and flag formatting: %10.2f, %-15s, zero-padding %04d',
+    ],
+    exercises: [
+      'Build an interactive console invoice generator that prompts for product names, quantities, and prices, printing an aligned receipt.',
+      'Create a program that reads full names and multiple test scores, printing a formatted student report card.',
+    ],
+    resources: [
+      'Java I/O Basics: https://docs.oracle.com/javase/tutorial/essential/io/cl.html',
+      'Baeldung Scanner Guide: https://www.baeldung.com/java-scanner',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 5,
+    title: 'Conditional Statements',
+    description:
+        'Direct program execution flow with if, if-else ladders, nested conditionals, and modern switch statements with pattern matching.',
+    duration: '1 week',
+    phase: 'Phase 1: Java Fundamentals',
+    level: 'Beginner',
+    learningObjectives:
+        'Evaluate conditions accurately, eliminate deeply nested conditionals with guard clauses, and use modern switch expressions.',
+    subtopics: [
+      'The if statement: boolean expressions and single branch execution',
+      'The if-else statement: two-way decision branching',
+      'The else-if ladder: multi-condition evaluation and mutual exclusivity',
+      'Nested if-else statements and refactoring strategies with guard clauses',
+      'Traditional switch statement: switch on byte, short, char, int, String, and enums',
+      'The break keyword and intentional vs accidental fall-through in switch blocks',
+      'Modern Java switch expressions: arrow syntax (->), multi-label cases, and yield keyword (Java 14+)',
+      'Pattern matching for switch (Java 17 & 21+): switching on object types with when guards',
+    ],
+    exercises: [
+      'Write a program to determine letter grades (A, B, C, D, F) from percentage scores using else-if ladders.',
+      'Build a menu-driven ATM console application using modern switch expressions.',
+    ],
+    resources: [
+      'Java Control Flow Statements: https://docs.oracle.com/javase/tutorial/java/nutsandbolts/flow.html',
+      'Java Switch Expressions on Dev.java: https://dev.java/learn/language-basics/switch-expressions/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 6,
+    title: 'Loops & Iteration',
+    description:
+        'Automate repetitive tasks using while, do-while, standard for, and enhanced for-each loops, controlling flow with break and continue.',
+    duration: '1 week',
+    phase: 'Phase 1: Java Fundamentals',
+    level: 'Beginner',
+    learningObjectives:
+        'Choose the appropriate loop structure for counting vs condition-based iteration, and avoid infinite loops.',
+    subtopics: [
+      'while loop: entry-controlled iteration and loop condition checks',
+      'do-while loop: exit-controlled iteration guaranteed to execute at least once',
+      'for loop: initialization, boolean condition, and increment/decrement expressions',
+      'Enhanced for-each loop: clean iteration over arrays and Iterable collections',
+      'Loop control: early termination with the break statement',
+      'Loop skipping: bypassing remaining statements with the continue statement',
+      'Labeled break and continue statements for multi-level nested loop breakout',
+      'Nested loops: 2D matrix traversal and asterisk shape/pattern printing algorithms',
+      'Common pitfalls: off-by-one errors and unintentional infinite loops',
+    ],
+    exercises: [
+      'Print multiplication tables from 1 to 10 using nested for loops.',
+      'Reverse the digits of an integer and check if it is a palindrome using a while loop.',
+      'Generate a Pascal triangle pattern for N rows using nested loops.',
+    ],
+    resources: [
+      'Java Branching and Looping: https://docs.oracle.com/javase/tutorial/java/nutsandbolts/while.html',
+      'Dev.java Loops Tutorial: https://dev.java/learn/language-basics/loops/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 7,
+    title: 'Arrays & Memory Representation',
+    description:
+        'Store and manipulate fixed-size ordered collections of elements in contiguous memory, working with 1D, 2D, and jagged arrays.',
+    duration: '1-2 weeks',
+    phase: 'Phase 1: Java Fundamentals',
+    level: 'Beginner',
+    learningObjectives:
+        'Declare, instantiate, and populate arrays, iterate across dimensions, and use java.util.Arrays utility functions.',
+    subtopics: [
+      'What is an array? Contiguous memory allocation, index-based access, and 0-indexing',
+      'Array declaration, instantiation with new, and default array element values',
+      'Array literal initialization shorthand (int[] arr = {1, 2, 3})',
+      'Array length property and ArrayIndexOutOfBoundsException handling',
+      'Array traversal: traditional indexed for loop vs enhanced for-each loop',
+      'Multidimensional arrays: 2D matrices, rows and columns memory representation',
+      'Jagged / Ragged arrays: arrays of arrays with varying row lengths',
+      'Copying arrays: System.arraycopy(), Arrays.copyOf(), and clone()',
+      'The java.util.Arrays utility class: sort(), binarySearch(), equals(), fill(), toString(), deepToString()',
+      'Basic array algorithms: linear search, finding minimum/maximum, reversing an array',
+    ],
+    exercises: [
+      'Find the second largest and second smallest elements in an unsorted integer array.',
+      'Rotate an array to the right by K positions without using extra memory.',
+      'Perform matrix multiplication on two 2D arrays and display the resultant matrix.',
+    ],
+    resources: [
+      'Java Arrays Tutorial: https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html',
+      'Baeldung Guide to Java Arrays: https://www.baeldung.com/java-arrays-guide',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 8,
+    title: 'Strings & Character Manipulation',
+    description:
+        'Master text processing in Java: String immutability, the String Constant Pool, StringBuilder, StringBuffer, and modern text blocks.',
+    duration: '1-2 weeks',
+    phase: 'Phase 1: Java Fundamentals',
+    level: 'Beginner',
+    learningObjectives:
+        'Understand why Strings are immutable, compare strings using .equals(), and optimize concatenation with StringBuilder.',
+    subtopics: [
+      'The java.lang.String class: sequence of characters and UTF-16 encoding',
+      'String immutability and architectural reasons (security, caching, synchronization, class loading)',
+      'The String Constant Pool (SCP) in the JVM Heap and memory optimization',
+      'Creating strings: string literal vs new String() keyword memory difference',
+      'String comparison: reference equality (==) vs content equality (.equals() and .equalsIgnoreCase())',
+      'The .compareTo() method for lexicographical ordering',
+      'Essential String methods: length(), charAt(), substring(), indexOf(), contains(), toLowerCase(), toUpperCase(), trim(), strip(), replace()',
+      'Splitting strings (.split()) with regular expressions and joining with String.join()',
+      'Mutable strings: StringBuilder vs StringBuffer (thread safety differences and memory buffers)',
+      'Multi-line string text blocks with triple quotes """ (Java 15+)',
+    ],
+    exercises: [
+      'Check if two given strings are anagrams of each other ignoring case and spaces.',
+      'Count occurrences of each vowel and consonant in a string.',
+      'Implement string compression (e.g. "aabcccccaaa" becomes "a2b1c5a3") using StringBuilder.',
+    ],
+    resources: [
+      'Java Strings Tutorial: https://docs.oracle.com/javase/tutorial/java/data/strings.html',
+      'Baeldung String Constant Pool: https://www.baeldung.com/java-string-pool',
+    ],
+  ),
+
+  // Phase 2: Core Java and OOP
+  RoadmapStepModel(
+    id: 9,
+    title: 'Methods & Recursion',
+    description:
+        'Encapsulate reusable logic in methods, understand parameters, return types, pass-by-value semantics, and recursive call stacks.',
+    duration: '1-2 weeks',
+    phase: 'Phase 2: Core Java & OOP',
+    level: 'Intermediate',
+    learningObjectives:
+        'Write modular methods, apply method overloading, understand Java pass-by-value mechanics, and write base-case recursive functions.',
+    subtopics: [
+      'Method anatomy: access modifier, return type, method name, parameter list, and method body',
+      'Invoking methods and understanding the JVM Call Stack (stack frames)',
+      'Parameters vs arguments, formal parameters vs actual arguments',
+      'Java parameter passing: strictly Pass-by-Value for both primitives and object references',
+      'Method overloading: compile-time polymorphism based on parameter count, types, and sequence',
+      'Variable-length arguments (Varargs): syntax (Type... args) and usage rules',
+      'The return statement: returning values and early method termination with void methods',
+      'Recursion fundamentals: base case, recursive case, and StackOverflowError prevention',
+      'Tail recursion vs non-tail recursion execution',
+    ],
+    exercises: [
+      'Write overloaded methods calculateArea() for circles, rectangles, and triangles.',
+      'Implement binary search recursively on a sorted array.',
+      'Calculate the greatest common divisor (GCD) of two numbers using Euclidean recursion.',
+    ],
+    resources: [
+      'Defining Methods in Java: https://docs.oracle.com/javase/tutorial/java/javaOO/methods.html',
+      'Java Pass-by-Value Explained: https://www.baeldung.com/java-pass-by-value',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 10,
+    title: 'Classes, Objects & Constructors',
+    description:
+        'Lay the foundation of Object-Oriented Programming: classes as blueprints, objects as instances, constructor chaining, and the this keyword.',
+    duration: '2 weeks',
+    phase: 'Phase 2: Core Java & OOP',
+    level: 'Intermediate',
+    learningObjectives:
+        'Model real-world entities with classes and objects, design overloaded constructors, and resolve field shadowing using this.',
+    subtopics: [
+      'Object-Oriented Programming philosophy: modeling state (fields) and behavior (methods)',
+      'Class definition: blueprint of an object',
+      'Instantiating objects with the new keyword and Heap memory allocation',
+      'Constructors: default no-arg constructor, parameterized constructors',
+      'Constructor overloading: providing multiple object initialization strategies',
+      'The this keyword: referencing the current instance and disambiguating shadowed variable names',
+      'Constructor chaining using this(): calling one constructor from another within the same class',
+      'Garbage collection fundamentals: dereferencing objects and eligible memory reclamation',
+      'Initialization blocks: instance initialization blocks vs static initialization blocks',
+    ],
+    exercises: [
+      'Create a BankAccount class with fields for accountNumber, holderName, and balance, with deposit, withdraw, and display methods.',
+      'Implement an Employee class with constructor chaining that sets default department and salary if omitted.',
+    ],
+    resources: [
+      'Classes and Objects in Java: https://docs.oracle.com/javase/tutorial/java/javaOO/classes.html',
+      'Dev.java OOP Classes Guide: https://dev.java/learn/oop/classes-objects/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 11,
+    title: 'Encapsulation, Static & Record Classes',
+    description:
+        'Protect internal object state with encapsulation, use access modifiers, manage class-level static members, and use modern record classes.',
+    duration: '1-2 weeks',
+    phase: 'Phase 2: Core Java & OOP',
+    level: 'Intermediate',
+    learningObjectives:
+        'Apply access modifiers, design immutable encapsulated classes, utilize static members, and declare immutable Record classes.',
+    subtopics: [
+      'Encapsulation principle: bundling data with methods and restricting direct attribute access',
+      'Access modifiers: private (class scope), default / package-private, protected, and public',
+      'Getters and Setters: adding validation logic, read-only properties, and write-only properties',
+      'The static keyword: static variables shared across all instances vs instance variables',
+      'Static methods: invoking without object instantiation and static context limitations (cannot access this)',
+      'Static import statements and utility classes (private constructors)',
+      'Constant static fields: public static final conventions',
+      'Modern Java Record classes (Java 16+): concise immutable data carriers with auto-generated equals, hashCode, and toString',
+    ],
+    exercises: [
+      'Create an encapsulated Student class with validation ensuring percentage is between 0 and 100.',
+      'Implement a MathConstants utility class with static constants and helper functions with a private constructor.',
+      'Declare a UserRecord using Java record syntax and demonstrate automatic toString() and immutability.',
+    ],
+    resources: [
+      'Access Control in Java: https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html',
+      'Java Records Guide on Baeldung: https://www.baeldung.com/java-record-keyword',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 12,
+    title: 'Inheritance & Polymorphism',
+    description:
+        'Extend classes with inheritance, reuse code, override methods, and master runtime dynamic method dispatch.',
+    duration: '2 weeks',
+    phase: 'Phase 2: Core Java & OOP',
+    level: 'Intermediate',
+    learningObjectives:
+        'Design class hierarchies with extends, invoke superclass constructors with super(), override methods, and leverage dynamic polymorphism.',
+    subtopics: [
+      'Inheritance principle: the IS-A relationship and code reusability using the extends keyword',
+      'Single inheritance in Java (why Java does not support multiple class inheritance to avoid the Diamond Problem)',
+      'The java.lang.Object superclass: the root of all Java class hierarchies',
+      'The super keyword: accessing superclass constructors (super()) and overridden superclass methods',
+      'Method Overriding: runtime polymorphism, rules for return types (covariant return types), and @Override annotation',
+      'Dynamic Method Dispatch: runtime resolution of overridden methods based on the actual object type',
+      'Upcasting (implicit) and Downcasting (explicit) in class hierarchies',
+      'The instanceof operator and pattern matching for instanceof (Java 16+)',
+      'Preventing inheritance and overriding with the final keyword on classes and methods',
+    ],
+    exercises: [
+      'Design a Vehicle hierarchy with Car and Motorcycle subclasses overriding calculateRentalPrice().',
+      'Build a Shape hierarchy with Circle, Rectangle, and Triangle, calculating area polymorphically through a Shape array.',
+    ],
+    resources: [
+      'Inheritance in Java: https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html',
+      'Polymorphism on Dev.java: https://dev.java/learn/oop/polymorphism/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 13,
+    title: 'Abstraction & Interfaces',
+    description:
+        'Separate contract from implementation: design abstract classes, declare interfaces, and understand default, static, and private interface methods.',
+    duration: '2 weeks',
+    phase: 'Phase 2: Core Java & OOP',
+    level: 'Intermediate',
+    learningObjectives:
+        'Define abstract classes and methods, implement multiple interfaces, use default interface methods, and design loosely coupled systems.',
+    subtopics: [
+      'Abstraction principle: exposing essential features while hiding internal implementation details',
+      'Abstract classes: the abstract keyword, declaring abstract methods, and providing partial implementations',
+      'Interfaces: declaring API contracts with the implements keyword',
+      'Multiple interface inheritance in Java and resolving multiple inheritance conflicts',
+      'Interface fields: implicitly public static final constants',
+      'Default methods in interfaces (Java 8+) for backward compatibility and the Defender method resolution rule',
+      'Static methods in interfaces and private helper methods in interfaces (Java 9+)',
+      'Functional Interfaces: the Single Abstract Method (SAM) pattern and the @FunctionalInterface annotation',
+      'Abstract class vs Interface: when to use an abstract class vs an interface in software design',
+      'Loose coupling: programming to an interface rather than a concrete implementation',
+    ],
+    exercises: [
+      'Design a PaymentGateway interface with CreditCardPayment and PayPalPayment implementations.',
+      'Create an abstract DatabaseConnector class with abstract connect() and concrete logQuery() methods.',
+    ],
+    resources: [
+      'Interfaces in Java: https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html',
+      'Abstract Classes Tutorial: https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 14,
+    title: 'Packages & Java Module System',
+    description:
+        'Organize Java applications into hierarchical packages, manage imports, and understand the Java Platform Module System (JPMS).',
+    duration: '1 week',
+    phase: 'Phase 2: Core Java & OOP',
+    level: 'Intermediate',
+    learningObjectives:
+        'Create and organize packages, manage namespace collisions, and understand module-info.java encapsulation.',
+    subtopics: [
+      'What are packages? Preventing namespace collisions and access control boundary',
+      'Package naming conventions: reverse internet domain name (com.company.project)',
+      'The package statement and directory structure alignment on the file system',
+      'Importing classes: single class import vs wild-card import (.*)',
+      'Static imports for direct access to static constants and methods',
+      'Built-in Java packages: java.lang (automatically imported), java.util, java.io, java.net, java.math',
+      'Packaging code into JAR (Java Archive) files using jar CLI',
+      'Java Platform Module System (JPMS / Project Jigsaw) introduced in Java 9',
+      'The module-info.java descriptor: exports, requires, opens directives',
+    ],
+    exercises: [
+      'Organize a multi-class project into packages: model, service, and controller.',
+      'Compile and package a project into an executable .jar file with a specified Main-Class manifest entry.',
+    ],
+    resources: [
+      'Creating and Using Packages: https://docs.oracle.com/javase/tutorial/java/package/packages.html',
+      'Understanding Java 9 Modules: https://www.baeldung.com/java-9-modularity',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 15,
+    title: 'Exception Handling',
+    description:
+        'Write robust, resilient applications by handling runtime errors with try-catch-finally, checked vs unchecked exceptions, and try-with-resources.',
+    duration: '1-2 weeks',
+    phase: 'Phase 2: Core Java & OOP',
+    level: 'Intermediate',
+    learningObjectives:
+        'Catch and handle exceptions, distinguish checked from unchecked exceptions, create custom domain exceptions, and ensure resource cleanup.',
+    subtopics: [
+      'Exception hierarchy: java.lang.Throwable -> Error (JVM fatal) vs Exception (recoverable)',
+      'Checked exceptions (compile-time, subclass of Exception) vs Unchecked exceptions (subclass of RuntimeException)',
+      'The try-catch block: intercepting exceptions and preventing abnormal program termination',
+      'Handling multiple exceptions: multi-catch block (catch (IOException | SQLException e)) and inheritance order',
+      'The finally block: guaranteed execution for cleanup routines',
+      'The throw keyword: explicitly raising an exception instance',
+      'The throws keyword: declaring exceptions in method signatures',
+      'Automatic resource management with try-with-resources and the AutoCloseable interface (Java 7+)',
+      'Creating Custom Domain Exceptions: extending Exception or RuntimeException with meaningful error messages',
+      'Best practices: avoiding catch-all swallowing (catch (Exception e) {}), chaining exceptions with causes',
+    ],
+    exercises: [
+      'Build a robust file reader with try-with-resources that handles FileNotFoundException and IOException.',
+      'Create an InsufficientFundsException in a banking system and throw it when withdrawal exceeds balance.',
+    ],
+    resources: [
+      'Java Exceptions Tutorial: https://docs.oracle.com/javase/tutorial/essential/exceptions/',
+      'Baeldung Java Exception Handling: https://www.baeldung.com/java-exceptions',
+    ],
+  ),
+
+  // Phase 3: Intermediate Java
+  RoadmapStepModel(
+    id: 16,
+    title: 'Collections: List, Set & Iterators',
+    description:
+        'Master the Java Collections Framework core interfaces and implementations: ArrayList, LinkedList, HashSet, TreeSet, and fail-fast iterators.',
+    duration: '2-3 weeks',
+    phase: 'Phase 3: Intermediate Java',
+    level: 'Intermediate',
+    learningObjectives:
+        'Select the optimal collection for performance, manipulate elements, understand hashing, and sort with Comparable and Comparator.',
+    subtopics: [
+      'Java Collections Framework hierarchy: Iterable -> Collection -> List, Set, Queue',
+      'The List interface: ordered, index-based access, duplicates allowed',
+      'ArrayList: internal dynamic array resizing, amortization, O(1) random access, O(N) insertions',
+      'LinkedList: doubly-linked list nodes, O(1) head/tail insertions, memory overhead',
+      'Vector and CopyOnWriteArrayList: thread-safe List variants',
+      'The Set interface: unique elements, mathematical set abstraction',
+      'HashSet: backed by HashMap, O(1) average lookup, hashCode() and equals() contract',
+      'LinkedHashSet: maintaining insertion order via internal linked list',
+      'TreeSet and NavigableSet: sorted order backed by Red-Black Tree, O(log N) operations',
+      'Iterating collections: Iterator, ListIterator (bidirectional), and forEach loop',
+      'ConcurrentModificationException and fail-fast vs fail-safe iterators',
+      'Sorting collections: java.lang.Comparable (natural order) vs java.util.Comparator (custom order)',
+    ],
+    exercises: [
+      'Remove duplicate words from a sentence while preserving original word order using LinkedHashSet.',
+      'Sort a list of Employee objects by salary descending, then by name ascending using Comparator.comparing().',
+    ],
+    resources: [
+      'Java Collections Framework Overview: https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html',
+      'Dev.java Collections Tutorial: https://dev.java/learn/collections/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 17,
+    title: 'Maps & Queues',
+    description:
+        'Store key-value pairs with HashMap, TreeMap, and LinkedHashMap, and manage FIFO / LIFO elements with Queue, Deque, and PriorityQueue.',
+    duration: '2 weeks',
+    phase: 'Phase 3: Intermediate Java',
+    level: 'Intermediate',
+    learningObjectives:
+        'Understand HashMap internal bucket hashing and collision treeification, sort key-values with TreeMap, and process queues.',
+    subtopics: [
+      'The Map interface: key-value associations, unique keys, entrySet(), keySet(), values()',
+      'HashMap internals: buckets, hash code computation, index calculation, collision resolution (chaining -> Red-Black Tree conversion in Java 8)',
+      'Load factor (0.75 default) and rehashing mechanics',
+      'LinkedHashMap: maintaining insertion order or access order for LRU cache implementation',
+      'TreeMap and SortedMap: sorted keys based on Comparable / Comparator backed by Red-Black Tree',
+      'ConcurrentHashMap: thread-safe high-performance concurrent map without global locking',
+      'The Queue interface: FIFO processing, offer(), poll(), peek() vs add(), remove(), element()',
+      'PriorityQueue: min-heap / max-heap ordering based on element priority',
+      'The Deque interface: Double-Ended Queue (ArrayDeque) used as Stack or Queue',
+      'The Collections utility class: unmodifiableList(), synchronizedMap(), frequency(), reverse()',
+    ],
+    exercises: [
+      'Count word frequencies in a large text document using HashMap and computeIfPresent().',
+      'Implement a basic Least Recently Used (LRU) Cache using LinkedHashMap.',
+      'Build a task scheduling simulator where tasks are processed based on urgency using PriorityQueue.',
+    ],
+    resources: [
+      'Baeldung Guide to Java HashMap: https://www.baeldung.com/java-hashmap',
+      'Java Map Interface Tutorial: https://docs.oracle.com/javase/tutorial/collections/interfaces/map.html',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 18,
+    title: 'Generics & Type Safety',
+    description:
+        'Write type-safe, reusable components with Java Generics, generic methods, bounded parameters, wildcards, and understand type erasure.',
+    duration: '1-2 weeks',
+    phase: 'Phase 3: Intermediate Java',
+    level: 'Intermediate',
+    learningObjectives:
+        'Declare generic classes and methods, apply PECS wildcard guidelines, and avoid runtime ClassCastExceptions.',
+    subtopics: [
+      'Why Generics? Compile-time type safety, eliminating manual casting, and detecting errors early',
+      'Declaring generic classes: class Box<T> and type parameter conventions (T, E, K, V)',
+      'Generic methods: <T> T getFirst(List<T> list) with method-level type parameters',
+      'Bounded type parameters: <T extends Number> restricting acceptable type arguments',
+      'Wildcards in Generics: the unbound wildcard (?)',
+      'Upper bounded wildcards: <? extends Number> for read-only producer operations',
+      'Lower bounded wildcards: <? super Integer> for write consumer operations',
+      'The PECS principle: Producer Extends, Consumer Super (Effective Java Item 31)',
+      'Type Erasure: how the Java compiler removes generic type information for backward compatibility with pre-Java 5 JVMs',
+      'Generic limitations: cannot instantiate generic types directly (new T()), primitive type argument restrictions',
+    ],
+    exercises: [
+      'Build a generic custom Stack<T> class with push, pop, peek, and isEmpty methods.',
+      'Write a generic method copy(List<? extends T> src, List<? super T> dest) adhering to the PECS rule.',
+    ],
+    resources: [
+      'Java Generics Tutorial: https://docs.oracle.com/javase/tutorial/java/generics/',
+      'Baeldung Java Generics: https://www.baeldung.com/java-generics',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 19,
+    title: 'File Handling & Modern I/O (NIO.2)',
+    description:
+        'Read and write files, handle binary streams and character encodings, and manipulate file system paths using modern java.nio.file APIs.',
+    duration: '1-2 weeks',
+    phase: 'Phase 3: Intermediate Java',
+    level: 'Intermediate',
+    learningObjectives:
+        'Read and write text and binary files, navigate directories using Path and Files, and serialize Java objects safely.',
+    subtopics: [
+      'Java I/O streams concept: Byte Streams (InputStream / OutputStream) vs Character Streams (Reader / Writer)',
+      'FileInputStream, FileOutputStream, FileReader, and FileWriter with character encodings (StandardCharsets.UTF_8)',
+      'Buffered streams: BufferedReader, BufferedWriter for efficient high-volume disk I/O',
+      'Modern Java NIO.2 (New I/O): java.nio.file.Path and java.nio.file.Paths',
+      'The java.nio.file.Files utility class: readAllLines(), writeString(), copy(), deleteIfExists(), exists()',
+      'Directory traversal and streaming files: Files.walk(), Files.list(), Files.find()',
+      'Serialization in Java: the java.io.Serializable marker interface and serialVersionUID',
+      'The transient keyword: excluding sensitive fields (like passwords) from serialization',
+      'ObjectInputStream and ObjectOutputStream for serializing object graphs to disk',
+    ],
+    exercises: [
+      'Build a log file parser that reads an application log and writes filtered ERROR entries to a new file.',
+      'Serialize a list of user profiles to a binary file and restore them back into memory on startup.',
+    ],
+    resources: [
+      'Java NIO.2 File I/O: https://docs.oracle.com/javase/tutorial/essential/io/fileio.html',
+      'Baeldung Guide to Java NIO: https://www.baeldung.com/java-nio-2-file-api',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 20,
+    title: 'Java 8+ Modern Features & Streams',
+    description:
+        'Transform your Java programming style with Lambda Expressions, Functional Interfaces, the Stream API, and the java.time API.',
+    duration: '2-3 weeks',
+    phase: 'Phase 3: Intermediate Java',
+    level: 'Intermediate',
+    learningObjectives:
+        'Write clean functional code with Lambdas and Method References, build declarative Stream pipelines, and handle nulls with Optional.',
+    subtopics: [
+      'Functional programming in Java: passing behavior as data with Lambda Expressions',
+      'Standard Functional Interfaces: Predicate<T>, Function<T,R>, Consumer<T>, Supplier<T>, UnaryOperator<T>',
+      'Method references syntax (::): static method, instance method, arbitrary object, and constructor references',
+      'Stream API fundamentals: Streams vs Collections (computed on demand, consumable once)',
+      'Intermediate operations: filter(), map(), flatMap(), sorted(), distinct(), peek(), limit(), skip()',
+      'Terminal operations: forEach(), collect(), toList(), reduce(), count(), anyMatch(), allMatch(), findFirst()',
+      'The java.util.stream.Collectors class: toList(), toSet(), groupingBy(), partitioningBy(), joining()',
+      'Parallel Streams (parallelStream()): when to use and performance pitfalls with common ForkJoinPool',
+      'The Optional<T> container class: preventing NullPointerException, orElse(), orElseGet(), orElseThrow()',
+      'Modern Date and Time API (java.time): LocalDate, LocalTime, LocalDateTime, ZonedDateTime, Period, Duration',
+    ],
+    exercises: [
+      'Convert a list of Transaction objects into a map grouped by currency and summed by amount using Streams.',
+      'Filter a list of user profiles by active status, sort them by age, and collect their names into a comma-separated String.',
+    ],
+    resources: [
+      'Java 8 Features Tutorial: https://www.baeldung.com/java-8-new-features',
+      'Official Java Stream API Documentation: https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html',
+    ],
+  ),
+
+  // Phase 4: Advanced Java
+  RoadmapStepModel(
+    id: 21,
+    title: 'Multithreading & Concurrency',
+    description:
+        'Build high-performance concurrent software: process vs thread, thread synchronization, thread pools, and the java.util.concurrent package.',
+    duration: '3 weeks',
+    phase: 'Phase 4: Advanced Java',
+    level: 'Advanced',
+    learningObjectives:
+        'Spawn threads, prevent race conditions and deadlocks with synchronization, and manage thread pools with ExecutorService.',
+    subtopics: [
+      'Operating system processes vs threads, memory sharing, and benefits of multithreading',
+      'Creating threads: extending java.lang.Thread vs implementing java.lang.Runnable vs Callable',
+      'Thread lifecycle and states: NEW, RUNNABLE, BLOCKED, WAITING, TIMED_WAITING, TERMINATED',
+      'Thread methods: start(), sleep(), join(), interrupt(), yield(), isAlive()',
+      'Thread safety and Race Conditions: critical sections and mutable shared state',
+      'The synchronized keyword: synchronized methods, synchronized blocks, intrinsic object monitors',
+      'Inter-thread communication: wait(), notify(), notifyAll() within synchronized context',
+      'The volatile keyword: memory visibility guarantees and CPU cache coherence',
+      'Concurrency issues: Deadlock, Livelock, Starvation, and deadlock detection with jstack',
+      'High-level concurrency: ExecutorService, Executors.newFixedThreadPool(), ThreadPoolExecutor',
+      'Callable<T> and Future<T> for retrieving asynchronous computation results',
+      'Modern Concurrency utilities: AtomicInteger, CountDownLatch, CyclicBarrier, Semaphore, CompletableFuture',
+      'Virtual Threads (Project Loom in Java 21+): lightweight threads for high-throughput I/O',
+    ],
+    exercises: [
+      'Implement the classic Producer-Consumer problem using wait() and notify() on a shared buffer.',
+      'Build a multi-threaded web scraper that fetches multiple URLs concurrently using an ExecutorService.',
+      'Demonstrate CompletableFuture chaining with thenApply() and thenCombine().',
+    ],
+    resources: [
+      'Java Concurrency Tutorial: https://docs.oracle.com/javase/tutorial/essential/concurrency/',
+      'Baeldung Java Concurrency: https://www.baeldung.com/java-concurrency',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 22,
+    title: 'JVM Architecture & Memory Management',
+    description:
+        'Deep dive into the Java Virtual Machine: ClassLoader subsystem, execution engine, heap/stack memory layout, and Garbage Collection.',
+    duration: '2 weeks',
+    phase: 'Phase 4: Advanced Java',
+    level: 'Advanced',
+    learningObjectives:
+        'Understand how bytecode loads, analyze Heap vs Stack memory, and choose appropriate Garbage Collection algorithms.',
+    subtopics: [
+      'JVM Architecture overview: ClassLoader, Runtime Data Areas, and Execution Engine',
+      'ClassLoader Subsystem: Loading, Linking (Verification, Preparation, Resolution), and Initialization',
+      'Delegation hierarchy: Bootstrap ClassLoader, Extension/Platform ClassLoader, Application ClassLoader',
+      'JVM Runtime Data Areas: Method Area / Metaspace, Heap, Stack, PC Registers, Native Method Stack',
+      'Stack memory (frames, local variables, method invocations) vs Heap memory (object instances)',
+      'Memory leaks in Java: unclosed streams, static collections, improper equals/hashCode implementations',
+      'Garbage Collection (GC) fundamentals: determining garbage (Reference Counting vs Tracing Reachability)',
+      'Generational Heap layout: Young Generation (Eden, Survivor spaces S0/S1), Old / Tenured Generation',
+      'Garbage Collectors in HotSpot: Serial, Parallel, G1 GC (Garbage-First), ZGC (low-latency Z Garbage Collector)',
+      'JVM performance monitoring tools: jcmd, jstat, jmap, jstack, VisualVM, JConsole, and heap dumps',
+    ],
+    exercises: [
+      'Analyze a JVM application using VisualVM to inspect real-time heap usage and thread states.',
+      'Intentionally cause an OutOfMemoryError: Java heap space and analyze the resulting heap dump.',
+    ],
+    resources: [
+      'JVM Architecture Explained: https://www.baeldung.com/jvm-vs-jre-vs-jdk',
+      'Java Garbage Collection Basics: https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 23,
+    title: 'Database Access with JDBC',
+    description:
+        'Connect Java applications to relational databases with JDBC, execute parameterized SQL queries, handle transactions, and manage connection pools.',
+    duration: '2 weeks',
+    phase: 'Phase 4: Advanced Java',
+    level: 'Advanced',
+    learningObjectives:
+        'Execute CRUD SQL operations from Java, prevent SQL injection using PreparedStatement, and manage transactional integrity.',
+    subtopics: [
+      'JDBC (Java Database Connectivity) architecture: JDBC API, DriverManager, Database Drivers',
+      'Loading database drivers and establishing database connections via DriverManager.getConnection()',
+      'The Statement interface for executing static SQL queries (executeQuery, executeUpdate)',
+      'SQL Injection vulnerabilities and preventing them using PreparedStatement with parameter placeholders (?)',
+      'Processing query results with the ResultSet interface: cursor traversal with next(), getInt(), getString()',
+      'Executing callable stored procedures with the CallableStatement interface',
+      'Transaction management in JDBC: setAutoCommit(false), commit(), and rollback() in catch blocks',
+      'Savepoints and transaction isolation levels',
+      'Batch processing with addBatch() and executeBatch() for high-volume database inserts',
+      'Connection pooling fundamentals: why closing/opening physical sockets is slow',
+      'Implementing high-performance connection pooling with HikariCP',
+    ],
+    exercises: [
+      'Build a complete console CRUD application for an employee directory backed by PostgreSQL or MySQL via JDBC.',
+      'Implement an atomic bank transfer method using JDBC transactions with rollback on failure.',
+    ],
+    resources: [
+      'JDBC Basics Tutorial: https://docs.oracle.com/javase/tutorial/jdbc/basics/',
+      'Baeldung Guide to JDBC: https://www.baeldung.com/java-jdbc',
+    ],
+  ),
+
+  // Phase 5: Practical Development
+  RoadmapStepModel(
+    id: 24,
+    title: 'Spring Boot & Production Development',
+    description:
+        'Build enterprise backend microservices with Spring Boot: Inversion of Control, Dependency Injection, REST APIs, Spring Data JPA, and testing.',
+    duration: '4 weeks',
+    phase: 'Phase 5: Practical Development',
+    level: 'Advanced',
+    learningObjectives:
+        'Build production-ready RESTful microservices with Spring Boot, persist data with Spring Data JPA/Hibernate, and write automated tests.',
+    subtopics: [
+      'Modern Java build tools: Maven (pom.xml, lifecycle phases, dependencies) and Gradle (build.gradle)',
+      'Spring Framework core principles: Inversion of Control (IoC) and Dependency Injection (DI)',
+      'Spring Boot: opinionated defaults, auto-configuration, starter POMs, and embedded Tomcat server',
+      'Creating RESTful APIs with Spring MVC: @RestController, @RequestMapping, @GetMapping, @PostMapping',
+      'Request handling: @RequestParam, @PathVariable, @RequestBody, and ResponseEntity with HTTP status codes',
+      'Input validation: Hibernate Validator, @Valid, @NotNull, @Size, and custom @RestControllerAdvice exception handlers',
+      'Persistence with Spring Data JPA & Hibernate: @Entity, @Id, @GeneratedValue, JpaRepository interface',
+      'Database relationships: @OneToMany, @ManyToOne, @ManyToMany, and lazy vs eager fetching',
+      'Database migrations using Flyway or Liquibase',
+      'Security with Spring Security: JWT authentication, role-based access control, security filter chains',
+      'Automated testing: Unit testing with JUnit 5 and Mockito, Integration testing with @SpringBootTest and Testcontainers',
+      'Containerization and deployment: Dockerizing Spring Boot apps with multi-stage builds',
+    ],
+    exercises: [
+      'Build a complete REST API for a task management application with full CRUD, validation, and PostgreSQL storage.',
+      'Write integration tests using MockMvc and verify endpoint responses and status codes.',
+      'Dockerize your Spring Boot application and run it alongside PostgreSQL using Docker Compose.',
+    ],
+    resources: [
+      'Spring Boot Official Documentation: https://spring.io/projects/spring-boot',
+      'Spring Boot Quickstart Guide: https://spring.io/quickstart',
+      'Baeldung Spring Boot Tutorials: https://www.baeldung.com/spring-boot',
+    ],
+  ),
+];

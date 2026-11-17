@@ -1,0 +1,319 @@
+import 'package:dev_path/models/roadmap_step_model.dart';
+
+final List<RoadmapStepModel> machineLearningRoadmapSteps = [
+  RoadmapStepModel(
+    id: 1,
+    title: 'Mathematics & Linear Algebra for Machine Learning',
+    description:
+        'Master vectors, matrices, dot products, eigenvalues, partial derivatives, and gradient descent optimization.',
+    duration: '2-3 weeks',
+    phase: 'Phase 1: Mathematical Foundations',
+    level: 'Beginner',
+    learningObjectives:
+        'Compute matrix transformations, calculate derivatives for loss functions, and understand Gradient Descent optimization.',
+    subtopics: [
+      'Linear Algebra: Vectors, Matrices, Matrix Multiplication, Matrix Transpose',
+      'Vector Norms (L1, L2 norm), Dot Product, Cosine Similarity',
+      'Matrix Inverse, Determinant, Identity Matrix, & Rank',
+      'Eigenvalues, Eigenvectors, and Eigendecomposition',
+      'Singular Value Decomposition (SVD) mechanics',
+      'Calculus: Derivatives, Partial Derivatives, Gradients, and Chain Rule',
+      'Optimization: Convex functions, Local/Global Minima, Cost Functions',
+      'Gradient Descent Algorithm: Learning Rate, Batch vs Stochastic (SGD) vs Mini-Batch',
+      'Probability & Random Variables: Expectation, Variance, Covariance Matrix',
+      'Bayes Theorem & Maximum Likelihood Estimation (MLE)',
+    ],
+    exercises: [
+      'Implement Gradient Descent algorithm from scratch in Python for a simple 1D quadratic cost function.',
+      'Compute Eigenvalues and Eigenvectors of a 3x3 covariance matrix using NumPy.',
+    ],
+    resources: [
+      'Mathematics for Machine Learning Book (Free PDF): https://mml-book.github.io/',
+      '3Blue1Brown Essence of Linear Algebra: https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab',
+      'Khan Academy Multivariable Calculus: https://www.khanacademy.org/math/multivariable-calculus',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 2,
+    title: 'Python Ecosystem for Machine Learning',
+    description:
+        'Master Python data science stack: NumPy arrays, Pandas DataFrames, Matplotlib visualization, and Scikit-Learn pipelines.',
+    duration: '2 weeks',
+    phase: 'Phase 1: Mathematical Foundations',
+    level: 'Beginner',
+    learningObjectives:
+        'Manipulate multi-dimensional data in NumPy, clean messy datasets in Pandas, plot feature distributions, and build Scikit-Learn Pipelines.',
+    subtopics: [
+      'NumPy N-dimensional array creation, indexing, slicing, and broadcasting',
+      'Matrix operations and fast vectorized math with NumPy',
+      'Pandas DataFrames: Loading, cleaning, filtering, and merging datasets',
+      'Handling missing data (imputation strategies) and duplicate removal',
+      'Exploratory Data Analysis (EDA) with Matplotlib & Seaborn',
+      'Plotting feature correlations, boxplots, histograms, and pairplots',
+      'Feature Scaling: StandardScaler (Z-score) vs MinMaxScaler',
+      'Encoding Categorical Features: One-Hot Encoding vs Label Encoding',
+      'Scikit-Learn estimators API (fit, transform, predict)',
+      'Scikit-Learn Pipelines & ColumnTransformer for clean reproducible ML',
+    ],
+    exercises: [
+      'Clean a messy real-world housing dataset with Pandas and construct an automated Scikit-Learn ColumnTransformer pipeline.',
+      'Perform EDA on a medical dataset, plotting heatmaps to detect feature correlations.',
+    ],
+    resources: [
+      'Scikit-Learn User Guide: https://scikit-learn.org/stable/user_guide.html',
+      'Python Data Science Handbook: https://jakevdp.github.io/PythonDataScienceHandbook/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 3,
+    title: 'Supervised Learning: Regression Models',
+    description:
+        'Understand Linear Regression, Cost Functions, Polynomial Regression, and Regularization (Lasso & Ridge).',
+    duration: '2 weeks',
+    phase: 'Phase 2: Supervised Learning',
+    level: 'Intermediate',
+    learningObjectives:
+        'Train Linear & Polynomial Regression models, optimize with Gradient Descent, prevent overfitting with L1/L2 Regularization, and evaluate RMSE/R2.',
+    subtopics: [
+      'Supervised Learning paradigm: Features (X), Target (y), Training vs Testing split',
+      'Simple & Multiple Linear Regression hypothesis equation',
+      'Cost Function: Mean Squared Error (MSE) & Root Mean Squared Error (RMSE)',
+      'Solving Linear Regression: Closed-form Normal Equation vs Gradient Descent',
+      'Polynomial Regression & Model Complexity curve',
+      'The Bias-Variance Tradeoff (Underfitting vs Overfitting)',
+      'L2 Regularization (Ridge Regression): Penalizing large weights',
+      'L1 Regularization (Lasso Regression): Feature selection & sparsity',
+      'ElasticNet Regularization (Combining L1 + L2)',
+      'Regression Evaluation Metrics: MAE, MSE, RMSE, R-Squared, Adjusted R-Squared',
+    ],
+    exercises: [
+      'Implement Simple Linear Regression with OLS and Gradient Descent from scratch in Python.',
+      'Train Ridge and Lasso Regression models on a housing dataset and compare feature weights.',
+    ],
+    resources: [
+      'Scikit-Learn Linear Models Docs: https://scikit-learn.org/stable/modules/linear_model.html',
+      'StatQuest Linear Regression: https://statquest.org/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 4,
+    title: 'Supervised Learning: Classification & Ensembles',
+    description:
+        'Master Logistic Regression, Decision Trees, Random Forests, XGBoost, LightGBM, and ROC-AUC evaluation metrics.',
+    duration: '3 weeks',
+    phase: 'Phase 2: Supervised Learning',
+    level: 'Intermediate',
+    learningObjectives:
+        'Train Binary & Multiclass Logistic Regression, Random Forests, Gradient Boosted Trees (XGBoost), and interpret Confusion Matrices & ROC curves.',
+    subtopics: [
+      'Classification concept: Binary vs Multiclass classification',
+      'Logistic Regression: Sigmoid activation function & Log-Loss (Cross-Entropy)',
+      'Classification Metrics: Confusion Matrix, Accuracy, Precision, Recall, F1-Score, ROC-AUC Curve',
+      'K-Nearest Neighbors (KNN) classifier & distance metrics',
+      'Support Vector Machines (SVM): Hyperplanes, Margin maximization, & Kernel Trick (RBF, Polynomial)',
+      'Decision Trees: Gini Impurity, Information Gain (Entropy), Tree Depth & Pruning',
+      'Ensemble Learning - Bagging: Random Forest Classifier & Feature Importance',
+      'Ensemble Learning - Boosting: AdaBoost, Gradient Boosting, XGBoost, LightGBM, CatBoost',
+      'Handling Imbalanced Datasets: SMOTE oversampling & Class Weights',
+      'Naïve Bayes Classifier & Bayes Theorem application in text classification',
+    ],
+    exercises: [
+      'Train a customer churn classification pipeline using XGBoost and evaluate Precision, Recall, and F1-score.',
+      'Apply SMOTE oversampling to an imbalanced credit card fraud dataset before training a Random Forest.',
+    ],
+    resources: [
+      'XGBoost Official Guide: https://xgboost.readthedocs.io/en/stable/',
+      'Scikit-Learn Ensemble Methods: https://scikit-learn.org/stable/modules/ensemble.html',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 5,
+    title: 'Unsupervised Learning & Clustering',
+    description:
+        'Discover hidden structures using K-Means, Hierarchical Clustering, DBSCAN, and Dimensionality Reduction (PCA & t-SNE).',
+    duration: '2 weeks',
+    phase: 'Phase 2: Supervised Learning',
+    level: 'Intermediate',
+    learningObjectives:
+        'Segment data with K-Means & DBSCAN, select optimal cluster count with Silhouette Score, and reduce dimensions with PCA.',
+    subtopics: [
+      'Unsupervised Learning paradigm: Unlabelled data pattern discovery',
+      'K-Means Clustering algorithm: Centroid initialization, assignment, & update steps',
+      'Selecting K: Elbow Method (Inertia) & Silhouette Analysis',
+      'Hierarchical Clustering: Agglomerative vs Divisive, Linkage methods (Ward, Complete, Average), Dendrograms',
+      'DBSCAN (Density-Based Spatial Clustering of Applications with Noise)',
+      'Dimensionality Reduction: Principal Component Analysis (PCA) mathematics',
+      'Explained Variance Ratio & Scree plots in PCA',
+      't-SNE (t-Distributed Stochastic Neighbor Embedding) for 2D/3D visualization',
+      'Anomaly Detection: Isolation Forest & One-Class SVM',
+      'Association Rule Learning: Apriori algorithm, Support, Confidence, Lift',
+    ],
+    exercises: [
+      'Perform customer segmentation on a mall customer dataset using K-Means and visualize clusters using PCA 2D projections.',
+      'Detect anomalous transactions in a financial log using Isolation Forest.',
+    ],
+    resources: [
+      'Scikit-Learn Clustering Documentation: https://scikit-learn.org/stable/modules/clustering.html',
+      'StatQuest PCA Explained: https://statquest.org/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 6,
+    title: 'Model Evaluation, Tuning & Hyperparameter Optimization',
+    description:
+        'Master Cross-Validation, Grid Search, Random Search, and Bayesian Optimization (Optuna) for hyperparameter tuning.',
+    duration: '2 weeks',
+    phase: 'Phase 3: Deep Learning',
+    level: 'Intermediate to Advanced',
+    learningObjectives:
+        'Perform K-Fold Cross Validation, tune model hyperparameters using Optuna, and diagnose model overfitting with Learning Curves.',
+    subtopics: [
+      'Data Splitting: Train / Validation / Test sets & Data Leakage risks',
+      'Cross-Validation: K-Fold, Stratified K-Fold, TimeSeriesSplit',
+      'Hyperparameters vs Model Parameters distinction',
+      'GridSearchCV: Exhaustive parameter search',
+      'RandomizedSearchCV: Random parameter sampling',
+      'Bayesian Optimization with Optuna framework (Study, Trial, Objective functions)',
+      'Learning Curves: Diagnosing High Bias (Underfitting) vs High Variance (Overfitting)',
+      'Feature Selection methods: Filter methods, Wrapper methods, Embedded methods',
+      'Model Interpretability: SHAP (SHapley Additive exPlanations) & LIME',
+      'Automated Machine Learning (AutoML) overview (TPOT, Auto-Sklearn)',
+    ],
+    exercises: [
+      'Tune an XGBoost hyperparameter space using Optuna with 5-Fold Stratified Cross Validation.',
+      'Explain a Random Forest model\'s individual predictions using SHAP summary and waterfall plots.',
+    ],
+    resources: [
+      'Optuna Official Documentation: https://optuna.org/',
+      'SHAP Documentation: https://shap.readthedocs.io/en/latest/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 7,
+    title: 'Deep Learning & Neural Networks (PyTorch)',
+    description:
+        'Master Artificial Neural Networks (ANN), Activation Functions, Backpropagation, and PyTorch deep learning framework.',
+    duration: '3-4 weeks',
+    phase: 'Phase 3: Deep Learning',
+    level: 'Advanced',
+    learningObjectives:
+        'Build multi-layer perceptron neural networks in PyTorch, implement custom loss functions, and optimize with Adam/SGD.',
+    subtopics: [
+      'Deep Learning vs Traditional Machine Learning comparison',
+      'Biological Neuron vs Perceptron & Multi-Layer Perceptron (MLP) architecture',
+      'Activation Functions: ReLU, Leaky ReLU, Sigmoid, Tanh, Softmax',
+      'Loss Functions: Cross-Entropy Loss, Binary Cross-Entropy, Mean Squared Error',
+      'Forward Pass, Backpropagation algorithm, and Chain Rule calculus',
+      'Optimizers: SGD, Momentum, Adagrad, RMSprop, Adam, AdamW',
+      'Overfitting Prevention: Dropout, Batch Normalization, Weight Decay (L2), Early Stopping',
+      'PyTorch Fundamentals: Tensors, Autograd (automatic differentiation), CUDA GPU acceleration',
+      'Building PyTorch Models with torch.nn.Module, Dataset, and DataLoader',
+      'Training loop implementation: zero_grad(), backward(), step()',
+    ],
+    exercises: [
+      'Construct a PyTorch Deep Neural Network from scratch to classify multi-class tabular data.',
+      'Implement custom Learning Rate Schedulers (CosineAnnealing) in a PyTorch training loop.',
+    ],
+    resources: [
+      'PyTorch Official Documentation: https://pytorch.org/docs/stable/index.html',
+      'DeepLearning.AI Deep Learning Specialization: https://www.deeplearning.ai/',
+      'Fast.ai Practical Deep Learning for Coders: https://course.fast.ai/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 8,
+    title: 'Computer Vision (CNNs & Vision Transformers)',
+    description:
+        'Build image classification, object detection, and segmentation models using CNNs, ResNet, YOLO, and Vision Transformers.',
+    duration: '3-4 weeks',
+    phase: 'Phase 4: Specialized AI',
+    level: 'Advanced',
+    learningObjectives:
+        'Design Convolutional Neural Networks (CNNs), apply Transfer Learning with torchvision, and understand YOLO Object Detection.',
+    subtopics: [
+      'Computer Vision fundamentals & Digital Image representation (RGB arrays)',
+      'Convolution Operation: Filters, Kernels, Strides, Padding (Valid vs Same)',
+      'Pooling Layers: Max Pooling & Average Pooling for spatial reduction',
+      'CNN Architecture: Feature Maps, Convolutions, Activations, & Fully Connected layers',
+      'Classic Architectures: LeNet, AlexNet, VGG, ResNet (Skip/Residual Connections)',
+      'Transfer Learning with torchvision pre-trained models (Fine-tuning vs Feature Extraction)',
+      'Data Augmentation techniques (Albumentations library: Flip, Rotate, Crop, Color Jitter)',
+      'Object Detection: Bounding Boxes, Intersection over Union (IoU), Non-Maximum Suppression (NMS)',
+      'Object Detection Models: YOLO (You Only Look Once) & Faster R-CNN',
+      'Vision Transformers (ViT) & Image Segmentation (U-Net)',
+    ],
+    exercises: [
+      'Fine-tune a pre-trained ResNet-50 model on a custom medical image dataset using PyTorch.',
+      'Detect real-time objects in video using a pre-trained YOLOv8 model.',
+    ],
+    resources: [
+      'Torchvision Models Documentation: https://pytorch.org/vision/stable/models.html',
+      'Ultralytics YOLOv8 Documentation: https://docs.ultralytics.com/',
+      'Stanford CS231n Convolutional Neural Networks: http://cs231n.stanford.edu/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 9,
+    title: 'Natural Language Processing (NLP) & LLMs',
+    description:
+        'Master Text Preprocessing, Word Embeddings, Recurrent Neural Networks, Transformer Architecture, and Large Language Models (LLMs).',
+    duration: '4 weeks',
+    phase: 'Phase 4: Specialized AI',
+    level: 'Advanced',
+    learningObjectives:
+        'Tokenize text, create Word Embeddings (Word2Vec), build Transformers with Self-Attention, and fine-tune HuggingFace LLMs.',
+    subtopics: [
+      'NLP Fundamentals: Tokenization, Stemming, Lemmatization, Stopwords',
+      'Vector Space Models: TF-IDF, Word2Vec (Skip-gram & CBOW), GloVe embeddings',
+      'Sequential Models: RNNs, LSTM, GRU, & Bidirectional LSTMs for text classification',
+      'Encoder-Decoder Architecture & Attention Mechanism (Bahdanau Attention)',
+      'The Transformer Architecture ("Attention Is All You Need"): Self-Attention, Multi-Head Attention, Positional Encoding',
+      'Pre-trained Transformer Models: BERT (Encoder-only), GPT (Decoder-only), T5 (Encoder-Decoder)',
+      'Hugging Face Transformers Library: AutoTokenizer, AutoModel, Pipelines, Trainer API',
+      'Large Language Models (LLMs): Instruction Tuning, RLHF, DPO',
+      'PEFT (Parameter-Efficient Fine-Tuning): LoRA (Low-Rank Adaptation) & QLoRA',
+      'Retrieval-Augmented Generation (RAG) Architecture & Vector Databases (Pinecone, ChromaDB, Qdrant)',
+    ],
+    exercises: [
+      'Fine-tune a DistilBERT model on a sentiment analysis dataset using Hugging Face Trainer.',
+      'Build a Retrieval-Augmented Generation (RAG) QA pipeline over custom PDF documents using LangChain and a Vector DB.',
+    ],
+    resources: [
+      'Hugging Face Course: https://huggingface.co/course/chapter1/1',
+      'Illustrated Transformer (Jay Alammar): https://jalammar.github.io/illustrated-transformer/',
+      'Stanford CS224N Natural Language Processing: https://web.stanford.edu/class/cs224n/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 10,
+    title: 'MLOps, Model Deployment & Production ML',
+    description:
+        'Deploy, monitor, version, and manage Machine Learning models in production using FastAPI, Docker, MLflow, and Evidently AI.',
+    duration: '3 weeks',
+    phase: 'Phase 5: Production & MLOps',
+    level: 'Advanced',
+    learningObjectives:
+        'Package ML models with ONNX / FastAPI, containerize with Docker, track experiments with MLflow, and monitor Data Drift.',
+    subtopics: [
+      'MLOps Lifecycle: Data Engineering, Model Training, CI/CD, Serving, Monitoring',
+      'Model Serialization: Joblib, ONNX (Open Neural Network Exchange), TorchScript',
+      'Serving ML Models via REST APIs using FastAPI & Pydantic validation',
+      'Containerizing ML inference APIs with Docker & Gunicorn/Uvicorn workers',
+      'Experiment Tracking & Model Registry with MLflow (mlflow.log_params, mlflow.log_metrics)',
+      'Data Version Control (DVC) for tracking datasets alongside Git',
+      'Monitoring Production ML: Data Drift, Concept Drift, Model Performance degradation',
+      'Monitoring tools: Evidently AI & Prometheus/Grafana metrics',
+      'CI/CD Pipelines for ML model retraining & deployment using GitHub Actions',
+      'Cloud ML Deployments: AWS SageMaker, GCP Vertex AI, or Hugging Face Inference Endpoints',
+    ],
+    exercises: [
+      'Build a FastAPI REST service that serves predictions from an ONNX-exported PyTorch model packaged inside a Docker container.',
+      'Set up an Evidently AI dashboard monitoring Data Drift on incoming live production queries.',
+    ],
+    resources: [
+      'MLflow Documentation: https://mlflow.org/docs/latest/index.html',
+      'Evidently AI Documentation: https://docs.evidentlyai.com/',
+      'Full Stack Deep Learning Course: https://fullstackdeeplearning.com/',
+    ],
+  ),
+];

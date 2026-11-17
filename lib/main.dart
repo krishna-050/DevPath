@@ -3,14 +3,21 @@ import 'package:dev_path/screens/home_screen.dart';
 import 'package:dev_path/screens/main_screen.dart';
 import 'package:dev_path/screens/roadmap_detail_screen.dart';
 import 'package:dev_path/screens/splash_screen.dart';
+import 'package:dev_path/screens/started_screen.dart';
 import 'package:dev_path/app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:dev_path/controller/theme_controller.dart';
+import 'firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await GetStorage.init();
   runApp(const MyApp());
 }
@@ -23,7 +30,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
   Get.put(ThemeController(), permanent: true);
     return GetMaterialApp(
-        title: 'DevPath',
+        title: 'Learning Path',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
@@ -31,6 +38,7 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: ()=>SplashScreen()),
+        GetPage(name: '/started', page: ()=>StartedScreen()),
         GetPage(name: '/home', page: ()=>HomeScreen(onExploreTap: (){})),
         GetPage(name: '/explore', page: ()=>ExploreScreen()),
         GetPage(name: '/mainScreen', page: ()=>MainScreen()),

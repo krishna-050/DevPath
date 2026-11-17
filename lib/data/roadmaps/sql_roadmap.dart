@@ -1,0 +1,315 @@
+import 'package:dev_path/models/roadmap_step_model.dart';
+
+final List<RoadmapStepModel> sqlRoadmapSteps = [
+  RoadmapStepModel(
+    id: 1,
+    title: 'Relational Database Concepts & SQL Basics',
+    description:
+        'Understand Relational Database Management Systems (RDBMS), tables, rows, columns, keys, and basic SQL query structure.',
+    duration: '1-2 weeks',
+    phase: 'Phase 1: Query Fundamentals',
+    level: 'Beginner',
+    learningObjectives:
+        'Understand RDBMS concepts, primary & foreign keys, install PostgreSQL / MySQL, and write basic SELECT queries.',
+    subtopics: [
+      'Relational Database Management System (RDBMS) architecture vs NoSQL',
+      'Tables, Rows (Tuples), Columns (Attributes), & Data Schemas',
+      'Understanding Primary Keys, Foreign Keys, & Unique constraints',
+      'Popular Relational Databases: PostgreSQL, MySQL, SQLite, SQL Server',
+      'Installing PostgreSQL and connecting with pgAdmin or DBeaver',
+      'SQL Query Syntax & Case Sensitivity rules',
+      'Basic SELECT statements: Querying all columns (SELECT *) vs specific columns',
+      'Column Aliases (AS keyword) & String Concatenation',
+      'Removing Duplicate Rows with SELECT DISTINCT',
+      'Sorting query output with ORDER BY (ASC / DESC)',
+    ],
+    exercises: [
+      'Write a SELECT query on an Employees table to return unique department names sorted alphabetically.',
+      'Construct a query retrieving customer names and email addresses with custom column aliases.',
+    ],
+    resources: [
+      'PostgreSQL Tutorial: https://www.postgresqltutorial.com/',
+      'SQLZoo Interactive Queries: https://sqlzoo.net/',
+      'Mode Analytics SQL Tutorial: https://mode.com/sql-tutorial/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 2,
+    title: 'Filtering & Conditional Logic (WHERE Clause)',
+    description:
+        'Filter database rows using comparison operators, logical operators, pattern matching, and NULL handling.',
+    duration: '1-2 weeks',
+    phase: 'Phase 1: Query Fundamentals',
+    level: 'Beginner',
+    learningObjectives:
+        'Filter query results with WHERE, combine conditions with AND/OR/NOT, handle NULL values, and use LIKE pattern matching.',
+    subtopics: [
+      'The WHERE clause for row-level filtering',
+      'Comparison Operators (=, !=, <, >, <=, >=)',
+      'Logical Operators: AND, OR, NOT & operator precedence rules',
+      'Range filtering with BETWEEN and NOT BETWEEN',
+      'Set matching with IN and NOT IN operators',
+      'Pattern matching with LIKE and ILIKE (% wildcard, _ wildcard)',
+      'Regular expression matching (SIMILAR TO / POSIX regex in PostgreSQL)',
+      'Handling NULL values: IS NULL, IS NOT NULL, & NULL behavior in logic',
+      'Handling NULL defaults with COALESCE() and NULLIF() functions',
+      'Conditional Expressions in SELECT using CASE WHEN ... THEN ... ELSE END',
+    ],
+    exercises: [
+      'Write a query to retrieve all orders placed in 2024 with a total amount between \$100 and \$500 using BETWEEN.',
+      'Construct a CASE statement classifying products into "Low", "Medium", and "High" price categories based on unit price.',
+    ],
+    resources: [
+      'PostgreSQL WHERE Clause: https://www.postgresqltutorial.com/postgresql-getting-started/postgresql-where/',
+      'PostgreSQL CASE Statement: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-case/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 3,
+    title: 'Data Modification (DML) & Data Definition (DDL)',
+    description:
+        'Create database tables with constraints, insert rows, update records, and delete data safely.',
+    duration: '2 weeks',
+    phase: 'Phase 1: Query Fundamentals',
+    level: 'Beginner',
+    learningObjectives:
+        'Create tables with DDL (CREATE TABLE), configure Data Types & Constraints, and execute DML (INSERT, UPDATE, DELETE).',
+    subtopics: [
+      'Data Definition Language (DDL) vs Data Manipulation Language (DML)',
+      'SQL Data Types: INTEGER, VARCHAR, TEXT, BOOLEAN, NUMERIC/DECIMAL, DATE, TIMESTAMP',
+      'Table Creation: CREATE TABLE with column definitions & default values',
+      'Column Constraints: NOT NULL, UNIQUE, PRIMARY KEY, FOREIGN KEY, CHECK',
+      'Inserting data: INSERT INTO ... VALUES & multi-row batch inserts',
+      'Updating data: UPDATE ... SET with WHERE clause filters',
+      'Deleting data: DELETE FROM vs TRUNCATE TABLE differences & performance',
+      'Alter table structure: ALTER TABLE (ADD COLUMN, DROP COLUMN, RENAME)',
+      'Dropping tables safely: DROP TABLE IF EXISTS',
+      'Upsert operations: INSERT INTO ... ON CONFLICT (PostgreSQL) / ON DUPLICATE KEY (MySQL)',
+    ],
+    exercises: [
+      'Create a Users table with auto-incrementing ID, unique email, password hash, and a CHECK constraint ensuring age >= 18.',
+      'Perform an Upsert operation updating a user\'s last_login timestamp if the user already exists.',
+    ],
+    resources: [
+      'PostgreSQL CREATE TABLE: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-create-table/',
+      'PostgreSQL Upsert Guide: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-upsert/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 4,
+    title: 'Data Aggregation & Grouping (GROUP BY)',
+    description:
+        'Group data rows and compute aggregate statistics using GROUP BY, HAVING, and aggregate functions.',
+    duration: '2 weeks',
+    phase: 'Phase 2: Intermediate SQL',
+    level: 'Intermediate',
+    learningObjectives:
+        'Compute summary metrics using COUNT, SUM, AVG, MIN, MAX, group rows with GROUP BY, and filter aggregates with HAVING.',
+    subtopics: [
+      'Aggregate Functions: COUNT(*), COUNT(col), SUM(), AVG(), MIN(), MAX()',
+      'Grouping data with GROUP BY clause',
+      'Rules of GROUP BY: Non-aggregated SELECT columns must be in GROUP BY',
+      'Filtering aggregated groups using the HAVING clause (HAVING vs WHERE)',
+      'Grouping by multiple columns & expression groupings',
+      'Aggregate functions with DISTINCT (COUNT(DISTINCT customer_id))',
+      'Handling NULL values in aggregate function calculations',
+      'Advanced Grouping Set operations: GROUPING SETS, CUBE, and ROLLUP',
+      'String Aggregation: STRING_AGG() (PostgreSQL) / GROUP_CONCAT() (MySQL)',
+      'Statistical aggregates: STDDEV(), VARIANCE()',
+    ],
+    exercises: [
+      'Write a query calculating total revenue and average order value per month, showing only months with total revenue > \$10,000.',
+      'Generate a summary report listing sales rep names and a comma-separated list of their assigned regions using STRING_AGG.',
+    ],
+    resources: [
+      'PostgreSQL GROUP BY: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-group-by/',
+      'PostgreSQL HAVING Clause: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-having/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 5,
+    title: 'Multi-Table Joins',
+    description:
+        'Combine data across multiple relational tables using INNER, LEFT, RIGHT, FULL OUTER, and CROSS joins.',
+    duration: '2 weeks',
+    phase: 'Phase 2: Intermediate SQL',
+    level: 'Intermediate',
+    learningObjectives:
+        'Combine data across relational tables using INNER JOIN, LEFT JOIN, FULL OUTER JOIN, and Self Joins.',
+    subtopics: [
+      'Relational Integrity & foreign key relationship traversing',
+      'INNER JOIN: Querying matching rows across tables',
+      'LEFT OUTER JOIN: Preserving all rows from the left table',
+      'RIGHT OUTER JOIN: Preserving all rows from the right table',
+      'FULL OUTER JOIN: Preserving all rows from both tables',
+      'CROSS JOIN: Cartesian product of two tables',
+      'Self Joins: Joining a table to itself (hierarchies, manager-employee relationships)',
+      'Joining on multiple condition keys & composite keys',
+      'Joining 3 or more tables in a single SQL query chain',
+      'USING clause shorthand for matching column names',
+    ],
+    exercises: [
+      'Write a 3-table join query connecting Customers, Orders, and Order_Items to calculate total spent per customer.',
+      'Execute a Self Join on an Employees table to display each employee\'s name alongside their Manager\'s name.',
+    ],
+    resources: [
+      'PostgreSQL Joins Visual Guide: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-joins/',
+      'SQL Joins Explained (Coding Horror): https://blog.codinghorror.com/a-visual-explanation-of-sql-joins/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 6,
+    title: 'Subqueries & Common Table Expressions (CTEs)',
+    description:
+        'Write modular, readable SQL queries using Subqueries, Correlated Subqueries, and Common Table Expressions (CTEs).',
+    duration: '2 weeks',
+    phase: 'Phase 2: Intermediate SQL',
+    level: 'Intermediate',
+    learningObjectives:
+        'Write Scalar, Column, and Table subqueries, correlated subqueries with EXISTS, and modular CTEs (WITH clause).',
+    subtopics: [
+      'Subqueries definition & execution order',
+      'Scalar Subqueries (returning a single value in SELECT or WHERE)',
+      'Multi-row Subqueries using IN, ANY, ALL operators',
+      'Correlated Subqueries: Subqueries referencing outer query columns',
+      'EXISTS and NOT EXISTS operators for fast existence checks',
+      'Subqueries in FROM clause (Derived Tables / Inline Views)',
+      'Common Table Expressions (CTEs) using the WITH clause',
+      'Advantages of CTEs over nested subqueries: Readability & reusability',
+      'Chaining multiple CTEs in a single WITH statement',
+      'Recursive CTEs (WITH RECURSIVE) for hierarchical / organizational graph data',
+    ],
+    exercises: [
+      'Write a query with a CTE finding customers whose order frequency is above the overall average customer order frequency.',
+      'Use a Recursive CTE to traverse an organizational management hierarchy tree.',
+    ],
+    resources: [
+      'PostgreSQL Subquery Guide: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-subquery/',
+      'PostgreSQL CTE Guide: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-cte/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 7,
+    title: 'Advanced Window Functions',
+    description:
+        'Perform advanced analytics over subset partitions using OVER(), PARTITION BY, ROW_NUMBER(), DENSE_RANK(), and Lead/Lag.',
+    duration: '2-3 weeks',
+    phase: 'Phase 3: Advanced SQL',
+    level: 'Intermediate to Advanced',
+    learningObjectives:
+        'Compute running totals, ranking, and period-over-period differences using SQL Window Functions.',
+    subtopics: [
+      'Window Functions concept vs GROUP BY aggregations (preserving individual row identities)',
+      'The OVER() clause and PARTITION BY partitioning',
+      'Window Ranking Functions: ROW_NUMBER(), RANK(), DENSE_RANK(), NTILE()',
+      'Value Window Functions: LAG(), LEAD(), FIRST_VALUE(), LAST_VALUE()',
+      'Calculating Period-over-Period changes (e.g. Month-over-Month growth)',
+      'Window Aggregate Functions: Running SUM(), Moving Average AVG()',
+      'Window Frame specifications: ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW',
+      'Named Window definitions (WINDOW window_name AS (...))',
+      'Combining Window Functions with CTEs for top-N analysis',
+      'Performance considerations of Window Functions',
+    ],
+    exercises: [
+      'Write a query using ROW_NUMBER() and PARTITION BY to retrieve the top 3 highest-earning employees in each department.',
+      'Calculate a 30-day moving average of daily revenue using running SUM and AVG window frames.',
+    ],
+    resources: [
+      'PostgreSQL Window Functions Tutorial: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-window-function/',
+      'Mode Analytics Window Functions Guide: https://mode.com/sql-tutorial/sql-window-functions/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 8,
+    title: 'Database Schema Design & Normalization',
+    description:
+        'Design efficient relational database schemas, apply Normalization forms (1NF to 3NF), and model entity relationships.',
+    duration: '2 weeks',
+    phase: 'Phase 3: Advanced SQL',
+    level: 'Intermediate to Advanced',
+    learningObjectives:
+        'Model Entity-Relationship Diagrams (ERD), apply 1NF, 2NF, and 3NF normalization rules, and understand Denormalization tradeoffs.',
+    subtopics: [
+      'Entity-Relationship Modeling (ERD): Entities, Attributes, Relationships',
+      'Relationship Cardinality: One-to-One (1:1), One-to-Many (1:N), Many-to-Many (N:M)',
+      'Junction / Bridge tables for Many-to-Many relationships',
+      'First Normal Form (1NF): Atomic values, no repeating groups',
+      'Second Normal Form (2NF): Eliminating partial functional dependencies',
+      'Third Normal Form (3NF): Eliminating transitive functional dependencies',
+      'Boyce-Codd Normal Form (BCNF) overview',
+      'Denormalization strategies for OLAP / Data Warehousing performance (Star Schema, Snowflake Schema)',
+      'Data Integrity: Referential Integrity & Cascading Actions (ON DELETE CASCADE, ON UPDATE SET NULL)',
+      'Surrogate Keys (UUID, Auto-Increment) vs Natural Keys',
+    ],
+    exercises: [
+      'Design a 3NF normalized database schema for a hotel reservation system with ERD relationship definitions.',
+      'Refactor an unnormalized flat spreadsheet schema into 3 normalized relational tables.',
+    ],
+    resources: [
+      'Database Normalization Explanation: https://www.geeksforgeeks.org/database-normalization-introduction/',
+      'PostgreSQL Foreign Key Cascade: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-foreign-key/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 9,
+    title: 'Indexing, Query Optimization & EXPLAIN',
+    description:
+        'Optimize SQL query performance using B-Tree indexes, EXPLAIN ANALYZE execution plans, and query tuning.',
+    duration: '2-3 weeks',
+    phase: 'Phase 4: Optimization & Security',
+    level: 'Advanced',
+    learningObjectives:
+        'Create B-Tree, Hash, and GIN indexes, analyze EXPLAIN execution plans, and identify Sequential Scans.',
+    subtopics: [
+      'Database Storage Engine Architecture: Heap pages, Data blocks, & Buffer pool cache',
+      'How Indexes work: B-Tree Index structure & search time complexity (O(log N))',
+      'Types of Indexes: Single-column, Composite (Multi-column), Unique, Partial, Expression indexes',
+      'Index Types in PostgreSQL: B-Tree, Hash, GIN (for JSONB/Full-Text), GiST, BRIN',
+      'When to index vs when NOT to index (write performance impact)',
+      'Analyzing Execution Plans: EXPLAIN and EXPLAIN (ANALYZE, BUFFERS)',
+      'Understanding Execution Plan Operators: Sequential Scan vs Index Scan vs Index Only Scan',
+      'Join Algorithms in execution plans: Nested Loop, Hash Join, Merge Join',
+      'Avoid Query Anti-Patterns: Leading wildcards in LIKE (%value), SELECT *, implicit type casts',
+      'Database Statistics maintenance: ANALYZE and VACUUM in PostgreSQL',
+    ],
+    exercises: [
+      'Run EXPLAIN ANALYZE on an unindexed slow search query, add a composite B-Tree index, and demonstrate execution speedup.',
+      'Build a GIN index on a JSONB column in PostgreSQL to accelerate nested JSON property queries.',
+    ],
+    resources: [
+      'PostgreSQL EXPLAIN Guide: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-explain/',
+      'Use The Index, Luke! (SQL Indexing Book): https://use-the-index-luke.com/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 10,
+    title: 'Transactions, ACID & Advanced PostgreSQL',
+    description:
+        'Master ACID properties, Transaction Isolation Levels, Row-Level Locking, JSONB, and Views.',
+    duration: '3 weeks',
+    phase: 'Phase 4: Optimization & Security',
+    level: 'Advanced',
+    learningObjectives:
+        'Manage Transactions (BEGIN, COMMIT, ROLLBACK), understand Isolation Levels (Read Committed, Serializable), and query JSONB fields.',
+    subtopics: [
+      'Transactions concept & ACID Properties (Atomicity, Consistency, Isolation, Durability)',
+      'Transaction Commands: BEGIN / START TRANSACTION, COMMIT, ROLLBACK, SAVEPOINT',
+      'Concurrency Control anomalies: Dirty Reads, Non-Repeatable Reads, Phantom Reads, Serialization Anomalies',
+      'Transaction Isolation Levels: Read Uncommitted, Read Committed, Repeatable Read, Serializable',
+      'Locking Mechanisms: Shared Locks, Exclusive Locks, Row-Level Locks (SELECT ... FOR UPDATE)',
+      'Multi-Version Concurrency Control (MVCC) in PostgreSQL',
+      'Database Views: Standard Views vs Materialized Views (REFRESH MATERIALIZED VIEW)',
+      'PostgreSQL JSONB Data Type: Querying JSON with ->, ->>, ?, and @> operators',
+      'PostgreSQL Triggers & Stored Procedures (PL/pgSQL)',
+      'Database Backups (pg_dump, pg_restore) & Connection Pooling (PgBouncer)',
+    ],
+    exercises: [
+      'Execute a bank transfer transaction between two accounts using SELECT ... FOR UPDATE locking and ROLLBACK on insufficient funds.',
+      'Create a Materialized View for a complex analytics report and set up a refresh schedule.',
+    ],
+    resources: [
+      'PostgreSQL Transactions Guide: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-transaction/',
+      'PostgreSQL JSONB Tutorial: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-jsonb/',
+    ],
+  ),
+];

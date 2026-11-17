@@ -1,0 +1,315 @@
+import 'package:dev_path/models/roadmap_step_model.dart';
+
+final List<RoadmapStepModel> vueRoadmapSteps = [
+  RoadmapStepModel(
+    id: 1,
+    title: 'Vue 3 Foundations & Composition API',
+    description:
+        'Master Vue 3 fundamentals, single-file components (.vue), script setup syntax, and the Composition API.',
+    duration: '1-2 weeks',
+    phase: 'Phase 1: Vue Core',
+    level: 'Beginner',
+    learningObjectives:
+        'Understand Vue 3 app mounting, write Single File Components with <script setup>, and compare Composition API with Options API.',
+    subtopics: [
+      'Vue 3 design goals: Performance, TypeScript support, & Composition API',
+      'Creating Vue apps with Vite (npm create vue@latest)',
+      'Anatomy of Single File Components (.vue): <template>, <script>, <style>',
+      'Script setup syntax (<script setup>) & Top-level bindings',
+      'Composition API vs Options API architecture',
+      'Template interpolation with mustache syntax ({{ value }})',
+      'Directive fundamentals: v-text, v-html, v-show, v-if, v-else-if, v-else',
+      'List rendering with v-for and maintaining key identities (:key)',
+      'Attribute binding with v-bind (:attribute shorthand)',
+      'Event handling with v-on (@event shorthand) & Event modifiers (.prevent, .stop)',
+    ],
+    exercises: [
+      'Create a reactive task counter app in Vue 3 using <script setup> syntax.',
+      'Build a interactive filtering list displaying items conditionally using v-if and v-for with dynamic bindings.',
+    ],
+    resources: [
+      'Vue 3 Official Documentation: https://vuejs.org/guide/introduction.html',
+      'Vue School Free Introductory Course: https://vueschool.io/',
+      'Vite Official Guide: https://vitejs.dev/guide/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 2,
+    title: 'Reactivity System: ref vs reactive',
+    description:
+        'Understand Vue 3 Proxy-based reactivity system, ref(), reactive(), computed properties, and watchers.',
+    duration: '2 weeks',
+    phase: 'Phase 1: Vue Core',
+    level: 'Beginner',
+    learningObjectives:
+        'Manage reactive primitives with ref and reactive objects, create cached computed getters, and observe side-effects with watch.',
+    subtopics: [
+      'Vue 3 Proxy-based Reactivity System vs Vue 2 Object.defineProperty',
+      'ref() for primitive values & reactive() for objects/arrays',
+      'Unwrapping refs in template vs .value access in JavaScript',
+      'Loss of reactivity with destructuring & using toRefs() / toRef()',
+      'Computed Properties (computed()): Cached getters vs method calls',
+      'Writable Computed Properties (get and set accessors)',
+      'Watchers (watch()): Observing specific reactive sources & previous/new values',
+      'Deep watching (deep: true) & immediate watchers (immediate: true)',
+      'watchEffect(): Automatic dependency tracking for side-effects',
+      'Stopping watchers & managing watcher cleanup effects',
+    ],
+    exercises: [
+      'Build a currency converter in Vue 3 using computed properties that automatically update when exchange rates or input amounts change.',
+      'Construct a search auto-save feature using watchEffect with debounced API execution.',
+    ],
+    resources: [
+      'Vue 3 Reactivity Fundamentals: https://vuejs.org/guide/essentials/reactivity-fundamentals.html',
+      'Vue 3 Computed & Watchers Guide: https://vuejs.org/guide/essentials/computed.html',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 3,
+    title: 'Component Architecture & Communication',
+    description:
+        'Build modular Vue component trees, pass props, emit custom events, slots, and provide/inject dependency trees.',
+    duration: '2 weeks',
+    phase: 'Phase 2: Component Design',
+    level: 'Intermediate',
+    learningObjectives:
+        'Pass typed props with defineProps, emit events with defineEmits, implement component Slots, and utilize Provide/Inject.',
+    subtopics: [
+      'Component registration: Local vs Global component registration',
+      'Passing data down with Props (defineProps() in script setup)',
+      'Prop Validation: Type checks, required flags, and default factories',
+      'Emitting events up with Custom Events (defineEmits())',
+      'Two-way component binding with v-model (v-model:propName)',
+      'Component Slots: Default slots, Named slots, & Scoped slots (v-slot / #name)',
+      'Provide / Inject API for deep component hierarchy dependency injection',
+      'Dynamic components with <component :is="..."> & keep-alive caching',
+      'Template Refs (ref="elementName") and accessing DOM nodes / child methods via defineExpose',
+      'Scoped CSS (<style scoped>), CSS Modules, & v-bind in CSS',
+    ],
+    exercises: [
+      'Build a custom Modal dialog component in Vue 3 using named slots for header, body, and footer actions.',
+      'Implement a custom Form Input component using v-model two-way binding.',
+    ],
+    resources: [
+      'Vue 3 Components In-Depth: https://vuejs.org/guide/components/registration.html',
+      'Vue 3 Slots Guide: https://vuejs.org/guide/components/slots.html',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 4,
+    title: 'Vue Router 4 for Single Page Applications (SPA)',
+    description:
+        'Build multi-page Single Page Applications using Vue Router 4, dynamic routing, nested views, and navigation guards.',
+    duration: '2 weeks',
+    phase: 'Phase 2: Component Design',
+    level: 'Intermediate',
+    learningObjectives:
+        'Configure Vue Router history modes, dynamic route params, nested routes, lazy loading, and route protection guards.',
+    subtopics: [
+      'SPA Routing concept & Vue Router 4 installation',
+      'Configuring router instance (createRouter, createWebHistory vs createWebHashHistory)',
+      'RouterView & RouterLink components (:to="{ name, params }")',
+      'Dynamic Route Matching (:id params) & accessing via useRoute()',
+      'Nested Routes & child RouterView components',
+      'Programmatic navigation using useRouter() (push, replace, go)',
+      'Named routes & Named views for complex layouts',
+      'Global Navigation Guards (beforeEach, afterEach) for authentication',
+      'Per-route & In-component navigation guards (onBeforeRouteUpdate, onBeforeRouteLeave)',
+      'Lazy loading routes with dynamic imports () => import(...)',
+    ],
+    exercises: [
+      'Build an admin dashboard with Vue Router 4 featuring nested sub-pages and authenticated route guards.',
+      'Implement a product detail page with dynamic route parameters and programmatic back navigation.',
+    ],
+    resources: [
+      'Vue Router 4 Official Docs: https://router.vuejs.org/',
+      'Vue Router Navigation Guards: https://router.vuejs.org/guide/advanced/navigation-guards.html',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 5,
+    title: 'State Management with Pinia',
+    description:
+        'Manage global application state using Pinia, Vue\'s official state management library replacing Vuex.',
+    duration: '2 weeks',
+    phase: 'Phase 3: Ecosystem',
+    level: 'Intermediate',
+    learningObjectives:
+        'Define Pinia Option Stores and Setup Stores, manage state, getters, actions, and persist state with plugins.',
+    subtopics: [
+      'Why Pinia? Replacing Vuex: Type safety, devtools, & zero mutations concept',
+      'Installing Pinia & registering in Vue app instance (createPinia)',
+      'Defining Stores: Option Stores (state, getters, actions) vs Setup Stores (ref, computed, function)',
+      'Accessing store state in components & destructuring with storeToRefs()',
+      'Updating state directly & resetting store state (\$reset)',
+      'Pinia Getters: Computed state & passing arguments to getters',
+      'Pinia Actions: Asynchronous actions, side-effects, & API calls',
+      'Subscribing to state changes (\$subscribe) & action calls (\$onAction)',
+      'Pinia Plugins: Persisting state to localStorage (pinia-plugin-persistedstate)',
+      'Testing Pinia stores independently with Vitest',
+    ],
+    exercises: [
+      'Build a shopping cart store in Pinia using Setup Store syntax, with methods to add items, calculate totals, and persist to localStorage.',
+      'Implement a user authentication store in Pinia handling login API requests and token storage.',
+    ],
+    resources: [
+      'Pinia Official Documentation: https://pinia.vuejs.org/',
+      'Pinia Setup Stores Guide: https://pinia.vuejs.org/core-concepts/#Setup-Stores',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 6,
+    title: 'Custom Composables & Reusable Logic',
+    description:
+        'Extract reusable stateful logic into Custom Composables following Vue 3 design patterns.',
+    duration: '2 weeks',
+    phase: 'Phase 3: Ecosystem',
+    level: 'Intermediate to Advanced',
+    learningObjectives:
+        'Write custom composable functions (useFetch, useLocalStorage, useMouse), handle lifecycle hooks, and structure VueUse utility functions.',
+    subtopics: [
+      'Composables concept: Stateful logic reuse vs Mixins / Higher Order Components',
+      'Naming conventions (useXxx functions) & returning reactive objects/methods',
+      'Passing refs vs raw values to composables (unref, toValue helpers)',
+      'Integrating lifecycle hooks in composables (onMounted, onUnmounted)',
+      'Building a custom useFetch composable for async API requests with loading/error states',
+      'Building a custom useEventListener composable with automatic cleanup',
+      'Building a custom useLocalStorage composable for persistent reactive state',
+      'VueUse library overview: Exploring essential composables (useMouse, useDark, useWindowSize)',
+      'Async composables & handling memory leaks',
+      'Testing composables using Vitest & Vue Test Utils',
+    ],
+    exercises: [
+      'Create a custom useFetch composable supporting auto-refetching when query parameters change.',
+      'Build a useDark composable that toggles a dark mode CSS class on the root HTML element and saves preference.',
+    ],
+    resources: [
+      'Vue 3 Composables Guide: https://vuejs.org/guide/reusability/composables.html',
+      'VueUse Collection of Essential Vue Composables: https://vueuse.org/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 7,
+    title: 'Advanced Directives, Teleport & Transitions',
+    description:
+        'Master Vue Built-in Components: Teleport, Transition, TransitionGroup, Suspense, and Custom Directives.',
+    duration: '2 weeks',
+    phase: 'Phase 4: Advanced Features',
+    level: 'Intermediate to Advanced',
+    learningObjectives:
+        'Render elements outside DOM hierarchy with Teleport, animate elements with Transition, and write Custom Directives.',
+    subtopics: [
+      'Teleport component (<Teleport to="body">): Rendering modals & tooltips outside DOM hierarchy',
+      'Transition component (<Transition name="fade">): CSS transition classes (v-enter-from, v-enter-active, v-enter-to)',
+      'JavaScript hooks in Transitions (before-enter, enter, leave)',
+      'TransitionGroup component for list animations & move transitions (v-move)',
+      'Suspense component (<Suspense>) for handling async component loading states',
+      'Custom Directives: Defining directive lifecycle hooks (created, mounted, updated, unmounted)',
+      'Binding values & arguments in custom directives (v-focus, v-click-outside)',
+      'Render Functions (h()) & JSX in Vue 3',
+      'Performance Optimization: v-once, v-memo for re-render optimization',
+      'Virtual List rendering for large data sets',
+    ],
+    exercises: [
+      'Build a custom v-click-outside directive that closes dropdown menus when clicking outside the element.',
+      'Create a smooth animated list using TransitionGroup for adding and deleting items.',
+    ],
+    resources: [
+      'Vue 3 Transition & Animation: https://vuejs.org/guide/built-ins/transition.html',
+      'Vue 3 Custom Directives: https://vuejs.org/guide/reusability/custom-directives.html',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 8,
+    title: 'Vue 3 with TypeScript Integration',
+    description:
+        'Build robust, type-safe Vue 3 applications with TypeScript, typed props, emitted events, and store types.',
+    duration: '2 weeks',
+    phase: 'Phase 4: Advanced Features',
+    level: 'Intermediate to Advanced',
+    learningObjectives:
+        'Type Vue components with generic defineProps<T>(), defineEmits<T>(), type Template Refs, and configure tsconfig.json.',
+    subtopics: [
+      'Why TypeScript with Vue 3? Native Composition API type inference',
+      'Configuring tsconfig.json & vue-tsc type checking compiler',
+      'Typing component props with generic type parameters (defineProps<{ title: string; count?: number }>())',
+      'Default prop values using withDefaults() compiler macro',
+      'Typing custom emitted events (defineEmits<{ (e: "change", id: number): void }>())',
+      'Typing ref(), reactive(), and computed() variables',
+      'Typing Event Handlers & DOM Event objects (HTMLInputElement)',
+      'Typing Template Refs (ref<InstanceType<typeof MyComponent> | null>(null))',
+      'Typing Pinia stores and Vue Router route meta fields',
+      'Volar extension for VS Code & IDE type checking',
+    ],
+    exercises: [
+      'Refactor a Vue 3 component to use generic TypeScript defineProps with interface validation and default values.',
+      'Type an API client and Pinia store with full TypeScript interfaces.',
+    ],
+    resources: [
+      'Vue 3 with TypeScript Guide: https://vuejs.org/guide/typescript/overview.html',
+      'TypeScript Official Docs: https://www.typescriptlang.org/docs/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 9,
+    title: 'Testing Vue Components with Vitest & Vue Test Utils',
+    description:
+        'Write automated unit and component tests for Vue 3 applications using Vitest and Vue Test Utils.',
+    duration: '2 weeks',
+    phase: 'Phase 5: Production & Full-Stack',
+    level: 'Advanced',
+    learningObjectives:
+        'Mount components with mount/shallowMount, trigger user events, mock Pinia/Vue Router, and test async composables.',
+    subtopics: [
+      'Testing philosophy in Vue: Unit testing vs Component integration testing',
+      'Vitest runner: Speed, native ESM, Vite config sharing, & watch mode',
+      'Vue Test Utils 2 API: mount() and shallowMount()',
+      'Querying elements: find(), findAll(), get(), and contains()',
+      'Simulating user interactions: trigger("click"), setValue("text")',
+      'Asserting component DOM updates: wrapper.text(), wrapper.classes(), wrapper.emitted()',
+      'Testing component Props & Custom Event emissions',
+      'Mocking dependencies: Mocking Pinia stores & Vue Router using createTestingPinia',
+      'Testing async API calls & flushing promises (flushPromises)',
+      'End-to-End (E2E) testing Vue apps with Cypress or Playwright',
+    ],
+    exercises: [
+      'Write a suite of Vitest unit tests for a Form component verifying validation errors on invalid submit.',
+      'Test a Pinia store action by mocking HTTP API responses.',
+    ],
+    resources: [
+      'Vue Test Utils Official Docs: https://test-utils.vuejs.org/',
+      'Vitest Official Documentation: https://vitest.dev/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 10,
+    title: 'Full-Stack Vue with Nuxt 3 & Server-Side Rendering (SSR)',
+    description:
+        'Build production-grade Server-Side Rendered (SSR) & Static Site Generated (SSG) full-stack web applications with Nuxt 3.',
+    duration: '3 weeks',
+    phase: 'Phase 5: Production & Full-Stack',
+    level: 'Advanced',
+    learningObjectives:
+        'Configure Nuxt 3 directory structure, file-based routing, server engine (Nitro), data fetching (useFetch/useAsyncData), and deployment.',
+    subtopics: [
+      'Nuxt 3 Architecture: Hybrid Rendering, SSR, SSG, & SPA modes',
+      'Nuxt directory structure: pages/, components/, server/, composables/, middleware/',
+      'File-based routing & auto-imported components/composables',
+      'Data fetching in Nuxt: useFetch, useAsyncData, and \$fetch',
+      'Nuxt Server Engine (Nitro): API routes (server/api/), server middleware, & H3 event handlers',
+      'SEO & Head management: useHead, useSeoMeta, & dynamic open graph tags',
+      'Nuxt Modules ecosystem (Nuxt Tailwind, Nuxt Content, Nuxt Pinia)',
+      'State management in Nuxt with useState() hook',
+      'Authentication middleware (defineNuxtRouteMiddleware)',
+      'Deploying Nuxt 3 to Vercel, Netlify, or Docker container',
+    ],
+    exercises: [
+      'Build a blog application in Nuxt 3 with SSR, file-based dynamic routes, and dynamic SEO meta tags.',
+      'Create a server API endpoint in Nuxt 3 (server/api/users.ts) fetching data from a database and consuming it via useFetch.',
+    ],
+    resources: [
+      'Nuxt 3 Official Documentation: https://nuxt.com/docs',
+      'Nuxt 3 Modules Directory: https://nuxt.com/modules',
+    ],
+  ),
+];

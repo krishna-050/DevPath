@@ -203,7 +203,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'DevPath • v1.0.0',
+                      'Learning Path • v1.0.0',
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.bold,

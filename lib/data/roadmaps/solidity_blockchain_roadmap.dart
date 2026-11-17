@@ -1,0 +1,320 @@
+import 'package:dev_path/models/roadmap_step_model.dart';
+
+final List<RoadmapStepModel> solidityBlockchainRoadmapSteps = [
+  RoadmapStepModel(
+    id: 1,
+    title: 'Blockchain Concepts & Ethereum Architecture',
+    description:
+        'Understand Distributed Ledger Technology, Consensus Mechanisms, Ethereum Virtual Machine (EVM), Gas, and Wallet Cryptography.',
+    duration: '2 weeks',
+    phase: 'Phase 1: Web3 Foundations',
+    level: 'Beginner',
+    learningObjectives:
+        'Understand EVM execution, Gas calculations, Public/Private key cryptography, and Ethereum transactions.',
+    subtopics: [
+      'Distributed Ledger Technology (DLT) vs Centralized Databases',
+      'Consensus Mechanisms: Proof of Work (PoW) vs Proof of Stake (PoS)',
+      'Ethereum Architecture: EVM (Ethereum Virtual Machine), Nodes, & Clients (Geth, Nethermind)',
+      'Gas Mechanics: Gas Limit, Gas Price, Base Fee, Priority Fee (EIP-1559)',
+      'Ethereum Accounts: Externally Owned Accounts (EOA) vs Contract Accounts',
+      'Public Key Cryptography: Elliptic Curve secp256k1, Private Keys, Public Keys, Addresses',
+      'Transaction Lifecycle: Nonce, To, Value, Data, Gas, & Signature (r, s, v)',
+      'Ethereum Networks: Mainnet, Testnets (Sepolia, Holesky), Local Devnets (Hardhat, Anvil)',
+      'Crypto Wallets: Metamask, Hardware Wallets, Seed Phrases (BIP-39), Private key management',
+      'Block Explorers: Navigating Etherscan for transactions, logs, and contract code',
+    ],
+    exercises: [
+      'Create a Sepolia Testnet account, obtain test ETH from a faucet, and execute a value transfer transaction via MetaMask.',
+      'Analyze an Ethereum transaction hash on Etherscan, decoding gas fees and input data payload.',
+    ],
+    resources: [
+      'Ethereum Official Docs: https://ethereum.org/en/developers/docs/',
+      'Mastering Ethereum Book (Free): https://github.com/ethereumbook/ethereumbook',
+      'Etherscan Block Explorer: https://etherscan.io/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 2,
+    title: 'Solidity Language Syntax & Types',
+    description:
+        'Master Solidity file structure, pragma directives, state variables, elementary data types, and variable visibility.',
+    duration: '2 weeks',
+    phase: 'Phase 1: Web3 Foundations',
+    level: 'Beginner',
+    learningObjectives:
+        'Write Solidity smart contracts (.sol), declare state & local variables, understand variable visibility, and compile with Remix IDE.',
+    subtopics: [
+      'Solidity compilation & License Identifiers (SPDX-License-Identifier)',
+      'Pragma version directives (pragma solidity ^0.8.20)',
+      'Remix Online IDE walkthrough: Editing, Compiling, Deploying, Testing',
+      'Elementary Data Types: uint (uint256, uint8), int, bool, address, address payable',
+      'Bytes types: Fixed-size byte arrays (bytes1 to bytes32) vs Dynamic bytes',
+      'Variable Scopes: State Variables (persistent on-chain storage) vs Local Variables (memory) vs Global Variables',
+      'Global Variables: msg.sender, msg.value, block.timestamp, block.number, tx.origin',
+      'State Variable Visibility: public, private, internal',
+      'Constant (constant) & Immutable (immutable) variables for gas savings',
+      'Basic Control Flow: if, else, for, while, do-while',
+    ],
+    exercises: [
+      'Write a simple Storage smart contract in Remix IDE with getters and setters for a state variable.',
+      'Create a contract calculating time-based unlock restrictions using block.timestamp.',
+    ],
+    resources: [
+      'Solidity Official Documentation: https://docs.soliditylang.org/',
+      'Remix Web IDE: https://remix.ethereum.org/',
+      'CryptoZombies Interactive Solidity Tutorial: https://cryptozombies.io/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 3,
+    title: 'Functions, Modifiers & Error Handling',
+    description:
+        'Write smart contract Functions, View/Pure mutability specifiers, Function Modifiers, and custom error handling.',
+    duration: '2 weeks',
+    phase: 'Phase 2: Smart Contract Dev',
+    level: 'Intermediate',
+    learningObjectives:
+        'Write View and Pure functions, enforce access control with custom Function Modifiers, and handle revert errors with require & Custom Errors.',
+    subtopics: [
+      'Function Syntax: Name, Parameters, Visibility, Mutability, Return values',
+      'Function Visibility: public, external, internal, private',
+      'State Mutability Specifiers: view (reads state), pure (no state access), payable (receives Ether)',
+      'Function Modifiers (modifier onlyOwner) & the merge wildcard (_)',
+      'Passing arguments to Function Modifiers',
+      'Receiving Ether: receive() external payable and fallback() external payable functions',
+      'Error Handling: require(), assert(), revert() statements',
+      'Gas-efficient Custom Errors (error Unauthorized(); revert Unauthorized();)',
+      'Events & Logging (event Transfer(...); emit Transfer(...); indexed parameters)',
+      'Return values & Named return variables',
+    ],
+    exercises: [
+      'Build a Crowdfunding smart contract in Solidity with deposit/withdraw functions using custom errors and custom modifiers.',
+      'Implement an Event system logging user deposits with indexed addresses for off-chain monitoring.',
+    ],
+    resources: [
+      'Solidity Functions Guide: https://docs.soliditylang.org/en/v0.8.25/contracts.html#functions',
+      'Solidity Custom Errors: https://soliditylang.org/blog/2021/04/21/custom-errors/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 4,
+    title: 'Mappings, Structs, Arrays & Memory Locations',
+    description:
+        'Master Solidity complex data structures: Mappings, Structs, Dynamic Arrays, and Storage vs Memory vs Calldata data locations.',
+    duration: '2 weeks',
+    phase: 'Phase 2: Smart Contract Dev',
+    level: 'Intermediate',
+    learningObjectives:
+        'Manage Mappings and Nested Mappings, create Structs, manipulate Dynamic Arrays, and optimize Gas using Calldata/Memory.',
+    subtopics: [
+      'Data Locations in Solidity: storage, memory, calldata',
+      'When to use calldata (read-only external parameters) for Gas savings',
+      'Mappings: Key-Value pairs (mapping(address => uint256))',
+      'Nested Mappings (mapping(address => mapping(address => bool)))',
+      'Structs: Defining custom composite types & Struct array/mapping combinations',
+      'Fixed-size Arrays vs Dynamic Arrays (push(), pop(), delete)',
+      'Memory Arrays (new uint[](length))',
+      'Deleting array elements & Array reordering patterns',
+      'Enums (enum Status { Pending, Active, Cancelled })',
+      'Gas Optimization strategies for array loops and storage writes',
+    ],
+    exercises: [
+      'Build a Voting smart contract using Structs to represent Proposals and Mappings to track user votes.',
+      'Implement a Token Allowance mapping system using nested mappings.',
+    ],
+    resources: [
+      'Solidity Types Documentation: https://docs.soliditylang.org/en/v0.8.25/types.html',
+      'Solidity by Example: https://solidity-by-example.org/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 5,
+    title: 'Inheritance, Interfaces & Contract Composition',
+    description:
+        'Understand Object-Oriented Solidity: Single/Multiple Inheritance, Abstract Contracts, Interfaces, and Low-Level Calls.',
+    duration: '2-3 weeks',
+    phase: 'Phase 2: Smart Contract Dev',
+    level: 'Intermediate to Advanced',
+    learningObjectives:
+        'Inherit contracts with is keyword, override methods with virtual/override, write Interfaces, and execute address.call().',
+    subtopics: [
+      'Inheritance in Solidity: is keyword & Parent constructor initialization',
+      'Method Overriding: virtual functions in parent & override keyword in child',
+      'Multiple Inheritance & C3 Linearization order',
+      'Abstract Contracts (contracts with unimplemented functions)',
+      'Interfaces (interface IToken): Rules of interfaces (no state, external methods)',
+      'Calling external smart contracts using Interface type casting',
+      'Low-Level Contract Calls: targetAddress.call{value: x}(abi.encodeWithSignature("..."))',
+      'delegatecall vs call mechanics & storage slot layout risks',
+      'Library contracts (library SafeMath) & using Library for Type syntax',
+      'OpenZeppelin Contracts library overview',
+    ],
+    exercises: [
+      'Build an Ownable base contract and inherit it in a Vault contract to enforce admin access control.',
+      'Execute a low-level .call() to send ETH safely to an external contract checking success boolean returns.',
+    ],
+    resources: [
+      'Solidity Contracts & Inheritance: https://docs.soliditylang.org/en/v0.8.25/contracts.html#inheritance',
+      'OpenZeppelin Contracts Repository: https://github.com/OpenZeppelin/openzeppelin-contracts',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 6,
+    title: 'ERC-20 Tokens & ERC-721 NFTs (OpenZeppelin)',
+    description:
+        'Build standardized Fungible Tokens (ERC-20) and Non-Fungible Tokens (ERC-721 NFTs) using OpenZeppelin standards.',
+    duration: '2-3 weeks',
+    phase: 'Phase 3: Standards & Tokens',
+    level: 'Intermediate to Advanced',
+    learningObjectives:
+        'Implement ERC-20 token transfer/allowance methods, mint ERC-721 NFTs with IPFS metadata URI, and deploy OpenZeppelin contracts.',
+    subtopics: [
+      'Ethereum Request for Comments (ERC) standards process',
+      'ERC-20 Fungible Token Standard: totalSupply, balanceOf, transfer, approve, allowance, transferFrom',
+      'ERC-20 Events: Transfer and Approval',
+      'Minting, Burning, & Pausing ERC-20 tokens using OpenZeppelin ERC20',
+      'ERC-721 Non-Fungible Token (NFT) Standard: ownerOf, safeTransferFrom, approve, setApprovalForAll',
+      'NFT Metadata Standard: tokenURI(tokenId) & IPFS / Arweave decentralized metadata storage',
+      'ERC-1155 Multi-Token Standard (Fungible + Non-Fungible in one contract)',
+      'Royalties in NFTs (ERC-2981 Standard)',
+      'OpenZeppelin Wizard for interactive contract generation',
+      'Deploying ERC-20 & ERC-721 contracts to Sepolia Testnet',
+    ],
+    exercises: [
+      'Create and deploy a custom ERC-20 cryptocurrency token with capped supply and minting limits using OpenZeppelin.',
+      'Mint an ERC-721 NFT collection with IPFS metadata URIs uploaded via Pinata.',
+    ],
+    resources: [
+      'ERC-20 Token Standard Spec: https://eips.ethereum.org/EIPS/eip-20',
+      'ERC-721 Non-Fungible Token Spec: https://eips.ethereum.org/EIPS/eip-721',
+      'OpenZeppelin Wizard: https://wizard.openzeppelin.com/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 7,
+    title: 'Smart Contract Security & Vulnerabilities',
+    description:
+        'Identify, exploit, and prevent critical smart contract vulnerabilities: Reentrancy, Front-running, Arithmetic issues, and Access Control bugs.',
+    duration: '3 weeks',
+    phase: 'Phase 3: Standards & Tokens',
+    level: 'Advanced',
+    learningObjectives:
+        'Audit smart contracts for Reentrancy vulnerabilities, implement Checks-Effects-Interactions pattern, and use Slither security analysis.',
+    subtopics: [
+      'The DAO Hack history & Reentrancy vulnerability mechanics',
+      'Preventing Reentrancy: Checks-Effects-Interactions pattern & ReentrancyGuard modifier',
+      'Arithmetic Overflows / Underflows & Solidity 0.8+ checked arithmetic (unchecked blocks)',
+      'Access Control Misconfigurations (tx.origin vs msg.sender attacks)',
+      'Front-running & Miner Extractable Value (MEV) attacks',
+      'Denial of Service (DoS) with Failed Calls / Block Gas Limit attacks',
+      'Insecure Randomness (using block.timestamp/blockhash) & Chainlink VRF for verifiable randomness',
+      'Delegatecall Storage Collision vulnerabilities',
+      'Static Analysis tools: Slither, Mythril, & Solhint linters',
+      'Smart Contract Audit Process & Writing Security Reports',
+    ],
+    exercises: [
+      'Exploit a vulnerable Bank contract using a Reentrancy attack contract in Remix, then rewrite the Bank contract securely using ReentrancyGuard.',
+      'Run Slither static analysis on a Solidity repository to detect security vulnerabilities.',
+    ],
+    resources: [
+      'SWC Registry (Smart Contract Weakness Classification): https://swcregistry.io/',
+      'Damn Vulnerable DeFi Security Challenges: https://www.damnvulnerabledefi.xyz/',
+      'Ethernaut Security Game (OpenZeppelin): https://ethernaut.openzeppelin.com/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 8,
+    title: 'Hardhat & Foundry Smart Contract Frameworks',
+    description:
+        'Develop, test, compile, and deploy professional smart contracts using Hardhat or Foundry testing frameworks.',
+    duration: '3 weeks',
+    phase: 'Phase 4: Frameworks & Web3 Integration',
+    level: 'Advanced',
+    learningObjectives:
+        'Set up Hardhat / Foundry environment, write TypeScript / Solidity unit tests, fork Mainnet state, and execute deployment scripts.',
+    subtopics: [
+      'Smart Contract Development Frameworks: Hardhat (JS/TS) vs Foundry (Rust/Solidity)',
+      'Hardhat project setup (npx hardhat init) & hardhat.config.ts configuration',
+      'Writing Automated Unit Tests in Hardhat using Mocha, Chai, & Hardhat Network Helpers',
+      'Foundry Framework (forge, cast, anvil) - Writing tests natively in Solidity',
+      'Testing Events, Reverts, and Balance changes in Hardhat / Foundry',
+      'Mainnet Forking: Simulating real protocol interactions (Uniswap, Aave) locally',
+      'Hardhat Ignition / Deployment scripts for deterministic multi-contract deployments',
+      'Verifying Smart Contract Source Code on Etherscan via CLI (hardhat-etherscan)',
+      'Gas Profiling & Optimization analysis with hardhat-gas-reporter',
+      'Code Coverage reporting for smart contracts (solidity-coverage)',
+    ],
+    exercises: [
+      'Build a Hardhat test suite with 100% code coverage for a Staking smart contract.',
+      'Fork Ethereum Mainnet state locally in Hardhat and simulate swapping tokens on Uniswap V3.',
+    ],
+    resources: [
+      'Hardhat Official Documentation: https://hardhat.org/docs',
+      'Foundry Book Documentation: https://book.getfoundry.sh/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 9,
+    title: 'Web3 Frontend Integration (Ethers.js / Viem / Wagmi)',
+    description:
+        'Connect Web frontend applications (React/Next.js) to Smart Contracts using Ethers.js, Viem, and Wagmi hooks.',
+    duration: '2-3 weeks',
+    phase: 'Phase 4: Frameworks & Web3 Integration',
+    level: 'Advanced',
+    learningObjectives:
+        'Connect MetaMask wallet, query smart contract state, send transactions, listen to on-chain Events, and handle Web3 errors.',
+    subtopics: [
+      'Web3 Frontend Architecture: Provider (Read) vs Signer (Write)',
+      'Ethers.js v6 Library basics: Contract instantiation, Provider, Signer',
+      'Viem & Wagmi Modern Web3 React hooks library',
+      'Wallet Connection components: RainbowKit, Web3Modal, ConnectButton',
+      'Reading Smart Contract State in React (useReadContract)',
+      'Executing Smart Contract Transactions in React (useWriteContract)',
+      'Handling Transaction States: Pending, Submitted, Mined, & Error states',
+      'Listening to Contract Events in Real-Time (useWatchContractEvent)',
+      'Indexing Blockchain Data using The Graph protocol & Subgraphs (GraphQL)',
+      'Decoding ABI (Application Binary Interface) & transaction errors',
+    ],
+    exercises: [
+      'Build a Next.js DApp with RainbowKit allowing users to connect their MetaMask wallet, view token balances, and mint an NFT.',
+      'Deploy a custom Subgraph on The Graph Protocol to index transfer events from an ERC-20 contract.',
+    ],
+    resources: [
+      'Wagmi React Hooks Documentation: https://wagmi.sh/',
+      'Viem TypeScript Interface Docs: https://viem.sh/',
+      'The Graph Documentation: https://thegraph.com/docs/en/',
+    ],
+  ),
+  RoadmapStepModel(
+    id: 10,
+    title: 'DeFi Protocols, Oracles & Layer 2 Scaling',
+    description:
+        'Understand Decentralized Finance (DeFi) primitives, Chainlink Oracles, Automated Market Makers (AMM), and Layer 2 Rollups.',
+    duration: '3 weeks',
+    phase: 'Phase 5: Production & DeFi',
+    level: 'Advanced',
+    learningObjectives:
+        'Integrate Chainlink Price Feeds, understand Uniswap AMM math (x * y = k), Flash Loans, and Layer 2 Rollup deployments (Arbitrum, Optimism, Base).',
+    subtopics: [
+      'DeFi Ecosystem overview: Decentralized Exchanges (DEX), Lending/Borrowing, Stablecoins',
+      'Automated Market Makers (AMM): Constant Product Formula (x * y = k) in Uniswap V2/V3',
+      'Liquidity Pools, LP Tokens, & Impermanent Loss concept',
+      'Lending & Borrowing Protocol Architecture (Aave, Compound): Collateralization, Health Factor, Liquidation',
+      'Chainlink Decentralized Oracles: Fetching tamper-proof Price Feeds on-chain',
+      'Flash Loans: Borrowing uncollateralized assets within a single atomic transaction',
+      'Layer 2 Scaling Solutions: Optimistic Rollups (Arbitrum, Optimism) vs ZK-Rollups (zkSync, Starknet)',
+      'Cross-Chain Communication: Chainlink CCIP & Bridges',
+      'Account Abstraction (ERC-4337): Smart Contract Wallets & Social Recovery',
+      'Deploying DApps to Layer 2 Networks (Base / Arbitrum / Polygon)',
+    ],
+    exercises: [
+      'Build a Solidity contract that consumes Chainlink Data Feeds to fetch real-time ETH/USD price on-chain.',
+      'Deploy a complete DeFi DApp to Base Layer 2 testnet.',
+    ],
+    resources: [
+      'Chainlink Price Feeds Docs: https://docs.chain.link/data-feeds',
+      'Uniswap V3 Whitepaper & Docs: https://docs.uniswap.org/',
+      'Arbitrum Developer Documentation: https://docs.arbitrum.io/',
+    ],
+  ),
+];
