@@ -147,7 +147,35 @@ class _SettingScreenState extends State<SettingScreen> {
                   );
                 },
               ),
+              const SizedBox(height: 10),
+              _buildActionTile(
+                isDark: isDark,
+                icon: Icons.shield_outlined,
+                iconColor: const Color(0xFF16A34A),
+                title: 'Privacy & Security',
+                subtitle: 'Control your data and privacy',
+                onTap: () {},
+              ),
 
+              const SizedBox(height: 10,),
+
+              _buildActionTile( isDark: isDark,
+                icon: Icons.help_outline_rounded,
+                iconColor: const Color(0xFF9333EA),
+                title: 'Help & Support',
+                subtitle: 'Get help or contact us',
+                onTap: () {},
+              ),
+
+              const SizedBox(height: 10,),
+
+              _buildActionTile( isDark: isDark,
+                icon: Icons.info_outline_rounded,
+                iconColor: AppColor.primary,
+                title: 'About App',
+                subtitle: 'Version 1.0.0',
+                onTap: () {},
+              ),
               const SizedBox(height: 24),
 
               // 4. Storage & Data Header

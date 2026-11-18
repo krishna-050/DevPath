@@ -9,6 +9,8 @@ import 'package:dev_path/screens/setting_screen.dart';
 import 'package:dev_path/screens/step_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:dev_path/controller/auth_controller.dart';
+import 'package:dev_path/screens/login_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -553,17 +555,6 @@ class ProfileScreen extends StatelessWidget {
                         const SizedBox(height: 16),
 
                         // Menu List Items
-                        _buildMenuItem(
-                          isDark: isDark,
-                          icon: Icons.person_outline_rounded,
-                          iconColor: isDark
-                              ? const Color(0xFF60A5FA)
-                              : AppColor.secondary,
-                          title: 'Account Information',
-                          subtitle: 'View and edit your profile details',
-                          onTap: () {},
-                        ),
-                        const SizedBox(height: 10),
 
                         _buildMenuItem(
                           isDark: isDark,
@@ -601,49 +592,6 @@ class ProfileScreen extends StatelessWidget {
                             Get.to(() => const MyNotesScreen());
                           },
                         ),
-                        const SizedBox(height: 10),
-
-                        _buildMenuItem(
-                          isDark: isDark,
-                          icon: Icons.notifications_none_rounded,
-                          iconColor: isDark
-                              ? const Color(0xFF60A5FA)
-                              : AppColor.secondary,
-                          title: 'Notifications',
-                          subtitle: 'Manage your notifications',
-                          onTap: () {},
-                        ),
-                        const SizedBox(height: 10),
-
-                        _buildMenuItem(
-                          isDark: isDark,
-                          icon: Icons.shield_outlined,
-                          iconColor: const Color(0xFF16A34A),
-                          title: 'Privacy & Security',
-                          subtitle: 'Control your data and privacy',
-                          onTap: () {},
-                        ),
-                        const SizedBox(height: 10),
-
-                        _buildMenuItem(
-                          isDark: isDark,
-                          icon: Icons.help_outline_rounded,
-                          iconColor: const Color(0xFF9333EA),
-                          title: 'Help & Support',
-                          subtitle: 'Get help or contact us',
-                          onTap: () {},
-                        ),
-                        const SizedBox(height: 10),
-
-                        _buildMenuItem(
-                          isDark: isDark,
-                          icon: Icons.info_outline_rounded,
-                          iconColor: AppColor.primary,
-                          title: 'About App',
-                          subtitle: 'Version 1.0.0',
-                          onTap: () {},
-                        ),
-
                         const SizedBox(height: 20),
 
                         // Logout Button
@@ -664,14 +612,42 @@ class ProfileScreen extends StatelessWidget {
                               ),
                             ),
                             onPressed: () {
-                              Get.snackbar(
-                                'Logout',
-                                'Successfully logged out.',
-                                snackPosition: SnackPosition.BOTTOM,
-                                backgroundColor: surfaceColor,
-                                colorText: textPrimaryColor,
-                                margin: const EdgeInsets.all(16),
-                                borderRadius: 12,
+                              Get.dialog(
+                                AlertDialog(
+                                  backgroundColor: surfaceColor,
+                                  title: Text(
+                                    'Logout',
+                                    style: TextStyle(color: textPrimaryColor),
+                                  ),
+                                  content: Text(
+                                    'Are you sure you want to logout?',
+                                    style: TextStyle(color: textSecondaryColor),
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () => Get.back(),
+                                      child: const Text('Cancel'),
+                                    ),
+                                    ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: AppColor.primary,
+                                        foregroundColor: Colors.white,
+                                      ),
+                                      onPressed: () async {
+                                        Get.back();
+
+                                        final authController = Get.find<AuthController>();
+
+                                        final success = await authController.logout();
+
+                                        if (success) {
+                                          Get.offAll(() => const LoginScreen());
+                                        }
+                                      },
+                                      child: const Text('Logout'),
+                                    ),
+                                  ],
+                                ),
                               );
                             },
                             child: const Row(

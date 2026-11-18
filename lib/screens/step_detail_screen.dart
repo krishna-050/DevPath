@@ -309,31 +309,8 @@ class _StepDetailScreenState extends State<StepDetailScreen>
               pinned: true,
               backgroundColor: bgColor,
               elevation: 0,
-              leading: Padding(
-                padding: const EdgeInsets.all(8),
-                child: GestureDetector(
-                  onTap: () => Get.back(),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: isDark
-                          ? Colors.white.withValues(alpha: 0.1)
-                          : Colors.white.withValues(alpha: 0.9),
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.08),
-                          blurRadius: 8,
-                        ),
-                      ],
-                    ),
-                    child: Icon(
-                      Icons.arrow_back_rounded,
-                      color: textPrimaryColor,
-                      size: 20,
-                    ),
-                  ),
-                ),
-              ),
+              automaticallyImplyLeading: false,
+              leading: const SizedBox.shrink(),
               actions: const [],
               flexibleSpace: FlexibleSpaceBar(
                 background: FadeTransition(
@@ -533,6 +510,18 @@ class _StepDetailScreenState extends State<StepDetailScreen>
                       Expanded(
                         child: Row(
                           children: [
+                            GestureDetector(
+                              onTap: () => Get.back(),
+                              behavior: HitTestBehavior.opaque,
+                              child: Padding(
+                                padding: const EdgeInsets.all(4),
+                                child: Icon(
+                                  Icons.arrow_back_ios_new_rounded,
+                                  color: Colors.white,
+                                  size: 22,
+                                ),
+                              ),
+                            ),
                             SizedBox(width: 33,),
                             _HeroBadge(
                               label: step.phase,

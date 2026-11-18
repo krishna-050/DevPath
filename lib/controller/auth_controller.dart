@@ -1,5 +1,6 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
@@ -71,5 +72,24 @@ class AuthController extends GetxController {
       return false;
     }
   }
+  Future<bool> logout() async {
+    try {
+      await _auth.signOut();
 
-}
+      debugPrint('LOGOUT SUCCESS: ${_auth.currentUser}');
+
+      return _auth.currentUser == null;
+    } on FirebaseAuthException catch (e) {
+      debugPrint('LOGOUT FIREBASE ERROR: ${e.code} - ${e.message}');
+
+      Get.snackbar('Logout Failed', e.message ?? 'Please try again.');
+      return false;
+    } catch (e) {
+      debugPrint('LOGOUT ERROR: $e');
+
+      Get.snackbar('Logout Failed', 'Unable to logout. Please try again.');
+      return false;
+    }
+  }
+  }
+

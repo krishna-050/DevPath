@@ -4,6 +4,7 @@ import 'package:dev_path/controller/progress_controller.dart';
 import 'package:dev_path/data/roadmap_step_data.dart';
 import 'package:dev_path/models/roadmap_model.dart';
 import 'package:dev_path/screens/roadmap_detail_screen.dart';
+import 'package:dev_path/screens/personal_ai_screen.dart';
 import 'package:dev_path/Widgets/roadmap_progress_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -103,32 +104,56 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         actions: [
-          // Notification Bell
-          IconButton(
-            onPressed: () {},
-            icon: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Icon(
-                  Icons.notifications_none_rounded,
-                  color: textPrimaryColor,
-                  size: 24,
-                ),
-                Positioned(
-                  right: 1,
-                  top: 1,
-                  child: Container(
-                    width: 8,
-                    height: 8,
-                    decoration: const BoxDecoration(
-                      color: AppColor.primary,
-                      shape: BoxShape.circle,
-                    ),
+          // Personal AI Chat Button
+          Padding(
+            padding: const EdgeInsets.only(right: 4),
+            child: InkWell(
+              onTap: () {
+                Get.to(() => const PersonalAiScreen());
+              },
+              borderRadius: BorderRadius.circular(12),
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [AppColor.secondary, Color(0xFF60A5FA)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                   ),
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColor.secondary.withValues(alpha: 0.25),
+                      blurRadius: 6,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
                 ),
-              ],
+                child: const Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.auto_awesome_rounded,
+                      color: Colors.white,
+                      size: 16,
+                    ),
+                    SizedBox(width: 4),
+                    Text(
+                      'AI',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
+          // Notification Bell
+
 
           // User Profile Avatar
           Padding(
