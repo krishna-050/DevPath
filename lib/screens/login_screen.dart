@@ -1,7 +1,9 @@
 import 'package:dev_path/app/theme/app_color.dart';
 import 'package:dev_path/controller/auth_controller.dart';
+import 'package:dev_path/screens/forgot_password_screen.dart';
 import 'package:dev_path/screens/main_screen.dart';
 import 'package:dev_path/screens/signup_screen.dart';
+import 'package:dev_path/Widgets/app_button_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,6 +23,8 @@ class _LoginScreenState extends State<LoginScreen> {
   );
   bool _rememberMe = true;
   bool _isPasswordObscured = true;
+  bool _isLoginLoading = false;
+  bool _isGoogleLoading = false;
   final AuthController authController = Get.put(AuthController());
 
   @override
@@ -30,11 +34,45 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
+  Future<void> _handleLogin() async {
+    if (_isLoginLoading || _isGoogleLoading) return;
+    if (!_formKey.currentState!.validate()) return;
+
+    setState(() => _isLoginLoading = true);
+    try {
+      final success = await authController.login(
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
+      if (success && mounted) {
+        Get.offAll(() => const MainScreen());
+      }
+    } finally {
+      if (mounted) setState(() => _isLoginLoading = false);
+    }
+  }
+
+  Future<void> _handleGoogleSignIn() async {
+    if (_isLoginLoading || _isGoogleLoading) return;
+
+    setState(() => _isGoogleLoading = true);
+    try {
+      final success = await authController.signInWithGoogle();
+      if (success && mounted) {
+        Get.offAll(() => const MainScreen());
+      }
+    } finally {
+      if (mounted) setState(() => _isGoogleLoading = false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final screenHeight = mediaQuery.size.height;
     final screenWidth = mediaQuery.size.width;
+
+    final bool anyLoading = _isLoginLoading || _isGoogleLoading;
 
     return Scaffold(
       backgroundColor: AppColor.background,
@@ -65,9 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: screenWidth * 0.055,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.055),
                 child: Column(
                   children: [
                     SizedBox(height: screenHeight * 0.015),
@@ -90,8 +126,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color:
-                                      AppColor.primary.withValues(alpha: 0.15),
+                                  color: AppColor.primary.withValues(
+                                    alpha: 0.15,
+                                  ),
                                   blurRadius: 18,
                                   offset: const Offset(0, 6),
                                 ),
@@ -106,28 +143,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           SizedBox(height: screenHeight * 0.012),
 
                           // App Title
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Learning Path',
-                                style: TextStyle(
-                                  fontSize: screenWidth * 0.1,
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColor.textPrimary,
-                                  letterSpacing: -0.6,
-                                ),
-                              ),
-                              Container(
-                                width: 7,
-                                height: 7,
-                                margin: const EdgeInsets.only(left: 4, top: 10),
-                                decoration: const BoxDecoration(
-                                  color: AppColor.primary,
-                                  shape: BoxShape.circle,
-                                ),
-                              ),
-                            ],
+                          Text(
+                            'Learning Path',
+                            style: TextStyle(
+                              fontSize: screenWidth * 0.1,
+                              fontWeight: FontWeight.bold,
+                              color: AppColor.textPrimary,
+                              letterSpacing: -0.6,
+                            ),
                           ),
 
                           const SizedBox(height: 4),
@@ -147,7 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
 
-                    SizedBox(height: screenHeight * 0.14,),
+                    SizedBox(height: screenHeight * 0.14),
 
                     // Floating Login Card Container (Overlaid inside Stack)
                     Container(
@@ -161,8 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color:
-                                AppColor.textPrimary.withValues(alpha: 0.08),
+                            color: AppColor.textPrimary.withValues(alpha: 0.08),
                             blurRadius: 24,
                             offset: const Offset(0, 8),
                           ),
@@ -202,18 +224,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
                             // Email Field
                             TextFormField(
-                              validator: (value){
-                                if(value==null|| value.trim().isEmpty){
+                              validator: (value) {
+                                if (value == null || value.trim().isEmpty) {
                                   return 'Please enter your email address';
                                 }
-                                if(!emailRegex.hasMatch(value.trim())){
+                                if (!emailRegex.hasMatch(value.trim())) {
                                   return 'Please enter a valid email address';
-
                                 }
                                 return null;
                               },
                               controller: _emailController,
                               keyboardType: TextInputType.emailAddress,
+                              enabled: !anyLoading,
                               style: const TextStyle(
                                 fontSize: 14,
                                 color: AppColor.textPrimary,
@@ -255,17 +277,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
                             // Password Field
                             TextFormField(
-                              validator: (value){
-                                if(value==null||value.trim().isEmpty){
+                              validator: (value) {
+                                if (value == null || value.trim().isEmpty) {
                                   return 'Please enter your password';
                                 }
-                                if(value.trim().length<8){
+                                if (value.trim().length < 8) {
                                   return 'Password must be at least 8 characters';
                                 }
                                 return null;
                               },
                               controller: _passwordController,
                               obscureText: _isPasswordObscured,
+                              enabled: !anyLoading,
                               style: const TextStyle(
                                 fontSize: 14,
                                 color: AppColor.textPrimary,
@@ -289,11 +312,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                     color: AppColor.textSecondary,
                                     size: 20,
                                   ),
-                                  onPressed: () {
-                                    setState(() {
-                                      _isPasswordObscured = !_isPasswordObscured;
-                                    });
-                                  },
+                                  onPressed: anyLoading
+                                      ? null
+                                      : () {
+                                          setState(() {
+                                            _isPasswordObscured =
+                                                !_isPasswordObscured;
+                                          });
+                                        },
                                 ),
                                 filled: true,
                                 fillColor: AppColor.background,
@@ -332,13 +358,17 @@ class _LoginScreenState extends State<LoginScreen> {
                                         value: _rememberMe,
                                         activeColor: AppColor.primary,
                                         shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(4),
+                                          borderRadius: BorderRadius.circular(
+                                            4,
+                                          ),
                                         ),
-                                        onChanged: (val) {
-                                          setState(() {
-                                            _rememberMe = val ?? false;
-                                          });
-                                        },
+                                        onChanged: anyLoading
+                                            ? null
+                                            : (val) {
+                                                setState(() {
+                                                  _rememberMe = val ?? false;
+                                                });
+                                              },
                                       ),
                                     ),
                                     const SizedBox(width: 8),
@@ -353,17 +383,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ],
                                 ),
                                 GestureDetector(
-                                  onTap: () {
-                                    Get.snackbar(
-                                      'Forgot Password',
-                                      'Password reset link has been sent.',
-                                      snackPosition: SnackPosition.BOTTOM,
-                                      backgroundColor: AppColor.surface,
-                                      colorText: AppColor.textPrimary,
-                                      margin: const EdgeInsets.all(16),
-                                      borderRadius: 12,
-                                    );
-                                  },
+                                  onTap: anyLoading
+                                      ? null
+                                      : () {
+                                          Get.to(
+                                            () => const ForgotPasswordScreen(),
+                                          );
+                                        },
                                   child: const Text(
                                     'Forgot Password?',
                                     style: TextStyle(
@@ -387,45 +413,35 @@ class _LoginScreenState extends State<LoginScreen> {
                                   backgroundColor: AppColor.primary,
                                   foregroundColor: Colors.white,
                                   elevation: 4,
-                                  shadowColor:
-                                      AppColor.primary.withValues(alpha: 0.4),
+                                  shadowColor: AppColor.primary.withValues(
+                                    alpha: 0.4,
+                                  ),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(16),
                                   ),
                                 ),
-                                onPressed: () async {
-                                  if (!_formKey.currentState!.validate()) {
-                                    return;
-                                  }
-
-                                  final success = await authController.login(
-                                    email: _emailController.text,
-                                    password: _passwordController.text,
-                                  );
-
-                                  if (success) {
-                                    Get.offAll(() => const MainScreen());
-                                  }
-                                  return;
-                                },
-                                child: const Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Login',
-                                      style: TextStyle(
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.bold,
-                                        letterSpacing: 0.3,
+                                onPressed: anyLoading ? null : _handleLogin,
+                                child: _isLoginLoading
+                                    ? const AppButtonLoader()
+                                    : const Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Login',
+                                            style: TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold,
+                                              letterSpacing: 0.3,
+                                            ),
+                                          ),
+                                          SizedBox(width: 8),
+                                          Icon(
+                                            Icons.arrow_forward_rounded,
+                                            size: 20,
+                                          ),
+                                        ],
                                       ),
-                                    ),
-                                    SizedBox(width: 8),
-                                    Icon(
-                                      Icons.arrow_forward_rounded,
-                                      size: 20,
-                                    ),
-                                  ],
-                                ),
                               ),
                             ),
 
@@ -462,25 +478,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
                             const SizedBox(height: 14),
 
-                            // Social Login Buttons (Google & GitHub)
-                            Row(
-                              children: [
-                                _buildSocialButton(
-                                  imagePath: 'assets/images/google.webp',
-                                  label: 'Google',
-                                  onTap: () {
-                                    Get.offAll(() => const MainScreen());
-                                  },
-                                ),
-                                const SizedBox(width: 14),
-                                _buildSocialButton(
-                                  imagePath: 'assets/images/github.png',
-                                  label: 'GitHub',
-                                  onTap: () {
-                                    Get.offAll(() => const MainScreen());
-                                  },
-                                ),
-                              ],
+                            // Google Sign-In Button
+                            _buildGoogleButton(
+                              label: 'Continue with Google',
+                              isLoading: _isGoogleLoading,
+                              onTap: anyLoading ? null : _handleGoogleSignIn,
                             ),
 
                             const SizedBox(height: 18),
@@ -497,9 +499,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 ),
                                 GestureDetector(
-                                  onTap: () {
-                                    Get.offAll(() => const SignupScreen());
-                                  },
+                                  onTap: anyLoading
+                                      ? null
+                                      : () {
+                                          Get.offAll(
+                                            () => const SignupScreen(),
+                                          );
+                                        },
                                   child: const Text(
                                     'Sign Up',
                                     style: TextStyle(
@@ -527,48 +533,65 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildSocialButton({
-    required String imagePath,
+  Widget _buildGoogleButton({
     required String label,
-    required VoidCallback onTap,
+    required bool isLoading,
+    required VoidCallback? onTap,
   }) {
-    return Expanded(
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(14),
-        child: Container(
-          height: 46,
-          decoration: BoxDecoration(
-            color: AppColor.background,
-            borderRadius: BorderRadius.circular(14),
-            border: Border.all(
-              color: AppColor.border,
-            ),
+    return Container(
+      width: double.infinity,
+      height: 50,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppColor.border, width: 1.2),
+        boxShadow: [
+          BoxShadow(
+            color: AppColor.textPrimary.withValues(alpha: 0.04),
+            blurRadius: 10,
+            offset: const Offset(0, 2),
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                imagePath,
-                width: 22,
-                height: 22,
-                fit: BoxFit.contain,
-                errorBuilder: (context, error, stackTrace) => const Icon(
-                  Icons.account_circle_rounded,
-                  size: 22,
-                  color: AppColor.secondary,
-                ),
-              ),
-              const SizedBox(width: 8),
-              Text(
-                label,
-                style: const TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.bold,
-                  color: AppColor.textPrimary,
-                ),
-              ),
-            ],
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(16),
+          child: Center(
+            child: isLoading
+                ? const AppButtonLoader(
+                    size: 20,
+                    color: AppColor.secondary,
+                    strokeWidth: 2.2,
+                  )
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/images/google.webp',
+                        width: 22,
+                        height: 22,
+                        fit: BoxFit.contain,
+                        errorBuilder: (context, error, stackTrace) =>
+                            const Icon(
+                              Icons.g_mobiledata_rounded,
+                              size: 24,
+                              color: AppColor.secondary,
+                            ),
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        label,
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          color: AppColor.textPrimary,
+                          letterSpacing: 0.2,
+                        ),
+                      ),
+                    ],
+                  ),
           ),
         ),
       ),

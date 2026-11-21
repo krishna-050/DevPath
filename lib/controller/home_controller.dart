@@ -2,26 +2,25 @@ import 'package:dev_path/data/roadmap_data.dart';
 import 'package:dev_path/models/roadmap_model.dart';
 import 'package:get/get.dart';
 
-class HomeController extends GetxController{
+class HomeController extends GetxController {
   @override
-
-  RxList<RoadmapModel> roadmapList = <RoadmapModel>[
-  ].obs;
+  RxList<RoadmapModel> roadmapList = <RoadmapModel>[].obs;
   RxString searchQuery = ''.obs;
 
-  void onInit(){
+  void onInit() {
     super.onInit();
     roadmapList.assignAll(RoadmapData.roadmaps);
   }
+
   // Update search query
-  void searchRoadmap(String value){
-    searchQuery.value =value;
+  void searchRoadmap(String value) {
+    searchQuery.value = value;
   }
 
-  List <RoadmapModel> get filteredRoadmaps{
+  List<RoadmapModel> get filteredRoadmaps {
     final query = searchQuery.value.toLowerCase().trim();
 
-    if(query.isEmpty){
+    if (query.isEmpty) {
       return roadmapList;
     }
     return roadmapList.where((roadmap) {
@@ -30,5 +29,4 @@ class HomeController extends GetxController{
           roadmap.description.toLowerCase().contains(query);
     }).toList();
   }
-
 }

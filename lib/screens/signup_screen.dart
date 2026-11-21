@@ -1,9 +1,13 @@
+import 'package:dev_path/Widgets/app_snackbar.dart';
 import 'package:dev_path/app/theme/app_color.dart';
 import 'package:dev_path/controller/auth_controller.dart';
 import 'package:dev_path/screens/login_screen.dart';
 import 'package:dev_path/screens/main_screen.dart';
+import 'package:dev_path/screens/verify_email_screen.dart';
+import 'package:dev_path/Widgets/app_button_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -25,6 +29,8 @@ class _SignupScreenState extends State<SignupScreen> {
   bool _isTermsAccepted = false;
   bool _isPasswordObscured = true;
   bool _isConfirmPasswordObscured = true;
+  bool _isSignupLoading = false;
+  bool _isGoogleLoading = false;
 
   @override
   void dispose() {
@@ -35,11 +41,66 @@ class _SignupScreenState extends State<SignupScreen> {
     super.dispose();
   }
 
+  Future<void> _handleSignup() async {
+    if (_isSignupLoading || _isGoogleLoading) return;
+
+    final isValid = _formKey.currentState!.validate();
+    if (!isValid) return;
+
+    if (!_isTermsAccepted) {
+      AppSnackBar.show(
+        title: 'Terms Required',
+        message: 'Please accept Terms & Conditions',
+        type: SnackBarType.warning,
+      );
+      return;
+    }
+
+    setState(() => _isSignupLoading = true);
+    try {
+      final success = await authController.signUp(
+        name: _nameController.text,
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
+      if (success && mounted) {
+        Get.to(() => VerifyEmailScreen());
+      }
+    } finally {
+      if (mounted) setState(() => _isSignupLoading = false);
+    }
+  }
+
+  Future<void> _handleGoogleSignIn() async {
+    if (_isSignupLoading || _isGoogleLoading) return;
+
+    setState(() => _isGoogleLoading = true);
+    try {
+      final success = await authController.signInWithGoogle();
+      if (success && mounted) {
+        Get.offAll(() => const MainScreen());
+      }
+    } on GoogleSignInException catch (e) {
+      if (e.code != GoogleSignInExceptionCode.canceled) {
+        debugPrint('GOOGLE SIGN-IN ERROR: ${e.code}');
+        AppSnackBar.show(
+          title: 'Google Sign-In Failed',
+          message: 'Unable to sign in with Google.',
+          type: SnackBarType.error,
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _isGoogleLoading = false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final screenHeight = mediaQuery.size.height;
     final screenWidth = mediaQuery.size.width;
+
+    final bool anyLoading = _isSignupLoading || _isGoogleLoading;
 
     return Scaffold(
       backgroundColor: AppColor.background,
@@ -70,9 +131,7 @@ class _SignupScreenState extends State<SignupScreen> {
             child: SingleChildScrollView(
               physics: const ClampingScrollPhysics(),
               child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: screenWidth * 0.055,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.055),
                 child: Column(
                   children: [
                     SizedBox(height: screenHeight * 0.015),
@@ -95,8 +154,9 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color:
-                                      AppColor.primary.withValues(alpha: 0.15),
+                                  color: AppColor.primary.withValues(
+                                    alpha: 0.15,
+                                  ),
                                   blurRadius: 18,
                                   offset: const Offset(0, 6),
                                 ),
@@ -157,8 +217,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color:
-                                AppColor.textPrimary.withValues(alpha: 0.08),
+                            color: AppColor.textPrimary.withValues(alpha: 0.08),
                             blurRadius: 24,
                             offset: const Offset(0, 8),
                           ),
@@ -196,17 +255,18 @@ class _SignupScreenState extends State<SignupScreen> {
 
                             // Full Name Field
                             TextFormField(
-                              validator: (value){
-                                if(value==null || value.trim().isEmpty){
+                              validator: (value) {
+                                if (value == null || value.trim().isEmpty) {
                                   return 'Enter your full name';
                                 }
-                                if(value.trim().length <3){
+                                if (value.trim().length < 3) {
                                   return 'Name must be at least 3 characters';
                                 }
                                 return null;
                               },
                               controller: _nameController,
                               keyboardType: TextInputType.name,
+                              enabled: !anyLoading,
                               style: const TextStyle(
                                 fontSize: 14,
                                 color: AppColor.textPrimary,
@@ -248,17 +308,18 @@ class _SignupScreenState extends State<SignupScreen> {
 
                             // Email Field
                             TextFormField(
-                              validator: (value){
-                                if(value==null|| value.trim().isEmpty){
+                              validator: (value) {
+                                if (value == null || value.trim().isEmpty) {
                                   return 'Please enter your email address';
                                 }
-                                if(!emailRegex.hasMatch(value.trim())){
+                                if (!emailRegex.hasMatch(value.trim())) {
                                   return 'Please enter a valid email address';
                                 }
                                 return null;
                               },
                               controller: _emailController,
                               keyboardType: TextInputType.emailAddress,
+                              enabled: !anyLoading,
                               style: const TextStyle(
                                 fontSize: 14,
                                 color: AppColor.textPrimary,
@@ -300,17 +361,18 @@ class _SignupScreenState extends State<SignupScreen> {
 
                             // Password Field
                             TextFormField(
-                              validator: (value){
-                                if(value == null||value.trim().isEmpty) {
+                              validator: (value) {
+                                if (value == null || value.trim().isEmpty) {
                                   return 'please enter your password';
                                 }
-                                if(value.trim().length<8){
+                                if (value.trim().length < 8) {
                                   return 'password must be at least 8 characters';
                                 }
                                 return null;
                               },
                               controller: _passwordController,
                               obscureText: _isPasswordObscured,
+                              enabled: !anyLoading,
                               style: const TextStyle(
                                 fontSize: 14,
                                 color: AppColor.textPrimary,
@@ -334,11 +396,14 @@ class _SignupScreenState extends State<SignupScreen> {
                                     color: AppColor.textSecondary,
                                     size: 20,
                                   ),
-                                  onPressed: () {
-                                    setState(() {
-                                      _isPasswordObscured = !_isPasswordObscured;
-                                    });
-                                  },
+                                  onPressed: anyLoading
+                                      ? null
+                                      : () {
+                                          setState(() {
+                                            _isPasswordObscured =
+                                                !_isPasswordObscured;
+                                          });
+                                        },
                                 ),
                                 filled: true,
                                 fillColor: AppColor.background,
@@ -378,6 +443,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               },
                               controller: _confirmPasswordController,
                               obscureText: _isConfirmPasswordObscured,
+                              enabled: !anyLoading,
                               style: const TextStyle(
                                 fontSize: 14,
                                 color: AppColor.textPrimary,
@@ -401,12 +467,14 @@ class _SignupScreenState extends State<SignupScreen> {
                                     color: AppColor.textSecondary,
                                     size: 20,
                                   ),
-                                  onPressed: () {
-                                    setState(() {
-                                      _isConfirmPasswordObscured =
-                                          !_isConfirmPasswordObscured;
-                                    });
-                                  },
+                                  onPressed: anyLoading
+                                      ? null
+                                      : () {
+                                          setState(() {
+                                            _isConfirmPasswordObscured =
+                                                !_isConfirmPasswordObscured;
+                                          });
+                                        },
                                 ),
                                 filled: true,
                                 fillColor: AppColor.background,
@@ -432,7 +500,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
                             const SizedBox(height: 10),
 
-                            // Remember Me Row
+                            // Terms & Conditions Row
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -442,16 +510,21 @@ class _SignupScreenState extends State<SignupScreen> {
                                       width: 24,
                                       height: 24,
                                       child: Checkbox(
-                                        value:_isTermsAccepted,
+                                        value: _isTermsAccepted,
                                         activeColor: AppColor.primary,
                                         shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(4),
+                                          borderRadius: BorderRadius.circular(
+                                            4,
+                                          ),
                                         ),
-                                        onChanged: (val) {
-                                          setState(() {
-                                            _isTermsAccepted = val ?? false;
-                                          });
-                                        },
+                                        onChanged: anyLoading
+                                            ? null
+                                            : (val) {
+                                                setState(() {
+                                                  _isTermsAccepted =
+                                                      val ?? false;
+                                                });
+                                              },
                                       ),
                                     ),
                                     const SizedBox(width: 8),
@@ -479,55 +552,35 @@ class _SignupScreenState extends State<SignupScreen> {
                                   backgroundColor: AppColor.primary,
                                   foregroundColor: Colors.white,
                                   elevation: 4,
-                                  shadowColor:
-                                      AppColor.primary.withValues(alpha: 0.4),
+                                  shadowColor: AppColor.primary.withValues(
+                                    alpha: 0.4,
+                                  ),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(16),
                                   ),
                                 ),
-                                onPressed: () async {
-                                  final isValid= _formKey.currentState!.validate();
-                                  if (!isValid) {
-                                    return;
-                                  }
-                                  if(!_isTermsAccepted){
-                                    Get.snackbar(
-                                      'Terms Required',
-                                      'Please accept Terms & Conditions',
-                                      snackPosition: SnackPosition.BOTTOM,
-                                    );
-                                    return;
-                                  }
-                                  // Get.snackbar(
-                                  //   'success',
-                                  //   'All fields are valid!',
-                                  //   snackPosition: SnackPosition.BOTTOM,
-                                  // );
-                                  final success = await authController.signUp(
-                                      name: _nameController.text, email: _emailController.text, password: _passwordController.text);
-
-                                  if(success){
-                                    Get.offAll(()=> MainScreen());
-                                  }
-                                },
-                                child: const Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Sign Up',
-                                      style: TextStyle(
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.bold,
-                                        letterSpacing: 0.3,
+                                onPressed: anyLoading ? null : _handleSignup,
+                                child: _isSignupLoading
+                                    ? const AppButtonLoader()
+                                    : const Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Sign Up',
+                                            style: TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold,
+                                              letterSpacing: 0.3,
+                                            ),
+                                          ),
+                                          SizedBox(width: 8),
+                                          Icon(
+                                            Icons.arrow_forward_rounded,
+                                            size: 20,
+                                          ),
+                                        ],
                                       ),
-                                    ),
-                                    SizedBox(width: 8),
-                                    Icon(
-                                      Icons.arrow_forward_rounded,
-                                      size: 20,
-                                    ),
-                                  ],
-                                ),
                               ),
                             ),
 
@@ -564,25 +617,11 @@ class _SignupScreenState extends State<SignupScreen> {
 
                             const SizedBox(height: 14),
 
-                            // Social Login Buttons (Google & GitHub)
-                            Row(
-                              children: [
-                                _buildSocialButton(
-                                  imagePath: 'assets/images/google.webp',
-                                  label: 'Google',
-                                  onTap: () {
-                                    Get.offAll(() => const MainScreen());
-                                  },
-                                ),
-                                const SizedBox(width: 14),
-                                _buildSocialButton(
-                                  imagePath: 'assets/images/github.png',
-                                  label: 'GitHub',
-                                  onTap: () {
-                                    Get.offAll(() => const MainScreen());
-                                  },
-                                ),
-                              ],
+                            // Google Sign-In Button
+                            _buildGoogleButton(
+                              label: 'Sign up with Google',
+                              isLoading: _isGoogleLoading,
+                              onTap: anyLoading ? null : _handleGoogleSignIn,
                             ),
 
                             const SizedBox(height: 18),
@@ -599,9 +638,11 @@ class _SignupScreenState extends State<SignupScreen> {
                                   ),
                                 ),
                                 GestureDetector(
-                                  onTap: () {
-                                    Get.offAll(() => const LoginScreen());
-                                  },
+                                  onTap: anyLoading
+                                      ? null
+                                      : () {
+                                          Get.offAll(() => const LoginScreen());
+                                        },
                                   child: const Text(
                                     'Login',
                                     style: TextStyle(
@@ -629,48 +670,65 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
-  Widget _buildSocialButton({
-    required String imagePath,
+  Widget _buildGoogleButton({
     required String label,
-    required VoidCallback onTap,
+    required bool isLoading,
+    required VoidCallback? onTap,
   }) {
-    return Expanded(
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(14),
-        child: Container(
-          height: 46,
-          decoration: BoxDecoration(
-            color: AppColor.background,
-            borderRadius: BorderRadius.circular(14),
-            border: Border.all(
-              color: AppColor.border,
-            ),
+    return Container(
+      width: double.infinity,
+      height: 50,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppColor.border, width: 1.2),
+        boxShadow: [
+          BoxShadow(
+            color: AppColor.textPrimary.withValues(alpha: 0.04),
+            blurRadius: 10,
+            offset: const Offset(0, 2),
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                imagePath,
-                width: 22,
-                height: 22,
-                fit: BoxFit.contain,
-                errorBuilder: (context, error, stackTrace) => const Icon(
-                  Icons.account_circle_rounded,
-                  size: 22,
-                  color: AppColor.secondary,
-                ),
-              ),
-              const SizedBox(width: 8),
-              Text(
-                label,
-                style: const TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.bold,
-                  color: AppColor.textPrimary,
-                ),
-              ),
-            ],
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(16),
+          child: Center(
+            child: isLoading
+                ? const AppButtonLoader(
+                    size: 20,
+                    color: AppColor.secondary,
+                    strokeWidth: 2.2,
+                  )
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/images/google.webp',
+                        width: 22,
+                        height: 22,
+                        fit: BoxFit.contain,
+                        errorBuilder: (context, error, stackTrace) =>
+                            const Icon(
+                              Icons.g_mobiledata_rounded,
+                              size: 24,
+                              color: AppColor.secondary,
+                            ),
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        label,
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          color: AppColor.textPrimary,
+                          letterSpacing: 0.2,
+                        ),
+                      ),
+                    ],
+                  ),
           ),
         ),
       ),

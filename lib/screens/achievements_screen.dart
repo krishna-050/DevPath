@@ -1,8 +1,10 @@
+import 'package:dev_path/Widgets/global_ai_button.dart';
 import 'package:dev_path/app/theme/app_color.dart';
 import 'package:dev_path/controller/progress_controller.dart';
 import 'package:dev_path/data/roadmap_data.dart';
 import 'package:dev_path/data/roadmap_step_data.dart';
 import 'package:dev_path/models/achievement_model.dart';
+import 'package:dev_path/screens/personal_ai_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -24,7 +26,7 @@ class AchievementsScreen extends StatelessWidget {
         'Sep',
         'Oct',
         'Nov',
-        'Dec'
+        'Dec',
       ];
       return '${date.day} ${months[date.month - 1]} ${date.year}';
     } catch (e) {
@@ -47,21 +49,26 @@ class AchievementsScreen extends StatelessWidget {
     final bgColor = isDark ? const Color(0xFF0B1220) : AppColor.background;
     final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
     final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
 
     return Scaffold(
+      floatingActionButton: GlobalAIButton(
+        onPressed: () {
+          Get.to(() => PersonalAiScreen());
+          // Later AI Chat Screen open karenge
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       backgroundColor: bgColor,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: bgColor,
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: textPrimaryColor,
-          ),
+          icon: Icon(Icons.arrow_back_rounded, color: textPrimaryColor),
           onPressed: () => Get.back(),
         ),
         title: Text(
@@ -83,8 +90,7 @@ class AchievementsScreen extends StatelessWidget {
           int completedRoadmapsCount = 0;
 
           for (final roadmap in RoadmapData.roadmaps) {
-            final steps =
-                RoadmapStepData.getStepsForLanguage(roadmap.language);
+            final steps = RoadmapStepData.getStepsForLanguage(roadmap.language);
             final total = progressController.getTotalTopicCount(steps);
             final completed = progressController.getCompletedTopicCount(
               roadmap.language,
@@ -117,8 +123,10 @@ class AchievementsScreen extends StatelessWidget {
               currentVal = completedRoadmapsCount;
             }
 
-            final progressRatio =
-                (currentVal / ach.targetValue).clamp(0.0, 1.0);
+            final progressRatio = (currentVal / ach.targetValue).clamp(
+              0.0,
+              1.0,
+            );
 
             if (isUnlocked) {
               unlockedList.add({
@@ -136,8 +144,7 @@ class AchievementsScreen extends StatelessWidget {
 
           final totalCount = allAchievements.length;
           final unlockedCount = unlockedList.length;
-          final totalRatio =
-              totalCount > 0 ? unlockedCount / totalCount : 0.0;
+          final totalRatio = totalCount > 0 ? unlockedCount / totalCount : 0.0;
 
           return SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
@@ -233,10 +240,7 @@ class AchievementsScreen extends StatelessWidget {
                 // Section 1: Unlocked Achievements
                 Row(
                   children: [
-                    const Text(
-                      '🏆',
-                      style: TextStyle(fontSize: 20),
-                    ),
+                    const Text('🏆', style: TextStyle(fontSize: 20)),
                     const SizedBox(width: 8),
                     Text(
                       'Unlocked Badges (${unlockedList.length})',
@@ -263,10 +267,7 @@ class AchievementsScreen extends StatelessWidget {
                     child: Text(
                       'No badges unlocked yet. Start completing topics to earn badges!',
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: textSecondaryColor,
-                      ),
+                      style: TextStyle(fontSize: 13, color: textSecondaryColor),
                     ),
                   )
                 else
@@ -373,10 +374,7 @@ class AchievementsScreen extends StatelessWidget {
                 // Section 2: Locked Achievements
                 Row(
                   children: [
-                    const Text(
-                      '🔒',
-                      style: TextStyle(fontSize: 20),
-                    ),
+                    const Text('🔒', style: TextStyle(fontSize: 20)),
                     const SizedBox(width: 8),
                     Text(
                       'Locked Badges (${lockedList.length})',
@@ -493,8 +491,8 @@ class AchievementsScreen extends StatelessWidget {
                                     backgroundColor: borderColor,
                                     valueColor:
                                         const AlwaysStoppedAnimation<Color>(
-                                      AppColor.primary,
-                                    ),
+                                          AppColor.primary,
+                                        ),
                                   ),
                                 ),
                               ],

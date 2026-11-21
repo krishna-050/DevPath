@@ -4,13 +4,11 @@ final List<RoadmapStepModel> sqlRoadmapSteps = [
   RoadmapStepModel(
     id: 1,
     title: 'Relational Database Concepts & SQL Basics',
-    description:
-        'Understand Relational Database Management Systems (RDBMS), tables, rows, columns, keys, and basic SQL query structure.',
+    description: 'Understand Relational Database Management Systems (RDBMS), tables, rows, columns, keys, and basic SQL query structure.',
     duration: '1-2 weeks',
     phase: 'Phase 1: Query Fundamentals',
     level: 'Beginner',
-    learningObjectives:
-        'Understand RDBMS concepts, primary & foreign keys, install PostgreSQL / MySQL, and write basic SELECT queries.',
+    learningObjectives: 'Understand RDBMS concepts, primary & foreign keys, install PostgreSQL / MySQL, and write basic SELECT queries.',
     subtopics: [
       'Relational Database Management System (RDBMS) architecture vs NoSQL',
       'Tables, Rows (Tuples), Columns (Attributes), & Data Schemas',
@@ -36,13 +34,11 @@ final List<RoadmapStepModel> sqlRoadmapSteps = [
   RoadmapStepModel(
     id: 2,
     title: 'Filtering & Conditional Logic (WHERE Clause)',
-    description:
-        'Filter database rows using comparison operators, logical operators, pattern matching, and NULL handling.',
+    description: 'Filter database rows using comparison operators, logical operators, pattern matching, and NULL handling.',
     duration: '1-2 weeks',
     phase: 'Phase 1: Query Fundamentals',
     level: 'Beginner',
-    learningObjectives:
-        'Filter query results with WHERE, combine conditions with AND/OR/NOT, handle NULL values, and use LIKE pattern matching.',
+    learningObjectives: 'Filter query results with WHERE, combine conditions with AND/OR/NOT, handle NULL values, and use LIKE pattern matching.',
     subtopics: [
       'The WHERE clause for row-level filtering',
       'Comparison Operators (=, !=, <, >, <=, >=)',
@@ -67,13 +63,11 @@ final List<RoadmapStepModel> sqlRoadmapSteps = [
   RoadmapStepModel(
     id: 3,
     title: 'Data Modification (DML) & Data Definition (DDL)',
-    description:
-        'Create database tables with constraints, insert rows, update records, and delete data safely.',
+    description: 'Create database tables with constraints, insert rows, update records, and delete data safely.',
     duration: '2 weeks',
     phase: 'Phase 1: Query Fundamentals',
     level: 'Beginner',
-    learningObjectives:
-        'Create tables with DDL (CREATE TABLE), configure Data Types & Constraints, and execute DML (INSERT, UPDATE, DELETE).',
+    learningObjectives: 'Create tables with DDL (CREATE TABLE), configure Data Types & Constraints, and execute DML (INSERT, UPDATE, DELETE).',
     subtopics: [
       'Data Definition Language (DDL) vs Data Manipulation Language (DML)',
       'SQL Data Types: INTEGER, VARCHAR, TEXT, BOOLEAN, NUMERIC/DECIMAL, DATE, TIMESTAMP',
@@ -98,13 +92,11 @@ final List<RoadmapStepModel> sqlRoadmapSteps = [
   RoadmapStepModel(
     id: 4,
     title: 'Data Aggregation & Grouping (GROUP BY)',
-    description:
-        'Group data rows and compute aggregate statistics using GROUP BY, HAVING, and aggregate functions.',
+    description: 'Group data rows and compute aggregate statistics using GROUP BY, HAVING, and aggregate functions.',
     duration: '2 weeks',
     phase: 'Phase 2: Intermediate SQL',
     level: 'Intermediate',
-    learningObjectives:
-        'Compute summary metrics using COUNT, SUM, AVG, MIN, MAX, group rows with GROUP BY, and filter aggregates with HAVING.',
+    learningObjectives: 'Compute summary metrics using COUNT, SUM, AVG, MIN, MAX, group rows with GROUP BY, and filter aggregates with HAVING.',
     subtopics: [
       'Aggregate Functions: COUNT(*), COUNT(col), SUM(), AVG(), MIN(), MAX()',
       'Grouping data with GROUP BY clause',
@@ -129,13 +121,11 @@ final List<RoadmapStepModel> sqlRoadmapSteps = [
   RoadmapStepModel(
     id: 5,
     title: 'Multi-Table Joins',
-    description:
-        'Combine data across multiple relational tables using INNER, LEFT, RIGHT, FULL OUTER, and CROSS joins.',
+    description: 'Combine data across multiple relational tables using INNER, LEFT, RIGHT, FULL OUTER, and CROSS joins.',
     duration: '2 weeks',
     phase: 'Phase 2: Intermediate SQL',
     level: 'Intermediate',
-    learningObjectives:
-        'Combine data across relational tables using INNER JOIN, LEFT JOIN, FULL OUTER JOIN, and Self Joins.',
+    learningObjectives: 'Combine data across relational tables using INNER JOIN, LEFT JOIN, FULL OUTER JOIN, and Self Joins.',
     subtopics: [
       'Relational Integrity & foreign key relationship traversing',
       'INNER JOIN: Querying matching rows across tables',
@@ -160,13 +150,11 @@ final List<RoadmapStepModel> sqlRoadmapSteps = [
   RoadmapStepModel(
     id: 6,
     title: 'Subqueries & Common Table Expressions (CTEs)',
-    description:
-        'Write modular, readable SQL queries using Subqueries, Correlated Subqueries, and Common Table Expressions (CTEs).',
+    description: 'Write modular, readable SQL queries using Subqueries, Correlated Subqueries, and Common Table Expressions (CTEs).',
     duration: '2 weeks',
     phase: 'Phase 2: Intermediate SQL',
     level: 'Intermediate',
-    learningObjectives:
-        'Write Scalar, Column, and Table subqueries, correlated subqueries with EXISTS, and modular CTEs (WITH clause).',
+    learningObjectives: 'Write Scalar, Column, and Table subqueries, correlated subqueries with EXISTS, and modular CTEs (WITH clause).',
     subtopics: [
       'Subqueries definition & execution order',
       'Scalar Subqueries (returning a single value in SELECT or WHERE)',
@@ -191,13 +179,11 @@ final List<RoadmapStepModel> sqlRoadmapSteps = [
   RoadmapStepModel(
     id: 7,
     title: 'Advanced Window Functions',
-    description:
-        'Perform advanced analytics over subset partitions using OVER(), PARTITION BY, ROW_NUMBER(), DENSE_RANK(), and Lead/Lag.',
+    description: 'Perform advanced analytics over subset partitions using OVER(), PARTITION BY, ROW_NUMBER(), DENSE_RANK(), and Lead/Lag.',
     duration: '2-3 weeks',
     phase: 'Phase 3: Advanced SQL',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Compute running totals, ranking, and period-over-period differences using SQL Window Functions.',
+    learningObjectives: 'Compute running totals, ranking, and period-over-period differences using SQL Window Functions.',
     subtopics: [
       'Window Functions concept vs GROUP BY aggregations (preserving individual row identities)',
       'The OVER() clause and PARTITION BY partitioning',
@@ -222,13 +208,11 @@ final List<RoadmapStepModel> sqlRoadmapSteps = [
   RoadmapStepModel(
     id: 8,
     title: 'Database Schema Design & Normalization',
-    description:
-        'Design efficient relational database schemas, apply Normalization forms (1NF to 3NF), and model entity relationships.',
+    description: 'Design efficient relational database schemas, apply Normalization forms (1NF to 3NF), and model entity relationships.',
     duration: '2 weeks',
     phase: 'Phase 3: Advanced SQL',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Model Entity-Relationship Diagrams (ERD), apply 1NF, 2NF, and 3NF normalization rules, and understand Denormalization tradeoffs.',
+    learningObjectives: 'Model Entity-Relationship Diagrams (ERD), apply 1NF, 2NF, and 3NF normalization rules, and understand Denormalization tradeoffs.',
     subtopics: [
       'Entity-Relationship Modeling (ERD): Entities, Attributes, Relationships',
       'Relationship Cardinality: One-to-One (1:1), One-to-Many (1:N), Many-to-Many (N:M)',
@@ -253,13 +237,11 @@ final List<RoadmapStepModel> sqlRoadmapSteps = [
   RoadmapStepModel(
     id: 9,
     title: 'Indexing, Query Optimization & EXPLAIN',
-    description:
-        'Optimize SQL query performance using B-Tree indexes, EXPLAIN ANALYZE execution plans, and query tuning.',
+    description: 'Optimize SQL query performance using B-Tree indexes, EXPLAIN ANALYZE execution plans, and query tuning.',
     duration: '2-3 weeks',
     phase: 'Phase 4: Optimization & Security',
     level: 'Advanced',
-    learningObjectives:
-        'Create B-Tree, Hash, and GIN indexes, analyze EXPLAIN execution plans, and identify Sequential Scans.',
+    learningObjectives: 'Create B-Tree, Hash, and GIN indexes, analyze EXPLAIN execution plans, and identify Sequential Scans.',
     subtopics: [
       'Database Storage Engine Architecture: Heap pages, Data blocks, & Buffer pool cache',
       'How Indexes work: B-Tree Index structure & search time complexity (O(log N))',
@@ -284,13 +266,11 @@ final List<RoadmapStepModel> sqlRoadmapSteps = [
   RoadmapStepModel(
     id: 10,
     title: 'Transactions, ACID & Advanced PostgreSQL',
-    description:
-        'Master ACID properties, Transaction Isolation Levels, Row-Level Locking, JSONB, and Views.',
+    description: 'Master ACID properties, Transaction Isolation Levels, Row-Level Locking, JSONB, and Views.',
     duration: '3 weeks',
     phase: 'Phase 4: Optimization & Security',
     level: 'Advanced',
-    learningObjectives:
-        'Manage Transactions (BEGIN, COMMIT, ROLLBACK), understand Isolation Levels (Read Committed, Serializable), and query JSONB fields.',
+    learningObjectives: 'Manage Transactions (BEGIN, COMMIT, ROLLBACK), understand Isolation Levels (Read Committed, Serializable), and query JSONB fields.',
     subtopics: [
       'Transactions concept & ACID Properties (Atomicity, Consistency, Isolation, Durability)',
       'Transaction Commands: BEGIN / START TRANSACTION, COMMIT, ROLLBACK, SAVEPOINT',

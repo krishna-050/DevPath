@@ -4,13 +4,11 @@ final List<RoadmapStepModel> machineLearningRoadmapSteps = [
   RoadmapStepModel(
     id: 1,
     title: 'Mathematics & Linear Algebra for Machine Learning',
-    description:
-        'Master vectors, matrices, dot products, eigenvalues, partial derivatives, and gradient descent optimization.',
+    description: 'Master vectors, matrices, dot products, eigenvalues, partial derivatives, and gradient descent optimization.',
     duration: '2-3 weeks',
     phase: 'Phase 1: Mathematical Foundations',
     level: 'Beginner',
-    learningObjectives:
-        'Compute matrix transformations, calculate derivatives for loss functions, and understand Gradient Descent optimization.',
+    learningObjectives: 'Compute matrix transformations, calculate derivatives for loss functions, and understand Gradient Descent optimization.',
     subtopics: [
       'Linear Algebra: Vectors, Matrices, Matrix Multiplication, Matrix Transpose',
       'Vector Norms (L1, L2 norm), Dot Product, Cosine Similarity',
@@ -36,13 +34,11 @@ final List<RoadmapStepModel> machineLearningRoadmapSteps = [
   RoadmapStepModel(
     id: 2,
     title: 'Python Ecosystem for Machine Learning',
-    description:
-        'Master Python data science stack: NumPy arrays, Pandas DataFrames, Matplotlib visualization, and Scikit-Learn pipelines.',
+    description: 'Master Python data science stack: NumPy arrays, Pandas DataFrames, Matplotlib visualization, and Scikit-Learn pipelines.',
     duration: '2 weeks',
     phase: 'Phase 1: Mathematical Foundations',
     level: 'Beginner',
-    learningObjectives:
-        'Manipulate multi-dimensional data in NumPy, clean messy datasets in Pandas, plot feature distributions, and build Scikit-Learn Pipelines.',
+    learningObjectives: 'Manipulate multi-dimensional data in NumPy, clean messy datasets in Pandas, plot feature distributions, and build Scikit-Learn Pipelines.',
     subtopics: [
       'NumPy N-dimensional array creation, indexing, slicing, and broadcasting',
       'Matrix operations and fast vectorized math with NumPy',
@@ -67,13 +63,11 @@ final List<RoadmapStepModel> machineLearningRoadmapSteps = [
   RoadmapStepModel(
     id: 3,
     title: 'Supervised Learning: Regression Models',
-    description:
-        'Understand Linear Regression, Cost Functions, Polynomial Regression, and Regularization (Lasso & Ridge).',
+    description: 'Understand Linear Regression, Cost Functions, Polynomial Regression, and Regularization (Lasso & Ridge).',
     duration: '2 weeks',
     phase: 'Phase 2: Supervised Learning',
     level: 'Intermediate',
-    learningObjectives:
-        'Train Linear & Polynomial Regression models, optimize with Gradient Descent, prevent overfitting with L1/L2 Regularization, and evaluate RMSE/R2.',
+    learningObjectives: 'Train Linear & Polynomial Regression models, optimize with Gradient Descent, prevent overfitting with L1/L2 Regularization, and evaluate RMSE/R2.',
     subtopics: [
       'Supervised Learning paradigm: Features (X), Target (y), Training vs Testing split',
       'Simple & Multiple Linear Regression hypothesis equation',
@@ -98,13 +92,11 @@ final List<RoadmapStepModel> machineLearningRoadmapSteps = [
   RoadmapStepModel(
     id: 4,
     title: 'Supervised Learning: Classification & Ensembles',
-    description:
-        'Master Logistic Regression, Decision Trees, Random Forests, XGBoost, LightGBM, and ROC-AUC evaluation metrics.',
+    description: 'Master Logistic Regression, Decision Trees, Random Forests, XGBoost, LightGBM, and ROC-AUC evaluation metrics.',
     duration: '3 weeks',
     phase: 'Phase 2: Supervised Learning',
     level: 'Intermediate',
-    learningObjectives:
-        'Train Binary & Multiclass Logistic Regression, Random Forests, Gradient Boosted Trees (XGBoost), and interpret Confusion Matrices & ROC curves.',
+    learningObjectives: 'Train Binary & Multiclass Logistic Regression, Random Forests, Gradient Boosted Trees (XGBoost), and interpret Confusion Matrices & ROC curves.',
     subtopics: [
       'Classification concept: Binary vs Multiclass classification',
       'Logistic Regression: Sigmoid activation function & Log-Loss (Cross-Entropy)',
@@ -129,13 +121,11 @@ final List<RoadmapStepModel> machineLearningRoadmapSteps = [
   RoadmapStepModel(
     id: 5,
     title: 'Unsupervised Learning & Clustering',
-    description:
-        'Discover hidden structures using K-Means, Hierarchical Clustering, DBSCAN, and Dimensionality Reduction (PCA & t-SNE).',
+    description: 'Discover hidden structures using K-Means, Hierarchical Clustering, DBSCAN, and Dimensionality Reduction (PCA & t-SNE).',
     duration: '2 weeks',
     phase: 'Phase 2: Supervised Learning',
     level: 'Intermediate',
-    learningObjectives:
-        'Segment data with K-Means & DBSCAN, select optimal cluster count with Silhouette Score, and reduce dimensions with PCA.',
+    learningObjectives: 'Segment data with K-Means & DBSCAN, select optimal cluster count with Silhouette Score, and reduce dimensions with PCA.',
     subtopics: [
       'Unsupervised Learning paradigm: Unlabelled data pattern discovery',
       'K-Means Clustering algorithm: Centroid initialization, assignment, & update steps',
@@ -160,13 +150,11 @@ final List<RoadmapStepModel> machineLearningRoadmapSteps = [
   RoadmapStepModel(
     id: 6,
     title: 'Model Evaluation, Tuning & Hyperparameter Optimization',
-    description:
-        'Master Cross-Validation, Grid Search, Random Search, and Bayesian Optimization (Optuna) for hyperparameter tuning.',
+    description: 'Master Cross-Validation, Grid Search, Random Search, and Bayesian Optimization (Optuna) for hyperparameter tuning.',
     duration: '2 weeks',
     phase: 'Phase 3: Deep Learning',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Perform K-Fold Cross Validation, tune model hyperparameters using Optuna, and diagnose model overfitting with Learning Curves.',
+    learningObjectives: 'Perform K-Fold Cross Validation, tune model hyperparameters using Optuna, and diagnose model overfitting with Learning Curves.',
     subtopics: [
       'Data Splitting: Train / Validation / Test sets & Data Leakage risks',
       'Cross-Validation: K-Fold, Stratified K-Fold, TimeSeriesSplit',
@@ -191,13 +179,11 @@ final List<RoadmapStepModel> machineLearningRoadmapSteps = [
   RoadmapStepModel(
     id: 7,
     title: 'Deep Learning & Neural Networks (PyTorch)',
-    description:
-        'Master Artificial Neural Networks (ANN), Activation Functions, Backpropagation, and PyTorch deep learning framework.',
+    description: 'Master Artificial Neural Networks (ANN), Activation Functions, Backpropagation, and PyTorch deep learning framework.',
     duration: '3-4 weeks',
     phase: 'Phase 3: Deep Learning',
     level: 'Advanced',
-    learningObjectives:
-        'Build multi-layer perceptron neural networks in PyTorch, implement custom loss functions, and optimize with Adam/SGD.',
+    learningObjectives: 'Build multi-layer perceptron neural networks in PyTorch, implement custom loss functions, and optimize with Adam/SGD.',
     subtopics: [
       'Deep Learning vs Traditional Machine Learning comparison',
       'Biological Neuron vs Perceptron & Multi-Layer Perceptron (MLP) architecture',
@@ -223,13 +209,11 @@ final List<RoadmapStepModel> machineLearningRoadmapSteps = [
   RoadmapStepModel(
     id: 8,
     title: 'Computer Vision (CNNs & Vision Transformers)',
-    description:
-        'Build image classification, object detection, and segmentation models using CNNs, ResNet, YOLO, and Vision Transformers.',
+    description: 'Build image classification, object detection, and segmentation models using CNNs, ResNet, YOLO, and Vision Transformers.',
     duration: '3-4 weeks',
     phase: 'Phase 4: Specialized AI',
     level: 'Advanced',
-    learningObjectives:
-        'Design Convolutional Neural Networks (CNNs), apply Transfer Learning with torchvision, and understand YOLO Object Detection.',
+    learningObjectives: 'Design Convolutional Neural Networks (CNNs), apply Transfer Learning with torchvision, and understand YOLO Object Detection.',
     subtopics: [
       'Computer Vision fundamentals & Digital Image representation (RGB arrays)',
       'Convolution Operation: Filters, Kernels, Strides, Padding (Valid vs Same)',
@@ -255,13 +239,11 @@ final List<RoadmapStepModel> machineLearningRoadmapSteps = [
   RoadmapStepModel(
     id: 9,
     title: 'Natural Language Processing (NLP) & LLMs',
-    description:
-        'Master Text Preprocessing, Word Embeddings, Recurrent Neural Networks, Transformer Architecture, and Large Language Models (LLMs).',
+    description: 'Master Text Preprocessing, Word Embeddings, Recurrent Neural Networks, Transformer Architecture, and Large Language Models (LLMs).',
     duration: '4 weeks',
     phase: 'Phase 4: Specialized AI',
     level: 'Advanced',
-    learningObjectives:
-        'Tokenize text, create Word Embeddings (Word2Vec), build Transformers with Self-Attention, and fine-tune HuggingFace LLMs.',
+    learningObjectives: 'Tokenize text, create Word Embeddings (Word2Vec), build Transformers with Self-Attention, and fine-tune HuggingFace LLMs.',
     subtopics: [
       'NLP Fundamentals: Tokenization, Stemming, Lemmatization, Stopwords',
       'Vector Space Models: TF-IDF, Word2Vec (Skip-gram & CBOW), GloVe embeddings',
@@ -287,13 +269,11 @@ final List<RoadmapStepModel> machineLearningRoadmapSteps = [
   RoadmapStepModel(
     id: 10,
     title: 'MLOps, Model Deployment & Production ML',
-    description:
-        'Deploy, monitor, version, and manage Machine Learning models in production using FastAPI, Docker, MLflow, and Evidently AI.',
+    description: 'Deploy, monitor, version, and manage Machine Learning models in production using FastAPI, Docker, MLflow, and Evidently AI.',
     duration: '3 weeks',
     phase: 'Phase 5: Production & MLOps',
     level: 'Advanced',
-    learningObjectives:
-        'Package ML models with ONNX / FastAPI, containerize with Docker, track experiments with MLflow, and monitor Data Drift.',
+    learningObjectives: 'Package ML models with ONNX / FastAPI, containerize with Docker, track experiments with MLflow, and monitor Data Drift.',
     subtopics: [
       'MLOps Lifecycle: Data Engineering, Model Training, CI/CD, Serving, Monitoring',
       'Model Serialization: Joblib, ONNX (Open Neural Network Exchange), TorchScript',

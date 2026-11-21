@@ -10,22 +10,19 @@ class AboutAppScreen extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
     final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
 
     return Scaffold(
       backgroundColor: isDark ? const Color(0xFF0B1220) : AppColor.background,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor:
-            isDark ? const Color(0xFF0B1220) : AppColor.background,
+        backgroundColor: isDark ? const Color(0xFF0B1220) : AppColor.background,
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: textPrimaryColor,
-          ),
+          icon: Icon(Icons.arrow_back_rounded, color: textPrimaryColor),
           onPressed: () => Get.back(),
         ),
         title: Text(
@@ -46,7 +43,10 @@ class AboutAppScreen extends StatelessWidget {
               // Branding Header Card
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 20),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 24,
+                  horizontal: 20,
+                ),
                 decoration: BoxDecoration(
                   color: surfaceColor,
                   borderRadius: BorderRadius.circular(20),
@@ -59,9 +59,7 @@ class AboutAppScreen extends StatelessWidget {
                       height: 80,
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: isDark
-                            ? const Color(0xFF1E293B)
-                            : Colors.white,
+                        color: isDark ? const Color(0xFF1E293B) : Colors.white,
                         borderRadius: BorderRadius.circular(22),
                         border: Border.all(
                           color: isDark
@@ -217,8 +215,9 @@ class AboutAppScreen extends StatelessWidget {
     required String desc,
   }) {
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,

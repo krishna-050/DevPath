@@ -8,7 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ExploreScreen extends StatefulWidget {
-  const ExploreScreen({super.key});
+  final bool showBackButton;
+
+  const ExploreScreen({super.key, this.showBackButton = false});
 
   @override
   State<ExploreScreen> createState() => _ExploreScreenState();
@@ -63,8 +65,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
     final bgColor = isDark ? const Color(0xFF0B1220) : AppColor.background;
     final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
     final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
 
     return Scaffold(
@@ -78,7 +81,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
               padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
               child: Row(
                 children: [
-                  if (Navigator.canPop(context)) ...[
+                  if (widget.showBackButton) ...[
                     GestureDetector(
                       onTap: () => Navigator.pop(context),
                       child: Container(
@@ -121,7 +124,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
                     color: _searchFocusNode.hasFocus
-                        ? (isDark ? const Color(0xFF60A5FA) : AppColor.secondary)
+                        ? (isDark
+                              ? const Color(0xFF60A5FA)
+                              : AppColor.secondary)
                         : borderColor,
                     width: _searchFocusNode.hasFocus ? 1.8 : 1.0,
                   ),
@@ -129,8 +134,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     BoxShadow(
                       color: _searchFocusNode.hasFocus
                           ? (isDark
-                              ? const Color(0xFF60A5FA).withValues(alpha: 0.25)
-                              : AppColor.secondary.withValues(alpha: 0.18))
+                                ? const Color(0xFF60A5FA)
+                                      .withValues(alpha: 0.25)
+                                : AppColor.secondary.withValues(alpha: 0.18))
                           : textPrimaryColor.withValues(alpha: 0.03),
                       blurRadius: _searchFocusNode.hasFocus ? 12 : 8,
                       offset: const Offset(0, 3),
@@ -151,7 +157,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   ),
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(vertical: 14),
-                    hintText: 'Search 20+ roadmaps, tech or skills...',
+                    hintText: 'Search 120+ roadmaps, tech or skills...',
                     hintStyle: TextStyle(
                       color: textSecondaryColor,
                       fontSize: 13.5,
@@ -160,8 +166,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
                       Icons.search_rounded,
                       color: _searchFocusNode.hasFocus
                           ? (isDark
-                              ? const Color(0xFF60A5FA)
-                              : AppColor.secondary)
+                                ? const Color(0xFF60A5FA)
+                                : AppColor.secondary)
                           : textSecondaryColor,
                       size: 22,
                     ),
@@ -248,10 +254,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                       decoration: BoxDecoration(
                         gradient: isSelected
                             ? const LinearGradient(
-                                colors: [
-                                  Color(0xFF0072FF),
-                                  Color(0xFF00C6FF),
-                                ],
+                                colors: [Color(0xFF0072FF), Color(0xFF00C6FF)],
                               )
                             : null,
                         color: isSelected ? null : surfaceColor,
@@ -282,14 +285,16 @@ class _ExploreScreenState extends State<ExploreScreen> {
                             color: isSelected
                                 ? Colors.white
                                 : (isDark
-                                    ? const Color(0xFF60A5FA)
-                                    : AppColor.secondary),
+                                      ? const Color(0xFF60A5FA)
+                                      : AppColor.secondary),
                           ),
                           const SizedBox(width: 6),
                           Text(
                             name,
                             style: TextStyle(
-                              color: isSelected ? Colors.white : textPrimaryColor,
+                              color: isSelected
+                                  ? Colors.white
+                                  : textPrimaryColor,
                               fontWeight: isSelected
                                   ? FontWeight.bold
                                   : FontWeight.w600,
@@ -312,16 +317,30 @@ class _ExploreScreenState extends State<ExploreScreen> {
               child: Obx(() {
                 final allRoadmaps = controller.filteredRoadmaps;
                 final filteredList = _getFilteredList(allRoadmaps);
+                final isFallbackToAll =
+                    searchController.text.trim().isNotEmpty &&
+                    selectedCategory != 'All' &&
+                    filteredList.length == allRoadmaps.length &&
+                    allRoadmaps.isNotEmpty;
 
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      '${filteredList.length} roadmaps available',
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.bold,
-                        color: textSecondaryColor,
+                    Expanded(
+                      child: Text(
+                        isFallbackToAll
+                            ? '${filteredList.length} found (all categories)'
+                            : '${filteredList.length} roadmaps available',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold,
+                          color: isFallbackToAll
+                              ? (isDark
+                                    ? const Color(0xFF60A5FA)
+                                    : AppColor.secondary)
+                              : textSecondaryColor,
+                        ),
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     Row(
@@ -340,8 +359,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
                             decoration: BoxDecoration(
                               color: !isGridView
                                   ? (isDark
-                                      ? const Color(0xFF1E293B)
-                                      : AppColor.lightBlue)
+                                        ? const Color(0xFF1E293B)
+                                        : AppColor.lightBlue)
                                   : Colors.transparent,
                               borderRadius: BorderRadius.circular(8),
                             ),
@@ -369,8 +388,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
                             decoration: BoxDecoration(
                               color: isGridView
                                   ? (isDark
-                                      ? const Color(0xFF1E293B)
-                                      : AppColor.lightBlue)
+                                        ? const Color(0xFF1E293B)
+                                        : AppColor.lightBlue)
                                   : Colors.transparent,
                               borderRadius: BorderRadius.circular(8),
                             ),
@@ -456,7 +475,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
     if (selectedCategory == 'All') return list;
 
     final target = selectedCategory.toLowerCase();
-    return list.where((item) {
+    final categoryMatches = list.where((item) {
       final cat = item.category.toLowerCase();
       if (cat == target) return true;
 
@@ -485,15 +504,26 @@ class _ExploreScreenState extends State<ExploreScreen> {
             item.language.contains('SQL') ||
             item.language.contains('GraphQL');
       }
+      if (target == 'devops') {
+        return cat.contains('devops') ||
+            cat.contains('cloud') ||
+            item.language.contains('Git') ||
+            item.language.contains('Docker') ||
+            item.language.contains('Kubernetes') ||
+            item.language.contains('Linux') ||
+            item.language.contains('CI/CD');
+      }
       if (target == 'ai & data') {
         return cat.contains('ai') ||
             cat.contains('data') ||
             item.language.contains('Data') ||
-            item.language.contains('Machine Learning');
+            item.language.contains('Machine Learning') ||
+            item.language.contains('Deep Learning');
       }
       if (target == 'security') {
         return cat.contains('security') ||
-            item.language.contains('Cybersecurity');
+            item.language.contains('Cybersecurity') ||
+            item.language.contains('DevSecOps');
       }
       if (target == 'web3') {
         return cat.contains('web3') ||
@@ -503,6 +533,16 @@ class _ExploreScreenState extends State<ExploreScreen> {
 
       return false;
     }).toList();
+
+    // If search is active and nothing matched this category, but matches exist in list,
+    // show the search results across all categories so the user finds what they searched!
+    if (searchController.text.trim().isNotEmpty &&
+        categoryMatches.isEmpty &&
+        list.isNotEmpty) {
+      return list;
+    }
+
+    return categoryMatches;
   }
 
   Widget _buildGridCard({
@@ -543,8 +583,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   height: 40,
                   padding: const EdgeInsets.all(6),
                   decoration: BoxDecoration(
-                    color:
-                        isDark ? const Color(0xFF1E293B) : AppColor.lightBlue,
+                    color: isDark
+                        ? const Color(0xFF1E293B)
+                        : AppColor.lightBlue,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Image.asset(
@@ -552,8 +593,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     fit: BoxFit.contain,
                     errorBuilder: (context, error, stackTrace) => Icon(
                       Icons.code_rounded,
-                      color:
-                          isDark ? const Color(0xFF60A5FA) : AppColor.secondary,
+                      color: isDark
+                          ? const Color(0xFF60A5FA)
+                          : AppColor.secondary,
                     ),
                   ),
                 ),
@@ -626,31 +668,33 @@ class _ExploreScreenState extends State<ExploreScreen> {
     Color borderColor,
   ) {
     return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(32.0),
+      child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              padding: const EdgeInsets.all(22),
+              padding: const EdgeInsets.all(18),
               decoration: BoxDecoration(
                 color: isDark ? const Color(0xFF1E293B) : AppColor.lightBlue,
                 shape: BoxShape.circle,
               ),
               child: Icon(
                 Icons.search_off_rounded,
-                size: 46,
+                size: 40,
                 color: isDark ? const Color(0xFF60A5FA) : AppColor.secondary,
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 14),
             Text(
               query.isNotEmpty
                   ? 'No results for "$query"'
                   : 'No $category Roadmaps Yet',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 17,
+                fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: textPrimary,
               ),
@@ -659,12 +703,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
             Text(
               'Try searching with a different keyword or select another category.',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 13,
-                color: textSecondary,
-              ),
+              style: TextStyle(fontSize: 12.5, color: textSecondary),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 14),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColor.secondary,
@@ -686,10 +727,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
               },
               child: const Text(
                 'Reset All Filters',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 13,
-                ),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
               ),
             ),
           ],

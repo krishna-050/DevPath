@@ -1,26 +1,27 @@
-
+import 'package:dev_path/Widgets/global_ai_button.dart';
 import 'package:dev_path/app/theme/app_color.dart';
 import 'package:dev_path/controller/progress_controller.dart';
 import 'package:dev_path/controller/saved_controller.dart';
 import 'package:dev_path/data/roadmap_data.dart';
 import 'package:dev_path/screens/home_screen.dart';
 import 'package:dev_path/screens/explore_screen.dart';
+import 'package:dev_path/screens/personal_ai_screen.dart';
 import 'package:dev_path/screens/profile_screen.dart';
 import 'package:dev_path/screens/saved_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/get.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
-
 }
 
 class _MainScreenState extends State<MainScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -32,13 +33,16 @@ class _MainScreenState extends State<MainScreen> {
     savedController.loadSavedRoadmaps(RoadmapData.roadmaps);
     Get.put(ProgressController(), permanent: true);
   }
-  int _currentIndex = 0;
 
-  late final List<Widget> _screens =  [
+  int _currentIndex = 0;
+  final GlobalKey<ProfileScreenState> _profileKey =
+      GlobalKey<ProfileScreenState>();
+
+  late final List<Widget> _screens = [
     HomeScreen(onExploreTap: _goToExplore),
     ExploreScreen(),
     SavedScreen(),
-    ProfileScreen(),
+    ProfileScreen(key: _profileKey),
   ];
   void _goToExplore() {
     setState(() {
@@ -50,14 +54,19 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final navBgColor = isDark ? AppColor.darkSurface : AppColor.surface;
-    final unselectedColor =
-        isDark ? AppColor.darkTextSecondary : AppColor.textSecondary;
+    final unselectedColor = isDark
+        ? AppColor.darkTextSecondary
+        : AppColor.textSecondary;
 
     return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _screens,
+      floatingActionButton: GlobalAIButton(
+        onPressed: () {
+          Get.to(() => PersonalAiScreen());
+          // Later AI Chat Screen open karenge
+        },
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      body: IndexedStack(index: _currentIndex, children: _screens),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: navBgColor,
@@ -74,6 +83,10 @@ class _MainScreenState extends State<MainScreen> {
         child: BottomNavigationBar(
           currentIndex: _currentIndex,
           onTap: (index) {
+            if (index == 3) {
+              _profileKey.currentState?.refreshProfile();
+            }
+
             setState(() {
               _currentIndex = index;
             });
@@ -120,4 +133,3 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
-

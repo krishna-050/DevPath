@@ -19,8 +19,9 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
   final FocusNode _focusNode = FocusNode();
 
   // ── Use existing controller; create only if not yet registered ──
-  final AiController aiController =
-      Get.isRegistered<AiController>() ? Get.find<AiController>() : Get.put(AiController());
+  final AiController aiController = Get.isRegistered<AiController>()
+      ? Get.find<AiController>()
+      : Get.put(AiController());
 
   late final AnimationController _dotAnimController;
 
@@ -80,15 +81,27 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
     final bgColor = isDark ? const Color(0xFF0B1220) : const Color(0xFFF0F6FF);
     final surfaceColor = isDark ? const Color(0xFF172235) : Colors.white;
     final cardBg = isDark ? const Color(0xFF1E293B) : Colors.white;
-    final textPrimary = isDark ? const Color(0xFFF1F5F9) : const Color(0xFF102B50);
-    final textSecondary = isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B);
-    final borderColor = isDark ? const Color(0xFF334155) : const Color(0xFFDCE7F1);
+    final textPrimary = isDark
+        ? const Color(0xFFF1F5F9)
+        : const Color(0xFF102B50);
+    final textSecondary = isDark
+        ? const Color(0xFF94A3B8)
+        : const Color(0xFF64748B);
+    final borderColor = isDark
+        ? const Color(0xFF334155)
+        : const Color(0xFFDCE7F1);
     final inputBg = isDark ? const Color(0xFF1E293B) : const Color(0xFFF0F6FF);
 
     return Scaffold(
       backgroundColor: bgColor,
       // ── AppBar ────────────────────────────────────────────────────────────
-      appBar: _buildAppBar(isDark, surfaceColor, textPrimary, textSecondary, borderColor),
+      appBar: _buildAppBar(
+        isDark,
+        surfaceColor,
+        textPrimary,
+        textSecondary,
+        borderColor,
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -103,20 +116,37 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
                   physics: const BouncingScrollPhysics(),
                   padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
                   itemCount: _listItemCount(msgs, showHero),
-                  itemBuilder: (ctx, index) =>
-                      _listItem(ctx, index, msgs, showHero, isDark,
-                          textPrimary, textSecondary, cardBg, borderColor),
+                  itemBuilder: (ctx, index) => _listItem(
+                    ctx,
+                    index,
+                    msgs,
+                    showHero,
+                    isDark,
+                    textPrimary,
+                    textSecondary,
+                    cardBg,
+                    borderColor,
+                  ),
                 );
               }),
             ),
 
             // ── Typing indicator ────────────────────────────────────────────
-            Obx(() => aiController.isTyping.value
-                ? _buildTypingIndicator(isDark, cardBg, borderColor)
-                : const SizedBox.shrink()),
+            Obx(
+              () => aiController.isTyping.value
+                  ? _buildTypingIndicator(isDark, cardBg, borderColor)
+                  : const SizedBox.shrink(),
+            ),
 
             // ── Input area ──────────────────────────────────────────────────
-            _buildInputArea(isDark, surfaceColor, inputBg, textPrimary, textSecondary, borderColor),
+            _buildInputArea(
+              isDark,
+              surfaceColor,
+              inputBg,
+              textPrimary,
+              textSecondary,
+              borderColor,
+            ),
           ],
         ),
       ),
@@ -144,13 +174,30 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
   ) {
     if (showHero) {
       if (index == 0) return _buildHeroBanner();
-      if (index == 1) return _buildSuggestions(textPrimary, textSecondary, cardBg, borderColor, isDark);
+      if (index == 1)
+        return _buildSuggestions(
+          textPrimary,
+          textSecondary,
+          cardBg,
+          borderColor,
+          isDark,
+        );
       return _buildMessageBubble(
-        msgs[index - 2], isDark, textPrimary, textSecondary, cardBg, borderColor,
+        msgs[index - 2],
+        isDark,
+        textPrimary,
+        textSecondary,
+        cardBg,
+        borderColor,
       );
     }
     return _buildMessageBubble(
-      msgs[index], isDark, textPrimary, textSecondary, cardBg, borderColor,
+      msgs[index],
+      isDark,
+      textPrimary,
+      textSecondary,
+      cardBg,
+      borderColor,
     );
   }
 
@@ -168,9 +215,15 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
     final appBarBg = isDark ? const Color(0xFF0D1B2E) : Colors.white;
     final backIconColor = isDark ? Colors.white : textPrimary;
     final titleColor = isDark ? Colors.white : textPrimary;
-    final subtitleColor = isDark ? const Color(0xFF93C5FD) : const Color(0xFF2563EB);
-    final proBgColor = isDark ? const Color(0xFF1E293B) : const Color(0xFFFEF3C7);
-    final proBorderColor = isDark ? const Color(0xFF334155) : const Color(0xFFFDE68A);
+    final subtitleColor = isDark
+        ? const Color(0xFF93C5FD)
+        : const Color(0xFF2563EB);
+    final proBgColor = isDark
+        ? const Color(0xFF1E293B)
+        : const Color(0xFFFEF3C7);
+    final proBorderColor = isDark
+        ? const Color(0xFF334155)
+        : const Color(0xFFFDE68A);
     final proTextColor = const Color(0xFFD97706);
     final menuIconColor = isDark ? Colors.white70 : textSecondary;
 
@@ -220,7 +273,11 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
                   height: 38,
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
-                      colors: [Color(0xFF1E40AF), Color(0xFF2563EB), Color(0xFF60A5FA)],
+                      colors: [
+                        Color(0xFF1E40AF),
+                        Color(0xFF2563EB),
+                        Color(0xFF60A5FA),
+                      ],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
@@ -271,7 +328,10 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
                 const Spacer(),
                 // Pro badge
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 5,
+                  ),
                   decoration: BoxDecoration(
                     color: proBgColor,
                     borderRadius: BorderRadius.circular(20),
@@ -280,7 +340,11 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(Icons.workspace_premium_rounded, color: proTextColor, size: 15),
+                      Icon(
+                        Icons.workspace_premium_rounded,
+                        color: proTextColor,
+                        size: 15,
+                      ),
                       const SizedBox(width: 4),
                       Text(
                         'Pro',
@@ -296,9 +360,15 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
                 const SizedBox(width: 6),
                 // More options
                 PopupMenuButton<String>(
-                  icon: Icon(Icons.more_vert_rounded, color: menuIconColor, size: 22),
+                  icon: Icon(
+                    Icons.more_vert_rounded,
+                    color: menuIconColor,
+                    size: 22,
+                  ),
                   color: isDark ? const Color(0xFF1E293B) : Colors.white,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),
                   onSelected: (val) {
                     if (val == 'clear') aiController.clearChat();
                   },
@@ -307,7 +377,11 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
                       value: 'clear',
                       child: Row(
                         children: [
-                          Icon(Icons.refresh_rounded, color: menuIconColor, size: 18),
+                          Icon(
+                            Icons.refresh_rounded,
+                            color: menuIconColor,
+                            size: 18,
+                          ),
                           const SizedBox(width: 10),
                           Text(
                             'Clear Chat',
@@ -437,17 +511,26 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
       Positioned(
         right: 24,
         top: 16,
-        child: Text('✦', style: TextStyle(color: Color(0xFF93C5FD), fontSize: 16)),
+        child: Text(
+          '✦',
+          style: TextStyle(color: Color(0xFF93C5FD), fontSize: 16),
+        ),
       ),
       Positioned(
         right: 48,
         bottom: 20,
-        child: Text('✦', style: TextStyle(color: Color(0xFFBFDBFE), fontSize: 12)),
+        child: Text(
+          '✦',
+          style: TextStyle(color: Color(0xFFBFDBFE), fontSize: 12),
+        ),
       ),
       Positioned(
         left: 120,
         top: 14,
-        child: Text('✦', style: TextStyle(color: Color(0xFF60A5FA), fontSize: 13)),
+        child: Text(
+          '✦',
+          style: TextStyle(color: Color(0xFF60A5FA), fontSize: 13),
+        ),
       ),
     ];
   }
@@ -488,12 +571,19 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
             return GestureDetector(
               onTap: () => _sendMessage(prompt),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 10,
+                ),
                 decoration: BoxDecoration(
-                  color: isDark ? const Color(0xFF1E293B) : const Color(0xFFEFF6FF),
+                  color: isDark
+                      ? const Color(0xFF1E293B)
+                      : const Color(0xFFEFF6FF),
                   borderRadius: BorderRadius.circular(14),
                   border: Border.all(
-                    color: isDark ? const Color(0xFF334155) : const Color(0xFFBFDBFE),
+                    color: isDark
+                        ? const Color(0xFF334155)
+                        : const Color(0xFFBFDBFE),
                   ),
                 ),
                 child: Text(
@@ -501,7 +591,9 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
                   style: TextStyle(
                     fontSize: 12.5,
                     fontWeight: FontWeight.w600,
-                    color: isDark ? const Color(0xFF93C5FD) : const Color(0xFF1D4ED8),
+                    color: isDark
+                        ? const Color(0xFF93C5FD)
+                        : const Color(0xFF1D4ED8),
                   ),
                 ),
               ),
@@ -533,7 +625,9 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: Row(
-        mainAxisAlignment: isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
+        mainAxisAlignment: isUser
+            ? MainAxisAlignment.end
+            : MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           // ── AI Avatar with Robot image ───────────────────────────────────
@@ -583,7 +677,11 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
               decoration: BoxDecoration(
                 gradient: isUser
                     ? const LinearGradient(
-                        colors: [Color(0xFF1E40AF), Color(0xFF2563EB), Color(0xFF3B82F6)],
+                        colors: [
+                          Color(0xFF1E40AF),
+                          Color(0xFF2563EB),
+                          Color(0xFF3B82F6),
+                        ],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       )
@@ -605,8 +703,9 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
                 ],
               ),
               child: Column(
-                crossAxisAlignment:
-                    isUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+                crossAxisAlignment: isUser
+                    ? CrossAxisAlignment.end
+                    : CrossAxisAlignment.start,
                 children: [
                   Text(
                     message.text,
@@ -651,13 +750,21 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
               width: 36,
               height: 36,
               decoration: BoxDecoration(
-                color: isDark ? const Color(0xFF1E293B) : const Color(0xFFDBEAFE),
+                color: isDark
+                    ? const Color(0xFF1E293B)
+                    : const Color(0xFFDBEAFE),
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: isDark ? const Color(0xFF334155) : const Color(0xFF93C5FD),
+                  color: isDark
+                      ? const Color(0xFF334155)
+                      : const Color(0xFF93C5FD),
                 ),
               ),
-              child: const Icon(Icons.person_rounded, size: 20, color: Color(0xFF1D4ED8)),
+              child: const Icon(
+                Icons.person_rounded,
+                size: 20,
+                color: Color(0xFF1D4ED8),
+              ),
             ),
           ],
         ],
@@ -730,7 +837,10 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
                   mainAxisSize: MainAxisSize.min,
                   children: List.generate(3, (i) {
                     final delay = i / 3;
-                    final t = (_dotAnimController.value - delay).clamp(0.0, 1.0);
+                    final t = (_dotAnimController.value - delay).clamp(
+                      0.0,
+                      1.0,
+                    );
                     final scale = 0.6 + 0.4 * math.sin(t * math.pi);
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 3),
@@ -743,8 +853,8 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
                             color: i == 0
                                 ? const Color(0xFF2563EB)
                                 : (i == 1
-                                    ? const Color(0xFF60A5FA)
-                                    : const Color(0xFF93C5FD)),
+                                      ? const Color(0xFF60A5FA)
+                                      : const Color(0xFF93C5FD)),
                             shape: BoxShape.circle,
                           ),
                         ),
@@ -803,9 +913,13 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
                     maxLines: null,
                     decoration: InputDecoration(
                       hintText: 'Ask something...',
-                      hintStyle: TextStyle(fontSize: 13.5, color: textSecondary),
+                      hintStyle: TextStyle(
+                        fontSize: 13.5,
+                        color: textSecondary,
+                      ),
                       contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 10,
+                        horizontal: 16,
+                        vertical: 10,
                       ),
                       border: InputBorder.none,
                       enabledBorder: InputBorder.none,
@@ -823,7 +937,11 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
                   height: 46,
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
-                      colors: [Color(0xFF1E40AF), Color(0xFF2563EB), Color(0xFF3B82F6)],
+                      colors: [
+                        Color(0xFF1E40AF),
+                        Color(0xFF2563EB),
+                        Color(0xFF3B82F6),
+                      ],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
@@ -836,7 +954,11 @@ class _PersonalAiScreenState extends State<PersonalAiScreen>
                       ),
                     ],
                   ),
-                  child: const Icon(Icons.send_rounded, color: Colors.white, size: 20),
+                  child: const Icon(
+                    Icons.send_rounded,
+                    color: Colors.white,
+                    size: 20,
+                  ),
                 ),
               ),
             ],

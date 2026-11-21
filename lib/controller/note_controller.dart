@@ -1,3 +1,4 @@
+import 'package:dev_path/Widgets/app_snackbar.dart';
 import 'package:dev_path/models/note_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,7 +10,6 @@ class NoteController extends GetxController {
 
   final RxList<NoteModel> notes = <NoteModel>[].obs;
   final RxString searchQuery = ''.obs;
-
   @override
   void onInit() {
     super.onInit();
@@ -60,10 +60,9 @@ class NoteController extends GetxController {
     notes.insert(0, newNote);
     saveNotesToStorage();
 
-    Get.snackbar(
-      'Note Created',
-      'Personal learning note saved successfully.',
-      snackPosition: SnackPosition.BOTTOM,
+    AppSnackBar.show(
+      title: 'Note Created',
+      message: 'Personal learning note saved successfully.',
       duration: const Duration(seconds: 2),
     );
   }
@@ -90,10 +89,9 @@ class NoteController extends GetxController {
       notes[index] = updatedNote;
       saveNotesToStorage();
 
-      Get.snackbar(
-        'Note Updated',
-        'Personal learning note updated.',
-        snackPosition: SnackPosition.BOTTOM,
+      AppSnackBar.show(
+        title: 'Note Updated',
+        message: 'Personal learning note updated.',
         duration: const Duration(seconds: 2),
       );
     }
@@ -103,19 +101,20 @@ class NoteController extends GetxController {
     notes.removeWhere((note) => note.id == id);
     saveNotesToStorage();
 
-    Get.snackbar(
-      'Note Deleted',
-      'Note removed from your collection.',
-      snackPosition: SnackPosition.BOTTOM,
+    AppSnackBar.show(
+      title: 'Note Deleted',
+      message: 'Note removed from your collection.',
       duration: const Duration(seconds: 2),
     );
   }
 
   List<NoteModel> getNotesForStep(String roadmapTitle, int stepId) {
     return notes
-        .where((note) =>
-            note.roadmapTitle.toLowerCase() == roadmapTitle.toLowerCase() &&
-            note.stepId == stepId)
+        .where(
+          (note) =>
+              note.roadmapTitle.toLowerCase() == roadmapTitle.toLowerCase() &&
+              note.stepId == stepId,
+        )
         .toList();
   }
 

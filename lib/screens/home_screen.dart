@@ -36,8 +36,9 @@ class HomeScreen extends StatelessWidget {
     final bgColor = isDark ? const Color(0xFF0B1220) : AppColor.background;
     final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
     final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
 
     final user = FirebaseAuth.instance.currentUser;
@@ -105,63 +106,15 @@ class HomeScreen extends StatelessWidget {
         ),
         actions: [
           // Personal AI Chat Button
-          Padding(
-            padding: const EdgeInsets.only(right: 4),
-            child: InkWell(
-              onTap: () {
-                Get.to(() => const PersonalAiScreen());
-              },
-              borderRadius: BorderRadius.circular(12),
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [AppColor.secondary, Color(0xFF60A5FA)],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColor.secondary.withValues(alpha: 0.25),
-                      blurRadius: 6,
-                      offset: const Offset(0, 2),
-                    ),
-                  ],
-                ),
-                child: const Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      Icons.auto_awesome_rounded,
-                      color: Colors.white,
-                      size: 16,
-                    ),
-                    SizedBox(width: 4),
-                    Text(
-                      'AI',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          // Notification Bell
-
 
           // User Profile Avatar
           Padding(
             padding: EdgeInsets.only(right: horizontalPadding, left: 2.0),
             child: CircleAvatar(
               radius: 17,
-              backgroundColor:
-                  isDark ? const Color(0xFF1E293B) : AppColor.lightBlue,
+              backgroundColor: isDark
+                  ? const Color(0xFF1E293B)
+                  : AppColor.lightBlue,
               child: Text(
                 userName.substring(0, 1).toUpperCase(),
                 style: TextStyle(
@@ -221,8 +174,10 @@ class HomeScreen extends StatelessWidget {
                 // 2. Quick Stats Highlights Strip
                 Container(
                   width: double.infinity,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 12,
+                  ),
                   decoration: BoxDecoration(
                     color: surfaceColor,
                     borderRadius: BorderRadius.circular(18),
@@ -247,25 +202,17 @@ class HomeScreen extends StatelessWidget {
                         textPrimary: textPrimaryColor,
                         textSecondary: textSecondaryColor,
                       ),
-                      Container(
-                        height: 28,
-                        width: 1,
-                        color: borderColor,
-                      ),
+                      Container(height: 28, width: 1, color: borderColor),
                       _buildStatItem(
                         icon: Icons.check_circle_outline_rounded,
                         iconColor: const Color(0xFF10B981),
-                        title: '500+',
+                        title: '9800+',
                         subtitle: 'Topics',
                         isDark: isDark,
                         textPrimary: textPrimaryColor,
                         textSecondary: textSecondaryColor,
                       ),
-                      Container(
-                        height: 28,
-                        width: 1,
-                        color: borderColor,
-                      ),
+                      Container(height: 28, width: 1, color: borderColor),
                       _buildStatItem(
                         icon: Icons.workspace_premium_rounded,
                         iconColor: const Color(0xFFF59E0B),
@@ -374,19 +321,22 @@ class HomeScreen extends StatelessWidget {
                                 vertical: 10,
                               ),
                               elevation: 3,
-                              shadowColor:
-                                  AppColor.primary.withValues(alpha: 0.4),
+                              shadowColor: AppColor.primary.withValues(
+                                alpha: 0.4,
+                              ),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
                             ),
                             onPressed: () {
-                              final flutterRoadmap = controller
-                                      .roadmapList.isNotEmpty
+                              final flutterRoadmap =
+                                  controller.roadmapList.isNotEmpty
                                   ? controller.roadmapList.first
                                   : null;
                               Get.to(
-                                () => RoadmapDetailScreen(roadmap: flutterRoadmap),
+                                () => RoadmapDetailScreen(
+                                  roadmap: flutterRoadmap,
+                                ),
                               );
                             },
                             child: const Row(
@@ -400,10 +350,7 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(width: 6),
-                                Icon(
-                                  Icons.arrow_forward_rounded,
-                                  size: 16,
-                                ),
+                                Icon(Icons.arrow_forward_rounded, size: 16),
                               ],
                             ),
                           ),
@@ -427,8 +374,9 @@ class HomeScreen extends StatelessWidget {
                 Obx(() {
                   progressController.progressUpdateTrigger.value;
                   final inProgressRoadmaps = controller.roadmapList.where((r) {
-                    final steps =
-                        RoadmapStepData.getStepsForLanguage(r.language);
+                    final steps = RoadmapStepData.getStepsForLanguage(
+                      r.language,
+                    );
                     final completed = progressController.getCompletedTopicCount(
                       r.language,
                       steps,
@@ -679,8 +627,7 @@ class HomeScreen extends StatelessWidget {
                         icon: Icons.library_books_outlined,
                         color: const Color(0xFF8B5CF6),
                         title: 'Curated high-quality resources',
-                        subtitle:
-                            'Official documentation, codelabs, and playgrounds.',
+                        subtitle: 'Official documentation, codelabs, and playgrounds.',
                         textPrimary: textPrimaryColor,
                         textSecondary: textSecondaryColor,
                       ),
@@ -689,8 +636,7 @@ class HomeScreen extends StatelessWidget {
                         icon: Icons.insights_rounded,
                         color: const Color(0xFFF97316),
                         title: 'Interactive topic tracking',
-                        subtitle:
-                            'Mark topics completed and monitor your real growth.',
+                        subtitle: 'Mark topics completed and monitor your real growth.',
                         textPrimary: textPrimaryColor,
                         textSecondary: textSecondaryColor,
                       ),
@@ -725,11 +671,7 @@ class HomeScreen extends StatelessWidget {
             color: iconColor.withValues(alpha: 0.12),
             borderRadius: BorderRadius.circular(8),
           ),
-          child: Icon(
-            icon,
-            size: 18,
-            color: iconColor,
-          ),
+          child: Icon(icon, size: 18, color: iconColor),
         ),
         const SizedBox(width: 8),
         Column(
@@ -769,8 +711,10 @@ class HomeScreen extends StatelessWidget {
   }) {
     final steps = RoadmapStepData.getStepsForLanguage(roadmap.language);
     final total = progressController.getTotalTopicCount(steps);
-    final completed =
-        progressController.getCompletedTopicCount(roadmap.language, steps);
+    final completed = progressController.getCompletedTopicCount(
+      roadmap.language,
+      steps,
+    );
     final progress = total > 0 ? completed / total : 0.0;
     final percentage = (progress * 100).toInt();
 
@@ -860,8 +804,9 @@ class HomeScreen extends StatelessWidget {
               child: LinearProgressIndicator(
                 value: progress,
                 minHeight: 5,
-                backgroundColor:
-                    isDark ? const Color(0xFF334155) : const Color(0xFFE2EAF2),
+                backgroundColor: isDark
+                    ? const Color(0xFF334155)
+                    : const Color(0xFFE2EAF2),
                 valueColor: const AlwaysStoppedAnimation<Color>(
                   Color(0xFF10B981),
                 ),
@@ -943,8 +888,9 @@ class HomeScreen extends StatelessWidget {
                   height: 42,
                   padding: const EdgeInsets.all(6),
                   decoration: BoxDecoration(
-                    color:
-                        isDark ? const Color(0xFF1E293B) : AppColor.lightBlue,
+                    color: isDark
+                        ? const Color(0xFF1E293B)
+                        : AppColor.lightBlue,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Image.asset(
@@ -952,8 +898,9 @@ class HomeScreen extends StatelessWidget {
                     fit: BoxFit.contain,
                     errorBuilder: (context, error, stackTrace) => Icon(
                       Icons.code_rounded,
-                      color:
-                          isDark ? const Color(0xFF60A5FA) : AppColor.secondary,
+                      color: isDark
+                          ? const Color(0xFF60A5FA)
+                          : AppColor.secondary,
                     ),
                   ),
                 ),
@@ -1015,9 +962,7 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 6),
 
             // Roadmap Progress Widget
-            RoadmapProgressWidget(
-              roadmap: item,
-            ),
+            RoadmapProgressWidget(roadmap: item),
           ],
         ),
       ),
@@ -1037,11 +982,7 @@ class HomeScreen extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(top: 2),
-          child: Icon(
-            icon,
-            color: color,
-            size: 16,
-          ),
+          child: Icon(icon, color: color, size: 16),
         ),
         const SizedBox(width: 8),
         Expanded(
@@ -1058,10 +999,7 @@ class HomeScreen extends StatelessWidget {
               ),
               Text(
                 subtitle,
-                style: TextStyle(
-                  fontSize: 11,
-                  color: textSecondary,
-                ),
+                style: TextStyle(fontSize: 11, color: textSecondary),
               ),
             ],
           ),

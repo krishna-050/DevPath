@@ -5,13 +5,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 1,
     title: 'Introduction to Java & Environment',
-    description:
-        'Understand what Java is, its architecture, history, JDK vs JRE vs JVM, compilation to bytecode, and write your first program.',
+    description: 'Understand what Java is, its architecture, history, JDK vs JRE vs JVM, compilation to bytecode, and write your first program.',
     duration: '1 week',
     phase: 'Phase 1: Java Fundamentals',
     level: 'Beginner',
-    learningObjectives:
-        'Install OpenJDK, configure JAVA_HOME, understand how the JVM executes bytecode, and compile/run Java from the CLI.',
+    learningObjectives: 'Install OpenJDK, configure JAVA_HOME, understand how the JVM executes bytecode, and compile/run Java from the CLI.',
     subtopics: [
       'What is Java? History, core philosophy (WORA - Write Once, Run Anywhere)',
       'Key features: Simple, Object-Oriented, Platform-Independent, Secure, Multi-threaded',
@@ -37,13 +35,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 2,
     title: 'Variables & Data Types',
-    description:
-        'Learn variable declaration, primitive and reference types, memory sizes, type casting, constants, and variable scope.',
+    description: 'Learn variable declaration, primitive and reference types, memory sizes, type casting, constants, and variable scope.',
     duration: '1 week',
     phase: 'Phase 1: Java Fundamentals',
     level: 'Beginner',
-    learningObjectives:
-        'Declare and initialize variables, choose appropriate primitive types, apply widening and narrowing type casts, and master variable scope.',
+    learningObjectives: 'Declare and initialize variables, choose appropriate primitive types, apply widening and narrowing type casts, and master variable scope.',
     subtopics: [
       'What are variables? Memory representation and identifiers',
       'Java naming conventions (camelCase, PascalCase, UPPER_CASE for constants)',
@@ -70,13 +66,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 3,
     title: 'Operators & Expressions',
-    description:
-        'Master arithmetic, relational, logical, bitwise, assignment, and ternary operators, along with operator precedence rules.',
+    description: 'Master arithmetic, relational, logical, bitwise, assignment, and ternary operators, along with operator precedence rules.',
     duration: '1 week',
     phase: 'Phase 1: Java Fundamentals',
     level: 'Beginner',
-    learningObjectives:
-        'Write complex boolean and arithmetic expressions, understand short-circuit evaluation, and apply bitwise operations.',
+    learningObjectives: 'Write complex boolean and arithmetic expressions, understand short-circuit evaluation, and apply bitwise operations.',
     subtopics: [
       'Arithmetic operators: +, -, *, /, % (modulus) and integer division nuances',
       'Unary operators: increment (++), decrement (--), prefix vs postfix evaluation',
@@ -100,13 +94,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 4,
     title: 'Input, Output & Formatting',
-    description:
-        'Read keyboard input from users, print formatted strings to the console, and handle character streams.',
+    description: 'Read keyboard input from users, print formatted strings to the console, and handle character streams.',
     duration: '1 week',
     phase: 'Phase 1: Java Fundamentals',
     level: 'Beginner',
-    learningObjectives:
-        'Use the Scanner class for robust user input, format text and numbers with printf, and handle input mismatches.',
+    learningObjectives: 'Use the Scanner class for robust user input, format text and numbers with printf, and handle input mismatches.',
     subtopics: [
       'Standard output streams: System.out.print() vs System.out.println()',
       'Standard error stream: System.err for error reporting',
@@ -129,13 +121,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 5,
     title: 'Conditional Statements',
-    description:
-        'Direct program execution flow with if, if-else ladders, nested conditionals, and modern switch statements with pattern matching.',
+    description: 'Direct program execution flow with if, if-else ladders, nested conditionals, and modern switch statements with pattern matching.',
     duration: '1 week',
     phase: 'Phase 1: Java Fundamentals',
     level: 'Beginner',
-    learningObjectives:
-        'Evaluate conditions accurately, eliminate deeply nested conditionals with guard clauses, and use modern switch expressions.',
+    learningObjectives: 'Evaluate conditions accurately, eliminate deeply nested conditionals with guard clauses, and use modern switch expressions.',
     subtopics: [
       'The if statement: boolean expressions and single branch execution',
       'The if-else statement: two-way decision branching',
@@ -158,13 +148,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 6,
     title: 'Loops & Iteration',
-    description:
-        'Automate repetitive tasks using while, do-while, standard for, and enhanced for-each loops, controlling flow with break and continue.',
+    description: 'Automate repetitive tasks using while, do-while, standard for, and enhanced for-each loops, controlling flow with break and continue.',
     duration: '1 week',
     phase: 'Phase 1: Java Fundamentals',
     level: 'Beginner',
-    learningObjectives:
-        'Choose the appropriate loop structure for counting vs condition-based iteration, and avoid infinite loops.',
+    learningObjectives: 'Choose the appropriate loop structure for counting vs condition-based iteration, and avoid infinite loops.',
     subtopics: [
       'while loop: entry-controlled iteration and loop condition checks',
       'do-while loop: exit-controlled iteration guaranteed to execute at least once',
@@ -189,13 +177,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 7,
     title: 'Arrays & Memory Representation',
-    description:
-        'Store and manipulate fixed-size ordered collections of elements in contiguous memory, working with 1D, 2D, and jagged arrays.',
+    description: 'Store and manipulate fixed-size ordered collections of elements in contiguous memory, working with 1D, 2D, and jagged arrays.',
     duration: '1-2 weeks',
     phase: 'Phase 1: Java Fundamentals',
     level: 'Beginner',
-    learningObjectives:
-        'Declare, instantiate, and populate arrays, iterate across dimensions, and use java.util.Arrays utility functions.',
+    learningObjectives: 'Declare, instantiate, and populate arrays, iterate across dimensions, and use java.util.Arrays utility functions.',
     subtopics: [
       'What is an array? Contiguous memory allocation, index-based access, and 0-indexing',
       'Array declaration, instantiation with new, and default array element values',
@@ -221,13 +207,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 8,
     title: 'Strings & Character Manipulation',
-    description:
-        'Master text processing in Java: String immutability, the String Constant Pool, StringBuilder, StringBuffer, and modern text blocks.',
+    description: 'Master text processing in Java: String immutability, the String Constant Pool, StringBuilder, StringBuffer, and modern text blocks.',
     duration: '1-2 weeks',
     phase: 'Phase 1: Java Fundamentals',
     level: 'Beginner',
-    learningObjectives:
-        'Understand why Strings are immutable, compare strings using .equals(), and optimize concatenation with StringBuilder.',
+    learningObjectives: 'Understand why Strings are immutable, compare strings using .equals(), and optimize concatenation with StringBuilder.',
     subtopics: [
       'The java.lang.String class: sequence of characters and UTF-16 encoding',
       'String immutability and architectural reasons (security, caching, synchronization, class loading)',
@@ -255,13 +239,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 9,
     title: 'Methods & Recursion',
-    description:
-        'Encapsulate reusable logic in methods, understand parameters, return types, pass-by-value semantics, and recursive call stacks.',
+    description: 'Encapsulate reusable logic in methods, understand parameters, return types, pass-by-value semantics, and recursive call stacks.',
     duration: '1-2 weeks',
     phase: 'Phase 2: Core Java & OOP',
     level: 'Intermediate',
-    learningObjectives:
-        'Write modular methods, apply method overloading, understand Java pass-by-value mechanics, and write base-case recursive functions.',
+    learningObjectives: 'Write modular methods, apply method overloading, understand Java pass-by-value mechanics, and write base-case recursive functions.',
     subtopics: [
       'Method anatomy: access modifier, return type, method name, parameter list, and method body',
       'Invoking methods and understanding the JVM Call Stack (stack frames)',
@@ -286,13 +268,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 10,
     title: 'Classes, Objects & Constructors',
-    description:
-        'Lay the foundation of Object-Oriented Programming: classes as blueprints, objects as instances, constructor chaining, and the this keyword.',
+    description: 'Lay the foundation of Object-Oriented Programming: classes as blueprints, objects as instances, constructor chaining, and the this keyword.',
     duration: '2 weeks',
     phase: 'Phase 2: Core Java & OOP',
     level: 'Intermediate',
-    learningObjectives:
-        'Model real-world entities with classes and objects, design overloaded constructors, and resolve field shadowing using this.',
+    learningObjectives: 'Model real-world entities with classes and objects, design overloaded constructors, and resolve field shadowing using this.',
     subtopics: [
       'Object-Oriented Programming philosophy: modeling state (fields) and behavior (methods)',
       'Class definition: blueprint of an object',
@@ -316,13 +296,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 11,
     title: 'Encapsulation, Static & Record Classes',
-    description:
-        'Protect internal object state with encapsulation, use access modifiers, manage class-level static members, and use modern record classes.',
+    description: 'Protect internal object state with encapsulation, use access modifiers, manage class-level static members, and use modern record classes.',
     duration: '1-2 weeks',
     phase: 'Phase 2: Core Java & OOP',
     level: 'Intermediate',
-    learningObjectives:
-        'Apply access modifiers, design immutable encapsulated classes, utilize static members, and declare immutable Record classes.',
+    learningObjectives: 'Apply access modifiers, design immutable encapsulated classes, utilize static members, and declare immutable Record classes.',
     subtopics: [
       'Encapsulation principle: bundling data with methods and restricting direct attribute access',
       'Access modifiers: private (class scope), default / package-private, protected, and public',
@@ -346,13 +324,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 12,
     title: 'Inheritance & Polymorphism',
-    description:
-        'Extend classes with inheritance, reuse code, override methods, and master runtime dynamic method dispatch.',
+    description: 'Extend classes with inheritance, reuse code, override methods, and master runtime dynamic method dispatch.',
     duration: '2 weeks',
     phase: 'Phase 2: Core Java & OOP',
     level: 'Intermediate',
-    learningObjectives:
-        'Design class hierarchies with extends, invoke superclass constructors with super(), override methods, and leverage dynamic polymorphism.',
+    learningObjectives: 'Design class hierarchies with extends, invoke superclass constructors with super(), override methods, and leverage dynamic polymorphism.',
     subtopics: [
       'Inheritance principle: the IS-A relationship and code reusability using the extends keyword',
       'Single inheritance in Java (why Java does not support multiple class inheritance to avoid the Diamond Problem)',
@@ -376,13 +352,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 13,
     title: 'Abstraction & Interfaces',
-    description:
-        'Separate contract from implementation: design abstract classes, declare interfaces, and understand default, static, and private interface methods.',
+    description: 'Separate contract from implementation: design abstract classes, declare interfaces, and understand default, static, and private interface methods.',
     duration: '2 weeks',
     phase: 'Phase 2: Core Java & OOP',
     level: 'Intermediate',
-    learningObjectives:
-        'Define abstract classes and methods, implement multiple interfaces, use default interface methods, and design loosely coupled systems.',
+    learningObjectives: 'Define abstract classes and methods, implement multiple interfaces, use default interface methods, and design loosely coupled systems.',
     subtopics: [
       'Abstraction principle: exposing essential features while hiding internal implementation details',
       'Abstract classes: the abstract keyword, declaring abstract methods, and providing partial implementations',
@@ -407,13 +381,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 14,
     title: 'Packages & Java Module System',
-    description:
-        'Organize Java applications into hierarchical packages, manage imports, and understand the Java Platform Module System (JPMS).',
+    description: 'Organize Java applications into hierarchical packages, manage imports, and understand the Java Platform Module System (JPMS).',
     duration: '1 week',
     phase: 'Phase 2: Core Java & OOP',
     level: 'Intermediate',
-    learningObjectives:
-        'Create and organize packages, manage namespace collisions, and understand module-info.java encapsulation.',
+    learningObjectives: 'Create and organize packages, manage namespace collisions, and understand module-info.java encapsulation.',
     subtopics: [
       'What are packages? Preventing namespace collisions and access control boundary',
       'Package naming conventions: reverse internet domain name (com.company.project)',
@@ -437,13 +409,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 15,
     title: 'Exception Handling',
-    description:
-        'Write robust, resilient applications by handling runtime errors with try-catch-finally, checked vs unchecked exceptions, and try-with-resources.',
+    description: 'Write robust, resilient applications by handling runtime errors with try-catch-finally, checked vs unchecked exceptions, and try-with-resources.',
     duration: '1-2 weeks',
     phase: 'Phase 2: Core Java & OOP',
     level: 'Intermediate',
-    learningObjectives:
-        'Catch and handle exceptions, distinguish checked from unchecked exceptions, create custom domain exceptions, and ensure resource cleanup.',
+    learningObjectives: 'Catch and handle exceptions, distinguish checked from unchecked exceptions, create custom domain exceptions, and ensure resource cleanup.',
     subtopics: [
       'Exception hierarchy: java.lang.Throwable -> Error (JVM fatal) vs Exception (recoverable)',
       'Checked exceptions (compile-time, subclass of Exception) vs Unchecked exceptions (subclass of RuntimeException)',
@@ -470,13 +440,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 16,
     title: 'Collections: List, Set & Iterators',
-    description:
-        'Master the Java Collections Framework core interfaces and implementations: ArrayList, LinkedList, HashSet, TreeSet, and fail-fast iterators.',
+    description: 'Master the Java Collections Framework core interfaces and implementations: ArrayList, LinkedList, HashSet, TreeSet, and fail-fast iterators.',
     duration: '2-3 weeks',
     phase: 'Phase 3: Intermediate Java',
     level: 'Intermediate',
-    learningObjectives:
-        'Select the optimal collection for performance, manipulate elements, understand hashing, and sort with Comparable and Comparator.',
+    learningObjectives: 'Select the optimal collection for performance, manipulate elements, understand hashing, and sort with Comparable and Comparator.',
     subtopics: [
       'Java Collections Framework hierarchy: Iterable -> Collection -> List, Set, Queue',
       'The List interface: ordered, index-based access, duplicates allowed',
@@ -503,13 +471,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 17,
     title: 'Maps & Queues',
-    description:
-        'Store key-value pairs with HashMap, TreeMap, and LinkedHashMap, and manage FIFO / LIFO elements with Queue, Deque, and PriorityQueue.',
+    description: 'Store key-value pairs with HashMap, TreeMap, and LinkedHashMap, and manage FIFO / LIFO elements with Queue, Deque, and PriorityQueue.',
     duration: '2 weeks',
     phase: 'Phase 3: Intermediate Java',
     level: 'Intermediate',
-    learningObjectives:
-        'Understand HashMap internal bucket hashing and collision treeification, sort key-values with TreeMap, and process queues.',
+    learningObjectives: 'Understand HashMap internal bucket hashing and collision treeification, sort key-values with TreeMap, and process queues.',
     subtopics: [
       'The Map interface: key-value associations, unique keys, entrySet(), keySet(), values()',
       'HashMap internals: buckets, hash code computation, index calculation, collision resolution (chaining -> Red-Black Tree conversion in Java 8)',
@@ -535,13 +501,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 18,
     title: 'Generics & Type Safety',
-    description:
-        'Write type-safe, reusable components with Java Generics, generic methods, bounded parameters, wildcards, and understand type erasure.',
+    description: 'Write type-safe, reusable components with Java Generics, generic methods, bounded parameters, wildcards, and understand type erasure.',
     duration: '1-2 weeks',
     phase: 'Phase 3: Intermediate Java',
     level: 'Intermediate',
-    learningObjectives:
-        'Declare generic classes and methods, apply PECS wildcard guidelines, and avoid runtime ClassCastExceptions.',
+    learningObjectives: 'Declare generic classes and methods, apply PECS wildcard guidelines, and avoid runtime ClassCastExceptions.',
     subtopics: [
       'Why Generics? Compile-time type safety, eliminating manual casting, and detecting errors early',
       'Declaring generic classes: class Box<T> and type parameter conventions (T, E, K, V)',
@@ -566,13 +530,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 19,
     title: 'File Handling & Modern I/O (NIO.2)',
-    description:
-        'Read and write files, handle binary streams and character encodings, and manipulate file system paths using modern java.nio.file APIs.',
+    description: 'Read and write files, handle binary streams and character encodings, and manipulate file system paths using modern java.nio.file APIs.',
     duration: '1-2 weeks',
     phase: 'Phase 3: Intermediate Java',
     level: 'Intermediate',
-    learningObjectives:
-        'Read and write text and binary files, navigate directories using Path and Files, and serialize Java objects safely.',
+    learningObjectives: 'Read and write text and binary files, navigate directories using Path and Files, and serialize Java objects safely.',
     subtopics: [
       'Java I/O streams concept: Byte Streams (InputStream / OutputStream) vs Character Streams (Reader / Writer)',
       'FileInputStream, FileOutputStream, FileReader, and FileWriter with character encodings (StandardCharsets.UTF_8)',
@@ -596,13 +558,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 20,
     title: 'Java 8+ Modern Features & Streams',
-    description:
-        'Transform your Java programming style with Lambda Expressions, Functional Interfaces, the Stream API, and the java.time API.',
+    description: 'Transform your Java programming style with Lambda Expressions, Functional Interfaces, the Stream API, and the java.time API.',
     duration: '2-3 weeks',
     phase: 'Phase 3: Intermediate Java',
     level: 'Intermediate',
-    learningObjectives:
-        'Write clean functional code with Lambdas and Method References, build declarative Stream pipelines, and handle nulls with Optional.',
+    learningObjectives: 'Write clean functional code with Lambdas and Method References, build declarative Stream pipelines, and handle nulls with Optional.',
     subtopics: [
       'Functional programming in Java: passing behavior as data with Lambda Expressions',
       'Standard Functional Interfaces: Predicate<T>, Function<T,R>, Consumer<T>, Supplier<T>, UnaryOperator<T>',
@@ -629,13 +589,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 21,
     title: 'Multithreading & Concurrency',
-    description:
-        'Build high-performance concurrent software: process vs thread, thread synchronization, thread pools, and the java.util.concurrent package.',
+    description: 'Build high-performance concurrent software: process vs thread, thread synchronization, thread pools, and the java.util.concurrent package.',
     duration: '3 weeks',
     phase: 'Phase 4: Advanced Java',
     level: 'Advanced',
-    learningObjectives:
-        'Spawn threads, prevent race conditions and deadlocks with synchronization, and manage thread pools with ExecutorService.',
+    learningObjectives: 'Spawn threads, prevent race conditions and deadlocks with synchronization, and manage thread pools with ExecutorService.',
     subtopics: [
       'Operating system processes vs threads, memory sharing, and benefits of multithreading',
       'Creating threads: extending java.lang.Thread vs implementing java.lang.Runnable vs Callable',
@@ -664,13 +622,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 22,
     title: 'JVM Architecture & Memory Management',
-    description:
-        'Deep dive into the Java Virtual Machine: ClassLoader subsystem, execution engine, heap/stack memory layout, and Garbage Collection.',
+    description: 'Deep dive into the Java Virtual Machine: ClassLoader subsystem, execution engine, heap/stack memory layout, and Garbage Collection.',
     duration: '2 weeks',
     phase: 'Phase 4: Advanced Java',
     level: 'Advanced',
-    learningObjectives:
-        'Understand how bytecode loads, analyze Heap vs Stack memory, and choose appropriate Garbage Collection algorithms.',
+    learningObjectives: 'Understand how bytecode loads, analyze Heap vs Stack memory, and choose appropriate Garbage Collection algorithms.',
     subtopics: [
       'JVM Architecture overview: ClassLoader, Runtime Data Areas, and Execution Engine',
       'ClassLoader Subsystem: Loading, Linking (Verification, Preparation, Resolution), and Initialization',
@@ -695,13 +651,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 23,
     title: 'Database Access with JDBC',
-    description:
-        'Connect Java applications to relational databases with JDBC, execute parameterized SQL queries, handle transactions, and manage connection pools.',
+    description: 'Connect Java applications to relational databases with JDBC, execute parameterized SQL queries, handle transactions, and manage connection pools.',
     duration: '2 weeks',
     phase: 'Phase 4: Advanced Java',
     level: 'Advanced',
-    learningObjectives:
-        'Execute CRUD SQL operations from Java, prevent SQL injection using PreparedStatement, and manage transactional integrity.',
+    learningObjectives: 'Execute CRUD SQL operations from Java, prevent SQL injection using PreparedStatement, and manage transactional integrity.',
     subtopics: [
       'JDBC (Java Database Connectivity) architecture: JDBC API, DriverManager, Database Drivers',
       'Loading database drivers and establishing database connections via DriverManager.getConnection()',
@@ -729,13 +683,11 @@ final List<RoadmapStepModel> javaRoadmapSteps = [
   RoadmapStepModel(
     id: 24,
     title: 'Spring Boot & Production Development',
-    description:
-        'Build enterprise backend microservices with Spring Boot: Inversion of Control, Dependency Injection, REST APIs, Spring Data JPA, and testing.',
+    description: 'Build enterprise backend microservices with Spring Boot: Inversion of Control, Dependency Injection, REST APIs, Spring Data JPA, and testing.',
     duration: '4 weeks',
     phase: 'Phase 5: Practical Development',
     level: 'Advanced',
-    learningObjectives:
-        'Build production-ready RESTful microservices with Spring Boot, persist data with Spring Data JPA/Hibernate, and write automated tests.',
+    learningObjectives: 'Build production-ready RESTful microservices with Spring Boot, persist data with Spring Data JPA/Hibernate, and write automated tests.',
     subtopics: [
       'Modern Java build tools: Maven (pom.xml, lifecycle phases, dependencies) and Gradle (build.gradle)',
       'Spring Framework core principles: Inversion of Control (IoC) and Dependency Injection (DI)',

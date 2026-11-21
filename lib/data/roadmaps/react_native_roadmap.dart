@@ -4,13 +4,11 @@ final List<RoadmapStepModel> reactNativeRoadmapSteps = [
   RoadmapStepModel(
     id: 1,
     title: 'React Native Fundamentals & Expo Setup',
-    description:
-        'Understand React Native architecture, Expo SDK vs Bare React Native CLI, and development environment configuration.',
+    description: 'Understand React Native architecture, Expo SDK vs Bare React Native CLI, and development environment configuration.',
     duration: '1-2 weeks',
     phase: 'Phase 1: Foundations',
     level: 'Beginner',
-    learningObjectives:
-        'Set up Expo Go development environment, understand JavaScript to Native bridge, and build basic cross-platform views.',
+    learningObjectives: 'Set up Expo Go development environment, understand JavaScript to Native bridge, and build basic cross-platform views.',
     subtopics: [
       'React Native core philosophy: "Learn once, write anywhere"',
       'React Native Architecture: JS Thread, UI Thread, Bridge vs New Architecture (Hermes engine, Fabric, TurboModules)',
@@ -36,13 +34,11 @@ final List<RoadmapStepModel> reactNativeRoadmapSteps = [
   RoadmapStepModel(
     id: 2,
     title: 'Mobile Styling & Layouts with Flexbox',
-    description:
-        'Style mobile components using StyleSheet API, Flexbox layout defaults, dimensions, and safe area insets.',
+    description: 'Style mobile components using StyleSheet API, Flexbox layout defaults, dimensions, and safe area insets.',
     duration: '2 weeks',
     phase: 'Phase 1: Foundations',
     level: 'Beginner',
-    learningObjectives:
-        'Master React Native Flexbox defaults (column direction), design responsive layouts using StyleSheet, and manage Safe Area insets.',
+    learningObjectives: 'Master React Native Flexbox defaults (column direction), design responsive layouts using StyleSheet, and manage Safe Area insets.',
     subtopics: [
       'StyleSheet API (StyleSheet.create()) and inline styling performance',
       'React Native Flexbox defaults: flexDirection defaults to "column"',
@@ -67,13 +63,11 @@ final List<RoadmapStepModel> reactNativeRoadmapSteps = [
   RoadmapStepModel(
     id: 3,
     title: 'Navigation with React Navigation 6',
-    description:
-        'Implement cross-platform mobile navigation using React Navigation: Stack, Bottom Tabs, and Drawer navigators.',
+    description: 'Implement cross-platform mobile navigation using React Navigation: Stack, Bottom Tabs, and Drawer navigators.',
     duration: '2-3 weeks',
     phase: 'Phase 2: Navigation & Lists',
     level: 'Intermediate',
-    learningObjectives:
-        'Set up NavigationContainer, build Native Stack navigation, pass parameters between screens, and combine Tab + Stack navigators.',
+    learningObjectives: 'Set up NavigationContainer, build Native Stack navigation, pass parameters between screens, and combine Tab + Stack navigators.',
     subtopics: [
       'React Navigation architecture & NavigationContainer wrapper',
       'Native Stack Navigator (@react-navigation/native-stack): createNativeStackNavigator',
@@ -98,13 +92,11 @@ final List<RoadmapStepModel> reactNativeRoadmapSteps = [
   RoadmapStepModel(
     id: 4,
     title: 'High-Performance Lists & Form Inputs',
-    description:
-        'Render large datasets efficiently using FlatList, SectionList, and handle mobile user input with TextInput and KeyboardAvoid.',
+    description: 'Render large datasets efficiently using FlatList, SectionList, and handle mobile user input with TextInput and KeyboardAvoid.',
     duration: '2 weeks',
     phase: 'Phase 2: Navigation & Lists',
     level: 'Intermediate',
-    learningObjectives:
-        'Render virtualized lists with FlatList, optimize list performance (getItemLayout, keyExtractor), and prevent keyboard overlap.',
+    learningObjectives: 'Render virtualized lists with FlatList, optimize list performance (getItemLayout, keyExtractor), and prevent keyboard overlap.',
     subtopics: [
       'Why not ScrollView for large datasets? Memory issues vs VirtualizedList',
       'FlatList component: data, renderItem, keyExtractor',
@@ -129,13 +121,11 @@ final List<RoadmapStepModel> reactNativeRoadmapSteps = [
   RoadmapStepModel(
     id: 5,
     title: 'State Management (Zustand & Redux Toolkit)',
-    description:
-        'Manage global mobile application state using Context API, Zustand, or Redux Toolkit.',
+    description: 'Manage global mobile application state using Context API, Zustand, or Redux Toolkit.',
     duration: '2 weeks',
     phase: 'Phase 3: State & Native APIs',
     level: 'Intermediate',
-    learningObjectives:
-        'Share state using React Context, implement lightweight global state with Zustand, or configure Redux Toolkit slices.',
+    learningObjectives: 'Share state using React Context, implement lightweight global state with Zustand, or configure Redux Toolkit slices.',
     subtopics: [
       'Local vs Global state in mobile apps',
       'React Context API for simple global themes & user auth state',
@@ -160,13 +150,11 @@ final List<RoadmapStepModel> reactNativeRoadmapSteps = [
   RoadmapStepModel(
     id: 6,
     title: 'Accessing Native Device Hardware APIs',
-    description:
-        'Integrate native mobile hardware features: Camera, Location, Push Notifications, Async Storage, and Haptics.',
+    description: 'Integrate native mobile hardware features: Camera, Location, Push Notifications, Async Storage, and Haptics.',
     duration: '2-3 weeks',
     phase: 'Phase 3: State & Native APIs',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Request permissions, capture photos with Expo Camera, query GPS coordinates with Expo Location, and trigger haptic feedback.',
+    learningObjectives: 'Request permissions, capture photos with Expo Camera, query GPS coordinates with Expo Location, and trigger haptic feedback.',
     subtopics: [
       'Requesting system permissions at runtime (Camera, Location, Photos, Notifications)',
       'Persistent Local Storage: @react-native-async-storage/async-storage vs react-native-mmkv (High speed C++ storage)',
@@ -191,13 +179,11 @@ final List<RoadmapStepModel> reactNativeRoadmapSteps = [
   RoadmapStepModel(
     id: 7,
     title: 'Animations with React Native Reanimated 3',
-    description:
-        'Build 60FPS fluid mobile animations and gesture interactions using React Native Reanimated 3 and Gesture Handler.',
+    description: 'Build 60FPS fluid mobile animations and gesture interactions using React Native Reanimated 3 and Gesture Handler.',
     duration: '2-3 weeks',
     phase: 'Phase 4: Advanced Performance',
     level: 'Advanced',
-    learningObjectives:
-        'Construct UI thread animations with Reanimated 3 (useSharedValue, useAnimatedStyle, withSpring), and handle gestures with Gesture Handler.',
+    learningObjectives: 'Construct UI thread animations with Reanimated 3 (useSharedValue, useAnimatedStyle, withSpring), and handle gestures with Gesture Handler.',
     subtopics: [
       'Animated API vs Reanimated 3 architecture (UI Thread execution via Worklets)',
       'Reanimated 3 Core primitives: useSharedValue, useAnimatedStyle',
@@ -222,13 +208,11 @@ final List<RoadmapStepModel> reactNativeRoadmapSteps = [
   RoadmapStepModel(
     id: 8,
     title: 'Offline-First Storage & Offline Sync',
-    description:
-        'Architect offline-first mobile applications with local SQLite databases, WatermelonDB, and background synchronization.',
+    description: 'Architect offline-first mobile applications with local SQLite databases, WatermelonDB, and background synchronization.',
     duration: '2 weeks',
     phase: 'Phase 4: Advanced Performance',
     level: 'Advanced',
-    learningObjectives:
-        'Implement local SQLite databases, use WatermelonDB for lazy-loaded reactive storage, and handle network offline status.',
+    learningObjectives: 'Implement local SQLite databases, use WatermelonDB for lazy-loaded reactive storage, and handle network offline status.',
     subtopics: [
       'Offline-First Mobile Architecture principles',
       'Network connectivity monitoring with @react-native-community/netinfo',
@@ -253,13 +237,11 @@ final List<RoadmapStepModel> reactNativeRoadmapSteps = [
   RoadmapStepModel(
     id: 9,
     title: 'Native Modules & New Architecture (C++ / Swift / Kotlin)',
-    description:
-        'Extend React Native using C++ TurboModules, JSI (JavaScript Interface), Fabric rendering, and Swift/Kotlin native modules.',
+    description: 'Extend React Native using C++ TurboModules, JSI (JavaScript Interface), Fabric rendering, and Swift/Kotlin native modules.',
     duration: '3 weeks',
     phase: 'Phase 5: Production & Release',
     level: 'Advanced',
-    learningObjectives:
-        'Understand JSI and TurboModules, write custom Swift/Kotlin native modules, and expose native methods to JavaScript.',
+    learningObjectives: 'Understand JSI and TurboModules, write custom Swift/Kotlin native modules, and expose native methods to JavaScript.',
     subtopics: [
       'React Native New Architecture: JSI (JavaScript Interface) replacing JSON Bridge',
       'Fabric Renderer & Concurrent React in Mobile',
@@ -284,13 +266,11 @@ final List<RoadmapStepModel> reactNativeRoadmapSteps = [
   RoadmapStepModel(
     id: 10,
     title: 'App Publishing (Expo EAS, App Store & Google Play)',
-    description:
-        'Build, sign, test, and publish React Native apps to Apple App Store and Google Play Store using Expo Application Services (EAS).',
+    description: 'Build, sign, test, and publish React Native apps to Apple App Store and Google Play Store using Expo Application Services (EAS).',
     duration: '2 weeks',
     phase: 'Phase 5: Production & Release',
     level: 'Advanced',
-    learningObjectives:
-        'Configure app.json / eas.json, build APK/AAB and IPA binaries in cloud using EAS Build, run Over-The-Air (OTA) updates, and publish.',
+    learningObjectives: 'Configure app.json / eas.json, build APK/AAB and IPA binaries in cloud using EAS Build, run Over-The-Air (OTA) updates, and publish.',
     subtopics: [
       'Expo Application Services (EAS): EAS Build, EAS Submit, EAS Update',
       'Configuring app.json: bundleIdentifier, package, version, splash screen, icons',

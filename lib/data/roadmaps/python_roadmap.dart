@@ -5,13 +5,11 @@ final List<RoadmapStepModel> pythonRoadmapSteps = [
   RoadmapStepModel(
     id: 1,
     title: 'Python Setup & Language Architecture',
-    description:
-        'Understand CPython interpreter architecture, install Python 3, set up modern IDEs, virtual environments, and run scripts.',
+    description: 'Understand CPython interpreter architecture, install Python 3, set up modern IDEs, virtual environments, and run scripts.',
     duration: '1 week',
     phase: 'Phase 1: Getting Started',
     level: 'Beginner',
-    learningObjectives:
-        'Install Python 3, configure virtual environments, use the interactive REPL, and understand how Python bytecode executes.',
+    learningObjectives: 'Install Python 3, configure virtual environments, use the interactive REPL, and understand how Python bytecode executes.',
     subtopics: [
       'What is Python? History, philosophy (The Zen of Python - import this), use cases',
       'CPython architecture: source code (.py) -> bytecode (.pyc) -> Python Virtual Machine (PVM)',
@@ -36,13 +34,11 @@ final List<RoadmapStepModel> pythonRoadmapSteps = [
   RoadmapStepModel(
     id: 2,
     title: 'Variables, Types & Type Hinting',
-    description:
-        'Master Python dynamic typing, primitive data types, memory references, immutable vs mutable types, and modern type annotations.',
+    description: 'Master Python dynamic typing, primitive data types, memory references, immutable vs mutable types, and modern type annotations.',
     duration: '1 week',
     phase: 'Phase 1: Getting Started',
     level: 'Beginner',
-    learningObjectives:
-        'Declare variables, navigate dynamic typing safely, inspect types with type() and isinstance(), and annotate functions with type hints.',
+    learningObjectives: 'Declare variables, navigate dynamic typing safely, inspect types with type() and isinstance(), and annotate functions with type hints.',
     subtopics: [
       'Variables as object references rather than memory containers in Python',
       'Dynamic typing mechanics and duck typing philosophy',
@@ -67,13 +63,11 @@ final List<RoadmapStepModel> pythonRoadmapSteps = [
   RoadmapStepModel(
     id: 3,
     title: 'Operators & Mathematical Logic',
-    description:
-        'Execute calculations, evaluate boolean logic, work with identity and membership operators, and use the standard math module.',
+    description: 'Execute calculations, evaluate boolean logic, work with identity and membership operators, and use the standard math module.',
     duration: '1 week',
     phase: 'Phase 1: Getting Started',
     level: 'Beginner',
-    learningObjectives:
-        'Write complex conditional expressions, differentiate is from ==, and apply bitwise operations and mathematical constants.',
+    learningObjectives: 'Write complex conditional expressions, differentiate is from ==, and apply bitwise operations and mathematical constants.',
     subtopics: [
       'Arithmetic operators: +, -, *, /, // (floor division), % (modulo), ** (exponentiation)',
       'Comparison operators: ==, !=, <, >, <=, >= and chained comparisons (1 < x < 10)',
@@ -97,13 +91,11 @@ final List<RoadmapStepModel> pythonRoadmapSteps = [
   RoadmapStepModel(
     id: 4,
     title: 'Console I/O & String Manipulation',
-    description:
-        'Interact with users via input and print, master string immutability, format strings with f-strings, and perform advanced slicing.',
+    description: 'Interact with users via input and print, master string immutability, format strings with f-strings, and perform advanced slicing.',
     duration: '1-2 weeks',
     phase: 'Phase 1: Getting Started',
     level: 'Beginner',
-    learningObjectives:
-        'Format dynamic strings with modern f-strings, manipulate text using slicing syntax [start:stop:step], and parse user input.',
+    learningObjectives: 'Format dynamic strings with modern f-strings, manipulate text using slicing syntax [start:stop:step], and parse user input.',
     subtopics: [
       'Reading console input: input() and type casting input strings to numbers',
       'The print() function: custom separators with sep, custom line terminators with end',
@@ -129,13 +121,11 @@ final List<RoadmapStepModel> pythonRoadmapSteps = [
   RoadmapStepModel(
     id: 5,
     title: 'Control Flow & Pattern Matching',
-    description:
-        'Control execution paths with if, elif, else, truthy/falsy evaluation, ternary expressions, and structural pattern matching.',
+    description: 'Control execution paths with if, elif, else, truthy/falsy evaluation, ternary expressions, and structural pattern matching.',
     duration: '1 week',
     phase: 'Phase 1: Getting Started',
     level: 'Beginner',
-    learningObjectives:
-        'Write clean multi-branch conditional logic, evaluate truthiness, and leverage match-case pattern matching introduced in Python 3.10.',
+    learningObjectives: 'Write clean multi-branch conditional logic, evaluate truthiness, and leverage match-case pattern matching introduced in Python 3.10.',
     subtopics: [
       'The if statement: indentation-based code blocks (4 spaces convention)',
       'Two-way branching with if-else and multi-branch decision trees with elif',
@@ -159,13 +149,11 @@ final List<RoadmapStepModel> pythonRoadmapSteps = [
   RoadmapStepModel(
     id: 6,
     title: 'Loops, Iteration & Comprehensions',
-    description:
-        'Automate repetitive tasks with for loops, while loops, range(), enumerate(), zip(), loop control statements, and list comprehensions.',
+    description: 'Automate repetitive tasks with for loops, while loops, range(), enumerate(), zip(), loop control statements, and list comprehensions.',
     duration: '1-2 weeks',
     phase: 'Phase 1: Getting Started',
     level: 'Beginner',
-    learningObjectives:
-        'Iterate across sequences with for and while loops, use loop helper functions, and write concise list comprehensions.',
+    learningObjectives: 'Iterate across sequences with for and while loops, use loop helper functions, and write concise list comprehensions.',
     subtopics: [
       'The while loop: condition-based looping and preventing infinite loops',
       'The for loop: iterating directly over iterables (strings, lists, ranges)',
@@ -192,13 +180,11 @@ final List<RoadmapStepModel> pythonRoadmapSteps = [
   RoadmapStepModel(
     id: 7,
     title: 'Lists & Tuples in Depth',
-    description:
-        'Store and manipulate ordered sequences: dynamic arrays with lists and immutable sequences with tuples, packing and unpacking.',
+    description: 'Store and manipulate ordered sequences: dynamic arrays with lists and immutable sequences with tuples, packing and unpacking.',
     duration: '2 weeks',
     phase: 'Phase 2: Core Data Structures',
     level: 'Intermediate',
-    learningObjectives:
-        'Perform list operations efficiently, apply slicing tricks, use tuples for immutable records, and master unpacking syntax.',
+    learningObjectives: 'Perform list operations efficiently, apply slicing tricks, use tuples for immutable records, and master unpacking syntax.',
     subtopics: [
       'Lists in Python: dynamic arrays, heterogeneous elements, zero-indexed ordering',
       'Modifying lists: append(), extend(), insert(), remove(), pop(), clear()',
@@ -222,13 +208,11 @@ final List<RoadmapStepModel> pythonRoadmapSteps = [
   RoadmapStepModel(
     id: 8,
     title: 'Dictionaries & Sets',
-    description:
-        'Harness the power of hash tables in Python: key-value mapping with dict and mathematical set operations with set.',
+    description: 'Harness the power of hash tables in Python: key-value mapping with dict and mathematical set operations with set.',
     duration: '2 weeks',
     phase: 'Phase 2: Core Data Structures',
     level: 'Intermediate',
-    learningObjectives:
-        'Utilize dictionaries for fast O(1) lookups, master dictionary methods, apply set mathematics, and write dict comprehensions.',
+    learningObjectives: 'Utilize dictionaries for fast O(1) lookups, master dictionary methods, apply set mathematics, and write dict comprehensions.',
     subtopics: [
       'Dictionaries in Python: key-value hash maps, insertion-order preservation (Python 3.7+)',
       'Dictionary keys requirement: keys must be hashable (immutable types)',
@@ -254,13 +238,11 @@ final List<RoadmapStepModel> pythonRoadmapSteps = [
   RoadmapStepModel(
     id: 9,
     title: 'Functions, Scopes & Closures',
-    description:
-        'Write modular, reusable code with functions, default arguments, *args, **kwargs, keyword-only parameters, scope rules, and closures.',
+    description: 'Write modular, reusable code with functions, default arguments, *args, **kwargs, keyword-only parameters, scope rules, and closures.',
     duration: '2 weeks',
     phase: 'Phase 2: Core Data Structures',
     level: 'Intermediate',
-    learningObjectives:
-        'Define clean functions, understand argument binding, apply the LEGB scope hierarchy, and build functional closures.',
+    learningObjectives: 'Define clean functions, understand argument binding, apply the LEGB scope hierarchy, and build functional closures.',
     subtopics: [
       'Defining functions with def, the return statement, and default return value of None',
       'Positional parameters vs keyword arguments',
@@ -285,13 +267,11 @@ final List<RoadmapStepModel> pythonRoadmapSteps = [
   RoadmapStepModel(
     id: 10,
     title: 'Functional Programming & Built-ins',
-    description:
-        'Embrace functional programming paradigms: lambda anonymous functions, map(), filter(), reduce(), and powerful built-in functions.',
+    description: 'Embrace functional programming paradigms: lambda anonymous functions, map(), filter(), reduce(), and powerful built-in functions.',
     duration: '1-2 weeks',
     phase: 'Phase 2: Core Data Structures',
     level: 'Intermediate',
-    learningObjectives:
-        'Write anonymous lambda functions, apply map/filter/reduce, sort complex nested objects with key functions, and use itertools.',
+    learningObjectives: 'Write anonymous lambda functions, apply map/filter/reduce, sort complex nested objects with key functions, and use itertools.',
     subtopics: [
       'Lambda functions: syntax (lambda x: x * 2), single expression limitations, and usage contexts',
       'The map() function for element-wise transformation vs list comprehensions',
@@ -317,13 +297,11 @@ final List<RoadmapStepModel> pythonRoadmapSteps = [
   RoadmapStepModel(
     id: 11,
     title: 'Object-Oriented Programming (OOP)',
-    description:
-        'Structure applications around classes and objects: encapsulation, instance methods, class methods, static methods, and properties.',
+    description: 'Structure applications around classes and objects: encapsulation, instance methods, class methods, static methods, and properties.',
     duration: '2 weeks',
     phase: 'Phase 3: OOP & Advanced Features',
     level: 'Intermediate',
-    learningObjectives:
-        'Model domains with classes, initialize attributes in __init__, differentiate self from cls, and manage attributes with @property.',
+    learningObjectives: 'Model domains with classes, initialize attributes in __init__, differentiate self from cls, and manage attributes with @property.',
     subtopics: [
       'Classes and Objects: modeling real-world entities with state and behavior',
       'The __init__() initializer method and the self parameter (explicit instance reference)',
@@ -347,13 +325,11 @@ final List<RoadmapStepModel> pythonRoadmapSteps = [
   RoadmapStepModel(
     id: 12,
     title: 'Inheritance, Polymorphism & Dunder Methods',
-    description:
-        'Extend classes with single and multiple inheritance, understand Method Resolution Order (MRO), super(), and customize behavior with magic methods.',
+    description: 'Extend classes with single and multiple inheritance, understand Method Resolution Order (MRO), super(), and customize behavior with magic methods.',
     duration: '2 weeks',
     phase: 'Phase 3: OOP & Advanced Features',
     level: 'Intermediate',
-    learningObjectives:
-        'Implement class inheritance, call superclass methods with super(), inspect MRO with C3 linearization, and overload operators with dunder methods.',
+    learningObjectives: 'Implement class inheritance, call superclass methods with super(), inspect MRO with C3 linearization, and overload operators with dunder methods.',
     subtopics: [
       'Inheritance syntax: class Child(Parent) and the object root class',
       'Overriding parent methods in subclasses',
@@ -380,13 +356,11 @@ final List<RoadmapStepModel> pythonRoadmapSteps = [
   RoadmapStepModel(
     id: 13,
     title: 'Error & Exception Handling',
-    description:
-        'Write resilient software that catches and handles runtime exceptions gracefully with try, except, else, finally, and custom exception classes.',
+    description: 'Write resilient software that catches and handles runtime exceptions gracefully with try, except, else, finally, and custom exception classes.',
     duration: '1-2 weeks',
     phase: 'Phase 3: OOP & Advanced Features',
     level: 'Intermediate',
-    learningObjectives:
-        'Handle runtime errors, distinguish specific exception types, create custom exception hierarchies, and chain exceptions with raise ... from.',
+    learningObjectives: 'Handle runtime errors, distinguish specific exception types, create custom exception hierarchies, and chain exceptions with raise ... from.',
     subtopics: [
       'Syntax errors (parsing time) vs Exceptions (runtime errors)',
       'The try-except block: intercepting exceptions without crashing the program',
@@ -412,13 +386,11 @@ final List<RoadmapStepModel> pythonRoadmapSteps = [
   RoadmapStepModel(
     id: 14,
     title: 'Modules, Packages & Virtual Environments',
-    description:
-        'Structure Python applications into modular codebases: imports, __name__ == "__main__", package creation, pip, and modern packaging with pyproject.toml.',
+    description: 'Structure Python applications into modular codebases: imports, __name__ == "__main__", package creation, pip, and modern packaging with pyproject.toml.',
     duration: '1-2 weeks',
     phase: 'Phase 3: OOP & Advanced Features',
     level: 'Intermediate',
-    learningObjectives:
-        'Organize multi-file projects, manage dependencies with pip and virtual environments, and build reusable Python packages.',
+    learningObjectives: 'Organize multi-file projects, manage dependencies with pip and virtual environments, and build reusable Python packages.',
     subtopics: [
       'What is a module? Creating and importing single .py files',
       'Import styles: import math, from math import sqrt, import numpy as np',
@@ -443,13 +415,11 @@ final List<RoadmapStepModel> pythonRoadmapSteps = [
   RoadmapStepModel(
     id: 15,
     title: 'File I/O, Serialization & Context Managers',
-    description:
-        'Read and write text, CSV, and binary files, serialize data with JSON and Pickle, and implement custom context managers with the with statement.',
+    description: 'Read and write text, CSV, and binary files, serialize data with JSON and Pickle, and implement custom context managers with the with statement.',
     duration: '1-2 weeks',
     phase: 'Phase 3: OOP & Advanced Features',
     level: 'Intermediate',
-    learningObjectives:
-        'Safely open and close files using with statements, read/write JSON and CSV data, and create custom context managers using contextlib.',
+    learningObjectives: 'Safely open and close files using with statements, read/write JSON and CSV data, and create custom context managers using contextlib.',
     subtopics: [
       'The open() function: file paths, modes (r, w, a, x, b, +), and UTF-8 encoding parameter',
       'Reading files: read(), readline(), readlines(), and memory-efficient line iteration',
@@ -473,13 +443,11 @@ final List<RoadmapStepModel> pythonRoadmapSteps = [
   RoadmapStepModel(
     id: 16,
     title: 'Generators, Iterators & Decorators',
-    description:
-        'Master Python advanced functional mechanisms: iterables and iterators protocol, lazy evaluation with generators, and metaprogramming with decorators.',
+    description: 'Master Python advanced functional mechanisms: iterables and iterators protocol, lazy evaluation with generators, and metaprogramming with decorators.',
     duration: '2 weeks',
     phase: 'Phase 3: OOP & Advanced Features',
     level: 'Advanced',
-    learningObjectives:
-        'Implement the iterator protocol, write memory-efficient generator functions with yield, and wrap functions with custom decorators.',
+    learningObjectives: 'Implement the iterator protocol, write memory-efficient generator functions with yield, and wrap functions with custom decorators.',
     subtopics: [
       'The Iterable and Iterator protocol: __iter__() returning an iterator, __next__() raising StopIteration',
       'Creating custom iterator classes',
@@ -506,13 +474,11 @@ final List<RoadmapStepModel> pythonRoadmapSteps = [
   RoadmapStepModel(
     id: 17,
     title: 'Asynchronous Programming with Asyncio',
-    description:
-        'Build high-performance asynchronous, non-blocking I/O applications using coroutines, the event loop, async/await, and aiohttp.',
+    description: 'Build high-performance asynchronous, non-blocking I/O applications using coroutines, the event loop, async/await, and aiohttp.',
     duration: '2 weeks',
     phase: 'Phase 4: Concurrency & Web',
     level: 'Advanced',
-    learningObjectives:
-        'Understand event-driven non-blocking I/O, write async/await coroutines, execute concurrent tasks with asyncio.gather, and use async generators.',
+    learningObjectives: 'Understand event-driven non-blocking I/O, write async/await coroutines, execute concurrent tasks with asyncio.gather, and use async generators.',
     subtopics: [
       'Synchronous vs Asynchronous execution: CPU-bound vs I/O-bound bottlenecks',
       'The Asyncio architecture: Event Loop, Coroutines, Tasks, and Futures',
@@ -536,13 +502,11 @@ final List<RoadmapStepModel> pythonRoadmapSteps = [
   RoadmapStepModel(
     id: 18,
     title: 'Threading, Multiprocessing & GIL',
-    description:
-        'Understand the Global Interpreter Lock (GIL), utilize threads for I/O concurrency, and leverage multiprocessing for true CPU-bound parallelism.',
+    description: 'Understand the Global Interpreter Lock (GIL), utilize threads for I/O concurrency, and leverage multiprocessing for true CPU-bound parallelism.',
     duration: '2 weeks',
     phase: 'Phase 4: Concurrency & Web',
     level: 'Advanced',
-    learningObjectives:
-        'Analyze GIL implications, choose between threading and multiprocessing, and utilize the concurrent.futures high-level API.',
+    learningObjectives: 'Analyze GIL implications, choose between threading and multiprocessing, and utilize the concurrent.futures high-level API.',
     subtopics: [
       'The Global Interpreter Lock (GIL) in CPython: what it is and why it limits multi-threaded CPU execution',
       'The threading module: Thread class, start(), join(), daemon threads',
@@ -568,13 +532,11 @@ final List<RoadmapStepModel> pythonRoadmapSteps = [
   RoadmapStepModel(
     id: 19,
     title: 'Database Access: SQL & SQLAlchemy ORM',
-    description:
-        'Connect Python to relational databases: execute raw queries with sqlite3 and psycopg2, and master Object-Relational Mapping with SQLAlchemy.',
+    description: 'Connect Python to relational databases: execute raw queries with sqlite3 and psycopg2, and master Object-Relational Mapping with SQLAlchemy.',
     duration: '2-3 weeks',
     phase: 'Phase 5: Databases & Web APIs',
     level: 'Advanced',
-    learningObjectives:
-        'Connect to relational databases, execute parameterized queries, model tables with SQLAlchemy ORM, and manage database migrations with Alembic.',
+    learningObjectives: 'Connect to relational databases, execute parameterized queries, model tables with SQLAlchemy ORM, and manage database migrations with Alembic.',
     subtopics: [
       'The Python DB-API 2.0 standard (PEP 249): connection, cursor, execute, fetchone, fetchall, commit',
       'Using the built-in sqlite3 module: creating tables, parameterized inserts, preventing SQL injection',
@@ -598,13 +560,11 @@ final List<RoadmapStepModel> pythonRoadmapSteps = [
   RoadmapStepModel(
     id: 20,
     title: 'FastAPI Web APIs, Testing & Deployment',
-    description:
-        'Build production-ready asynchronous REST APIs with FastAPI, validate data with Pydantic, write automated tests with pytest, and containerize with Docker.',
+    description: 'Build production-ready asynchronous REST APIs with FastAPI, validate data with Pydantic, write automated tests with pytest, and containerize with Docker.',
     duration: '3-4 weeks',
     phase: 'Phase 5: Databases & Web APIs',
     level: 'Advanced',
-    learningObjectives:
-        'Create high-performance web APIs with FastAPI, define Pydantic schemas, write unit & integration tests with pytest, and package with Docker.',
+    learningObjectives: 'Create high-performance web APIs with FastAPI, define Pydantic schemas, write unit & integration tests with pytest, and package with Docker.',
     subtopics: [
       'Web APIs overview: HTTP verbs, status codes, request/response headers, REST architectural principles',
       'FastAPI framework introduction: high performance, automatic interactive OpenAPI / Swagger docs',

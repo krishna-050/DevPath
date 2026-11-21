@@ -1,3 +1,4 @@
+import 'package:dev_path/Widgets/app_snackbar.dart';
 import 'package:dev_path/app/theme/app_color.dart';
 import 'package:dev_path/controller/progress_controller.dart';
 import 'package:dev_path/controller/saved_controller.dart';
@@ -26,8 +27,9 @@ class RoadmapListWidget extends StatelessWidget {
 
     final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
     final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
 
     final steps = RoadmapStepData.getStepsForLanguage(item.language);
@@ -39,10 +41,7 @@ class RoadmapListWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: surfaceColor,
           borderRadius: BorderRadius.circular(18),
-          border: Border.all(
-            color: borderColor,
-            width: 1.2,
-          ),
+          border: Border.all(color: borderColor, width: 1.2),
           boxShadow: [
             BoxShadow(
               color: textPrimaryColor.withValues(alpha: 0.04),
@@ -152,17 +151,12 @@ class RoadmapListWidget extends StatelessWidget {
                             ),
                             onPressed: () {
                               savedController.toggleSaved(item);
-                              Get.snackbar(
-                                isBookmarked
+                              AppSnackBar.show(
+                                title: isBookmarked
                                     ? 'Removed from Saved'
                                     : 'Saved to Library',
-                                '${item.language} Roadmap',
-                                snackPosition: SnackPosition.BOTTOM,
+                                message: '${item.language} Roadmap',
                                 duration: const Duration(seconds: 2),
-                                backgroundColor: surfaceColor,
-                                colorText: textPrimaryColor,
-                                margin: const EdgeInsets.all(16),
-                                borderRadius: 12,
                               );
                             },
                           ),

@@ -4,13 +4,11 @@ final List<RoadmapStepModel> dataScienceRoadmapSteps = [
   RoadmapStepModel(
     id: 1,
     title: 'Python Core & Scientific Computing',
-    description:
-        'Master Python fundamentals, NumPy N-dimensional arrays, and Pandas DataFrames for high-performance data processing.',
+    description: 'Master Python fundamentals, NumPy N-dimensional arrays, and Pandas DataFrames for high-performance data processing.',
     duration: '2-3 weeks',
     phase: 'Phase 1: Foundations',
     level: 'Beginner',
-    learningObjectives:
-        'Perform vectorized array computations with NumPy, manipulate tabular datasets with Pandas, and handle missing values.',
+    learningObjectives: 'Perform vectorized array computations with NumPy, manipulate tabular datasets with Pandas, and handle missing values.',
     subtopics: [
       'Python data structures for data science: lists, dicts, sets, tuples',
       'NumPy ndarray creation, attributes, shapes, and data types',
@@ -36,13 +34,11 @@ final List<RoadmapStepModel> dataScienceRoadmapSteps = [
   RoadmapStepModel(
     id: 2,
     title: 'Exploratory Data Analysis (EDA) & Visualization',
-    description:
-        'Uncover hidden patterns, relationships, and anomalies in datasets using Matplotlib, Seaborn, and Plotly graphics.',
+    description: 'Uncover hidden patterns, relationships, and anomalies in datasets using Matplotlib, Seaborn, and Plotly graphics.',
     duration: '2 weeks',
     phase: 'Phase 1: Foundations',
     level: 'Beginner',
-    learningObjectives:
-        'Create publication-grade statistical plots, perform univariate/bivariate analysis, and construct interactive dashboards.',
+    learningObjectives: 'Create publication-grade statistical plots, perform univariate/bivariate analysis, and construct interactive dashboards.',
     subtopics: [
       'Principles of effective data visualization & chart selection',
       'Matplotlib figure architecture: Subplots, axes, titles, legends, ticks',
@@ -68,13 +64,11 @@ final List<RoadmapStepModel> dataScienceRoadmapSteps = [
   RoadmapStepModel(
     id: 3,
     title: 'Applied Mathematics & Statistics',
-    description:
-        'Master the statistical foundations of Data Science: probability distributions, hypothesis testing, linear algebra, and calculus.',
+    description: 'Master the statistical foundations of Data Science: probability distributions, hypothesis testing, linear algebra, and calculus.',
     duration: '3 weeks',
     phase: 'Phase 1: Foundations',
     level: 'Beginner to Intermediate',
-    learningObjectives:
-        'Conduct hypothesis tests (t-test, ANOVA, Chi-Square), compute Bayes theorem, and perform matrix operations.',
+    learningObjectives: 'Conduct hypothesis tests (t-test, ANOVA, Chi-Square), compute Bayes theorem, and perform matrix operations.',
     subtopics: [
       'Descriptive statistics: Mean, Median, Mode, Variance, Standard Deviation, Percentiles',
       'Probability theory: Conditional probability, Bayes Theorem, Independent events',
@@ -100,13 +94,11 @@ final List<RoadmapStepModel> dataScienceRoadmapSteps = [
   RoadmapStepModel(
     id: 4,
     title: 'SQL & Relational Data Engineering',
-    description:
-        'Query, extract, join, and aggregate massive relational datasets using SQL for business intelligence and data pipelines.',
+    description: 'Query, extract, join, and aggregate massive relational datasets using SQL for business intelligence and data pipelines.',
     duration: '2 weeks',
     phase: 'Phase 2: Data Handling',
     level: 'Beginner',
-    learningObjectives:
-        'Write complex SQL queries using INNER/LEFT joins, window functions (ROW_NUMBER, DENSE_RANK), and CTEs.',
+    learningObjectives: 'Write complex SQL queries using INNER/LEFT joins, window functions (ROW_NUMBER, DENSE_RANK), and CTEs.',
     subtopics: [
       'Relational database concepts: Tables, Primary Keys, Foreign Keys, Schemas',
       'SQL Data Querying: SELECT, WHERE, ORDER BY, LIMIT, DISTINCT',
@@ -132,13 +124,11 @@ final List<RoadmapStepModel> dataScienceRoadmapSteps = [
   RoadmapStepModel(
     id: 5,
     title: 'Data Cleaning & Feature Engineering',
-    description:
-        'Preprocess raw unstructured data into high-quality features for machine learning using Scikit-Learn tools.',
+    description: 'Preprocess raw unstructured data into high-quality features for machine learning using Scikit-Learn tools.',
     duration: '2-3 weeks',
     phase: 'Phase 2: Data Handling',
     level: 'Intermediate',
-    learningObjectives:
-        'Encode categorical features, scale numerical data, handle imbalanced datasets, and extract features.',
+    learningObjectives: 'Encode categorical features, scale numerical data, handle imbalanced datasets, and extract features.',
     subtopics: [
       'Data quality auditing: Duplicates, inconsistent formatting, outliers',
       'Feature Scaling: StandardScaling (Z-score), MinMaxScaling, RobustScaling',
@@ -163,13 +153,11 @@ final List<RoadmapStepModel> dataScienceRoadmapSteps = [
   RoadmapStepModel(
     id: 6,
     title: 'Supervised Machine Learning: Regression & Classification',
-    description:
-        'Build, evaluate, and tune predictive regression and classification models using Scikit-Learn.',
+    description: 'Build, evaluate, and tune predictive regression and classification models using Scikit-Learn.',
     duration: '3-4 weeks',
     phase: 'Phase 3: Machine Learning',
     level: 'Intermediate',
-    learningObjectives:
-        'Train Linear/Logistic Regression, Decision Trees, Random Forests, XGBoost, and evaluate models using ROC-AUC and RMSE.',
+    learningObjectives: 'Train Linear/Logistic Regression, Decision Trees, Random Forests, XGBoost, and evaluate models using ROC-AUC and RMSE.',
     subtopics: [
       'Supervised Learning framework: Features (X), Labels (y), Train/Validation/Test split',
       'Linear Regression: Ordinary Least Squares (OLS), Gradient Descent, Cost Function (MSE)',
@@ -195,13 +183,11 @@ final List<RoadmapStepModel> dataScienceRoadmapSteps = [
   RoadmapStepModel(
     id: 7,
     title: 'Unsupervised Learning & Clustering',
-    description:
-        'Discover unlabelled structures, customer segments, and latent patterns using clustering and association mining algorithms.',
+    description: 'Discover unlabelled structures, customer segments, and latent patterns using clustering and association mining algorithms.',
     duration: '2 weeks',
     phase: 'Phase 3: Machine Learning',
     level: 'Intermediate',
-    learningObjectives:
-        'Segment customer groups using K-Means, Hierarchical Clustering, DBSCAN, and evaluate Silhouette scores.',
+    learningObjectives: 'Segment customer groups using K-Means, Hierarchical Clustering, DBSCAN, and evaluate Silhouette scores.',
     subtopics: [
       'Unsupervised vs Supervised Learning paradigms',
       'K-Means Clustering: Algorithm steps, Centroids, Distance metrics (Euclidean, Manhattan)',
@@ -226,13 +212,11 @@ final List<RoadmapStepModel> dataScienceRoadmapSteps = [
   RoadmapStepModel(
     id: 8,
     title: 'Deep Learning & Neural Networks',
-    description:
-        'Architect deep neural networks, activation functions, backpropagation, and train PyTorch / TensorFlow models.',
+    description: 'Architect deep neural networks, activation functions, backpropagation, and train PyTorch / TensorFlow models.',
     duration: '3-4 weeks',
     phase: 'Phase 4: Advanced AI',
     level: 'Advanced',
-    learningObjectives:
-        'Construct Artificial Neural Networks (ANN), Convolutional Neural Networks (CNN), and Recurrent Neural Networks (RNN) in PyTorch.',
+    learningObjectives: 'Construct Artificial Neural Networks (ANN), Convolutional Neural Networks (CNN), and Recurrent Neural Networks (RNN) in PyTorch.',
     subtopics: [
       'Biological Neuron vs Artificial Perceptron model',
       'Neural Network Architecture: Input, Hidden, & Output layers',
@@ -258,13 +242,11 @@ final List<RoadmapStepModel> dataScienceRoadmapSteps = [
   RoadmapStepModel(
     id: 9,
     title: 'Big Data Analytics with Apache Spark',
-    description:
-        'Process and analyze massive gigabyte to terabyte-scale distributed datasets using PySpark DataFrames.',
+    description: 'Process and analyze massive gigabyte to terabyte-scale distributed datasets using PySpark DataFrames.',
     duration: '2-3 weeks',
     phase: 'Phase 4: Advanced AI',
     level: 'Advanced',
-    learningObjectives:
-        'Write distributed data transformations with PySpark SQL, manage Spark RDDs, and run distributed Machine Learning pipelines.',
+    learningObjectives: 'Write distributed data transformations with PySpark SQL, manage Spark RDDs, and run distributed Machine Learning pipelines.',
     subtopics: [
       'Big Data Frameworks: Hadoop Ecosystem vs Apache Spark architecture',
       'Spark Architecture: Driver, Cluster Manager, Worker Nodes, Executors',
@@ -290,13 +272,11 @@ final List<RoadmapStepModel> dataScienceRoadmapSteps = [
   RoadmapStepModel(
     id: 10,
     title: 'MLOps, Model Deployment & Production ML',
-    description:
-        'Deploy, monitor, version, and maintain production Machine Learning models using MLflow, FastAPI, Docker, and Evidently AI.',
+    description: 'Deploy, monitor, version, and maintain production Machine Learning models using MLflow, FastAPI, Docker, and Evidently AI.',
     duration: '3 weeks',
     phase: 'Phase 5: Production & MLOps',
     level: 'Advanced',
-    learningObjectives:
-        'Package ML models into REST endpoints with FastAPI, track experiments with MLflow, and monitor Data/Model Drift in production.',
+    learningObjectives: 'Package ML models into REST endpoints with FastAPI, track experiments with MLflow, and monitor Data/Model Drift in production.',
     subtopics: [
       'The MLOps Lifecycle: Experimentation, Packaging, Deployment, Monitoring, Retraining',
       'Serializing ML Models: Pickle, Joblib, ONNX (Open Neural Network Exchange)',

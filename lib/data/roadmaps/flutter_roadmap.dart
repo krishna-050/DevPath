@@ -4,13 +4,11 @@ final List<RoadmapStepModel> flutterRoadmapSteps = [
   RoadmapStepModel(
     id: 1,
     title: 'Dart Basics',
-    description:
-        'Master the foundational syntax, data types, control flow, and sound null safety of the Dart programming language.',
+    description: 'Master the foundational syntax, data types, control flow, and sound null safety of the Dart programming language.',
     duration: '1-2 weeks',
     phase: 'Phase 1: Getting Started',
     level: 'Beginner',
-    learningObjectives:
-        'Understand Dart syntax, declared and inferred types, write functions, utilize sound null safety, and write algorithmic control flow.',
+    learningObjectives: 'Understand Dart syntax, declared and inferred types, write functions, utilize sound null safety, and write algorithmic control flow.',
     subtopics: [
       'Dart execution model & JIT vs AOT compilation',
       'Variables, type inference (var, final, const)',
@@ -40,13 +38,11 @@ final List<RoadmapStepModel> flutterRoadmapSteps = [
   RoadmapStepModel(
     id: 2,
     title: 'Flutter Setup',
-    description:
-        'Set up the Flutter SDK, development environment, editors, emulators, and understand the project file structure.',
+    description: 'Set up the Flutter SDK, development environment, editors, emulators, and understand the project file structure.',
     duration: '1 week',
     phase: 'Phase 1: Getting Started',
     level: 'Beginner',
-    learningObjectives:
-        'Configure Android Studio, VS Code, Flutter SDK, manage target platforms, and understand the anatomy of a Flutter app.',
+    learningObjectives: 'Configure Android Studio, VS Code, Flutter SDK, manage target platforms, and understand the anatomy of a Flutter app.',
     subtopics: [
       'Installing Flutter SDK on macOS, Windows, or Linux',
       'Configuring system PATH & running flutter doctor verification',
@@ -74,13 +70,11 @@ final List<RoadmapStepModel> flutterRoadmapSteps = [
   RoadmapStepModel(
     id: 3,
     title: 'Widgets',
-    description:
-        'Understand the declarative UI paradigm, widget tree, layout primitives, and build responsive user interfaces.',
+    description: 'Understand the declarative UI paradigm, widget tree, layout primitives, and build responsive user interfaces.',
     duration: '2-3 weeks',
     phase: 'Phase 2: Core Concepts',
     level: 'Beginner',
-    learningObjectives:
-        'Understand StatelessWidget vs StatefulWidget lifecycle, compose nested widget trees, and master core layout widgets.',
+    learningObjectives: 'Understand StatelessWidget vs StatefulWidget lifecycle, compose nested widget trees, and master core layout widgets.',
     subtopics: [
       'Declarative UI concept: Widget tree, Element tree, RenderObject tree',
       'StatelessWidget: immutability, build() context, pure UI rendering',
@@ -109,13 +103,11 @@ final List<RoadmapStepModel> flutterRoadmapSteps = [
   RoadmapStepModel(
     id: 4,
     title: 'Assets',
-    description:
-        'Work with images, custom fonts, vector graphics (SVGs), icon sets, and local asset bundles.',
+    description: 'Work with images, custom fonts, vector graphics (SVGs), icon sets, and local asset bundles.',
     duration: '1 week',
     phase: 'Phase 2: Core Concepts',
     level: 'Beginner',
-    learningObjectives:
-        'Configure assets in pubspec.yaml, display raster and vector images, register custom typography, and handle resolution variants.',
+    learningObjectives: 'Configure assets in pubspec.yaml, display raster and vector images, register custom typography, and handle resolution variants.',
     subtopics: [
       'Registering assets and directories in pubspec.yaml',
       'Image.asset vs Image.network vs Image.file rendering',
@@ -142,13 +134,11 @@ final List<RoadmapStepModel> flutterRoadmapSteps = [
   RoadmapStepModel(
     id: 5,
     title: 'Version Control',
-    description:
-        'Track code, manage Git branches, handle merge conflicts, collaborate on GitHub, and structure Flutter repositories.',
+    description: 'Track code, manage Git branches, handle merge conflicts, collaborate on GitHub, and structure Flutter repositories.',
     duration: '1 week',
     phase: 'Phase 2: Core Concepts',
     level: 'Beginner',
-    learningObjectives:
-        'Master Git commands, configure Flutter-specific .gitignore files, work with feature branches, and submit Pull Requests.',
+    learningObjectives: 'Master Git commands, configure Flutter-specific .gitignore files, work with feature branches, and submit Pull Requests.',
     subtopics: [
       'Version control fundamentals & Git architecture (working tree, staging, commit history)',
       'Git initialization (git init), staging (git add) and committing (git commit)',
@@ -177,13 +167,11 @@ final List<RoadmapStepModel> flutterRoadmapSteps = [
   RoadmapStepModel(
     id: 6,
     title: 'APIs & Networking',
-    description:
-        'Connect your Flutter application to RESTful backends, consume HTTP endpoints, parse JSON, and handle network errors.',
+    description: 'Connect your Flutter application to RESTful backends, consume HTTP endpoints, parse JSON, and handle network errors.',
     duration: '2-3 weeks',
     phase: 'Phase 3: Intermediate Concepts',
     level: 'Intermediate',
-    learningObjectives:
-        'Execute GET, POST, PUT, DELETE requests, write type-safe JSON serializers, use Dio with interceptors, and handle network failures.',
+    learningObjectives: 'Execute GET, POST, PUT, DELETE requests, write type-safe JSON serializers, use Dio with interceptors, and handle network failures.',
     subtopics: [
       'HTTP protocol basics: URLs, methods (GET, POST, PUT, PATCH, DELETE), headers, status codes',
       'Using the native http package for basic network requests',
@@ -211,13 +199,11 @@ final List<RoadmapStepModel> flutterRoadmapSteps = [
   RoadmapStepModel(
     id: 7,
     title: 'Storage & Firebase',
-    description:
-        'Persist application data locally with key-value storage and SQLite, and integrate Google Firebase for cloud backends.',
+    description: 'Persist application data locally with key-value storage and SQLite, and integrate Google Firebase for cloud backends.',
     duration: '2-3 weeks',
     phase: 'Phase 3: Intermediate Concepts',
     level: 'Intermediate',
-    learningObjectives:
-        'Store user preferences locally, query relational local databases, integrate Firebase Auth, and perform real-time Firestore sync.',
+    learningObjectives: 'Store user preferences locally, query relational local databases, integrate Firebase Auth, and perform real-time Firestore sync.',
     subtopics: [
       'Local key-value storage: SharedPreferences and GetStorage for app settings',
       'High-performance NoSQL local storage: Hive or Isar database boxes',
@@ -244,13 +230,11 @@ final List<RoadmapStepModel> flutterRoadmapSteps = [
   RoadmapStepModel(
     id: 8,
     title: 'State Management',
-    description:
-        'Manage application state, separate business logic from UI rendering, and master reactive state architectures.',
+    description: 'Manage application state, separate business logic from UI rendering, and master reactive state architectures.',
     duration: '3-4 weeks',
     phase: 'Phase 3: Intermediate Concepts',
     level: 'Intermediate',
-    learningObjectives:
-        'Understand ephemeral vs app state, evaluate state management approaches, and master Provider, Riverpod, BLoC, or GetX.',
+    learningObjectives: 'Understand ephemeral vs app state, evaluate state management approaches, and master Provider, Riverpod, BLoC, or GetX.',
     subtopics: [
       'Ephemeral state vs App-wide state: when to use setState vs architectural stores',
       'InheritedWidget and InheritedModel underlying Flutter mechanics',
@@ -278,13 +262,11 @@ final List<RoadmapStepModel> flutterRoadmapSteps = [
   RoadmapStepModel(
     id: 9,
     title: 'Animations',
-    description:
-        'Bring your Flutter applications to life with implicit animations, explicit controllers, curved transitions, and custom canvas drawing.',
+    description: 'Bring your Flutter applications to life with implicit animations, explicit controllers, curved transitions, and custom canvas drawing.',
     duration: '2 weeks',
     phase: 'Phase 4: Advanced Concepts',
     level: 'Advanced',
-    learningObjectives:
-        'Build smooth 60/120 FPS animations, choreograph multi-stage sequences, and implement custom painter graphics.',
+    learningObjectives: 'Build smooth 60/120 FPS animations, choreograph multi-stage sequences, and implement custom painter graphics.',
     subtopics: [
       'Animation principles in Flutter: Ticker, Duration, and Curves',
       'Implicitly animated widgets: AnimatedContainer, AnimatedOpacity, AnimatedAlign, AnimatedPadding',
@@ -312,13 +294,11 @@ final List<RoadmapStepModel> flutterRoadmapSteps = [
   RoadmapStepModel(
     id: 10,
     title: 'Advanced Dart',
-    description:
-        'Explore advanced Dart language features including object-oriented patterns, mixins, extensions, Streams, generators, and concurrency isolates.',
+    description: 'Explore advanced Dart language features including object-oriented patterns, mixins, extensions, Streams, generators, and concurrency isolates.',
     duration: '2 weeks',
     phase: 'Phase 4: Advanced Concepts',
     level: 'Advanced',
-    learningObjectives:
-        'Master OOP design patterns in Dart, build custom extension methods, process continuous Streams, and execute heavy computations in Isolates.',
+    learningObjectives: 'Master OOP design patterns in Dart, build custom extension methods, process continuous Streams, and execute heavy computations in Isolates.',
     subtopics: [
       'Deep dive into Dart OOP: abstract classes, interfaces, and factory constructors',
       'Mixins: code reuse across class hierarchies with the with and on keywords',
@@ -346,13 +326,11 @@ final List<RoadmapStepModel> flutterRoadmapSteps = [
   RoadmapStepModel(
     id: 11,
     title: 'Clean Architecture',
-    description:
-        'Structure large-scale enterprise Flutter apps with Clean Architecture, Domain-Driven Design, and robust design patterns.',
+    description: 'Structure large-scale enterprise Flutter apps with Clean Architecture, Domain-Driven Design, and robust design patterns.',
     duration: '2-3 weeks',
     phase: 'Phase 5: Practical Development',
     level: 'Advanced',
-    learningObjectives:
-        'Organize projects into Presentation, Domain, and Data layers, enforce separation of concerns, and implement Repository patterns.',
+    learningObjectives: 'Organize projects into Presentation, Domain, and Data layers, enforce separation of concerns, and implement Repository patterns.',
     subtopics: [
       'Principles of Clean Architecture by Robert C. Martin applied to Flutter',
       'Domain layer: Entities, Use Cases (Interactors), and Repository interfaces',
@@ -376,13 +354,11 @@ final List<RoadmapStepModel> flutterRoadmapSteps = [
   RoadmapStepModel(
     id: 12,
     title: 'Platform Channels & Native APIs',
-    description:
-        'Bridge Flutter with native Android (Kotlin) and iOS (Swift) code using MethodChannels, EventChannels, and platform views.',
+    description: 'Bridge Flutter with native Android (Kotlin) and iOS (Swift) code using MethodChannels, EventChannels, and platform views.',
     duration: '2 weeks',
     phase: 'Phase 5: Practical Development',
     level: 'Advanced',
-    learningObjectives:
-        'Invoke native Kotlin and Swift code from Dart, receive streaming native events, and embed native platform views.',
+    learningObjectives: 'Invoke native Kotlin and Swift code from Dart, receive streaming native events, and embed native platform views.',
     subtopics: [
       'Platform Channel architecture: BinaryMessenger and codec encoding',
       'MethodChannel: invoking native methods asynchronously and returning results',
@@ -405,13 +381,11 @@ final List<RoadmapStepModel> flutterRoadmapSteps = [
   RoadmapStepModel(
     id: 13,
     title: 'Testing & QA',
-    description:
-        'Write automated unit tests, widget tests, integration tests, and profile performance using Flutter DevTools.',
+    description: 'Write automated unit tests, widget tests, integration tests, and profile performance using Flutter DevTools.',
     duration: '2 weeks',
     phase: 'Phase 6: Quality Assurance',
     level: 'Advanced',
-    learningObjectives:
-        'Achieve high test coverage, mock dependencies with Mockito, automate end-to-end user journeys, and eliminate UI jank.',
+    learningObjectives: 'Achieve high test coverage, mock dependencies with Mockito, automate end-to-end user journeys, and eliminate UI jank.',
     subtopics: [
       'Testing pyramid: Unit tests, Widget tests, Integration tests',
       'Unit testing Dart classes, Use Cases, and Repositories with test package',
@@ -436,13 +410,11 @@ final List<RoadmapStepModel> flutterRoadmapSteps = [
   RoadmapStepModel(
     id: 14,
     title: 'Notifications & Deep Linking',
-    description:
-        'Implement Firebase Cloud Messaging (FCM), handle background payloads, local scheduled notifications, and universal deep links.',
+    description: 'Implement Firebase Cloud Messaging (FCM), handle background payloads, local scheduled notifications, and universal deep links.',
     duration: '1-2 weeks',
     phase: 'Phase 6: Quality Assurance',
     level: 'Advanced',
-    learningObjectives:
-        'Configure push notification certificates, handle foreground and background notification taps, and route incoming deep links.',
+    learningObjectives: 'Configure push notification certificates, handle foreground and background notification taps, and route incoming deep links.',
     subtopics: [
       'Firebase Cloud Messaging (FCM) setup for Android and Apple APNs',
       'Requesting notification permissions on iOS 10+ and Android 13+ (POST_NOTIFICATIONS)',
@@ -464,13 +436,11 @@ final List<RoadmapStepModel> flutterRoadmapSteps = [
   RoadmapStepModel(
     id: 15,
     title: 'Performance & Security',
-    description:
-        'Optimize Flutter rendering performance, reduce app binary size, prevent memory leaks, and secure mobile application data.',
+    description: 'Optimize Flutter rendering performance, reduce app binary size, prevent memory leaks, and secure mobile application data.',
     duration: '1-2 weeks',
     phase: 'Phase 7: Production & Career',
     level: 'Advanced',
-    learningObjectives:
-        'Minimize widget rebuilds, analyze APK/IPA size breakdown, implement certificate pinning, and secure sensitive storage.',
+    learningObjectives: 'Minimize widget rebuilds, analyze APK/IPA size breakdown, implement certificate pinning, and secure sensitive storage.',
     subtopics: [
       'Flutter rendering pipeline: build, layout, paint, and composite phases',
       'Minimizing widget rebuilds with const constructors and localized rebuild scopes',
@@ -494,13 +464,11 @@ final List<RoadmapStepModel> flutterRoadmapSteps = [
   RoadmapStepModel(
     id: 16,
     title: 'App Store Deployment & CI/CD',
-    description:
-        'Package, sign, and publish production Flutter apps to the Google Play Store and Apple App Store with automated CI/CD pipelines.',
+    description: 'Package, sign, and publish production Flutter apps to the Google Play Store and Apple App Store with automated CI/CD pipelines.',
     duration: '2 weeks',
     phase: 'Phase 7: Production & Career',
     level: 'Advanced',
-    learningObjectives:
-        'Generate release signing keys, configure Google Play Console, manage Apple Developer certificates, and automate deployments with Fastlane.',
+    learningObjectives: 'Generate release signing keys, configure Google Play Console, manage Apple Developer certificates, and automate deployments with Fastlane.',
     subtopics: [
       'Android release preparation: generating upload keystore and configuring key.properties',
       'Building optimized Android App Bundles (AAB) with R8 / ProGuard shrinking',

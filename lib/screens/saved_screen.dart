@@ -22,10 +22,10 @@ class _SavedScreenState extends State<SavedScreen> {
     final bgColor = isDark ? const Color(0xFF0B1220) : AppColor.background;
     final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
-    final cardBgColor =
-        isDark ? const Color(0xFF1E293B) : AppColor.lightBlue;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
+    final cardBgColor = isDark ? const Color(0xFF1E293B) : AppColor.lightBlue;
 
     return Scaffold(
       backgroundColor: bgColor,
@@ -75,7 +75,9 @@ class _SavedScreenState extends State<SavedScreen> {
                   children: [
                     Icon(
                       Icons.bookmark_rounded,
-                      color: isDark ? const Color(0xFF60A5FA) : AppColor.secondary,
+                      color: isDark
+                          ? const Color(0xFF60A5FA)
+                          : AppColor.secondary,
                       size: 28,
                     ),
                     const SizedBox(width: 12),
@@ -123,8 +125,9 @@ class _SavedScreenState extends State<SavedScreen> {
                               shape: BoxShape.circle,
                               boxShadow: [
                                 BoxShadow(
-                                  color: textPrimaryColor
-                                      .withValues(alpha: 0.05),
+                                  color: textPrimaryColor.withValues(
+                                    alpha: 0.05,
+                                  ),
                                   blurRadius: 20,
                                   offset: const Offset(0, 8),
                                 ),

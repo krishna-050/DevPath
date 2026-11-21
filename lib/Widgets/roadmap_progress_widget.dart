@@ -1,4 +1,3 @@
-
 import 'package:dev_path/app/theme/app_color.dart';
 import 'package:dev_path/controller/progress_controller.dart';
 import 'package:dev_path/data/roadmap_step_data.dart';
@@ -9,10 +8,7 @@ import 'package:get/get.dart';
 class RoadmapProgressWidget extends StatelessWidget {
   final RoadmapModel roadmap;
 
-  const RoadmapProgressWidget({
-    super.key,
-    required this.roadmap,
-  });
+  const RoadmapProgressWidget({super.key, required this.roadmap});
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +16,7 @@ class RoadmapProgressWidget extends StatelessWidget {
         ? Get.find<ProgressController>()
         : Get.put(ProgressController());
 
-    final steps = RoadmapStepData.getStepsForLanguage(
-      roadmap.language,
-    );
+    final steps = RoadmapStepData.getStepsForLanguage(roadmap.language);
 
     return Obx(() {
       // Reactive trigger so Obx rebuilds when progress is saved anywhere!
@@ -34,8 +28,7 @@ class RoadmapProgressWidget extends StatelessWidget {
         steps,
       );
 
-      final progress =
-          totalTopics > 0 ? completedTopics / totalTopics : 0.0;
+      final progress = totalTopics > 0 ? completedTopics / totalTopics : 0.0;
       final percentage = (progress * 100).toInt();
 
       return Column(
@@ -70,9 +63,7 @@ class RoadmapProgressWidget extends StatelessWidget {
               value: progress,
               minHeight: 5,
               backgroundColor: AppColor.border,
-              valueColor: const AlwaysStoppedAnimation<Color>(
-                AppColor.success,
-              ),
+              valueColor: const AlwaysStoppedAnimation<Color>(AppColor.success),
             ),
           ),
           const SizedBox(height: 3),

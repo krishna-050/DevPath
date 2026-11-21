@@ -1,9 +1,11 @@
 import 'dart:async';
+
 import 'package:dev_path/app/theme/app_color.dart';
 import 'package:dev_path/screens/main_screen.dart';
 import 'package:dev_path/screens/started_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -20,11 +22,10 @@ class _SplashScreenState extends State<SplashScreen>
   late Animation<double> _scaleAnimation;
   late Animation<double> _fadeAnimation;
   late Animation<Offset> _slideAnimation;
-
+  Timer? _navigationTimer;
   @override
   void initState() {
     super.initState();
-
     // 1. Logo Scale & Fade Animation Controller
     _logoController = AnimationController(
       vsync: this,
@@ -32,10 +33,7 @@ class _SplashScreenState extends State<SplashScreen>
     );
 
     _scaleAnimation = Tween<double>(begin: 0.6, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _logoController,
-        curve: Curves.easeOutBack,
-      ),
+      CurvedAnimation(parent: _logoController, curve: Curves.easeOutBack),
     );
 
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -45,15 +43,13 @@ class _SplashScreenState extends State<SplashScreen>
       ),
     );
 
-    _slideAnimation = Tween<Offset>(
-      begin: const Offset(0, 0.25),
-      end: Offset.zero,
-    ).animate(
-      CurvedAnimation(
-        parent: _logoController,
-        curve: const Interval(0.3, 1.0, curve: Curves.easeOutCubic),
-      ),
-    );
+    _slideAnimation =
+        Tween<Offset>(begin: const Offset(0, 0.25), end: Offset.zero).animate(
+          CurvedAnimation(
+            parent: _logoController,
+            curve: const Interval(0.3, 1.0, curve: Curves.easeOutCubic),
+          ),
+        );
 
     // 2. Pulse / Glow Loop Animation Controller
     _pulseController = AnimationController(
@@ -61,33 +57,64 @@ class _SplashScreenState extends State<SplashScreen>
       duration: const Duration(milliseconds: 1800),
     )..repeat(reverse: true);
 
+    // Remove the native splash screen as soon as Flutter renders this first frame
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      FlutterNativeSplash.remove();
+    });
+
     _logoController.forward();
 
     // 3. Auto Navigation after 2.8 seconds
-    Timer(const Duration(milliseconds: 2800), _navigateToNextScreen);
+    _navigationTimer = Timer(
+      const Duration(milliseconds: 2800),
+      _navigateToNextScreen,
+    );
   }
 
-  void _navigateToNextScreen() {
+  Future<void> _navigateToNextScreen() async {
     if (!mounted) return;
 
-    final user = FirebaseAuth.instance.currentUser;
+    final auth = FirebaseAuth.instance;
+    var user = auth.currentUser;
+
     if (user != null) {
-      Get.offAll(
-        () => const MainScreen(),
-        transition: Transition.fadeIn,
-        duration: const Duration(milliseconds: 600),
-      );
-    } else {
-      Get.offAll(
-        () => const StartedScreen(),
-        transition: Transition.fadeIn,
-        duration: const Duration(milliseconds: 600),
-      );
+      // Try to reload user from network with a short timeout.
+      // If offline or network error occurs, keep using cached user credentials.
+      try {
+        await user.reload().timeout(const Duration(seconds: 2));
+        user = auth.currentUser;
+      } catch (_) {
+        // Offline / network timeout: fallback to locally cached user
+        user = auth.currentUser;
+      }
+
+      if (!mounted) return;
+
+      if (user != null && user.emailVerified) {
+        Get.offAll(
+          () => const MainScreen(),
+          transition: Transition.fadeIn,
+          duration: const Duration(milliseconds: 600),
+        );
+        return;
+      }
+
+      // User exists but email is not verified
+      await auth.signOut();
     }
+
+    if (!mounted) return;
+
+    Get.offAll(
+      () => const StartedScreen(),
+      transition: Transition.fadeIn,
+      duration: const Duration(milliseconds: 600),
+    );
   }
 
   @override
   void dispose() {
+    _navigationTimer?.cancel();
     _logoController.dispose();
     _pulseController.dispose();
     super.dispose();
@@ -99,8 +126,9 @@ class _SplashScreenState extends State<SplashScreen>
     final screenWidth = MediaQuery.of(context).size.width;
 
     final textPrimaryColor = isDark ? Colors.white : const Color(0xFF102B50);
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : const Color(0xFF64748B);
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : const Color(0xFF64748B);
 
     return Scaffold(
       body: Stack(
@@ -196,7 +224,7 @@ class _SplashScreenState extends State<SplashScreen>
                                     color: isDark
                                         ? const Color(0xFF334155)
                                         : const Color(0xFFBFDBFE)
-                                            .withValues(alpha: 0.6),
+                                              .withValues(alpha: 0.6),
                                     width: 1.5,
                                   ),
                                   boxShadow: [
@@ -211,13 +239,12 @@ class _SplashScreenState extends State<SplashScreen>
                                 child: Image.asset(
                                   'assets/images/app_icon.png',
                                   fit: BoxFit.contain,
-                                  errorBuilder:
-                                      (context, error, stackTrace) =>
-                                          const Icon(
-                                    Icons.alt_route_rounded,
-                                    size: 48,
-                                    color: AppColor.secondary,
-                                  ),
+                                  errorBuilder: (context, error, stackTrace) =>
+                                      const Icon(
+                                        Icons.alt_route_rounded,
+                                        size: 48,
+                                        color: AppColor.secondary,
+                                      ),
                                 ),
                               );
                             },
@@ -320,10 +347,7 @@ class _SplashScreenState extends State<SplashScreen>
       child: Container(
         width: 7,
         height: 7,
-        decoration: BoxDecoration(
-          color: color,
-          shape: BoxShape.circle,
-        ),
+        decoration: BoxDecoration(color: color, shape: BoxShape.circle),
       ),
     );
   }

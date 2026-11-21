@@ -1,3 +1,4 @@
+import 'package:dev_path/Widgets/app_snackbar.dart';
 import 'package:dev_path/data/roadmap_data.dart';
 import 'package:dev_path/data/roadmap_step_data.dart';
 import 'package:dev_path/models/achievement_model.dart';
@@ -29,12 +30,12 @@ class ProgressController extends GetxController {
     final previousSaved = box.read(key);
     int previousCompletedCount = 0;
     if (previousSaved != null && previousSaved is List) {
-      previousCompletedCount =
-          previousSaved.where((val) => val == true).length;
+      previousCompletedCount = previousSaved.where((val) => val == true).length;
     }
 
-    final newCompletedCount =
-        completedTopics.where((val) => val == true).length;
+    final newCompletedCount = completedTopics
+        .where((val) => val == true)
+        .length;
     final newlyCompleted = newCompletedCount - previousCompletedCount;
 
     box.write(key, completedTopics);
@@ -95,9 +96,7 @@ class ProgressController extends GetxController {
         step.subtopics.length,
       );
 
-      completedCount += completedTopics
-          .where((completed) => completed)
-          .length;
+      completedCount += completedTopics.where((completed) => completed).length;
     }
 
     return completedCount;
@@ -240,11 +239,10 @@ class ProgressController extends GetxController {
         newlyUnlocked = true;
 
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          Get.snackbar(
-            '🎉 Achievement Unlocked!',
-            '${ach.iconEmoji} ${ach.title}: ${ach.description}',
-            snackPosition: SnackPosition.BOTTOM,
-            duration: const Duration(seconds: 3),
+          AppSnackBar.show(
+            title: '🎉 Achievement Unlocked!',
+            message: '${ach.iconEmoji} ${ach.title}: ${ach.description}',
+            type: SnackBarType.success,
           );
         });
       }

@@ -198,7 +198,7 @@ class RoadmapResourceData {
           RoadmapResourceModel(
             title: '$language Official Documentation',
             url: 'https://devdocs.io',
-          )
+          ),
         ];
   }
 }

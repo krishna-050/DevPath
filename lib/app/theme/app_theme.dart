@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'app_color.dart';
 
 class AppTheme {
@@ -97,19 +98,14 @@ class AppTheme {
         fontSize: 16,
         fontWeight: FontWeight.w600,
       ),
-      bodyMedium: TextStyle(
-        color: AppColor.darkTextSecondary,
-        fontSize: 14,
-      ),
+      bodyMedium: TextStyle(color: AppColor.darkTextSecondary, fontSize: 14),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColor.primary,
         foregroundColor: Colors.white,
         elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(

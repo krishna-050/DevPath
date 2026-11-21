@@ -1,4 +1,3 @@
-
 class AvatarData {
   static const List<String> avatars = [
     'assets/avatars/avatar_01.png',

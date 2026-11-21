@@ -1,4 +1,5 @@
 import 'package:dev_path/Widgets/app_button_loader.dart';
+import 'package:dev_path/Widgets/app_snackbar.dart';
 import 'package:dev_path/app/theme/app_color.dart';
 import 'package:dev_path/controller/auth_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -29,7 +30,8 @@ class _PrivacySecurityScreenState extends State<PrivacySecurityScreen> {
     final user = _auth.currentUser;
     _email = user?.email ?? '';
 
-    final providers = user?.providerData.map((p) => p.providerId).toList() ?? [];
+    final providers =
+        user?.providerData.map((p) => p.providerId).toList() ?? [];
 
     if (providers.contains('password')) {
       _isPasswordAuth = true;
@@ -47,11 +49,11 @@ class _PrivacySecurityScreenState extends State<PrivacySecurityScreen> {
   void _showChangePasswordSheet(BuildContext context, bool isDark) async {
     final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
     final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
-    final inputBgColor =
-        isDark ? const Color(0xFF0B1220) : AppColor.background;
+    final inputBgColor = isDark ? const Color(0xFF0B1220) : AppColor.background;
 
     final currentPasswordController = TextEditingController();
     final newPasswordController = TextEditingController();
@@ -77,8 +79,9 @@ class _PrivacySecurityScreenState extends State<PrivacySecurityScreen> {
               ),
               decoration: BoxDecoration(
                 color: surfaceColor,
-                borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(28)),
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(28),
+                ),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withValues(alpha: 0.15),
@@ -140,10 +143,7 @@ class _PrivacySecurityScreenState extends State<PrivacySecurityScreen> {
                       TextFormField(
                         controller: currentPasswordController,
                         obscureText: obscureCurrent,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: textPrimaryColor,
-                        ),
+                        style: TextStyle(fontSize: 14, color: textPrimaryColor),
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
                             return 'Please enter current password';
@@ -213,10 +213,7 @@ class _PrivacySecurityScreenState extends State<PrivacySecurityScreen> {
                       TextFormField(
                         controller: newPasswordController,
                         obscureText: obscureNew,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: textPrimaryColor,
-                        ),
+                        style: TextStyle(fontSize: 14, color: textPrimaryColor),
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
                             return 'Please enter new password';
@@ -290,10 +287,7 @@ class _PrivacySecurityScreenState extends State<PrivacySecurityScreen> {
                       TextFormField(
                         controller: confirmPasswordController,
                         obscureText: obscureConfirm,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: textPrimaryColor,
-                        ),
+                        style: TextStyle(fontSize: 14, color: textPrimaryColor),
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
                             return 'Please confirm your new password';
@@ -378,9 +372,10 @@ class _PrivacySecurityScreenState extends State<PrivacySecurityScreen> {
                                         final user = _auth.currentUser;
                                         if (user == null ||
                                             user.email == null) {
-                                          Get.snackbar(
-                                            'Error',
-                                            'User session not found. Please log in again.',
+                                          AppSnackBar.show(
+                                            title: 'Error',
+                                            message: 'User session not found. Please log in again.',
+                                            type: SnackBarType.error,
                                           );
                                           return;
                                         }
@@ -388,14 +383,14 @@ class _PrivacySecurityScreenState extends State<PrivacySecurityScreen> {
                                         // Re-authenticate user before password change
                                         final cred =
                                             EmailAuthProvider.credential(
-                                          email: user.email!,
-                                          password:
-                                              currentPasswordController.text
-                                                  .trim(),
+                                              email: user.email!,
+                                              password:
+                                                  currentPasswordController.text
+                                                      .trim(),
+                                            );
+                                        await user.reauthenticateWithCredential(
+                                          cred,
                                         );
-
-                                        await user
-                                            .reauthenticateWithCredential(cred);
 
                                         // Update to new password
                                         await user.updatePassword(
@@ -404,14 +399,10 @@ class _PrivacySecurityScreenState extends State<PrivacySecurityScreen> {
 
                                         Get.back();
 
-                                        Get.snackbar(
-                                          'Password Updated',
-                                          'Your password has been changed successfully.',
-                                          snackPosition: SnackPosition.BOTTOM,
-                                          backgroundColor: AppColor.success,
-                                          colorText: Colors.white,
-                                          margin: const EdgeInsets.all(16),
-                                          borderRadius: 12,
+                                        AppSnackBar.show(
+                                          title: 'Password Updated',
+                                          message: 'Your password has been changed successfully.',
+                                          type: SnackBarType.success,
                                         );
                                       } on FirebaseAuthException catch (e) {
                                         String msg =
@@ -421,18 +412,21 @@ class _PrivacySecurityScreenState extends State<PrivacySecurityScreen> {
                                           msg =
                                               'Current password is incorrect.';
                                         } else if (e.code == 'weak-password') {
-                                          msg =
-                                              'New password is too weak.';
+                                          msg = 'New password is too weak.';
                                         } else if (e.code ==
                                             'requires-recent-login') {
-                                          msg =
-                                              'Please re-login to change password.';
+                                          msg = 'Please re-login to change password.';
                                         }
-                                        Get.snackbar('Change Failed', msg);
+                                        AppSnackBar.show(
+                                          title: 'Change Failed',
+                                          message: msg,
+                                          type: SnackBarType.error,
+                                        );
                                       } catch (_) {
-                                        Get.snackbar(
-                                          'Error',
-                                          'Something went wrong. Please try again.',
+                                        AppSnackBar.show(
+                                          title: 'Error',
+                                          message: 'Something went wrong. Please try again.',
+                                          type: SnackBarType.error,
                                         );
                                       } finally {
                                         isSaving.value = false;
@@ -473,22 +467,19 @@ class _PrivacySecurityScreenState extends State<PrivacySecurityScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
     final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
 
     return Scaffold(
       backgroundColor: isDark ? const Color(0xFF0B1220) : AppColor.background,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor:
-            isDark ? const Color(0xFF0B1220) : AppColor.background,
+        backgroundColor: isDark ? const Color(0xFF0B1220) : AppColor.background,
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: textPrimaryColor,
-          ),
+          icon: Icon(Icons.arrow_back_rounded, color: textPrimaryColor),
           onPressed: () => Get.back(),
         ),
         title: Text(
@@ -512,9 +503,7 @@ class _PrivacySecurityScreenState extends State<PrivacySecurityScreen> {
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: isDark
-                      ? const Color(0xFF172235)
-                      : AppColor.lightBlue,
+                  color: isDark ? const Color(0xFF172235) : AppColor.lightBlue,
                   borderRadius: BorderRadius.circular(18),
                   border: Border.all(
                     color: isDark
@@ -669,16 +658,14 @@ class _PrivacySecurityScreenState extends State<PrivacySecurityScreen> {
               _buildInfoCard(
                 isDark: isDark,
                 title: 'Data Storage & Privacy',
-                description:
-                    'Learning Path stores your learning progress, saved roadmaps, and personal notes locally and securely on your device. Account profile info is managed through Firebase Authentication.',
+                description: 'Learning Path stores your learning progress, saved roadmaps, and personal notes locally and securely on your device. Account profile info is managed through Firebase Authentication.',
               ),
               const SizedBox(height: 10),
 
               _buildInfoCard(
                 isDark: isDark,
                 title: 'No Third-Party Tracking',
-                description:
-                    'Your notes, study activities, and bookmarks are never sold or shared with any third-party advertisers.',
+                description: 'Your notes, study activities, and bookmarks are never sold or shared with any third-party advertisers.',
               ),
 
               const SizedBox(height: 20),
@@ -699,8 +686,9 @@ class _PrivacySecurityScreenState extends State<PrivacySecurityScreen> {
   }) {
     final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
     final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
 
     return InkWell(
@@ -739,10 +727,7 @@ class _PrivacySecurityScreenState extends State<PrivacySecurityScreen> {
                   const SizedBox(height: 2),
                   Text(
                     subtitle,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: textSecondaryColor,
-                    ),
+                    style: TextStyle(fontSize: 12, color: textSecondaryColor),
                   ),
                 ],
               ),
@@ -765,8 +750,9 @@ class _PrivacySecurityScreenState extends State<PrivacySecurityScreen> {
   }) {
     final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
     final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
 
     return Container(

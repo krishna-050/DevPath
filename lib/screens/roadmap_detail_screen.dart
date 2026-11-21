@@ -1,3 +1,4 @@
+import 'package:dev_path/Widgets/global_ai_button.dart';
 import 'package:dev_path/app/theme/app_color.dart';
 import 'package:dev_path/controller/progress_controller.dart';
 import 'package:dev_path/data/roadmap_data.dart';
@@ -5,6 +6,7 @@ import 'package:dev_path/data/roadmap_step_data.dart';
 import 'package:dev_path/models/roadmap_model.dart';
 import 'package:dev_path/models/roadmap_step_model.dart';
 import 'package:dev_path/screens/learning_statistics_screen.dart';
+import 'package:dev_path/screens/personal_ai_screen.dart';
 import 'package:dev_path/screens/step_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -193,18 +195,27 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     final roadmapItem = widget.roadmap ?? RoadmapData.roadmaps.first;
-    final roadmapSteps =
-        RoadmapStepData.getStepsForLanguage(roadmapItem.language);
+    final roadmapSteps = RoadmapStepData.getStepsForLanguage(
+      roadmapItem.language,
+    );
 
     final progressController = Get.isRegistered<ProgressController>()
         ? Get.find<ProgressController>()
         : Get.put(ProgressController());
 
     final textPrimaryColor = isDark ? Colors.white : const Color(0xFF102B50);
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : const Color(0xFF52647C);
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : const Color(0xFF52647C);
 
     return Scaffold(
+      floatingActionButton: GlobalAIButton(
+        onPressed: () {
+          Get.to(() => PersonalAiScreen());
+          // Later AI Chat Screen open karenge
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: Stack(
         children: [
           // Background Painter (Fluid waves and subtle dot grid)
@@ -259,10 +270,10 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                               fit: BoxFit.contain,
                               errorBuilder: (context, error, stackTrace) =>
                                   Icon(
-                                Icons.code_rounded,
-                                color: AppColor.secondary,
-                                size: 30,
-                              ),
+                                    Icons.code_rounded,
+                                    color: AppColor.secondary,
+                                    size: 30,
+                                  ),
                             ),
                           const SizedBox(width: 10),
 
@@ -299,13 +310,17 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                           // Progress Capsule Badge (O 0%)
                           Obx(() {
                             progressController.progressUpdateTrigger.value;
-                            final total = progressController
-                                .getTotalTopicCount(roadmapSteps);
+                            final total = progressController.getTotalTopicCount(
+                              roadmapSteps,
+                            );
                             final completed = progressController
                                 .getCompletedTopicCount(
-                                    roadmapItem.language, roadmapSteps);
-                            final progressRatio =
-                                total > 0 ? completed / total : 0.0;
+                                  roadmapItem.language,
+                                  roadmapSteps,
+                                );
+                            final progressRatio = total > 0
+                                ? completed / total
+                                : 0.0;
                             final percentage = (progressRatio * 100).toInt();
 
                             return Container(
@@ -347,8 +362,8 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                                           : const Color(0xFFDDE6F0),
                                       valueColor:
                                           const AlwaysStoppedAnimation<Color>(
-                                        Color(0xFF3B82F6),
-                                      ),
+                                            Color(0xFF3B82F6),
+                                          ),
                                     ),
                                   ),
                                   const SizedBox(width: 7),
@@ -373,8 +388,11 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                   ScaleTransition(
                     scale: CurvedAnimation(
                       parent: _animationController,
-                      curve:
-                          const Interval(0.08, 0.38, curve: Curves.easeOutBack),
+                      curve: const Interval(
+                        0.08,
+                        0.38,
+                        curve: Curves.easeOutBack,
+                      ),
                     ),
                     child: Center(
                       child: Container(
@@ -431,36 +449,36 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
 
                       const double cardHeight = 104.0;
                       const double verticalSpacing = 16.0;
-                      const double stepY = cardHeight + verticalSpacing; // 120.0
+                      const double stepY =
+                          cardHeight + verticalSpacing; // 120.0
                       const double rightColumnOffset = stepY / 2; // 60.0
 
                       const double connectorWidth = 10.0;
                       final double cardWidth = centerX - 10 - connectorWidth;
 
-                      final int leftCardCount =
-                          (roadmapSteps.length + 1) ~/ 2;
+                      final int leftCardCount = (roadmapSteps.length + 1) ~/ 2;
                       final int rightCardCount = roadmapSteps.length ~/ 2;
 
-                      final double leftTotalHeight =
-                          leftCardCount > 0
-                              ? (leftCardCount - 1) * stepY + cardHeight
-                              : 0.0;
-                      final double rightTotalHeight =
-                          rightCardCount > 0
-                              ? rightColumnOffset +
-                                  (rightCardCount - 1) * stepY +
-                                  cardHeight
-                              : 0.0;
+                      final double leftTotalHeight = leftCardCount > 0
+                          ? (leftCardCount - 1) * stepY + cardHeight
+                          : 0.0;
+                      final double rightTotalHeight = rightCardCount > 0
+                          ? rightColumnOffset +
+                                (rightCardCount - 1) * stepY +
+                                cardHeight
+                          : 0.0;
 
-                      final double totalHeight = leftTotalHeight > rightTotalHeight
+                      final double totalHeight =
+                          leftTotalHeight > rightTotalHeight
                           ? leftTotalHeight
                           : rightTotalHeight;
 
                       // Extract node colors
                       final List<Color> nodeColors = List.generate(
                         roadmapSteps.length,
-                        (i) => _cardThemes[i % _cardThemes.length]['node']
-                            as Color,
+                        (i) =>
+                            _cardThemes[i % _cardThemes.length]['node']
+                                as Color,
                       );
 
                       return SizedBox(
@@ -499,55 +517,64 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                               final themeIndex = index % _cardThemes.length;
                               final cardTheme = _cardThemes[themeIndex];
 
-                              final primaryColor = cardTheme['primary'] as Color;
+                              final primaryColor =
+                                  cardTheme['primary'] as Color;
                               final iconGradients =
                                   cardTheme['iconGradients'] as List<Color>;
                               final bgGradients = isDark
                                   ? [
                                       cardTheme['bgDark'] as Color,
-                                      cardTheme['bgDark'] as Color
+                                      cardTheme['bgDark'] as Color,
                                     ]
                                   : (cardTheme['bgGradientLight']
-                                      as List<Color>);
+                                        as List<Color>);
                               final cardBorder = isDark
                                   ? (cardTheme['borderDark'] as Color)
                                   : (cardTheme['borderLight'] as Color);
                               final shadowColor = isDark
                                   ? Colors.black.withValues(alpha: 0.25)
                                   : (cardTheme['shadowLight'] as Color)
-                                      .withValues(alpha: 0.12);
+                                        .withValues(alpha: 0.12);
                               final cardIcon = cardTheme['icon'] as IconData;
                               final isCode = cardTheme['isCode'] as bool;
 
                               final double topPosition = isLeft
                                   ? (index ~/ 2) * stepY
-                                  : rightColumnOffset +
-                                      ((index ~/ 2) * stepY);
+                                  : rightColumnOffset + ((index ~/ 2) * stepY);
 
-                              final startInterval =
-                                  (0.10 + (index * 0.05)).clamp(0.0, 0.75);
-                              final endInterval =
-                                  (startInterval + 0.35).clamp(0.2, 1.0);
+                              final startInterval = (0.10 + (index * 0.05))
+                                  .clamp(0.0, 0.75);
+                              final endInterval = (startInterval + 0.35).clamp(
+                                0.2,
+                                1.0,
+                              );
 
                               final cardFadeAnimation =
                                   Tween<double>(begin: 0.0, end: 1.0).animate(
-                                CurvedAnimation(
-                                  parent: _animationController,
-                                  curve: Interval(startInterval, endInterval,
-                                      curve: Curves.easeOutCubic),
-                                ),
-                              );
+                                    CurvedAnimation(
+                                      parent: _animationController,
+                                      curve: Interval(
+                                        startInterval,
+                                        endInterval,
+                                        curve: Curves.easeOutCubic,
+                                      ),
+                                    ),
+                                  );
 
-                              final slideAnimation = Tween<Offset>(
-                                begin: Offset(isLeft ? -0.15 : 0.15, 0.0),
-                                end: Offset.zero,
-                              ).animate(
-                                CurvedAnimation(
-                                  parent: _animationController,
-                                  curve: Interval(startInterval, endInterval,
-                                      curve: Curves.easeOutCubic),
-                                ),
-                              );
+                              final slideAnimation =
+                                  Tween<Offset>(
+                                    begin: Offset(isLeft ? -0.15 : 0.15, 0.0),
+                                    end: Offset.zero,
+                                  ).animate(
+                                    CurvedAnimation(
+                                      parent: _animationController,
+                                      curve: Interval(
+                                        startInterval,
+                                        endInterval,
+                                        curve: Curves.easeOutCubic,
+                                      ),
+                                    ),
+                                  );
 
                               return Positioned(
                                 left: isLeft ? 0 : null,
@@ -636,7 +663,7 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                             colors: isDark
                                 ? [
                                     const Color(0xFF1E293B),
-                                    const Color(0xFF0F172A)
+                                    const Color(0xFF0F172A),
                                   ]
                                 : [
                                     const Color(0xFFEEF6FF),
@@ -901,16 +928,14 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
       progressKey,
       step.subtopics.length,
     );
-    final isStepCompleted = step.subtopics.isNotEmpty &&
+    final isStepCompleted =
+        step.subtopics.isNotEmpty &&
         completedTopics.every((completed) => completed);
 
     return InkWell(
       onTap: () async {
         await Get.to(
-          () => StepDetailScreen(
-            step: step,
-            roadmapTitle: roadmapTitle,
-          ),
+          () => StepDetailScreen(step: step, roadmapTitle: roadmapTitle),
         );
         if (mounted) {
           setState(() {});
@@ -973,20 +998,16 @@ class _RoadmapDetailScreenState extends State<RoadmapDetailScreen>
                             size: 19,
                           )
                         : isCode
-                            ? const Text(
-                                '</>',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14.5,
-                                  fontWeight: FontWeight.w900,
-                                  letterSpacing: -1.2,
-                                ),
-                              )
-                            : Icon(
-                                cardIcon,
-                                color: Colors.white,
-                                size: 20,
-                              ),
+                        ? const Text(
+                            '</>',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14.5,
+                              fontWeight: FontWeight.w900,
+                              letterSpacing: -1.2,
+                            ),
+                          )
+                        : Icon(cardIcon, color: Colors.white, size: 20),
                   ),
                 ),
                 const SizedBox(width: 8),

@@ -55,10 +55,8 @@ class _AppFullScreenLoaderState extends State<AppFullScreenLoader>
           child: Center(
             child: AnimatedBuilder(
               animation: _pulseAnim,
-              builder: (_, child) => Transform.scale(
-                scale: _pulseAnim.value,
-                child: child,
-              ),
+              builder: (_, child) =>
+                  Transform.scale(scale: _pulseAnim.value, child: child),
               child: Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 36,

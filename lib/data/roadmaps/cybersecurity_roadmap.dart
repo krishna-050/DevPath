@@ -4,13 +4,11 @@ final List<RoadmapStepModel> cybersecurityRoadmapSteps = [
   RoadmapStepModel(
     id: 1,
     title: 'Cybersecurity Fundamentals & Networking',
-    description:
-        'Understand the CIA Triad, threat landscape, OSI model security, TCP/IP protocols, and network defenses.',
+    description: 'Understand the CIA Triad, threat landscape, OSI model security, TCP/IP protocols, and network defenses.',
     duration: '2-3 weeks',
     phase: 'Phase 1: Foundations',
     level: 'Beginner',
-    learningObjectives:
-        'Understand Security CIA Triad, analyze network traffic, configure firewalls, and diagnose vulnerability vectors.',
+    learningObjectives: 'Understand Security CIA Triad, analyze network traffic, configure firewalls, and diagnose vulnerability vectors.',
     subtopics: [
       'The CIA Triad: Confidentiality, Integrity, and Availability',
       'Threats, Vulnerabilities, Risks, and Exploits definitions',
@@ -36,13 +34,11 @@ final List<RoadmapStepModel> cybersecurityRoadmapSteps = [
   RoadmapStepModel(
     id: 2,
     title: 'Operating System Security & Hardening',
-    description:
-        'Harden Linux and Windows operating systems, configure access controls, manage privileges, and audit system logs.',
+    description: 'Harden Linux and Windows operating systems, configure access controls, manage privileges, and audit system logs.',
     duration: '2 weeks',
     phase: 'Phase 1: Foundations',
     level: 'Beginner',
-    learningObjectives:
-        'Apply principle of least privilege, configure Linux SELinux/AppArmor, configure Windows Group Policy, and audit logs.',
+    learningObjectives: 'Apply principle of least privilege, configure Linux SELinux/AppArmor, configure Windows Group Policy, and audit logs.',
     subtopics: [
       'Principle of Least Privilege (PoLP) & Separation of Duties',
       'Linux User & Privilege Management (sudo, su, wheel group, passwd, shadow)',
@@ -67,13 +63,11 @@ final List<RoadmapStepModel> cybersecurityRoadmapSteps = [
   RoadmapStepModel(
     id: 3,
     title: 'Cryptography & Encryption Protocols',
-    description:
-        'Master Symmetric & Asymmetric encryption, Hashing algorithms, Digital Certificates, Public Key Infrastructure (PKI), and TLS.',
+    description: 'Master Symmetric & Asymmetric encryption, Hashing algorithms, Digital Certificates, Public Key Infrastructure (PKI), and TLS.',
     duration: '2-3 weeks',
     phase: 'Phase 2: Core Defense',
     level: 'Intermediate',
-    learningObjectives:
-        'Differentiate Symmetric vs Asymmetric algorithms, verify digital signatures, configure OpenSSL, and analyze TLS handshakes.',
+    learningObjectives: 'Differentiate Symmetric vs Asymmetric algorithms, verify digital signatures, configure OpenSSL, and analyze TLS handshakes.',
     subtopics: [
       'Cryptography concepts: Plaintext, Ciphertext, Ciphers, Keys, & Cryptanalysis',
       'Symmetric Encryption: AES (128/256-bit), DES, 3DES, Block Cipher modes (CBC, GCM)',
@@ -99,13 +93,11 @@ final List<RoadmapStepModel> cybersecurityRoadmapSteps = [
   RoadmapStepModel(
     id: 4,
     title: 'Web Application Security & OWASP Top 10',
-    description:
-        'Identify, exploit, and remediate critical web vulnerabilities defined in the OWASP Top 10.',
+    description: 'Identify, exploit, and remediate critical web vulnerabilities defined in the OWASP Top 10.',
     duration: '3 weeks',
     phase: 'Phase 3: Web Security',
     level: 'Intermediate',
-    learningObjectives:
-        'Audit web apps for SQL Injection, Cross-Site Scripting (XSS), CSRF, SSRF, Broken Access Control, and apply secure coding fixes.',
+    learningObjectives: 'Audit web apps for SQL Injection, Cross-Site Scripting (XSS), CSRF, SSRF, Broken Access Control, and apply secure coding fixes.',
     subtopics: [
       'OWASP Top 10 Web Vulnerabilities overview & methodology',
       'A01: Broken Access Control (IDOR, Privilege Escalation, CORS misconfigurations)',
@@ -132,13 +124,11 @@ final List<RoadmapStepModel> cybersecurityRoadmapSteps = [
   RoadmapStepModel(
     id: 5,
     title: 'Penetration Testing & Web Assessment with Burp Suite',
-    description:
-        'Conduct ethical penetration tests, intercept HTTP traffic, automate fuzzing, and analyze web vulnerabilities using Burp Suite.',
+    description: 'Conduct ethical penetration tests, intercept HTTP traffic, automate fuzzing, and analyze web vulnerabilities using Burp Suite.',
     duration: '3 weeks',
     phase: 'Phase 3: Web Security',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Use Burp Suite Proxy, Repeater, Intruder, & Decoder to intercept web requests, test parameters, and write pentest reports.',
+    learningObjectives: 'Use Burp Suite Proxy, Repeater, Intruder, & Decoder to intercept web requests, test parameters, and write pentest reports.',
     subtopics: [
       'Penetration Testing Phases: Reconnaissance, Scanning, Exploitation, Post-Exploitation, Reporting',
       'Ethical Hacking Rules of Engagement, Scope, & Legal boundaries',
@@ -164,13 +154,11 @@ final List<RoadmapStepModel> cybersecurityRoadmapSteps = [
   RoadmapStepModel(
     id: 6,
     title: 'Network Traffic Analysis & Packet Inspection (Wireshark)',
-    description:
-        'Capture, filter, and inspect raw network packets using Wireshark and tcpdump to detect malware and network attacks.',
+    description: 'Capture, filter, and inspect raw network packets using Wireshark and tcpdump to detect malware and network attacks.',
     duration: '2 weeks',
     phase: 'Phase 4: Defense & Analysis',
     level: 'Intermediate',
-    learningObjectives:
-        'Capture network PCAP files, write Wireshark display filters, analyze protocol headers, and extract suspicious file payloads.',
+    learningObjectives: 'Capture network PCAP files, write Wireshark display filters, analyze protocol headers, and extract suspicious file payloads.',
     subtopics: [
       'Network Packet Capture fundamentals & Promiscuous Mode',
       'Command-line packet capture with tcpdump (filters, flags, writing PCAP files)',
@@ -196,13 +184,11 @@ final List<RoadmapStepModel> cybersecurityRoadmapSteps = [
   RoadmapStepModel(
     id: 7,
     title: 'SIEM & Security Operations (Splunk & Elastic)',
-    description:
-        'Aggregate enterprise log sources into SIEM platforms (Splunk, Elastic Security) to detect threats and build SOC dashboards.',
+    description: 'Aggregate enterprise log sources into SIEM platforms (Splunk, Elastic Security) to detect threats and build SOC dashboards.',
     duration: '2-3 weeks',
     phase: 'Phase 4: Defense & Analysis',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Ingest Windows/Linux/Network logs into Splunk, write Search Processing Language (SPL) queries, and configure SOC alert rules.',
+    learningObjectives: 'Ingest Windows/Linux/Network logs into Splunk, write Search Processing Language (SPL) queries, and configure SOC alert rules.',
     subtopics: [
       'SIEM (Security Information and Event Management) Core Architecture',
       'Log Ingestion & Forwarding: Splunk Universal Forwarder, Elastic Filebeat / Winlogbeat',
@@ -228,13 +214,11 @@ final List<RoadmapStepModel> cybersecurityRoadmapSteps = [
   RoadmapStepModel(
     id: 8,
     title: 'Digital Forensics & Incident Response (DFIR)',
-    description:
-        'Investigate security breaches, collect digital evidence, analyze memory dumps, and perform malware triage.',
+    description: 'Investigate security breaches, collect digital evidence, analyze memory dumps, and perform malware triage.',
     duration: '3 weeks',
     phase: 'Phase 5: Advanced Ops',
     level: 'Advanced',
-    learningObjectives:
-        'Acquire RAM memory dumps, perform volatility analysis, analyze Windows Registry artifacts, and build incident timelines.',
+    learningObjectives: 'Acquire RAM memory dumps, perform volatility analysis, analyze Windows Registry artifacts, and build incident timelines.',
     subtopics: [
       'Incident Response Lifecycle: Preparation, Detection, Containment, Eradication, Recovery, Lessons Learned',
       'Chain of Custody & Forensic Evidence Preservation principles',
@@ -260,13 +244,11 @@ final List<RoadmapStepModel> cybersecurityRoadmapSteps = [
   RoadmapStepModel(
     id: 9,
     title: 'Cloud Security & Identity (AWS Security)',
-    description:
-        'Secure cloud environments, manage IAM policies, configure KMS encryption, and audit cloud infrastructure vulnerabilities.',
+    description: 'Secure cloud environments, manage IAM policies, configure KMS encryption, and audit cloud infrastructure vulnerabilities.',
     duration: '2-3 weeks',
     phase: 'Phase 5: Advanced Ops',
     level: 'Advanced',
-    learningObjectives:
-        'Implement Shared Responsibility Model, configure AWS IAM least privilege, audit S3 bucket security, and manage CloudTrail alerts.',
+    learningObjectives: 'Implement Shared Responsibility Model, configure AWS IAM least privilege, audit S3 bucket security, and manage CloudTrail alerts.',
     subtopics: [
       'Cloud Shared Responsibility Security Model (Provider vs Customer)',
       'AWS IAM Security: Least Privilege, Least Privilege Policy Generator, IAM Roles vs Users',
@@ -291,13 +273,11 @@ final List<RoadmapStepModel> cybersecurityRoadmapSteps = [
   RoadmapStepModel(
     id: 10,
     title: 'Ethical Hacking, Red Team Ops & OSCP Prep',
-    description:
-        'Conduct end-to-end Red Team engagements, privilege escalation, Active Directory exploitation, and prepare for industry certifications.',
+    description: 'Conduct end-to-end Red Team engagements, privilege escalation, Active Directory exploitation, and prepare for industry certifications.',
     duration: '4 weeks',
     phase: 'Phase 5: Advanced Ops',
     level: 'Advanced',
-    learningObjectives:
-        'Execute Active Directory attacks (Kerberoasting, AS-REP Roasting), Linux/Windows Privilege Escalation, and OSCP-style machine exploitation.',
+    learningObjectives: 'Execute Active Directory attacks (Kerberoasting, AS-REP Roasting), Linux/Windows Privilege Escalation, and OSCP-style machine exploitation.',
     subtopics: [
       'Red Team vs Blue Team vs Purple Team operations methodology',
       'Linux Privilege Escalation: SUID binaries, Sudo misconfigurations, Cron jobs, Kernel exploits',

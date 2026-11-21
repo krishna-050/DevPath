@@ -4,13 +4,11 @@ final List<RoadmapStepModel> swiftIosRoadmapSteps = [
   RoadmapStepModel(
     id: 1,
     title: 'Swift Language Fundamentals',
-    description:
-        'Master the foundational syntax, data types, type inference, constants, and variables in Apple\'s Swift language.',
+    description: 'Master the foundational syntax, data types, type inference, constants, and variables in Apple\'s Swift language.',
     duration: '1-2 weeks',
     phase: 'Phase 1: Swift Core',
     level: 'Beginner',
-    learningObjectives:
-        'Understand Swift type safety, declare constants and variables, format strings, and manipulate collections.',
+    learningObjectives: 'Understand Swift type safety, declare constants and variables, format strings, and manipulate collections.',
     subtopics: [
       'Swift design philosophy: Safety, Speed, and Expressiveness',
       'Constants (let) vs Variables (var) and Type Safety',
@@ -36,13 +34,11 @@ final List<RoadmapStepModel> swiftIosRoadmapSteps = [
   RoadmapStepModel(
     id: 2,
     title: 'Control Flow, Functions & Optionals',
-    description:
-        'Master condition branching, Swift Optionals, optional binding, guard statements, and function closures.',
+    description: 'Master condition branching, Swift Optionals, optional binding, guard statements, and function closures.',
     duration: '2 weeks',
     phase: 'Phase 1: Swift Core',
     level: 'Beginner',
-    learningObjectives:
-        'Safely unwrap Optionals with if-let and guard-let, write functions with argument labels, and understand closures.',
+    learningObjectives: 'Safely unwrap Optionals with if-let and guard-let, write functions with argument labels, and understand closures.',
     subtopics: [
       'Control flow: if, else-if, else, and switch statements with pattern matching',
       'Loops: for-in, while, and repeat-while loops',
@@ -67,13 +63,11 @@ final List<RoadmapStepModel> swiftIosRoadmapSteps = [
   RoadmapStepModel(
     id: 3,
     title: 'Structs, Classes & Object-Oriented Swift',
-    description:
-        'Understand Value Types vs Reference Types, Structs, Classes, Initializers, Properties, and Memory Management (ARC).',
+    description: 'Understand Value Types vs Reference Types, Structs, Classes, Initializers, Properties, and Memory Management (ARC).',
     duration: '2-3 weeks',
     phase: 'Phase 1: Swift Core',
     level: 'Intermediate',
-    learningObjectives:
-        'Compare Value vs Reference semantics, design Structs/Classes, implement Computed Properties, and manage Automatic Reference Counting (ARC).',
+    learningObjectives: 'Compare Value vs Reference semantics, design Structs/Classes, implement Computed Properties, and manage Automatic Reference Counting (ARC).',
     subtopics: [
       'Structs vs Classes: Value types (copy on assignment) vs Reference types (shared reference)',
       'Stored properties, Computed properties (getters/setters), and Property Observers (willSet/didSet)',
@@ -98,13 +92,11 @@ final List<RoadmapStepModel> swiftIosRoadmapSteps = [
   RoadmapStepModel(
     id: 4,
     title: 'Protocols, Extensions & Generics',
-    description:
-        'Master Protocol-Oriented Programming (POP), Extensions, Generics, and Swift Standard Library protocols (Codable, Identifiable).',
+    description: 'Master Protocol-Oriented Programming (POP), Extensions, Generics, and Swift Standard Library protocols (Codable, Identifiable).',
     duration: '2 weeks',
     phase: 'Phase 2: Advanced Swift',
     level: 'Intermediate',
-    learningObjectives:
-        'Design Protocols with default extensions, write type-safe Generic functions, and conform to Codable for JSON processing.',
+    learningObjectives: 'Design Protocols with default extensions, write type-safe Generic functions, and conform to Codable for JSON processing.',
     subtopics: [
       'Protocols: Defining requirements for methods, properties, and initializers',
       'Protocol Conformance and Protocol Composition (&)',
@@ -129,13 +121,11 @@ final List<RoadmapStepModel> swiftIosRoadmapSteps = [
   RoadmapStepModel(
     id: 5,
     title: 'SwiftUI Foundations & Core Views',
-    description:
-        'Build modern declarative iOS user interfaces using SwiftUI views, stacks, modifiers, and previews.',
+    description: 'Build modern declarative iOS user interfaces using SwiftUI views, stacks, modifiers, and previews.',
     duration: '2-3 weeks',
     phase: 'Phase 3: iOS Development',
     level: 'Intermediate',
-    learningObjectives:
-        'Construct SwiftUI layout hierarchies with VStack, HStack, ZStack, style views with Modifiers, and inspect live Xcode Previews.',
+    learningObjectives: 'Construct SwiftUI layout hierarchies with VStack, HStack, ZStack, style views with Modifiers, and inspect live Xcode Previews.',
     subtopics: [
       'Declarative UI paradigm vs Imperative UIKit',
       'SwiftUI App lifecycle (@main, App, Scene, WindowGroup)',
@@ -161,13 +151,11 @@ final List<RoadmapStepModel> swiftIosRoadmapSteps = [
   RoadmapStepModel(
     id: 6,
     title: 'SwiftUI State Management & Data Flow',
-    description:
-        'Manage reactive data flow across SwiftUI views using @State, @Binding, @StateObject, @ObservedObject, and @Environment.',
+    description: 'Manage reactive data flow across SwiftUI views using @State, @Binding, @StateObject, @ObservedObject, and @Environment.',
     duration: '2-3 weeks',
     phase: 'Phase 3: iOS Development',
     level: 'Intermediate',
-    learningObjectives:
-        'Manage local view state with @State/@Binding, construct reactive ViewModels with @Observable / ObservableObject, and share global environment state.',
+    learningObjectives: 'Manage local view state with @State/@Binding, construct reactive ViewModels with @Observable / ObservableObject, and share global environment state.',
     subtopics: [
       'SwiftUI Data Flow Philosophy: Single Source of Truth',
       'Local View State: @State for private mutable value properties',
@@ -192,13 +180,11 @@ final List<RoadmapStepModel> swiftIosRoadmapSteps = [
   RoadmapStepModel(
     id: 7,
     title: 'Networking & Swift Concurrency (Async/Await)',
-    description:
-        'Fetch remote data over HTTP using URLSession, JSONDecoder, and modern Swift Async/Await concurrency primitives.',
+    description: 'Fetch remote data over HTTP using URLSession, JSONDecoder, and modern Swift Async/Await concurrency primitives.',
     duration: '2-3 weeks',
     phase: 'Phase 4: Data & Architecture',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Perform asynchronous HTTP requests with URLSession, handle Swift Async/Await, write Actor isolation, and handle network errors.',
+    learningObjectives: 'Perform asynchronous HTTP requests with URLSession, handle Swift Async/Await, write Actor isolation, and handle network errors.',
     subtopics: [
       'Swift Concurrency evolution: Completion handlers vs Async/Await',
       'Async functions (async) & Suspension points (await)',
@@ -223,13 +209,11 @@ final List<RoadmapStepModel> swiftIosRoadmapSteps = [
   RoadmapStepModel(
     id: 8,
     title: 'SwiftData & Core Data Local Persistence',
-    description:
-        'Persist relational application data on iOS devices using SwiftData (iOS 17+) and Core Data.',
+    description: 'Persist relational application data on iOS devices using SwiftData (iOS 17+) and Core Data.',
     duration: '2-3 weeks',
     phase: 'Phase 4: Data & Architecture',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Define SwiftData models with @Model, manage ModelContainer & ModelContext, perform Query sorting/filtering, and execute relationships.',
+    learningObjectives: 'Define SwiftData models with @Model, manage ModelContainer & ModelContext, perform Query sorting/filtering, and execute relationships.',
     subtopics: [
       'Local Persistence Options: UserDefaults, Keychain, FileSystem, SwiftData, Core Data',
       'SwiftData Overview (iOS 17+ macro-based ORM architecture)',
@@ -254,13 +238,11 @@ final List<RoadmapStepModel> swiftIosRoadmapSteps = [
   RoadmapStepModel(
     id: 9,
     title: 'iOS App Architecture (MVVM) & Unit Testing',
-    description:
-        'Architect scalable, maintainable iOS applications using MVVM pattern, XCTest framework, and dependency injection.',
+    description: 'Architect scalable, maintainable iOS applications using MVVM pattern, XCTest framework, and dependency injection.',
     duration: '2-3 weeks',
     phase: 'Phase 4: Data & Architecture',
     level: 'Advanced',
-    learningObjectives:
-        'Implement Model-View-ViewModel architecture, write unit tests with XCTest / Swift Testing, and stub network dependencies.',
+    learningObjectives: 'Implement Model-View-ViewModel architecture, write unit tests with XCTest / Swift Testing, and stub network dependencies.',
     subtopics: [
       'Architectural Patterns: MVC vs MVVM vs Clean Architecture',
       'MVVM in SwiftUI: View, ViewModel (@Observable), Model data separation',
@@ -285,13 +267,11 @@ final List<RoadmapStepModel> swiftIosRoadmapSteps = [
   RoadmapStepModel(
     id: 10,
     title: 'App Store Distribution & TestFlight',
-    description:
-        'Prepare iOS apps for production release, manage Certificates & Profiles, run TestFlight beta testing, and submit to App Store Connect.',
+    description: 'Prepare iOS apps for production release, manage Certificates & Profiles, run TestFlight beta testing, and submit to App Store Connect.',
     duration: '2 weeks',
     phase: 'Phase 5: Publishing & Production',
     level: 'Advanced',
-    learningObjectives:
-        'Manage Apple Developer Program assets, configure App Signing, deploy builds to TestFlight, and pass App Store Review.',
+    learningObjectives: 'Manage Apple Developer Program assets, configure App Signing, deploy builds to TestFlight, and pass App Store Review.',
     subtopics: [
       'Apple Developer Program enrollment & App Store Connect portal overview',
       'Certificates, Identifiers & Profiles (Development vs Distribution Signing)',

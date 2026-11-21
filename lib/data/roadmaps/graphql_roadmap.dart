@@ -4,13 +4,11 @@ final List<RoadmapStepModel> graphqlRoadmapSteps = [
   RoadmapStepModel(
     id: 1,
     title: 'GraphQL Foundations & SDL',
-    description:
-        'Understand GraphQL core concepts, over-fetching vs under-fetching in REST, and Schema Definition Language (SDL).',
+    description: 'Understand GraphQL core concepts, over-fetching vs under-fetching in REST, and Schema Definition Language (SDL).',
     duration: '1-2 weeks',
     phase: 'Phase 1: GraphQL Core',
     level: 'Beginner to Intermediate',
-    learningObjectives:
-        'Compare GraphQL vs REST APIs, write Schema Definition Language (SDL) types, fields, and understand single endpoint routing.',
+    learningObjectives: 'Compare GraphQL vs REST APIs, write Schema Definition Language (SDL) types, fields, and understand single endpoint routing.',
     subtopics: [
       'What is GraphQL? Declarative data fetching vs REST endpoint over-fetching / under-fetching',
       'Single endpoint architecture (/graphql) vs Multiple REST resource URIs',
@@ -36,13 +34,11 @@ final List<RoadmapStepModel> graphqlRoadmapSteps = [
   RoadmapStepModel(
     id: 2,
     title: 'Executing Queries, Mutations & Aliases',
-    description:
-        'Master GraphQL client operation syntax: Queries, Arguments, Aliases, Fragments, and Mutations.',
+    description: 'Master GraphQL client operation syntax: Queries, Arguments, Aliases, Fragments, and Mutations.',
     duration: '2 weeks',
     phase: 'Phase 1: GraphQL Core',
     level: 'Intermediate',
-    learningObjectives:
-        'Construct Queries with parameters, pass dynamic Variables, use Aliases to fetch duplicate fields, and write Fragments for reusability.',
+    learningObjectives: 'Construct Queries with parameters, pass dynamic Variables, use Aliases to fetch duplicate fields, and write Fragments for reusability.',
     subtopics: [
       'Constructing GraphQL Queries: Selecting specific requested fields',
       'Passing Arguments to query fields (e.g. user(id: "123"))',
@@ -67,13 +63,11 @@ final List<RoadmapStepModel> graphqlRoadmapSteps = [
   RoadmapStepModel(
     id: 3,
     title: 'Apollo Server & Resolvers Development',
-    description:
-        'Build a production GraphQL server using Apollo Server, Node.js, and write field Resolver functions.',
+    description: 'Build a production GraphQL server using Apollo Server, Node.js, and write field Resolver functions.',
     duration: '2-3 weeks',
     phase: 'Phase 2: Server Development',
     level: 'Intermediate',
-    learningObjectives:
-        'Instantiate Apollo Server, write field Resolver functions (parent, args, context, info), and connect data sources.',
+    learningObjectives: 'Instantiate Apollo Server, write field Resolver functions (parent, args, context, info), and connect data sources.',
     subtopics: [
       'Apollo Server architecture & Node.js integration (@apollo/server)',
       'Type Definitions (typeDefs with gqltag) & Resolver Maps',
@@ -98,13 +92,11 @@ final List<RoadmapStepModel> graphqlRoadmapSteps = [
   RoadmapStepModel(
     id: 4,
     title: 'Solving N+1 Problem with DataLoader',
-    description:
-        'Optimize GraphQL server database queries and eliminate the N+1 query problem using DataLoader batching and caching.',
+    description: 'Optimize GraphQL server database queries and eliminate the N+1 query problem using DataLoader batching and caching.',
     duration: '2 weeks',
     phase: 'Phase 2: Server Development',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Understand how nested field resolvers cause N+1 database queries, implement DataLoader batching, and cache request-level keys.',
+    learningObjectives: 'Understand how nested field resolvers cause N+1 database queries, implement DataLoader batching, and cache request-level keys.',
     subtopics: [
       'Understanding the N+1 Query Problem in GraphQL nested field resolvers',
       'Analyzing database log queries during deeply nested field selections',
@@ -129,13 +121,11 @@ final List<RoadmapStepModel> graphqlRoadmapSteps = [
   RoadmapStepModel(
     id: 5,
     title: 'GraphQL Real-Time Subscriptions (WebSockets)',
-    description:
-        'Implement real-time GraphQL Subscriptions over WebSocket connections using graphql-ws and PubSub.',
+    description: 'Implement real-time GraphQL Subscriptions over WebSocket connections using graphql-ws and PubSub.',
     duration: '2 weeks',
     phase: 'Phase 3: Advanced Server',
     level: 'Advanced',
-    learningObjectives:
-        'Configure WebSocket subscription server (graphql-ws), trigger PubSub event emissions, and subscribe from client apps.',
+    learningObjectives: 'Configure WebSocket subscription server (graphql-ws), trigger PubSub event emissions, and subscribe from client apps.',
     subtopics: [
       'GraphQL Subscriptions concept: Persistent WebSockets vs Request-Response HTTP',
       'When to use Subscriptions vs Polling vs Webhooks',
@@ -160,13 +150,11 @@ final List<RoadmapStepModel> graphqlRoadmapSteps = [
   RoadmapStepModel(
     id: 6,
     title: 'Apollo Client Integration in Frontend Apps',
-    description:
-        'Connect React/Vue/Mobile frontend applications to GraphQL APIs using Apollo Client, useQuery, useMutation, and InMemoryCache.',
+    description: 'Connect React/Vue/Mobile frontend applications to GraphQL APIs using Apollo Client, useQuery, useMutation, and InMemoryCache.',
     duration: '2-3 weeks',
     phase: 'Phase 3: Advanced Server',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Instantiate ApolloClient, execute queries/mutations with hooks (useQuery, useMutation), and update InMemoryCache.',
+    learningObjectives: 'Instantiate ApolloClient, execute queries/mutations with hooks (useQuery, useMutation), and update InMemoryCache.',
     subtopics: [
       'Apollo Client architecture: HttpLink, InMemoryCache, & ApolloProvider',
       'Executing Queries with useQuery hook: loading, error, data, refetch, networkStatus',
@@ -191,13 +179,11 @@ final List<RoadmapStepModel> graphqlRoadmapSteps = [
   RoadmapStepModel(
     id: 7,
     title: 'GraphQL Security, Auth & Rate Limiting',
-    description:
-        'Secure GraphQL APIs against Denial of Service (DoS) attacks, query depth abuses, and enforce authentication/authorization.',
+    description: 'Secure GraphQL APIs against Denial of Service (DoS) attacks, query depth abuses, and enforce authentication/authorization.',
     duration: '2 weeks',
     phase: 'Phase 4: Security & Microservices',
     level: 'Advanced',
-    learningObjectives:
-        'Enforce JWT authentication in Context, implement field-level Directive authorization, and prevent DoS with Query Depth Limiting & Cost Analysis.',
+    learningObjectives: 'Enforce JWT authentication in Context, implement field-level Directive authorization, and prevent DoS with Query Depth Limiting & Cost Analysis.',
     subtopics: [
       'GraphQL Security Vulnerabilities: Deeply nested recursive queries, expensive field computations, introspection leaks',
       'Authentication in GraphQL: Extracting JWT Bearer tokens in Context creation',
@@ -222,13 +208,11 @@ final List<RoadmapStepModel> graphqlRoadmapSteps = [
   RoadmapStepModel(
     id: 8,
     title: 'Schema Federation & Microservices (Apollo Federation)',
-    description:
-        'Combine multiple sub-graph microservices into a unified supergraph API using Apollo Federation 2.',
+    description: 'Combine multiple sub-graph microservices into a unified supergraph API using Apollo Federation 2.',
     duration: '3 weeks',
     phase: 'Phase 4: Security & Microservices',
     level: 'Advanced',
-    learningObjectives:
-        'Build Subgraphs with @key entity directives, route queries with Rover CLI & Apollo Router, and share types across microservices.',
+    learningObjectives: 'Build Subgraphs with @key entity directives, route queries with Rover CLI & Apollo Router, and share types across microservices.',
     subtopics: [
       'Monolithic Schema vs Federated Supergraph Microservices architecture',
       'Apollo Federation 2 Architecture: Subgraphs, Router / Gateway, & Schema Registry',
@@ -253,13 +237,11 @@ final List<RoadmapStepModel> graphqlRoadmapSteps = [
   RoadmapStepModel(
     id: 9,
     title: 'GraphQL Schema Design Patterns & Best Practices',
-    description:
-        'Master GraphQL Schema design patterns: Cursor-based Pagination (Relay Connections), Node Interface, and Custom Scalars.',
+    description: 'Master GraphQL Schema design patterns: Cursor-based Pagination (Relay Connections), Node Interface, and Custom Scalars.',
     duration: '2 weeks',
     phase: 'Phase 5: Production & Best Practices',
     level: 'Advanced',
-    learningObjectives:
-        'Implement Relay Cursor Connections Specification (edges, node, pageInfo), custom Date/JSON Scalars, and polymorphic interfaces.',
+    learningObjectives: 'Implement Relay Cursor Connections Specification (edges, node, pageInfo), custom Date/JSON Scalars, and polymorphic interfaces.',
     subtopics: [
       'GraphQL Schema Design Best Practices: Naming conventions, nullability design',
       'Cursor-based Pagination Specification (Relay Connections Specification)',
@@ -284,13 +266,11 @@ final List<RoadmapStepModel> graphqlRoadmapSteps = [
   RoadmapStepModel(
     id: 10,
     title: 'GraphQL Performance Optimization & Production Deployment',
-    description:
-        'Optimize GraphQL server performance, HTTP caching, CDN integration, and deploy Apollo Server to production.',
+    description: 'Optimize GraphQL server performance, HTTP caching, CDN integration, and deploy Apollo Server to production.',
     duration: '2 weeks',
     phase: 'Phase 5: Production & Best Practices',
     level: 'Advanced',
-    learningObjectives:
-        'Implement Response Caching with @cacheControl directives, set up CDN caching with APQ, and deploy Apollo Server to cloud.',
+    learningObjectives: 'Implement Response Caching with @cacheControl directives, set up CDN caching with APQ, and deploy Apollo Server to cloud.',
     subtopics: [
       'GraphQL Caching Strategies: Client-side cache vs Gateway cache vs Field-level cache',
       'Response Caching with @cacheControl(maxAge: 60) directive',

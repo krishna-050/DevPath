@@ -1,4 +1,5 @@
 import 'package:dev_path/Widgets/app_button_loader.dart';
+import 'package:dev_path/Widgets/app_snackbar.dart';
 import 'package:dev_path/app/theme/app_color.dart';
 import 'package:dev_path/controller/auth_controller.dart';
 import 'package:dev_path/data/avatar_data.dart';
@@ -38,8 +39,9 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
     _email = user?.email ?? 'No email available';
     _isEmailVerified = user?.emailVerified ?? false;
 
-    _avatarPath =
-        user != null ? _storage.read('profileAvatar_${user.uid}') : null;
+    _avatarPath = user != null
+        ? _storage.read('profileAvatar_${user.uid}')
+        : null;
 
     final providerId = user?.providerData.isNotEmpty == true
         ? user!.providerData.first.providerId
@@ -58,11 +60,11 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
   void _showEditProfileSheet(BuildContext context, bool isDark) async {
     final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
     final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
-    final inputBgColor =
-        isDark ? const Color(0xFF0B1220) : AppColor.background;
+    final inputBgColor = isDark ? const Color(0xFF0B1220) : AppColor.background;
 
     final nameController = TextEditingController(text: _displayName);
     final formKey = GlobalKey<FormState>();
@@ -79,8 +81,7 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
           ),
           decoration: BoxDecoration(
             color: surfaceColor,
-            borderRadius:
-                const BorderRadius.vertical(top: Radius.circular(28)),
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withValues(alpha: 0.15),
@@ -129,10 +130,7 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
                   const SizedBox(height: 6),
                   TextFormField(
                     controller: nameController,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: textPrimaryColor,
-                    ),
+                    style: TextStyle(fontSize: 14, color: textPrimaryColor),
                     validator: (value) {
                       if (value == null || value.trim().isEmpty) {
                         return 'Name cannot be empty';
@@ -185,10 +183,7 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
                   TextFormField(
                     initialValue: _email,
                     enabled: false,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: textSecondaryColor,
-                    ),
+                    style: TextStyle(fontSize: 14, color: textSecondaryColor),
                     decoration: InputDecoration(
                       prefixIcon: const Icon(
                         Icons.mail_outline_rounded,
@@ -235,8 +230,7 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
 
                                   isSaving.value = true;
                                   try {
-                                    final newName =
-                                        nameController.text.trim();
+                                    final newName = nameController.text.trim();
                                     final authController =
                                         Get.find<AuthController>();
 
@@ -250,15 +244,11 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
 
                                       Get.back();
 
-                                      Get.snackbar(
-                                        'Profile Updated',
-                                        'Your name has been updated successfully!',
-                                        snackPosition: SnackPosition.BOTTOM,
-                                        backgroundColor: AppColor.success,
-                                        colorText: Colors.white,
+                                      AppSnackBar.show(
+                                        title: 'Profile Updated',
+                                        message: 'Your name has been updated successfully!',
+                                        type: SnackBarType.success,
                                         duration: const Duration(seconds: 2),
-                                        margin: const EdgeInsets.all(16),
-                                        borderRadius: 12,
                                       );
                                     }
                                   } finally {
@@ -295,8 +285,9 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
   void _showAvatarPicker(BuildContext context, bool isDark) {
     final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
     final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
 
     Get.bottomSheet(
@@ -304,8 +295,7 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
         padding: const EdgeInsets.fromLTRB(20, 16, 20, 28),
         decoration: BoxDecoration(
           color: surfaceColor,
-          borderRadius:
-              const BorderRadius.vertical(top: Radius.circular(28)),
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.15),
@@ -337,10 +327,7 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
             const SizedBox(height: 4),
             Text(
               'Select an avatar for your profile',
-              style: TextStyle(
-                fontSize: 13,
-                color: textSecondaryColor,
-              ),
+              style: TextStyle(fontSize: 13, color: textSecondaryColor),
             ),
             const SizedBox(height: 20),
             ConstrainedBox(
@@ -351,8 +338,7 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
                 shrinkWrap: true,
                 physics: const BouncingScrollPhysics(),
                 itemCount: AvatarData.avatars.length,
-                gridDelegate:
-                    const SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
                   crossAxisSpacing: 14,
                   mainAxisSpacing: 14,
@@ -369,15 +355,11 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
                       final authController = Get.find<AuthController>();
                       await authController.updateAvatar(avatar);
                       Get.back();
-                      Get.snackbar(
-                        'Avatar Updated',
-                        'Your new avatar has been set!',
-                        snackPosition: SnackPosition.BOTTOM,
-                        backgroundColor: AppColor.secondary,
-                        colorText: Colors.white,
+                      AppSnackBar.show(
+                        title: 'Avatar Updated',
+                        message: 'Your new avatar has been set!',
+                        type: SnackBarType.success,
                         duration: const Duration(seconds: 2),
-                        margin: const EdgeInsets.all(16),
-                        borderRadius: 12,
                       );
                     },
                     child: Stack(
@@ -398,9 +380,9 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
                               fit: BoxFit.cover,
                               errorBuilder: (context, error, stackTrace) =>
                                   const Icon(
-                                Icons.person_rounded,
-                                color: AppColor.secondary,
-                              ),
+                                    Icons.person_rounded,
+                                    color: AppColor.secondary,
+                                  ),
                             ),
                           ),
                         ),
@@ -439,22 +421,19 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
     final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
 
     return Scaffold(
       backgroundColor: isDark ? const Color(0xFF0B1220) : AppColor.background,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor:
-            isDark ? const Color(0xFF0B1220) : AppColor.background,
+        backgroundColor: isDark ? const Color(0xFF0B1220) : AppColor.background,
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: textPrimaryColor,
-          ),
+          icon: Icon(Icons.arrow_back_rounded, color: textPrimaryColor),
           onPressed: () => Get.back(),
         ),
         title: Text(
@@ -502,8 +481,9 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
                             ),
                             boxShadow: [
                               BoxShadow(
-                                color: AppColor.secondary
-                                    .withValues(alpha: 0.15),
+                                color: AppColor.secondary.withValues(
+                                  alpha: 0.15,
+                                ),
                                 blurRadius: 16,
                                 offset: const Offset(0, 6),
                               ),
@@ -521,14 +501,14 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
                                       width: 84,
                                       height: 84,
                                       fit: BoxFit.cover,
-                                      errorBuilder: (context, error, stackTrace) =>
-                                          Icon(
-                                        Icons.person_rounded,
-                                        size: 48,
-                                        color: isDark
-                                            ? const Color(0xFF60A5FA)
-                                            : AppColor.secondary,
-                                      ),
+                                      errorBuilder:
+                                          (context, error, stackTrace) => Icon(
+                                            Icons.person_rounded,
+                                            size: 48,
+                                            color: isDark
+                                                ? const Color(0xFF60A5FA)
+                                                : AppColor.secondary,
+                                          ),
                                     )
                                   : Icon(
                                       Icons.person_rounded,
@@ -582,10 +562,7 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
                     const SizedBox(height: 4),
                     Text(
                       _email,
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: textSecondaryColor,
-                      ),
+                      style: TextStyle(fontSize: 13, color: textSecondaryColor),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -685,8 +662,9 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
   }) {
     final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
     final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
 
     return Container(
@@ -713,10 +691,7 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
               children: [
                 Text(
                   label,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: textSecondaryColor,
-                  ),
+                  style: TextStyle(fontSize: 12, color: textSecondaryColor),
                 ),
                 const SizedBox(height: 2),
                 Text(

@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -27,22 +26,19 @@ class AiService {
       // Send message to Cloudflare Worker.
       final response = await http
           .post(
-        Uri.parse(_workerUrl),
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer $idToken',
-        },
-        body: jsonEncode({
-          'message': message,
-        }),
-      )
+            Uri.parse(_workerUrl),
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer $idToken',
+            },
+            body: jsonEncode({'message': message}),
+          )
           .timeout(const Duration(seconds: 60));
 
       final data = jsonDecode(response.body);
 
       if (response.statusCode == 200 && data['success'] == true) {
-        return data['reply'] ??
-            'Sorry, I could not generate a response.';
+        return data['reply'] ?? 'Sorry, I could not generate a response.';
       }
 
       throw Exception(

@@ -1,6 +1,12 @@
+import 'package:dev_path/Widgets/app_button_loader.dart';
+import 'package:dev_path/Widgets/app_snackbar.dart';
 import 'package:dev_path/app/theme/app_color.dart';
+import 'package:dev_path/controller/notification_controller.dart';
 import 'package:dev_path/controller/theme_controller.dart';
-import 'package:dev_path/screens/webview_screen.dart';
+import 'package:dev_path/screens/about_app_screen.dart';
+import 'package:dev_path/screens/account_info_screen.dart';
+import 'package:dev_path/screens/help_support_screen.dart';
+import 'package:dev_path/screens/privacy_security_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,8 +18,123 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> {
-  bool _notificationsEnabled = true;
-  bool _soundEnabled = true;
+
+  // ── Safe Clear Cache Confirmation Dialog ──────────────────────────────
+  void _showClearCacheDialog(BuildContext context, bool isDark) {
+    final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
+    final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
+    final isClearing = ValueNotifier<bool>(false);
+
+    Get.dialog(
+      ValueListenableBuilder<bool>(
+        valueListenable: isClearing,
+        builder: (context, clearing, _) {
+          return AlertDialog(
+            backgroundColor: surfaceColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            title: Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFEF4444).withValues(alpha: 0.12),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Icon(
+                    Icons.cleaning_services_outlined,
+                    color: Color(0xFFEF4444),
+                    size: 20,
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Text(
+                  'Clear Cache',
+                  style: TextStyle(
+                    color: textPrimaryColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+            content: Text(
+              'This will clear temporary in-memory image and UI caches. Your saved roadmaps, learning progress, personal notes, and account data will NOT be deleted.',
+              style: TextStyle(
+                color: textSecondaryColor,
+                fontSize: 13,
+                height: 1.45,
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: clearing ? null : () => Get.back(),
+                child: Text(
+                  'Cancel',
+                  style: TextStyle(
+                    color: textSecondaryColor,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFEF4444),
+                  foregroundColor: Colors.white,
+                  elevation: 2,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  minimumSize: const Size(100, 38),
+                ),
+                onPressed: clearing
+                    ? null
+                    : () async {
+                        isClearing.value = true;
+                        try {
+                          // Clear memory and image provider caches safely
+                          PaintingBinding.instance.imageCache.clear();
+                          PaintingBinding.instance.imageCache.clearLiveImages();
+
+                          // Short pause for tactile feedback
+                          await Future.delayed(
+                            const Duration(milliseconds: 400),
+                          );
+
+                          Get.back();
+
+                          AppSnackBar.show(
+                            title: 'Cache Cleared',
+                            message: 'Temporary cache files have been cleared successfully.',
+                            type: SnackBarType.success,
+                          );
+                        } catch (_) {
+                          AppSnackBar.show(
+                            title: 'Error',
+                            message: 'Unable to clear cache. Please try again.',
+                            type: SnackBarType.error,
+                          );
+                        } finally {
+                          isClearing.value = false;
+                        }
+                      },
+                child: clearing
+                    ? const AppButtonLoader(size: 18)
+                    : const Text(
+                        'Clear Cache',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +148,7 @@ class _SettingScreenState extends State<SettingScreen> {
       backgroundColor: isDark ? const Color(0xFF0B1220) : AppColor.background,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor:
-            isDark ? const Color(0xFF0B1220) : AppColor.background,
+        backgroundColor: isDark ? const Color(0xFF0B1220) : AppColor.background,
         centerTitle: true,
         leading: IconButton(
           icon: Icon(
@@ -86,32 +206,46 @@ class _SettingScreenState extends State<SettingScreen> {
               const SizedBox(height: 10),
 
               // Push Notifications Switch
-              _buildSwitchTile(
-                isDark: isDark,
-                icon: Icons.notifications_none_rounded,
-                iconColor: AppColor.secondary,
-                title: 'Push Notifications',
-                subtitle: 'Receive daily learning reminders',
-                value: _notificationsEnabled,
-                onChanged: (val) {
-                  setState(() {
-                    _notificationsEnabled = val;
-                  });
-                },
-              ),
-              const SizedBox(height: 10),
+              Builder(
+                builder: (context) {
+                  final notificationController =
+                      Get.isRegistered<NotificationController>()
+                          ? Get.find<NotificationController>()
+                          : Get.put(NotificationController(), permanent: true);
 
-              // Sound & Effects Switch
-              _buildSwitchTile(
-                isDark: isDark,
-                icon: Icons.volume_up_outlined,
-                iconColor: AppColor.primary,
-                title: 'Sound & Effects',
-                subtitle: 'Play sound on topic completion',
-                value: _soundEnabled,
-                onChanged: (val) {
-                  setState(() {
-                    _soundEnabled = val;
+                  return Obx(() {
+                    return Column(
+                      children: [
+                        _buildSwitchTile(
+                          isDark: isDark,
+                          icon: Icons.notifications_none_rounded,
+                          iconColor: AppColor.secondary,
+                          title: 'Push Notifications',
+                          subtitle: 'Receive daily learning reminders',
+                          value: notificationController
+                              .isNotificationsEnabled
+                              .value,
+                          onChanged: (val) {
+                            notificationController.toggleNotifications(val);
+                          },
+                        ),
+                        const SizedBox(height: 10),
+
+                        // Sound & Effects Switch
+                        _buildSwitchTile(
+                          isDark: isDark,
+                          icon: Icons.volume_up_outlined,
+                          iconColor: AppColor.primary,
+                          title: 'Sound & Effects',
+                          subtitle: 'Play sound with notifications & steps',
+                          value:
+                              notificationController.isSoundEnabled.value,
+                          onChanged: (val) {
+                            notificationController.toggleSound(val);
+                          },
+                        ),
+                      ],
+                    );
                   });
                 },
               ),
@@ -128,53 +262,45 @@ class _SettingScreenState extends State<SettingScreen> {
                 iconColor: AppColor.secondary,
                 title: 'Account Information',
                 subtitle: 'View & update account profile',
-                onTap: () {},
-              ),
-              const SizedBox(height: 10),
-
-              _buildActionTile(
-                isDark: isDark,
-                icon: Icons.lock_outline_rounded,
-                iconColor: const Color(0xFF16A34A),
-                title: 'Privacy Policy',
-                subtitle: 'Read our privacy policy & terms',
                 onTap: () {
-                  Get.to(
-                    () => const WebViewScreen(
-                      url: 'https://roadmap.sh/privacy',
-                      title: 'Privacy Policy',
-                    ),
-                  );
+                  Get.to(() => const AccountInfoScreen());
                 },
               ),
               const SizedBox(height: 10),
+
               _buildActionTile(
                 isDark: isDark,
                 icon: Icons.shield_outlined,
                 iconColor: const Color(0xFF16A34A),
                 title: 'Privacy & Security',
                 subtitle: 'Control your data and privacy',
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => const PrivacySecurityScreen());
+                },
               ),
+              const SizedBox(height: 10),
 
-              const SizedBox(height: 10,),
-
-              _buildActionTile( isDark: isDark,
+              _buildActionTile(
+                isDark: isDark,
                 icon: Icons.help_outline_rounded,
                 iconColor: const Color(0xFF9333EA),
                 title: 'Help & Support',
                 subtitle: 'Get help or contact us',
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => const HelpSupportScreen());
+                },
               ),
+              const SizedBox(height: 10),
 
-              const SizedBox(height: 10,),
-
-              _buildActionTile( isDark: isDark,
+              _buildActionTile(
+                isDark: isDark,
                 icon: Icons.info_outline_rounded,
                 iconColor: AppColor.primary,
                 title: 'About App',
                 subtitle: 'Version 1.0.0',
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => const AboutAppScreen());
+                },
               ),
               const SizedBox(height: 24),
 
@@ -188,19 +314,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 iconColor: const Color(0xFFEF4444),
                 title: 'Clear Cache',
                 subtitle: 'Free up local temporary files',
-                onTap: () {
-                  Get.snackbar(
-                    'Cache Cleared',
-                    'Temporary files have been cleaned up.',
-                    snackPosition: SnackPosition.BOTTOM,
-                    backgroundColor: isDark
-                        ? const Color(0xFF172235)
-                        : AppColor.surface,
-                    colorText: isDark ? Colors.white : AppColor.textPrimary,
-                    margin: const EdgeInsets.all(16),
-                    borderRadius: 12,
-                  );
-                },
+                onTap: () => _showClearCacheDialog(context, isDark),
               ),
 
               const SizedBox(height: 28),
@@ -214,9 +328,7 @@ class _SettingScreenState extends State<SettingScreen> {
                       height: 48,
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: isDark
-                            ? const Color(0xFF172235)
-                            : Colors.white,
+                        color: isDark ? const Color(0xFF172235) : Colors.white,
                         borderRadius: BorderRadius.circular(14),
                         border: Border.all(
                           color: isDark
@@ -243,9 +355,7 @@ class _SettingScreenState extends State<SettingScreen> {
                       'Build skills. Build projects. Grow career.',
                       style: TextStyle(
                         fontSize: 11,
-                        color: isDark
-                            ? Colors.white38
-                            : AppColor.textSecondary,
+                        color: isDark ? Colors.white38 : AppColor.textSecondary,
                       ),
                     ),
                   ],
@@ -298,11 +408,7 @@ class _SettingScreenState extends State<SettingScreen> {
               color: iconColor.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Icon(
-              icon,
-              color: iconColor,
-              size: 22,
-            ),
+            child: Icon(icon, color: iconColor, size: 22),
           ),
           const SizedBox(width: 14),
           Expanded(
@@ -368,11 +474,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 color: iconColor.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Icon(
-                icon,
-                color: iconColor,
-                size: 22,
-              ),
+              child: Icon(icon, color: iconColor, size: 22),
             ),
             const SizedBox(width: 14),
             Expanded(
@@ -402,9 +504,7 @@ class _SettingScreenState extends State<SettingScreen> {
             ),
             Icon(
               Icons.chevron_right_rounded,
-              color: isDark
-                  ? const Color(0xFF94A3B8)
-                  : AppColor.textSecondary,
+              color: isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary,
               size: 22,
             ),
           ],

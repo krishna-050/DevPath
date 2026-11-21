@@ -1,4 +1,3 @@
-
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:dev_path/models/chat_message.dart';
@@ -23,11 +22,7 @@ class AiController extends GetxController {
     if (query.isEmpty || isTyping.value) return;
 
     messages.add(
-      ChatMessage(
-        text: query,
-        isUser: true,
-        timeStamp: DateTime.now(),
-      ),
+      ChatMessage(text: query, isUser: true, timeStamp: DateTime.now()),
     );
 
     isTyping.value = true;
@@ -36,11 +31,7 @@ class AiController extends GetxController {
       final reply = await _aiService.sendMessage(query);
 
       messages.add(
-        ChatMessage(
-          text: reply,
-          isUser: false,
-          timeStamp: DateTime.now(),
-        ),
+        ChatMessage(text: reply, isUser: false, timeStamp: DateTime.now()),
       );
     } catch (e, stackTrace) {
       debugPrint('AI ERROR: $e');

@@ -4,13 +4,11 @@ final List<RoadmapStepModel> solidityBlockchainRoadmapSteps = [
   RoadmapStepModel(
     id: 1,
     title: 'Blockchain Concepts & Ethereum Architecture',
-    description:
-        'Understand Distributed Ledger Technology, Consensus Mechanisms, Ethereum Virtual Machine (EVM), Gas, and Wallet Cryptography.',
+    description: 'Understand Distributed Ledger Technology, Consensus Mechanisms, Ethereum Virtual Machine (EVM), Gas, and Wallet Cryptography.',
     duration: '2 weeks',
     phase: 'Phase 1: Web3 Foundations',
     level: 'Beginner',
-    learningObjectives:
-        'Understand EVM execution, Gas calculations, Public/Private key cryptography, and Ethereum transactions.',
+    learningObjectives: 'Understand EVM execution, Gas calculations, Public/Private key cryptography, and Ethereum transactions.',
     subtopics: [
       'Distributed Ledger Technology (DLT) vs Centralized Databases',
       'Consensus Mechanisms: Proof of Work (PoW) vs Proof of Stake (PoS)',
@@ -36,13 +34,11 @@ final List<RoadmapStepModel> solidityBlockchainRoadmapSteps = [
   RoadmapStepModel(
     id: 2,
     title: 'Solidity Language Syntax & Types',
-    description:
-        'Master Solidity file structure, pragma directives, state variables, elementary data types, and variable visibility.',
+    description: 'Master Solidity file structure, pragma directives, state variables, elementary data types, and variable visibility.',
     duration: '2 weeks',
     phase: 'Phase 1: Web3 Foundations',
     level: 'Beginner',
-    learningObjectives:
-        'Write Solidity smart contracts (.sol), declare state & local variables, understand variable visibility, and compile with Remix IDE.',
+    learningObjectives: 'Write Solidity smart contracts (.sol), declare state & local variables, understand variable visibility, and compile with Remix IDE.',
     subtopics: [
       'Solidity compilation & License Identifiers (SPDX-License-Identifier)',
       'Pragma version directives (pragma solidity ^0.8.20)',
@@ -68,13 +64,11 @@ final List<RoadmapStepModel> solidityBlockchainRoadmapSteps = [
   RoadmapStepModel(
     id: 3,
     title: 'Functions, Modifiers & Error Handling',
-    description:
-        'Write smart contract Functions, View/Pure mutability specifiers, Function Modifiers, and custom error handling.',
+    description: 'Write smart contract Functions, View/Pure mutability specifiers, Function Modifiers, and custom error handling.',
     duration: '2 weeks',
     phase: 'Phase 2: Smart Contract Dev',
     level: 'Intermediate',
-    learningObjectives:
-        'Write View and Pure functions, enforce access control with custom Function Modifiers, and handle revert errors with require & Custom Errors.',
+    learningObjectives: 'Write View and Pure functions, enforce access control with custom Function Modifiers, and handle revert errors with require & Custom Errors.',
     subtopics: [
       'Function Syntax: Name, Parameters, Visibility, Mutability, Return values',
       'Function Visibility: public, external, internal, private',
@@ -99,13 +93,11 @@ final List<RoadmapStepModel> solidityBlockchainRoadmapSteps = [
   RoadmapStepModel(
     id: 4,
     title: 'Mappings, Structs, Arrays & Memory Locations',
-    description:
-        'Master Solidity complex data structures: Mappings, Structs, Dynamic Arrays, and Storage vs Memory vs Calldata data locations.',
+    description: 'Master Solidity complex data structures: Mappings, Structs, Dynamic Arrays, and Storage vs Memory vs Calldata data locations.',
     duration: '2 weeks',
     phase: 'Phase 2: Smart Contract Dev',
     level: 'Intermediate',
-    learningObjectives:
-        'Manage Mappings and Nested Mappings, create Structs, manipulate Dynamic Arrays, and optimize Gas using Calldata/Memory.',
+    learningObjectives: 'Manage Mappings and Nested Mappings, create Structs, manipulate Dynamic Arrays, and optimize Gas using Calldata/Memory.',
     subtopics: [
       'Data Locations in Solidity: storage, memory, calldata',
       'When to use calldata (read-only external parameters) for Gas savings',
@@ -130,13 +122,11 @@ final List<RoadmapStepModel> solidityBlockchainRoadmapSteps = [
   RoadmapStepModel(
     id: 5,
     title: 'Inheritance, Interfaces & Contract Composition',
-    description:
-        'Understand Object-Oriented Solidity: Single/Multiple Inheritance, Abstract Contracts, Interfaces, and Low-Level Calls.',
+    description: 'Understand Object-Oriented Solidity: Single/Multiple Inheritance, Abstract Contracts, Interfaces, and Low-Level Calls.',
     duration: '2-3 weeks',
     phase: 'Phase 2: Smart Contract Dev',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Inherit contracts with is keyword, override methods with virtual/override, write Interfaces, and execute address.call().',
+    learningObjectives: 'Inherit contracts with is keyword, override methods with virtual/override, write Interfaces, and execute address.call().',
     subtopics: [
       'Inheritance in Solidity: is keyword & Parent constructor initialization',
       'Method Overriding: virtual functions in parent & override keyword in child',
@@ -161,13 +151,11 @@ final List<RoadmapStepModel> solidityBlockchainRoadmapSteps = [
   RoadmapStepModel(
     id: 6,
     title: 'ERC-20 Tokens & ERC-721 NFTs (OpenZeppelin)',
-    description:
-        'Build standardized Fungible Tokens (ERC-20) and Non-Fungible Tokens (ERC-721 NFTs) using OpenZeppelin standards.',
+    description: 'Build standardized Fungible Tokens (ERC-20) and Non-Fungible Tokens (ERC-721 NFTs) using OpenZeppelin standards.',
     duration: '2-3 weeks',
     phase: 'Phase 3: Standards & Tokens',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Implement ERC-20 token transfer/allowance methods, mint ERC-721 NFTs with IPFS metadata URI, and deploy OpenZeppelin contracts.',
+    learningObjectives: 'Implement ERC-20 token transfer/allowance methods, mint ERC-721 NFTs with IPFS metadata URI, and deploy OpenZeppelin contracts.',
     subtopics: [
       'Ethereum Request for Comments (ERC) standards process',
       'ERC-20 Fungible Token Standard: totalSupply, balanceOf, transfer, approve, allowance, transferFrom',
@@ -193,13 +181,11 @@ final List<RoadmapStepModel> solidityBlockchainRoadmapSteps = [
   RoadmapStepModel(
     id: 7,
     title: 'Smart Contract Security & Vulnerabilities',
-    description:
-        'Identify, exploit, and prevent critical smart contract vulnerabilities: Reentrancy, Front-running, Arithmetic issues, and Access Control bugs.',
+    description: 'Identify, exploit, and prevent critical smart contract vulnerabilities: Reentrancy, Front-running, Arithmetic issues, and Access Control bugs.',
     duration: '3 weeks',
     phase: 'Phase 3: Standards & Tokens',
     level: 'Advanced',
-    learningObjectives:
-        'Audit smart contracts for Reentrancy vulnerabilities, implement Checks-Effects-Interactions pattern, and use Slither security analysis.',
+    learningObjectives: 'Audit smart contracts for Reentrancy vulnerabilities, implement Checks-Effects-Interactions pattern, and use Slither security analysis.',
     subtopics: [
       'The DAO Hack history & Reentrancy vulnerability mechanics',
       'Preventing Reentrancy: Checks-Effects-Interactions pattern & ReentrancyGuard modifier',
@@ -225,13 +211,11 @@ final List<RoadmapStepModel> solidityBlockchainRoadmapSteps = [
   RoadmapStepModel(
     id: 8,
     title: 'Hardhat & Foundry Smart Contract Frameworks',
-    description:
-        'Develop, test, compile, and deploy professional smart contracts using Hardhat or Foundry testing frameworks.',
+    description: 'Develop, test, compile, and deploy professional smart contracts using Hardhat or Foundry testing frameworks.',
     duration: '3 weeks',
     phase: 'Phase 4: Frameworks & Web3 Integration',
     level: 'Advanced',
-    learningObjectives:
-        'Set up Hardhat / Foundry environment, write TypeScript / Solidity unit tests, fork Mainnet state, and execute deployment scripts.',
+    learningObjectives: 'Set up Hardhat / Foundry environment, write TypeScript / Solidity unit tests, fork Mainnet state, and execute deployment scripts.',
     subtopics: [
       'Smart Contract Development Frameworks: Hardhat (JS/TS) vs Foundry (Rust/Solidity)',
       'Hardhat project setup (npx hardhat init) & hardhat.config.ts configuration',
@@ -256,13 +240,11 @@ final List<RoadmapStepModel> solidityBlockchainRoadmapSteps = [
   RoadmapStepModel(
     id: 9,
     title: 'Web3 Frontend Integration (Ethers.js / Viem / Wagmi)',
-    description:
-        'Connect Web frontend applications (React/Next.js) to Smart Contracts using Ethers.js, Viem, and Wagmi hooks.',
+    description: 'Connect Web frontend applications (React/Next.js) to Smart Contracts using Ethers.js, Viem, and Wagmi hooks.',
     duration: '2-3 weeks',
     phase: 'Phase 4: Frameworks & Web3 Integration',
     level: 'Advanced',
-    learningObjectives:
-        'Connect MetaMask wallet, query smart contract state, send transactions, listen to on-chain Events, and handle Web3 errors.',
+    learningObjectives: 'Connect MetaMask wallet, query smart contract state, send transactions, listen to on-chain Events, and handle Web3 errors.',
     subtopics: [
       'Web3 Frontend Architecture: Provider (Read) vs Signer (Write)',
       'Ethers.js v6 Library basics: Contract instantiation, Provider, Signer',
@@ -288,13 +270,11 @@ final List<RoadmapStepModel> solidityBlockchainRoadmapSteps = [
   RoadmapStepModel(
     id: 10,
     title: 'DeFi Protocols, Oracles & Layer 2 Scaling',
-    description:
-        'Understand Decentralized Finance (DeFi) primitives, Chainlink Oracles, Automated Market Makers (AMM), and Layer 2 Rollups.',
+    description: 'Understand Decentralized Finance (DeFi) primitives, Chainlink Oracles, Automated Market Makers (AMM), and Layer 2 Rollups.',
     duration: '3 weeks',
     phase: 'Phase 5: Production & DeFi',
     level: 'Advanced',
-    learningObjectives:
-        'Integrate Chainlink Price Feeds, understand Uniswap AMM math (x * y = k), Flash Loans, and Layer 2 Rollup deployments (Arbitrum, Optimism, Base).',
+    learningObjectives: 'Integrate Chainlink Price Feeds, understand Uniswap AMM math (x * y = k), Flash Loans, and Layer 2 Rollup deployments (Arbitrum, Optimism, Base).',
     subtopics: [
       'DeFi Ecosystem overview: Decentralized Exchanges (DEX), Lending/Borrowing, Stablecoins',
       'Automated Market Makers (AMM): Constant Product Formula (x * y = k) in Uniswap V2/V3',

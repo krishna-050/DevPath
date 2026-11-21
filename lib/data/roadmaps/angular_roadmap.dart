@@ -4,13 +4,11 @@ final List<RoadmapStepModel> angularRoadmapSteps = [
   RoadmapStepModel(
     id: 1,
     title: 'Angular Foundations & Standalone Components',
-    description:
-        'Master Angular Architecture, Angular CLI, TypeScript integration, and modern Standalone Components.',
+    description: 'Master Angular Architecture, Angular CLI, TypeScript integration, and modern Standalone Components.',
     duration: '2 weeks',
     phase: 'Phase 1: Angular Core',
     level: 'Beginner to Intermediate',
-    learningObjectives:
-        'Scaffold Angular apps using Angular CLI, understand project layout, and write modern Standalone Components.',
+    learningObjectives: 'Scaffold Angular apps using Angular CLI, understand project layout, and write modern Standalone Components.',
     subtopics: [
       'Angular framework philosophy: Batteries-included enterprise web framework',
       'Angular CLI installation & essential commands (ng new, ng serve, ng generate, ng build)',
@@ -36,13 +34,11 @@ final List<RoadmapStepModel> angularRoadmapSteps = [
   RoadmapStepModel(
     id: 2,
     title: 'Component Interaction & Lifecycle Hooks',
-    description:
-        'Pass data between parent and child components using @Input, @Output, ViewChild, and lifecycle hooks.',
+    description: 'Pass data between parent and child components using @Input, @Output, ViewChild, and lifecycle hooks.',
     duration: '2 weeks',
     phase: 'Phase 1: Angular Core',
     level: 'Intermediate',
-    learningObjectives:
-        'Communicate between components using input() / output() signals and decorators, and hook into component lifecycle phases.',
+    learningObjectives: 'Communicate between components using input() / output() signals and decorators, and hook into component lifecycle phases.',
     subtopics: [
       'Parent-to-Child Communication: @Input() decorator & input() signals',
       'Child-to-Parent Communication: @Output() with EventEmitter & output() signals',
@@ -67,13 +63,11 @@ final List<RoadmapStepModel> angularRoadmapSteps = [
   RoadmapStepModel(
     id: 3,
     title: 'Directives & Pipes',
-    description:
-        'Master Angular Built-in Attributes & Structural Directives, Custom Directives, and Data Transformation Pipes.',
+    description: 'Master Angular Built-in Attributes & Structural Directives, Custom Directives, and Data Transformation Pipes.',
     duration: '1-2 weeks',
     phase: 'Phase 2: UI Features',
     level: 'Intermediate',
-    learningObjectives:
-        'Create Custom Attribute Directives with ElementRef & Renderer2, and transform data in templates using Pipes.',
+    learningObjectives: 'Create Custom Attribute Directives with ElementRef & Renderer2, and transform data in templates using Pipes.',
     subtopics: [
       'Types of Directives: Components, Attribute Directives, Structural Directives',
       'Built-in Attribute Directives: ngClass, ngStyle',
@@ -98,13 +92,11 @@ final List<RoadmapStepModel> angularRoadmapSteps = [
   RoadmapStepModel(
     id: 4,
     title: 'Dependency Injection & Services',
-    description:
-        'Master Angular\'s Hierarchical Dependency Injection (DI) system, injectable services, and singleton providers.',
+    description: 'Master Angular\'s Hierarchical Dependency Injection (DI) system, injectable services, and singleton providers.',
     duration: '2 weeks',
     phase: 'Phase 2: UI Features',
     level: 'Intermediate',
-    learningObjectives:
-        'Write Angular Services with @Injectable, configure DI Providers (providedIn: "root"), and inject dependencies with inject() function.',
+    learningObjectives: 'Write Angular Services with @Injectable, configure DI Providers (providedIn: "root"), and inject dependencies with inject() function.',
     subtopics: [
       'Angular Dependency Injection Architecture & Provider Trees',
       'Creating Services with @Injectable({ providedIn: "root" })',
@@ -129,13 +121,11 @@ final List<RoadmapStepModel> angularRoadmapSteps = [
   RoadmapStepModel(
     id: 5,
     title: 'Reactive Programming with RxJS in Angular',
-    description:
-        'Master RxJS Observables, Subjects, BehaviorSubjects, Operators, and AsyncPipe for reactive data streams.',
+    description: 'Master RxJS Observables, Subjects, BehaviorSubjects, Operators, and AsyncPipe for reactive data streams.',
     duration: '2-3 weeks',
     phase: 'Phase 3: State & Concurrency',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Understand Observables vs Promises, use RxJS operators (map, filter, switchMap, catchError), and handle AsyncPipe in templates.',
+    learningObjectives: 'Understand Observables vs Promises, use RxJS operators (map, filter, switchMap, catchError), and handle AsyncPipe in templates.',
     subtopics: [
       'Reactive Programming Paradigm & RxJS in Angular',
       'Observables, Observers, & Subscriptions lifecycle',
@@ -160,13 +150,11 @@ final List<RoadmapStepModel> angularRoadmapSteps = [
   RoadmapStepModel(
     id: 6,
     title: 'Angular Reactive Forms & Custom Validation',
-    description:
-        'Build complex, dynamic enterprise forms using Angular Reactive Forms (FormGroup, FormControl, FormArray).',
+    description: 'Build complex, dynamic enterprise forms using Angular Reactive Forms (FormGroup, FormControl, FormArray).',
     duration: '2 weeks',
     phase: 'Phase 3: State & Concurrency',
     level: 'Intermediate',
-    learningObjectives:
-        'Construct FormGroups with FormBuilder, implement custom sync/async Validators, and manage dynamic arrays with FormArray.',
+    learningObjectives: 'Construct FormGroups with FormBuilder, implement custom sync/async Validators, and manage dynamic arrays with FormArray.',
     subtopics: [
       'Reactive Forms vs Template-Driven Forms comparison',
       'Core Reactive Form Primitives: FormControl, FormGroup, FormArray',
@@ -191,13 +179,11 @@ final List<RoadmapStepModel> angularRoadmapSteps = [
   RoadmapStepModel(
     id: 7,
     title: 'Angular Routing, Guards & Lazy Loading',
-    description:
-        'Build single-page navigation structures using Angular Router, Route Guards, Resolvers, and Lazy-Loaded Routes.',
+    description: 'Build single-page navigation structures using Angular Router, Route Guards, Resolvers, and Lazy-Loaded Routes.',
     duration: '2 weeks',
     phase: 'Phase 3: State & Concurrency',
     level: 'Intermediate',
-    learningObjectives:
-        'Configure routes with RouterOutlet & RouterLink, protect routes with Functional Guards (canActivate), and configure lazy loading.',
+    learningObjectives: 'Configure routes with RouterOutlet & RouterLink, protect routes with Functional Guards (canActivate), and configure lazy loading.',
     subtopics: [
       'Angular Router setup & Routes configuration array',
       'RouterOutlet directive & RouterLink / RouterLinkActive directives',
@@ -222,13 +208,11 @@ final List<RoadmapStepModel> angularRoadmapSteps = [
   RoadmapStepModel(
     id: 8,
     title: 'HTTP Client & Interceptors',
-    description:
-        'Connect Angular applications to RESTful backend services using HttpClient and HttpInterceptors.',
+    description: 'Connect Angular applications to RESTful backend services using HttpClient and HttpInterceptors.',
     duration: '2 weeks',
     phase: 'Phase 4: Advanced Features',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Perform HTTP requests with HttpClient, write Functional HTTP Interceptors (withInterceptors), and attach Auth tokens.',
+    learningObjectives: 'Perform HTTP requests with HttpClient, write Functional HTTP Interceptors (withInterceptors), and attach Auth tokens.',
     subtopics: [
       'HttpClient Module setup (provideHttpClient())',
       'HTTP Requests: GET, POST, PUT, PATCH, DELETE with strong TypeScript interfaces',
@@ -253,13 +237,11 @@ final List<RoadmapStepModel> angularRoadmapSteps = [
   RoadmapStepModel(
     id: 9,
     title: 'State Management with NgRx',
-    description:
-        'Manage reactive global application state using NgRx Store, Actions, Reducers, Effects, and Selectors.',
+    description: 'Manage reactive global application state using NgRx Store, Actions, Reducers, Effects, and Selectors.',
     duration: '3 weeks',
     phase: 'Phase 4: Advanced Features',
     level: 'Advanced',
-    learningObjectives:
-        'Understand Redux architectural pattern in Angular, create Actions/Reducers with createAction/createReducer, write Effects, and query Selectors.',
+    learningObjectives: 'Understand Redux architectural pattern in Angular, create Actions/Reducers with createAction/createReducer, write Effects, and query Selectors.',
     subtopics: [
       'NgRx Architecture: Actions, Reducers, Store, Selectors, and Effects',
       'Defining Actions with createAction() and props<T>()',
@@ -284,13 +266,11 @@ final List<RoadmapStepModel> angularRoadmapSteps = [
   RoadmapStepModel(
     id: 10,
     title: 'Angular Signals, SSR & Performance Tuning',
-    description:
-        'Master Angular Signals reactivity (iOS 16+ / Angular 17+), Server-Side Rendering (Angular Universal / SSR), and production optimization.',
+    description: 'Master Angular Signals reactivity (iOS 16+ / Angular 17+), Server-Side Rendering (Angular Universal / SSR), and production optimization.',
     duration: '3 weeks',
     phase: 'Phase 5: Production & Full-Stack',
     level: 'Advanced',
-    learningObjectives:
-        'Use Angular Signals (signal, computed, effect), enable Server-Side Rendering (SSR) & Hydration, and optimize Change Detection.',
+    learningObjectives: 'Use Angular Signals (signal, computed, effect), enable Server-Side Rendering (SSR) & Hydration, and optimize Change Detection.',
     subtopics: [
       'Angular Signals Overview: Fine-grained reactivity without Zone.js',
       'Writable Signals (signal()), Computed Signals (computed()), & Effects (effect())',

@@ -1,3 +1,4 @@
+import 'package:dev_path/Widgets/app_snackbar.dart';
 import 'package:dev_path/app/theme/app_color.dart';
 import 'package:dev_path/controller/note_controller.dart';
 import 'package:dev_path/models/note_model.dart';
@@ -35,7 +36,7 @@ class _MyNotesScreenState extends State<MyNotesScreen> {
         'Sep',
         'Oct',
         'Nov',
-        'Dec'
+        'Dec',
       ];
       return '${date.day} ${months[date.month - 1]} ${date.year}';
     } catch (e) {
@@ -51,16 +52,19 @@ class _MyNotesScreenState extends State<MyNotesScreen> {
     int defaultStepId = 0,
     String defaultStepTitle = 'General Note',
   }) {
-    final titleController =
-        TextEditingController(text: existingNote?.title ?? '');
-    final contentController =
-        TextEditingController(text: existingNote?.content ?? '');
+    final titleController = TextEditingController(
+      text: existingNote?.title ?? '',
+    );
+    final contentController = TextEditingController(
+      text: existingNote?.content ?? '',
+    );
 
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
 
     showModalBottomSheet(
       context: context,
@@ -106,8 +110,9 @@ class _MyNotesScreenState extends State<MyNotesScreen> {
                   hintText: 'Note Title (e.g. Key Concept / Code Snippet)',
                   hintStyle: TextStyle(color: textSecondaryColor, fontSize: 13),
                   filled: true,
-                  fillColor:
-                      isDark ? const Color(0xFF0B1220) : AppColor.background,
+                  fillColor: isDark
+                      ? const Color(0xFF0B1220)
+                      : AppColor.background,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(14),
                     borderSide: BorderSide.none,
@@ -123,8 +128,9 @@ class _MyNotesScreenState extends State<MyNotesScreen> {
                   hintText: 'Write your notes or reminders here...',
                   hintStyle: TextStyle(color: textSecondaryColor, fontSize: 13),
                   filled: true,
-                  fillColor:
-                      isDark ? const Color(0xFF0B1220) : AppColor.background,
+                  fillColor: isDark
+                      ? const Color(0xFF0B1220)
+                      : AppColor.background,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(14),
                     borderSide: BorderSide.none,
@@ -148,10 +154,10 @@ class _MyNotesScreenState extends State<MyNotesScreen> {
                     final content = contentController.text.trim();
 
                     if (title.isEmpty || content.isEmpty) {
-                      Get.snackbar(
-                        'Missing Information',
-                        'Please enter both title and content for your note.',
-                        snackPosition: SnackPosition.BOTTOM,
+                      AppSnackBar.show(
+                        title: 'Missing Information',
+                        message: 'Please enter both title and content for your note.',
+                        type: SnackBarType.warning,
                       );
                       return;
                     }
@@ -200,8 +206,9 @@ class _MyNotesScreenState extends State<MyNotesScreen> {
     final bgColor = isDark ? const Color(0xFF0B1220) : AppColor.background;
     final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
     final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
 
     return Scaffold(
@@ -211,10 +218,7 @@ class _MyNotesScreenState extends State<MyNotesScreen> {
         backgroundColor: bgColor,
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: textPrimaryColor,
-          ),
+          icon: Icon(Icons.arrow_back_rounded, color: textPrimaryColor),
           onPressed: () => Get.back(),
         ),
         title: Text(
@@ -230,12 +234,12 @@ class _MyNotesScreenState extends State<MyNotesScreen> {
         backgroundColor: AppColor.primary,
         foregroundColor: Colors.white,
         icon: const Icon(Icons.add_rounded),
-        label: const Text('New Note', style: TextStyle(fontWeight: FontWeight.bold)),
+        label: const Text(
+          'New Note',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         onPressed: () {
-          _showNoteDialog(
-            context: context,
-            noteController: noteController,
-          );
+          _showNoteDialog(context: context, noteController: noteController);
         },
       ),
       body: SafeArea(
@@ -255,12 +259,17 @@ class _MyNotesScreenState extends State<MyNotesScreen> {
                   hintStyle: TextStyle(color: textSecondaryColor, fontSize: 13),
                   prefixIcon: Icon(
                     Icons.search_rounded,
-                    color: isDark ? const Color(0xFF60A5FA) : AppColor.secondary,
+                    color: isDark
+                        ? const Color(0xFF60A5FA)
+                        : AppColor.secondary,
                   ),
                   suffixIcon: Obx(() {
                     if (noteController.searchQuery.value.isNotEmpty) {
                       return IconButton(
-                        icon: Icon(Icons.close_rounded, color: textSecondaryColor),
+                        icon: Icon(
+                          Icons.close_rounded,
+                          color: textSecondaryColor,
+                        ),
                         onPressed: () {
                           _searchController.clear();
                           noteController.searchQuery.value = '';
@@ -338,8 +347,10 @@ class _MyNotesScreenState extends State<MyNotesScreen> {
                 }
 
                 return ListView.builder(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 8,
+                  ),
                   physics: const BouncingScrollPhysics(),
                   itemCount: filteredList.length,
                   itemBuilder: (context, index) {
@@ -420,32 +431,39 @@ class _MyNotesScreenState extends State<MyNotesScreen> {
                                           title: Text(
                                             'Delete Note',
                                             style: TextStyle(
-                                                color: textPrimaryColor),
+                                              color: textPrimaryColor,
+                                            ),
                                           ),
                                           content: Text(
                                             'Are you sure you want to delete "${note.title}"?',
                                             style: TextStyle(
-                                                color: textSecondaryColor),
+                                              color: textSecondaryColor,
+                                            ),
                                           ),
                                           actions: [
                                             TextButton(
                                               onPressed: () =>
                                                   Navigator.pop(context),
-                                              child: Text('Cancel',
-                                                  style: TextStyle(
-                                                      color:
-                                                          textSecondaryColor)),
+                                              child: Text(
+                                                'Cancel',
+                                                style: TextStyle(
+                                                  color: textSecondaryColor,
+                                                ),
+                                              ),
                                             ),
                                             TextButton(
                                               onPressed: () {
-                                                noteController
-                                                    .deleteNote(note.id);
+                                                noteController.deleteNote(
+                                                  note.id,
+                                                );
                                                 Navigator.pop(context);
                                               },
-                                              child: const Text('Delete',
-                                                  style: TextStyle(
-                                                      color:
-                                                          Color(0xFFEF4444))),
+                                              child: const Text(
+                                                'Delete',
+                                                style: TextStyle(
+                                                  color: Color(0xFFEF4444),
+                                                ),
+                                              ),
                                             ),
                                           ],
                                         ),

@@ -4,13 +4,11 @@ final List<RoadmapStepModel> golangRoadmapSteps = [
   RoadmapStepModel(
     id: 1,
     title: 'Go Language Syntax & Control Flow',
-    description:
-        'Master Go fundamental syntax, strong static typing, variable declarations, control structures, and pointers.',
+    description: 'Master Go fundamental syntax, strong static typing, variable declarations, control structures, and pointers.',
     duration: '1-2 weeks',
     phase: 'Phase 1: Go Core',
     level: 'Beginner',
-    learningObjectives:
-        'Declare typed variables using short declaration (:=), write loops, understand Go pointers, and handle explicit error returns.',
+    learningObjectives: 'Declare typed variables using short declaration (:=), write loops, understand Go pointers, and handle explicit error returns.',
     subtopics: [
       'Go design goals: Simplicity, Fast compilation, & Native Concurrency',
       'Go Toolchain CLI commands: go run, go build, go fmt, go vet',
@@ -36,13 +34,11 @@ final List<RoadmapStepModel> golangRoadmapSteps = [
   RoadmapStepModel(
     id: 2,
     title: 'Arrays, Slices, Maps & Functions',
-    description:
-        'Master Go composite collection types: Slices, Maps, Arrays, Variadic Functions, and Multiple Return Values.',
+    description: 'Master Go composite collection types: Slices, Maps, Arrays, Variadic Functions, and Multiple Return Values.',
     duration: '2 weeks',
     phase: 'Phase 1: Go Core',
     level: 'Beginner',
-    learningObjectives:
-        'Manipulate Slices with make/append/copy, manage Maps with key lookups, and write Functions returning multiple values.',
+    learningObjectives: 'Manipulate Slices with make/append/copy, manage Maps with key lookups, and write Functions returning multiple values.',
     subtopics: [
       'Arrays in Go: Fixed size, Value semantics, & Memory layout',
       'Slices in Go: Dynamic arrays (Length, Capacity, & Underlying Array pointer)',
@@ -67,13 +63,11 @@ final List<RoadmapStepModel> golangRoadmapSteps = [
   RoadmapStepModel(
     id: 3,
     title: 'Structs, Methods & Interfaces',
-    description:
-        'Master Composition over Inheritance using Go Structs, Method Receivers, Empty Interfaces, and Implicit Interface Satisfaction.',
+    description: 'Master Composition over Inheritance using Go Structs, Method Receivers, Empty Interfaces, and Implicit Interface Satisfaction.',
     duration: '2 weeks',
     phase: 'Phase 1: Go Core',
     level: 'Intermediate',
-    learningObjectives:
-        'Construct Structs, embed struct fields for composition, write Value & Pointer receivers, and implement Interfaces implicitly.',
+    learningObjectives: 'Construct Structs, embed struct fields for composition, write Value & Pointer receivers, and implement Interfaces implicitly.',
     subtopics: [
       'Structs: Defining custom data types & struct field tags (`json:"key"`)',
       'Anonymous Structs & Struct Literals',
@@ -98,13 +92,11 @@ final List<RoadmapStepModel> golangRoadmapSteps = [
   RoadmapStepModel(
     id: 4,
     title: 'Packages, Modules & Error Handling',
-    description:
-        'Structure Go projects with Go Modules (go.mod), visibility rules, and idiomatically handle errors without exceptions.',
+    description: 'Structure Go projects with Go Modules (go.mod), visibility rules, and idiomatically handle errors without exceptions.',
     duration: '1-2 weeks',
     phase: 'Phase 2: Tooling & Architecture',
     level: 'Intermediate',
-    learningObjectives:
-        'Configure go.mod/go.sum, manage private/public export visibility via capitalization, and wrap errors using errors.Is / errors.As.',
+    learningObjectives: 'Configure go.mod/go.sum, manage private/public export visibility via capitalization, and wrap errors using errors.Is / errors.As.',
     subtopics: [
       'Go Modules: go.mod file, go.sum checksum verification, & semantic versioning',
       'Creating packages & package initialization with init() function',
@@ -129,13 +121,11 @@ final List<RoadmapStepModel> golangRoadmapSteps = [
   RoadmapStepModel(
     id: 5,
     title: 'Go Concurrency: Goroutines & Channels',
-    description:
-        'Master Go\'s native CSP concurrency model: Goroutines, Buffered/Unbuffered Channels, and Select statements.',
+    description: 'Master Go\'s native CSP concurrency model: Goroutines, Buffered/Unbuffered Channels, and Select statements.',
     duration: '2-3 weeks',
     phase: 'Phase 3: Native Concurrency',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Spawn lightweight Goroutines with go keyword, communicate via Channels, and prevent deadlocks using Select statements.',
+    learningObjectives: 'Spawn lightweight Goroutines with go keyword, communicate via Channels, and prevent deadlocks using Select statements.',
     subtopics: [
       'Communicating Sequential Processes (CSP) theory: "Don\'t communicate by sharing memory; share memory by communicating."',
       'Goroutines: Lightweight green threads vs OS threads (M:N scheduler mechanics)',
@@ -160,13 +150,11 @@ final List<RoadmapStepModel> golangRoadmapSteps = [
   RoadmapStepModel(
     id: 6,
     title: 'Advanced Concurrency: Sync Package & Context API',
-    description:
-        'Synchronize shared state with Mutexes, WaitGroups, Atomic operations, and manage cancellation signals with Context API.',
+    description: 'Synchronize shared state with Mutexes, WaitGroups, Atomic operations, and manage cancellation signals with Context API.',
     duration: '2-3 weeks',
     phase: 'Phase 3: Native Concurrency',
     level: 'Advanced',
-    learningObjectives:
-        'Synchronize Goroutine completion with sync.WaitGroup, prevent Data Races with sync.Mutex, and propagate deadlines via context.Context.',
+    learningObjectives: 'Synchronize Goroutine completion with sync.WaitGroup, prevent Data Races with sync.Mutex, and propagate deadlines via context.Context.',
     subtopics: [
       'The sync Package: sync.WaitGroup for waiting on Goroutines completion',
       'Mutual Exclusion: sync.Mutex (Lock/Unlock) & sync.RWMutex (RLock/RUnlock)',
@@ -191,13 +179,11 @@ final List<RoadmapStepModel> golangRoadmapSteps = [
   RoadmapStepModel(
     id: 7,
     title: 'Building REST APIs with Go (net/http, Gin, Fiber)',
-    description:
-        'Build high-performance RESTful microservices and Web APIs using Go standard net/http package, Gin, and Fiber frameworks.',
+    description: 'Build high-performance RESTful microservices and Web APIs using Go standard net/http package, Gin, and Fiber frameworks.',
     duration: '2-3 weeks',
     phase: 'Phase 4: Web & Microservices',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Construct HTTP servers with net/http, parse JSON payloads, create Middleware chains, and build REST APIs with Gin framework.',
+    learningObjectives: 'Construct HTTP servers with net/http, parse JSON payloads, create Middleware chains, and build REST APIs with Gin framework.',
     subtopics: [
       'The net/http package: http.ListenAndServe, http.Handler interface, http.Request, http.ResponseWriter',
       'Routing with ServeMux (Go 1.22+ enhanced routing syntax)',
@@ -223,13 +209,11 @@ final List<RoadmapStepModel> golangRoadmapSteps = [
   RoadmapStepModel(
     id: 8,
     title: 'Database Access: SQL, GORM & PostgreSQL',
-    description:
-        'Interact with PostgreSQL databases using database/sql standard library, sqlx, and GORM ORM.',
+    description: 'Interact with PostgreSQL databases using database/sql standard library, sqlx, and GORM ORM.',
     duration: '2-3 weeks',
     phase: 'Phase 4: Web & Microservices',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Query databases using database/sql & connection pools, execute prepared statements, manage transactions, and use GORM.',
+    learningObjectives: 'Query databases using database/sql & connection pools, execute prepared statements, manage transactions, and use GORM.',
     subtopics: [
       'Database connectivity with database/sql package & pgx driver',
       'Configuring connection pooling: SetMaxOpenConns, SetMaxIdleConns, SetConnMaxLifetime',
@@ -255,13 +239,11 @@ final List<RoadmapStepModel> golangRoadmapSteps = [
   RoadmapStepModel(
     id: 9,
     title: 'Testing & Benchmarking in Go',
-    description:
-        'Write unit tests, table-driven tests, benchmarks, and mock interfaces using testing package and testify.',
+    description: 'Write unit tests, table-driven tests, benchmarks, and mock interfaces using testing package and testify.',
     duration: '2 weeks',
     phase: 'Phase 5: Quality & Production',
     level: 'Intermediate',
-    learningObjectives:
-        'Write Unit Tests with testing.T, construct Table-Driven Tests, write Performance Benchmarks (testing.B), and calculate code coverage.',
+    learningObjectives: 'Write Unit Tests with testing.T, construct Table-Driven Tests, write Performance Benchmarks (testing.B), and calculate code coverage.',
     subtopics: [
       'Go testing framework conventions: *_test.go files & TestXxx(t *testing.T) functions',
       'Table-Driven Testing idiom: Defining test cases struct slices & iterating with t.Run()',
@@ -287,13 +269,11 @@ final List<RoadmapStepModel> golangRoadmapSteps = [
   RoadmapStepModel(
     id: 10,
     title: 'Go Performance Optimization & Docker Deployment',
-    description:
-        'Optimize Go applications with pprof profiling, GC tuning, build minimal Docker static binaries, and deploy to Kubernetes.',
+    description: 'Optimize Go applications with pprof profiling, GC tuning, build minimal Docker static binaries, and deploy to Kubernetes.',
     duration: '2-3 weeks',
     phase: 'Phase 5: Quality & Production',
     level: 'Advanced',
-    learningObjectives:
-        'Profile CPU/Memory usage using pprof, compile CGO_ENABLED=0 static binaries, write scratch Dockerfiles, and configure Kubernetes deployments.',
+    learningObjectives: 'Profile CPU/Memory usage using pprof, compile CGO_ENABLED=0 static binaries, write scratch Dockerfiles, and configure Kubernetes deployments.',
     subtopics: [
       'Go Memory Allocation: Stack allocation vs Heap allocation (Escape Analysis - gcflags="-m")',
       'Go Garbage Collector (GC) tuning (GOGC environment variable & SetMemoryLimit)',

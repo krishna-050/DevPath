@@ -4,13 +4,11 @@ final List<RoadmapStepModel> vueRoadmapSteps = [
   RoadmapStepModel(
     id: 1,
     title: 'Vue 3 Foundations & Composition API',
-    description:
-        'Master Vue 3 fundamentals, single-file components (.vue), script setup syntax, and the Composition API.',
+    description: 'Master Vue 3 fundamentals, single-file components (.vue), script setup syntax, and the Composition API.',
     duration: '1-2 weeks',
     phase: 'Phase 1: Vue Core',
     level: 'Beginner',
-    learningObjectives:
-        'Understand Vue 3 app mounting, write Single File Components with <script setup>, and compare Composition API with Options API.',
+    learningObjectives: 'Understand Vue 3 app mounting, write Single File Components with <script setup>, and compare Composition API with Options API.',
     subtopics: [
       'Vue 3 design goals: Performance, TypeScript support, & Composition API',
       'Creating Vue apps with Vite (npm create vue@latest)',
@@ -36,13 +34,11 @@ final List<RoadmapStepModel> vueRoadmapSteps = [
   RoadmapStepModel(
     id: 2,
     title: 'Reactivity System: ref vs reactive',
-    description:
-        'Understand Vue 3 Proxy-based reactivity system, ref(), reactive(), computed properties, and watchers.',
+    description: 'Understand Vue 3 Proxy-based reactivity system, ref(), reactive(), computed properties, and watchers.',
     duration: '2 weeks',
     phase: 'Phase 1: Vue Core',
     level: 'Beginner',
-    learningObjectives:
-        'Manage reactive primitives with ref and reactive objects, create cached computed getters, and observe side-effects with watch.',
+    learningObjectives: 'Manage reactive primitives with ref and reactive objects, create cached computed getters, and observe side-effects with watch.',
     subtopics: [
       'Vue 3 Proxy-based Reactivity System vs Vue 2 Object.defineProperty',
       'ref() for primitive values & reactive() for objects/arrays',
@@ -67,13 +63,11 @@ final List<RoadmapStepModel> vueRoadmapSteps = [
   RoadmapStepModel(
     id: 3,
     title: 'Component Architecture & Communication',
-    description:
-        'Build modular Vue component trees, pass props, emit custom events, slots, and provide/inject dependency trees.',
+    description: 'Build modular Vue component trees, pass props, emit custom events, slots, and provide/inject dependency trees.',
     duration: '2 weeks',
     phase: 'Phase 2: Component Design',
     level: 'Intermediate',
-    learningObjectives:
-        'Pass typed props with defineProps, emit events with defineEmits, implement component Slots, and utilize Provide/Inject.',
+    learningObjectives: 'Pass typed props with defineProps, emit events with defineEmits, implement component Slots, and utilize Provide/Inject.',
     subtopics: [
       'Component registration: Local vs Global component registration',
       'Passing data down with Props (defineProps() in script setup)',
@@ -98,13 +92,11 @@ final List<RoadmapStepModel> vueRoadmapSteps = [
   RoadmapStepModel(
     id: 4,
     title: 'Vue Router 4 for Single Page Applications (SPA)',
-    description:
-        'Build multi-page Single Page Applications using Vue Router 4, dynamic routing, nested views, and navigation guards.',
+    description: 'Build multi-page Single Page Applications using Vue Router 4, dynamic routing, nested views, and navigation guards.',
     duration: '2 weeks',
     phase: 'Phase 2: Component Design',
     level: 'Intermediate',
-    learningObjectives:
-        'Configure Vue Router history modes, dynamic route params, nested routes, lazy loading, and route protection guards.',
+    learningObjectives: 'Configure Vue Router history modes, dynamic route params, nested routes, lazy loading, and route protection guards.',
     subtopics: [
       'SPA Routing concept & Vue Router 4 installation',
       'Configuring router instance (createRouter, createWebHistory vs createWebHashHistory)',
@@ -129,13 +121,11 @@ final List<RoadmapStepModel> vueRoadmapSteps = [
   RoadmapStepModel(
     id: 5,
     title: 'State Management with Pinia',
-    description:
-        'Manage global application state using Pinia, Vue\'s official state management library replacing Vuex.',
+    description: 'Manage global application state using Pinia, Vue\'s official state management library replacing Vuex.',
     duration: '2 weeks',
     phase: 'Phase 3: Ecosystem',
     level: 'Intermediate',
-    learningObjectives:
-        'Define Pinia Option Stores and Setup Stores, manage state, getters, actions, and persist state with plugins.',
+    learningObjectives: 'Define Pinia Option Stores and Setup Stores, manage state, getters, actions, and persist state with plugins.',
     subtopics: [
       'Why Pinia? Replacing Vuex: Type safety, devtools, & zero mutations concept',
       'Installing Pinia & registering in Vue app instance (createPinia)',
@@ -160,13 +150,11 @@ final List<RoadmapStepModel> vueRoadmapSteps = [
   RoadmapStepModel(
     id: 6,
     title: 'Custom Composables & Reusable Logic',
-    description:
-        'Extract reusable stateful logic into Custom Composables following Vue 3 design patterns.',
+    description: 'Extract reusable stateful logic into Custom Composables following Vue 3 design patterns.',
     duration: '2 weeks',
     phase: 'Phase 3: Ecosystem',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Write custom composable functions (useFetch, useLocalStorage, useMouse), handle lifecycle hooks, and structure VueUse utility functions.',
+    learningObjectives: 'Write custom composable functions (useFetch, useLocalStorage, useMouse), handle lifecycle hooks, and structure VueUse utility functions.',
     subtopics: [
       'Composables concept: Stateful logic reuse vs Mixins / Higher Order Components',
       'Naming conventions (useXxx functions) & returning reactive objects/methods',
@@ -191,13 +179,11 @@ final List<RoadmapStepModel> vueRoadmapSteps = [
   RoadmapStepModel(
     id: 7,
     title: 'Advanced Directives, Teleport & Transitions',
-    description:
-        'Master Vue Built-in Components: Teleport, Transition, TransitionGroup, Suspense, and Custom Directives.',
+    description: 'Master Vue Built-in Components: Teleport, Transition, TransitionGroup, Suspense, and Custom Directives.',
     duration: '2 weeks',
     phase: 'Phase 4: Advanced Features',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Render elements outside DOM hierarchy with Teleport, animate elements with Transition, and write Custom Directives.',
+    learningObjectives: 'Render elements outside DOM hierarchy with Teleport, animate elements with Transition, and write Custom Directives.',
     subtopics: [
       'Teleport component (<Teleport to="body">): Rendering modals & tooltips outside DOM hierarchy',
       'Transition component (<Transition name="fade">): CSS transition classes (v-enter-from, v-enter-active, v-enter-to)',
@@ -222,13 +208,11 @@ final List<RoadmapStepModel> vueRoadmapSteps = [
   RoadmapStepModel(
     id: 8,
     title: 'Vue 3 with TypeScript Integration',
-    description:
-        'Build robust, type-safe Vue 3 applications with TypeScript, typed props, emitted events, and store types.',
+    description: 'Build robust, type-safe Vue 3 applications with TypeScript, typed props, emitted events, and store types.',
     duration: '2 weeks',
     phase: 'Phase 4: Advanced Features',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Type Vue components with generic defineProps<T>(), defineEmits<T>(), type Template Refs, and configure tsconfig.json.',
+    learningObjectives: 'Type Vue components with generic defineProps<T>(), defineEmits<T>(), type Template Refs, and configure tsconfig.json.',
     subtopics: [
       'Why TypeScript with Vue 3? Native Composition API type inference',
       'Configuring tsconfig.json & vue-tsc type checking compiler',
@@ -253,13 +237,11 @@ final List<RoadmapStepModel> vueRoadmapSteps = [
   RoadmapStepModel(
     id: 9,
     title: 'Testing Vue Components with Vitest & Vue Test Utils',
-    description:
-        'Write automated unit and component tests for Vue 3 applications using Vitest and Vue Test Utils.',
+    description: 'Write automated unit and component tests for Vue 3 applications using Vitest and Vue Test Utils.',
     duration: '2 weeks',
     phase: 'Phase 5: Production & Full-Stack',
     level: 'Advanced',
-    learningObjectives:
-        'Mount components with mount/shallowMount, trigger user events, mock Pinia/Vue Router, and test async composables.',
+    learningObjectives: 'Mount components with mount/shallowMount, trigger user events, mock Pinia/Vue Router, and test async composables.',
     subtopics: [
       'Testing philosophy in Vue: Unit testing vs Component integration testing',
       'Vitest runner: Speed, native ESM, Vite config sharing, & watch mode',
@@ -284,13 +266,11 @@ final List<RoadmapStepModel> vueRoadmapSteps = [
   RoadmapStepModel(
     id: 10,
     title: 'Full-Stack Vue with Nuxt 3 & Server-Side Rendering (SSR)',
-    description:
-        'Build production-grade Server-Side Rendered (SSR) & Static Site Generated (SSG) full-stack web applications with Nuxt 3.',
+    description: 'Build production-grade Server-Side Rendered (SSR) & Static Site Generated (SSG) full-stack web applications with Nuxt 3.',
     duration: '3 weeks',
     phase: 'Phase 5: Production & Full-Stack',
     level: 'Advanced',
-    learningObjectives:
-        'Configure Nuxt 3 directory structure, file-based routing, server engine (Nitro), data fetching (useFetch/useAsyncData), and deployment.',
+    learningObjectives: 'Configure Nuxt 3 directory structure, file-based routing, server engine (Nitro), data fetching (useFetch/useAsyncData), and deployment.',
     subtopics: [
       'Nuxt 3 Architecture: Hybrid Rendering, SSR, SSG, & SPA modes',
       'Nuxt directory structure: pages/, components/, server/, composables/, middleware/',

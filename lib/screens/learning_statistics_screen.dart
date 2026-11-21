@@ -1,9 +1,11 @@
+import 'package:dev_path/Widgets/global_ai_button.dart';
 import 'package:dev_path/app/theme/app_color.dart';
 import 'package:dev_path/controller/progress_controller.dart';
 import 'package:dev_path/data/roadmap_data.dart';
 import 'package:dev_path/data/roadmap_step_data.dart';
 import 'package:dev_path/models/roadmap_model.dart';
 import 'package:dev_path/screens/achievements_screen.dart';
+import 'package:dev_path/screens/personal_ai_screen.dart';
 import 'package:dev_path/screens/roadmap_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,21 +23,26 @@ class LearningStatisticsScreen extends StatelessWidget {
     final bgColor = isDark ? const Color(0xFF0B1220) : AppColor.background;
     final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
     final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
 
     return Scaffold(
+      floatingActionButton: GlobalAIButton(
+        onPressed: () {
+          Get.to(() => PersonalAiScreen());
+          // Later AI Chat Screen open karenge
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       backgroundColor: bgColor,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: bgColor,
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: textPrimaryColor,
-          ),
+          icon: Icon(Icons.arrow_back_rounded, color: textPrimaryColor),
           onPressed: () => Get.back(),
         ),
         title: Text(
@@ -58,16 +65,16 @@ class LearningStatisticsScreen extends StatelessWidget {
           final roadmapStatsList = <Map<String, dynamic>>[];
 
           for (final roadmap in RoadmapData.roadmaps) {
-            final steps =
-                RoadmapStepData.getStepsForLanguage(roadmap.language);
+            final steps = RoadmapStepData.getStepsForLanguage(roadmap.language);
             final totalTopics = progressController.getTotalTopicCount(steps);
             final completedTopics = progressController.getCompletedTopicCount(
               roadmap.language,
               steps,
             );
             final remainingTopics = totalTopics - completedTopics;
-            final progressRatio =
-                totalTopics > 0 ? completedTopics / totalTopics : 0.0;
+            final progressRatio = totalTopics > 0
+                ? completedTopics / totalTopics
+                : 0.0;
             final percentage = (progressRatio * 100).toInt();
 
             overallTotalTopics += totalTopics;
@@ -223,9 +230,7 @@ class LearningStatisticsScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: surfaceColor,
                           borderRadius: BorderRadius.circular(18),
-                          border: Border.all(
-                            color: borderColor,
-                          ),
+                          border: Border.all(color: borderColor),
                           boxShadow: [
                             BoxShadow(
                               color: textPrimaryColor.withValues(alpha: 0.03),
@@ -287,9 +292,7 @@ class LearningStatisticsScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: surfaceColor,
                           borderRadius: BorderRadius.circular(18),
-                          border: Border.all(
-                            color: borderColor,
-                          ),
+                          border: Border.all(color: borderColor),
                           boxShadow: [
                             BoxShadow(
                               color: textPrimaryColor.withValues(alpha: 0.03),
@@ -355,8 +358,10 @@ class LearningStatisticsScreen extends StatelessWidget {
                   onTap: () => Get.to(() => const AchievementsScreen()),
                   borderRadius: BorderRadius.circular(16),
                   child: Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 12,
+                    ),
                     decoration: BoxDecoration(
                       color: isDark
                           ? const Color(0xFF1E293B)
@@ -368,10 +373,7 @@ class LearningStatisticsScreen extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        const Text(
-                          '🏆',
-                          style: TextStyle(fontSize: 22),
-                        ),
+                        const Text('🏆', style: TextStyle(fontSize: 22)),
                         const SizedBox(width: 12),
                         Expanded(
                           child: Column(
@@ -415,9 +417,7 @@ class LearningStatisticsScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: surfaceColor,
                     borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                      color: borderColor,
-                    ),
+                    border: Border.all(color: borderColor),
                     boxShadow: [
                       BoxShadow(
                         color: textPrimaryColor.withValues(alpha: 0.03),
@@ -559,8 +559,10 @@ class LearningStatisticsScreen extends StatelessWidget {
 
                             double barHeightFactor = 0.0;
                             if (maxDailyCount > 0) {
-                              barHeightFactor =
-                                  (count / maxDailyCount).clamp(0.12, 1.0);
+                              barHeightFactor = (count / maxDailyCount).clamp(
+                                0.12,
+                                1.0,
+                              );
                             }
 
                             const barMaxHeight = 60.0;
@@ -590,13 +592,13 @@ class LearningStatisticsScreen extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     color: isActive
                                         ? (isToday
-                                            ? AppColor.primary
-                                            : (isDark
-                                                ? const Color(0xFF60A5FA)
-                                                : AppColor.secondary))
+                                              ? AppColor.primary
+                                              : (isDark
+                                                    ? const Color(0xFF60A5FA)
+                                                    : AppColor.secondary))
                                         : (isDark
-                                            ? const Color(0xFF0B1220)
-                                            : const Color(0xFFE2EAF2)),
+                                              ? const Color(0xFF0B1220)
+                                              : const Color(0xFFE2EAF2)),
                                     borderRadius: BorderRadius.circular(8),
                                     border: isToday
                                         ? Border.all(
@@ -626,10 +628,12 @@ class LearningStatisticsScreen extends StatelessWidget {
                                   ),
                                   decoration: isToday
                                       ? BoxDecoration(
-                                          color: AppColor.primary
-                                              .withValues(alpha: 0.15),
-                                          borderRadius:
-                                              BorderRadius.circular(6),
+                                          color: AppColor.primary.withValues(
+                                            alpha: 0.15,
+                                          ),
+                                          borderRadius: BorderRadius.circular(
+                                            6,
+                                          ),
                                         )
                                       : null,
                                   child: Text(
@@ -702,9 +706,7 @@ class LearningStatisticsScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: surfaceColor,
                           borderRadius: BorderRadius.circular(16),
-                          border: Border.all(
-                            color: borderColor,
-                          ),
+                          border: Border.all(color: borderColor),
                           boxShadow: [
                             BoxShadow(
                               color: textPrimaryColor.withValues(alpha: 0.03),
@@ -732,13 +734,12 @@ class LearningStatisticsScreen extends StatelessWidget {
                                     roadmap.imgUrl,
                                     fit: BoxFit.contain,
                                     errorBuilder:
-                                        (context, error, stackTrace) =>
-                                            Icon(
-                                      Icons.code_rounded,
-                                      color: isDark
-                                          ? const Color(0xFF60A5FA)
-                                          : AppColor.secondary,
-                                    ),
+                                        (context, error, stackTrace) => Icon(
+                                          Icons.code_rounded,
+                                          color: isDark
+                                              ? const Color(0xFF60A5FA)
+                                              : AppColor.secondary,
+                                        ),
                                   ),
                                 ),
                                 const SizedBox(width: 12),
@@ -773,8 +774,9 @@ class LearningStatisticsScreen extends StatelessWidget {
                                   ),
                                   decoration: BoxDecoration(
                                     color: completed == total && total > 0
-                                        ? AppColor.success
-                                            .withValues(alpha: 0.15)
+                                        ? AppColor.success.withValues(
+                                            alpha: 0.15,
+                                          )
                                         : AppColor.lightOrange,
                                     borderRadius: BorderRadius.circular(10),
                                   ),
@@ -873,11 +875,7 @@ class LearningStatisticsScreen extends StatelessWidget {
     return Expanded(
       child: Column(
         children: [
-          Icon(
-            icon,
-            color: iconColor,
-            size: 20,
-          ),
+          Icon(icon, color: iconColor, size: 20),
           const SizedBox(height: 4),
           Text(
             value,
@@ -890,10 +888,7 @@ class LearningStatisticsScreen extends StatelessWidget {
           const SizedBox(height: 2),
           Text(
             label,
-            style: const TextStyle(
-              fontSize: 11,
-              color: Colors.white70,
-            ),
+            style: const TextStyle(fontSize: 11, color: Colors.white70),
           ),
         ],
       ),

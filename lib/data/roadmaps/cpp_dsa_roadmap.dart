@@ -4,13 +4,11 @@ final List<RoadmapStepModel> cppDsaRoadmapSteps = [
   RoadmapStepModel(
     id: 1,
     title: 'C++ Syntax, Control Flow & Pointers',
-    description:
-        'Master core C++ syntax, memory addresses, pointers, references, and control structures.',
+    description: 'Master core C++ syntax, memory addresses, pointers, references, and control structures.',
     duration: '2 weeks',
     phase: 'Phase 1: C++ Core',
     level: 'Beginner',
-    learningObjectives:
-        'Understand C++ compilation model, manipulate memory pointers & references, and control execution flow.',
+    learningObjectives: 'Understand C++ compilation model, manipulate memory pointers & references, and control execution flow.',
     subtopics: [
       'C++ Compilation Model: Preprocessor, Compiler, Linker & executable binaries',
       'Namespaces, iostream, std::cin, std::cout & std::endl',
@@ -36,13 +34,11 @@ final List<RoadmapStepModel> cppDsaRoadmapSteps = [
   RoadmapStepModel(
     id: 2,
     title: 'Functions, Arrays & Strings',
-    description:
-        'Write modular C++ functions, pass-by-value vs pass-by-reference, C-style arrays, and std::string.',
+    description: 'Write modular C++ functions, pass-by-value vs pass-by-reference, C-style arrays, and std::string.',
     duration: '2 weeks',
     phase: 'Phase 1: C++ Core',
     level: 'Beginner',
-    learningObjectives:
-        'Pass parameters by value, reference, and const reference, manipulate multi-dimensional arrays, and perform string algorithms.',
+    learningObjectives: 'Pass parameters by value, reference, and const reference, manipulate multi-dimensional arrays, and perform string algorithms.',
     subtopics: [
       'Function prototypes, definitions, & default argument values',
       'Pass-by-value vs Pass-by-reference vs Pass-by-pointer',
@@ -67,13 +63,11 @@ final List<RoadmapStepModel> cppDsaRoadmapSteps = [
   RoadmapStepModel(
     id: 3,
     title: 'Object-Oriented C++ (OOP)',
-    description:
-        'Master Classes, Encapsulation, Inheritance, Polymorphism, Virtual Functions, and Operator Overloading.',
+    description: 'Master Classes, Encapsulation, Inheritance, Polymorphism, Virtual Functions, and Operator Overloading.',
     duration: '2-3 weeks',
     phase: 'Phase 1: C++ Core',
     level: 'Intermediate',
-    learningObjectives:
-        'Design OOP classes, implement virtual functions for runtime polymorphism, and manage object lifecycles.',
+    learningObjectives: 'Design OOP classes, implement virtual functions for runtime polymorphism, and manage object lifecycles.',
     subtopics: [
       'Classes & Objects: Public, Private, & Protected access specifiers',
       'Constructors (Default, Parameterized, Copy) & Destructors',
@@ -98,13 +92,11 @@ final List<RoadmapStepModel> cppDsaRoadmapSteps = [
   RoadmapStepModel(
     id: 4,
     title: 'Modern C++ (C++11 to C++20) & Smart Pointers',
-    description:
-        'Master Smart Pointers (unique_ptr, shared_ptr), Move Semantics, Lambda Expressions, and RAII.',
+    description: 'Master Smart Pointers (unique_ptr, shared_ptr), Move Semantics, Lambda Expressions, and RAII.',
     duration: '2 weeks',
     phase: 'Phase 2: Modern C++',
     level: 'Intermediate',
-    learningObjectives:
-        'Eliminate memory leaks using Smart Pointers, apply Move Semantics (rvalue references), and write Lambdas.',
+    learningObjectives: 'Eliminate memory leaks using Smart Pointers, apply Move Semantics (rvalue references), and write Lambdas.',
     subtopics: [
       'RAII (Resource Acquisition Is Initialization) pattern',
       'Smart Pointers: std::unique_ptr, std::shared_ptr, std::weak_ptr',
@@ -129,13 +121,11 @@ final List<RoadmapStepModel> cppDsaRoadmapSteps = [
   RoadmapStepModel(
     id: 5,
     title: 'Standard Template Library (STL)',
-    description:
-        'Master C++ STL Sequence Containers, Associative Containers, Iterators, and Algorithms.',
+    description: 'Master C++ STL Sequence Containers, Associative Containers, Iterators, and Algorithms.',
     duration: '2-3 weeks',
     phase: 'Phase 2: Modern C++',
     level: 'Intermediate',
-    learningObjectives:
-        'Utilize std::vector, std::map, std::unordered_map, std::set, std::sort, and Custom Comparators.',
+    learningObjectives: 'Utilize std::vector, std::map, std::unordered_map, std::set, std::sort, and Custom Comparators.',
     subtopics: [
       'STL Overview: Containers, Iterators, & Algorithms',
       'Sequence Containers: std::vector, std::deque, std::list, std::array',
@@ -160,13 +150,11 @@ final List<RoadmapStepModel> cppDsaRoadmapSteps = [
   RoadmapStepModel(
     id: 6,
     title: 'Data Structures: Linked Lists, Stacks & Queues',
-    description:
-        'Implement Singly Linked Lists, Doubly Linked Lists, Stacks, and Queues from scratch.',
+    description: 'Implement Singly Linked Lists, Doubly Linked Lists, Stacks, and Queues from scratch.',
     duration: '2-3 weeks',
     phase: 'Phase 3: Data Structures',
     level: 'Intermediate',
-    learningObjectives:
-        'Construct linked list operations, implement stack & queue data structures, and solve memory pointer manipulation challenges.',
+    learningObjectives: 'Construct linked list operations, implement stack & queue data structures, and solve memory pointer manipulation challenges.',
     subtopics: [
       'Singly Linked List: Node creation, insertion (head, tail, middle), deletion',
       'Reversing a Linked List (Iterative & Recursive)',
@@ -191,13 +179,11 @@ final List<RoadmapStepModel> cppDsaRoadmapSteps = [
   RoadmapStepModel(
     id: 7,
     title: 'Trees & Binary Search Trees (BST)',
-    description:
-        'Master Binary Trees, Tree Traversals (Inorder, Preorder, Postorder, Level Order), and Binary Search Trees.',
+    description: 'Master Binary Trees, Tree Traversals (Inorder, Preorder, Postorder, Level Order), and Binary Search Trees.',
     duration: '3 weeks',
     phase: 'Phase 3: Data Structures',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Implement tree traversals, BST operations (insert, search, delete), and calculate tree height/diameter.',
+    learningObjectives: 'Implement tree traversals, BST operations (insert, search, delete), and calculate tree height/diameter.',
     subtopics: [
       'Tree Terminology: Root, Parent, Child, Leaf, Height, Depth, Subtree',
       'Binary Tree Representation using Node pointers',
@@ -222,13 +208,11 @@ final List<RoadmapStepModel> cppDsaRoadmapSteps = [
   RoadmapStepModel(
     id: 8,
     title: 'Heaps, Tries & Hash Tables',
-    description:
-        'Master Min-Heap, Max-Heap, Heapify algorithm, Trie (Prefix Tree), and Hash Table collision resolution.',
+    description: 'Master Min-Heap, Max-Heap, Heapify algorithm, Trie (Prefix Tree), and Hash Table collision resolution.',
     duration: '2-3 weeks',
     phase: 'Phase 3: Data Structures',
     level: 'Advanced',
-    learningObjectives:
-        'Implement Heapify and HeapSort, construct a Trie for autocomplete, and handle Hash collisions.',
+    learningObjectives: 'Implement Heapify and HeapSort, construct a Trie for autocomplete, and handle Hash collisions.',
     subtopics: [
       'Heap Data Structure: Complete Binary Tree property & Array representation',
       'Min-Heap & Max-Heap insertion and deletion (Sift-Up, Sift-Down)',
@@ -253,13 +237,11 @@ final List<RoadmapStepModel> cppDsaRoadmapSteps = [
   RoadmapStepModel(
     id: 9,
     title: 'Graph Algorithms & Shortest Paths',
-    description:
-        'Represent Graphs (Adjacency Matrix/List), master BFS, DFS, Dijkstra, Bellman-Ford, and Minimum Spanning Trees.',
+    description: 'Represent Graphs (Adjacency Matrix/List), master BFS, DFS, Dijkstra, Bellman-Ford, and Minimum Spanning Trees.',
     duration: '3-4 weeks',
     phase: 'Phase 4: Algorithms',
     level: 'Advanced',
-    learningObjectives:
-        'Represent graphs, perform BFS/DFS traversals, detect cycles, find shortest paths with Dijkstra, and compute MSTs.',
+    learningObjectives: 'Represent graphs, perform BFS/DFS traversals, detect cycles, find shortest paths with Dijkstra, and compute MSTs.',
     subtopics: [
       'Graph Representations: Adjacency Matrix vs Adjacency List',
       'Graph Types: Directed, Undirected, Weighted, Unweighted, DAG',
@@ -284,13 +266,11 @@ final List<RoadmapStepModel> cppDsaRoadmapSteps = [
   RoadmapStepModel(
     id: 10,
     title: 'Dynamic Programming & Algorithmic Patterns',
-    description:
-        'Master Dynamic Programming Memoization (Top-Down), Tabulation (Bottom-Up), Space Optimization, and Competitive Programming patterns.',
+    description: 'Master Dynamic Programming Memoization (Top-Down), Tabulation (Bottom-Up), Space Optimization, and Competitive Programming patterns.',
     duration: '3-4 weeks',
     phase: 'Phase 4: Algorithms',
     level: 'Advanced',
-    learningObjectives:
-        'Identify DP patterns, solve 0/1 Knapsack, LCS, LIS, Matrix Chain Multiplication, and optimize space complexities.',
+    learningObjectives: 'Identify DP patterns, solve 0/1 Knapsack, LCS, LIS, Matrix Chain Multiplication, and optimize space complexities.',
     subtopics: [
       'Dynamic Programming Principles: Overlapping Subproblems & Optimal Substructure',
       'Top-Down (Recursion + Memoization) vs Bottom-Up (Tabulation)',

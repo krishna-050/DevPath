@@ -4,13 +4,11 @@ final List<RoadmapStepModel> devopsRoadmapSteps = [
   RoadmapStepModel(
     id: 1,
     title: 'Linux Administration & Shell Scripting',
-    description:
-        'Master Linux OS administration, file system hierarchies, permission management, and automation with Bash scripting.',
+    description: 'Master Linux OS administration, file system hierarchies, permission management, and automation with Bash scripting.',
     duration: '2-3 weeks',
     phase: 'Phase 1: Foundation',
     level: 'Beginner',
-    learningObjectives:
-        'Navigate Linux CLI, manage users and process permissions, write automated shell scripts, and manage cron jobs.',
+    learningObjectives: 'Navigate Linux CLI, manage users and process permissions, write automated shell scripts, and manage cron jobs.',
     subtopics: [
       'Linux Kernel architecture & POSIX file system structure',
       'Essential terminal commands (cd, ls, grep, awk, sed, find)',
@@ -36,13 +34,11 @@ final List<RoadmapStepModel> devopsRoadmapSteps = [
   RoadmapStepModel(
     id: 2,
     title: 'Networking & Security Fundamentals',
-    description:
-        'Understand OSI model layers, TCP/IP networking protocols, DNS resolution, SSH tunneling, and firewall rules.',
+    description: 'Understand OSI model layers, TCP/IP networking protocols, DNS resolution, SSH tunneling, and firewall rules.',
     duration: '2 weeks',
     phase: 'Phase 1: Foundation',
     level: 'Beginner',
-    learningObjectives:
-        'Configure IP subnets, diagnose network latency with ping and traceroute, manage SSH keys, and configure UFW firewalls.',
+    learningObjectives: 'Configure IP subnets, diagnose network latency with ping and traceroute, manage SSH keys, and configure UFW firewalls.',
     subtopics: [
       'OSI 7-layer model vs TCP/IP protocol suite',
       'IP addressing, IPv4 vs IPv6, CIDR notation & subnetting',
@@ -68,13 +64,11 @@ final List<RoadmapStepModel> devopsRoadmapSteps = [
   RoadmapStepModel(
     id: 3,
     title: 'Containerization with Docker',
-    description:
-        'Build, containerize, and run multi-container microservices applications using Docker Engine and Docker Compose.',
+    description: 'Build, containerize, and run multi-container microservices applications using Docker Engine and Docker Compose.',
     duration: '2-3 weeks',
     phase: 'Phase 2: Core Tooling',
     level: 'Intermediate',
-    learningObjectives:
-        'Write optimized Dockerfiles, manage image layers, configure bridge networks, create persistent volumes, and orchestration with Docker Compose.',
+    learningObjectives: 'Write optimized Dockerfiles, manage image layers, configure bridge networks, create persistent volumes, and orchestration with Docker Compose.',
     subtopics: [
       'Containers vs Virtual Machines: Namespaces & cgroups mechanics',
       'Docker architecture: Client, Daemon, Registries, Images, Containers',
@@ -99,13 +93,11 @@ final List<RoadmapStepModel> devopsRoadmapSteps = [
   RoadmapStepModel(
     id: 4,
     title: 'Container Orchestration with Kubernetes',
-    description:
-        'Orchestrate production container workloads at scale using Kubernetes (k8s) pods, deployments, services, and ingress.',
+    description: 'Orchestrate production container workloads at scale using Kubernetes (k8s) pods, deployments, services, and ingress.',
     duration: '3-4 weeks',
     phase: 'Phase 3: Production Scale',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Deploy resilient workloads on Kubernetes, manage ConfigMaps & Secrets, configure Ingress controllers, and manage Helm charts.',
+    learningObjectives: 'Deploy resilient workloads on Kubernetes, manage ConfigMaps & Secrets, configure Ingress controllers, and manage Helm charts.',
     subtopics: [
       'Kubernetes Architecture: Control Plane (api-server, etcd, scheduler) vs Worker Nodes (kubelet, kube-proxy)',
       'Kubectl CLI & cluster management context',
@@ -131,13 +123,11 @@ final List<RoadmapStepModel> devopsRoadmapSteps = [
   RoadmapStepModel(
     id: 5,
     title: 'Infrastructure as Code (IaC) with Terraform',
-    description:
-        'Automate cloud infrastructure provisioning predictably using HashiCorp Terraform modules, states, and providers.',
+    description: 'Automate cloud infrastructure provisioning predictably using HashiCorp Terraform modules, states, and providers.',
     duration: '2-3 weeks',
     phase: 'Phase 3: Production Scale',
     level: 'Intermediate',
-    learningObjectives:
-        'Write HCL (HashiCorp Configuration Language), manage remote state backends with locking, modularize Terraform code, and execute plan/apply workflows.',
+    learningObjectives: 'Write HCL (HashiCorp Configuration Language), manage remote state backends with locking, modularize Terraform code, and execute plan/apply workflows.',
     subtopics: [
       'Declarative vs Imperative infrastructure provisioning principles',
       'Terraform Architecture: HCL Syntax, Providers, Resources, Data sources',
@@ -162,13 +152,11 @@ final List<RoadmapStepModel> devopsRoadmapSteps = [
   RoadmapStepModel(
     id: 6,
     title: 'Continuous Integration & Delivery (CI/CD)',
-    description:
-        'Design automated integration & deployment pipelines using GitHub Actions, GitLab CI, and ArgoCD for GitOps.',
+    description: 'Design automated integration & deployment pipelines using GitHub Actions, GitLab CI, and ArgoCD for GitOps.',
     duration: '2-3 weeks',
     phase: 'Phase 4: Automation',
     level: 'Intermediate',
-    learningObjectives:
-        'Automate testing, linting, Docker image building, and production deployment pipelines on code pushes.',
+    learningObjectives: 'Automate testing, linting, Docker image building, and production deployment pipelines on code pushes.',
     subtopics: [
       'CI/CD Pipeline Architecture: Triggers, Jobs, Steps, Runners, Artifacts',
       'GitHub Actions syntax: workflows, events (push, pull_request, workflow_dispatch)',
@@ -193,13 +181,11 @@ final List<RoadmapStepModel> devopsRoadmapSteps = [
   RoadmapStepModel(
     id: 7,
     title: 'Cloud Computing & AWS Architecture',
-    description:
-        'Architect resilient, cost-optimized, secure cloud applications on Amazon Web Services (AWS).',
+    description: 'Architect resilient, cost-optimized, secure cloud applications on Amazon Web Services (AWS).',
     duration: '3-4 weeks',
     phase: 'Phase 4: Automation',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Design VPC network topologies, compute workloads with EC2 and ECS/EKS, manage IAM policies, and configure CloudWatch alerts.',
+    learningObjectives: 'Design VPC network topologies, compute workloads with EC2 and ECS/EKS, manage IAM policies, and configure CloudWatch alerts.',
     subtopics: [
       'AWS Well-Architected Framework: Security, Reliability, Performance, Cost, Operational Excellence',
       'IAM (Identity and Access Management): Users, Groups, Roles, Policies, MFA',
@@ -225,13 +211,11 @@ final List<RoadmapStepModel> devopsRoadmapSteps = [
   RoadmapStepModel(
     id: 8,
     title: 'Monitoring, Logging & Observability',
-    description:
-        'Implement full observability using Prometheus, Grafana, ELK/EFK stack, and distributed tracing.',
+    description: 'Implement full observability using Prometheus, Grafana, ELK/EFK stack, and distributed tracing.',
     duration: '2-3 weeks',
     phase: 'Phase 5: Observability & Security',
     level: 'Intermediate to Advanced',
-    learningObjectives:
-        'Instrument applications for metrics, configure Prometheus scraping, build Grafana dashboards, and analyze logs with ELK stack.',
+    learningObjectives: 'Instrument applications for metrics, configure Prometheus scraping, build Grafana dashboards, and analyze logs with ELK stack.',
     subtopics: [
       'The 3 Pillars of Observability: Metrics, Logs, Traces',
       'Prometheus Architecture: Time-series database, Pull model, Exporters, PromQL queries',
@@ -257,13 +241,11 @@ final List<RoadmapStepModel> devopsRoadmapSteps = [
   RoadmapStepModel(
     id: 9,
     title: 'Configuration Management with Ansible',
-    description:
-        'Automate server provisioning, OS patching, and application deployments idempotently using Ansible playbooks.',
+    description: 'Automate server provisioning, OS patching, and application deployments idempotently using Ansible playbooks.',
     duration: '2 weeks',
     phase: 'Phase 5: Observability & Security',
     level: 'Intermediate',
-    learningObjectives:
-        'Write YAML playbooks, create custom Ansible roles, manage inventory files, and encrypt secrets with Ansible Vault.',
+    learningObjectives: 'Write YAML playbooks, create custom Ansible roles, manage inventory files, and encrypt secrets with Ansible Vault.',
     subtopics: [
       'Agentless architecture vs Agent-based configuration management',
       'Ansible Inventory files (static ini/yaml & dynamic cloud inventory)',
@@ -288,13 +270,11 @@ final List<RoadmapStepModel> devopsRoadmapSteps = [
   RoadmapStepModel(
     id: 10,
     title: 'DevSecOps & Site Reliability Engineering (SRE)',
-    description:
-        'Integrate security into CI/CD pipelines, manage incident response workflows, and apply SRE principles to high-scale production systems.',
+    description: 'Integrate security into CI/CD pipelines, manage incident response workflows, and apply SRE principles to high-scale production systems.',
     duration: '3 weeks',
     phase: 'Phase 5: Observability & Security',
     level: 'Advanced',
-    learningObjectives:
-        'Embed SAST/DAST/SCA vulnerability scans into pipelines, run incident post-mortems, and establish Error Budgets.',
+    learningObjectives: 'Embed SAST/DAST/SCA vulnerability scans into pipelines, run incident post-mortems, and establish Error Budgets.',
     subtopics: [
       'DevSecOps Principles: Shifting Security Left in SDLC',
       'Static Application Security Testing (SAST) with SonarQube & Semgrep',

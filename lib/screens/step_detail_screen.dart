@@ -1,9 +1,13 @@
 import 'dart:math' as math;
+
+import 'package:dev_path/Widgets/app_snackbar.dart';
+import 'package:dev_path/Widgets/global_ai_button.dart';
 import 'package:dev_path/app/theme/app_color.dart';
 import 'package:dev_path/controller/note_controller.dart';
 import 'package:dev_path/controller/progress_controller.dart';
 import 'package:dev_path/models/note_model.dart';
 import 'package:dev_path/models/roadmap_step_model.dart';
+import 'package:dev_path/screens/personal_ai_screen.dart';
 import 'package:dev_path/screens/webview_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -74,16 +78,19 @@ class _StepDetailScreenState extends State<StepDetailScreen>
     required RoadmapStepModel step,
     NoteModel? existingNote,
   }) {
-    final titleController =
-        TextEditingController(text: existingNote?.title ?? '');
-    final contentController =
-        TextEditingController(text: existingNote?.content ?? '');
+    final titleController = TextEditingController(
+      text: existingNote?.title ?? '',
+    );
+    final contentController = TextEditingController(
+      text: existingNote?.content ?? '',
+    );
 
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
 
     showModalBottomSheet(
       context: context,
@@ -168,17 +175,23 @@ class _StepDetailScreenState extends State<StepDetailScreen>
                 decoration: InputDecoration(
                   hintText: 'Note title...',
                   hintStyle: TextStyle(color: textSecondaryColor, fontSize: 14),
-                  prefixIcon: Icon(Icons.title_rounded,
-                      color: textSecondaryColor, size: 20),
+                  prefixIcon: Icon(
+                    Icons.title_rounded,
+                    color: textSecondaryColor,
+                    size: 20,
+                  ),
                   filled: true,
-                  fillColor:
-                      isDark ? const Color(0xFF0B1220) : AppColor.background,
+                  fillColor: isDark
+                      ? const Color(0xFF0B1220)
+                      : AppColor.background,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16),
                     borderSide: BorderSide.none,
                   ),
                   contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 16, vertical: 14),
+                    horizontal: 16,
+                    vertical: 14,
+                  ),
                 ),
               ),
               const SizedBox(height: 12),
@@ -190,8 +203,9 @@ class _StepDetailScreenState extends State<StepDetailScreen>
                   hintText: 'Write your notes, reminders, or key takeaways...',
                   hintStyle: TextStyle(color: textSecondaryColor, fontSize: 13),
                   filled: true,
-                  fillColor:
-                      isDark ? const Color(0xFF0B1220) : AppColor.background,
+                  fillColor: isDark
+                      ? const Color(0xFF0B1220)
+                      : AppColor.background,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16),
                     borderSide: BorderSide.none,
@@ -216,10 +230,10 @@ class _StepDetailScreenState extends State<StepDetailScreen>
                     final title = titleController.text.trim();
                     final content = contentController.text.trim();
                     if (title.isEmpty || content.isEmpty) {
-                      Get.snackbar(
-                        'Missing Info',
-                        'Please fill in both title and content.',
-                        snackPosition: SnackPosition.BOTTOM,
+                      AppSnackBar.show(
+                        title: 'Missing Info',
+                        message: 'Please fill in both title and content.',
+                        type: SnackBarType.warning,
                       );
                       return;
                     }
@@ -243,9 +257,11 @@ class _StepDetailScreenState extends State<StepDetailScreen>
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(existingNote == null
-                          ? Icons.save_rounded
-                          : Icons.update_rounded),
+                      Icon(
+                        existingNote == null
+                            ? Icons.save_rounded
+                            : Icons.update_rounded,
+                      ),
                       const SizedBox(width: 8),
                       Text(
                         existingNote == null ? 'Save Note' : 'Update Note',
@@ -276,22 +292,23 @@ class _StepDetailScreenState extends State<StepDetailScreen>
 
     final progressKey = '${widget.roadmapTitle}_${step.id}';
     final totalTopics = step.subtopics.length;
-    final completedCount =
-        _completedTopics.where((completed) => completed).length;
+    final completedCount = _completedTopics
+        .where((completed) => completed)
+        .length;
     final progress = totalTopics > 0 ? completedCount / totalTopics : 0.0;
     final isAllCompleted = totalTopics > 0 && completedCount == totalTopics;
 
     final bgColor = isDark ? const Color(0xFF0B1220) : AppColor.background;
     final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
     final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
 
     final levelColor = _getLevelColor(step.level);
 
-    final hasExercises =
-        step.exercises != null && step.exercises!.isNotEmpty;
+    final hasExercises = step.exercises != null && step.exercises!.isNotEmpty;
     final tabs = <Tab>[
       const Tab(text: 'Topics'),
       if (hasExercises) const Tab(text: 'Exercises'),
@@ -300,6 +317,13 @@ class _StepDetailScreenState extends State<StepDetailScreen>
     ];
 
     return Scaffold(
+      floatingActionButton: GlobalAIButton(
+        onPressed: () {
+          Get.to(() => PersonalAiScreen());
+          // Later AI Chat Screen open karenge
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       backgroundColor: bgColor,
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
@@ -376,7 +400,9 @@ class _StepDetailScreenState extends State<StepDetailScreen>
                 });
                 progressController.saveProgress(progressKey, _completedTopics);
                 progressController.saveLastOpenedStep(
-                    widget.roadmapTitle, step.id);
+                  widget.roadmapTitle,
+                  step.id,
+                );
               },
             ),
 
@@ -458,14 +484,8 @@ class _StepDetailScreenState extends State<StepDetailScreen>
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: isDark
-              ? [
-                  const Color(0xFF1479D4),
-                  const Color(0xFF0F2850),
-                ]
-              : [
-                  AppColor.secondary,
-                  const Color(0xFF0D3B8E),
-                ],
+              ? [const Color(0xFF1479D4), const Color(0xFF0F2850)]
+              : [AppColor.secondary, const Color(0xFF0D3B8E)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -494,7 +514,6 @@ class _StepDetailScreenState extends State<StepDetailScreen>
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.white.withValues(alpha: 0.06),
-
               ),
             ),
           ),
@@ -522,16 +541,10 @@ class _StepDetailScreenState extends State<StepDetailScreen>
                                 ),
                               ),
                             ),
-                            SizedBox(width: 33,),
+                            SizedBox(width: 33),
                             _HeroBadge(
                               label: step.phase,
                               icon: Icons.layers_rounded,
-                            ),
-                            const SizedBox(width: 6),
-                            _HeroBadge(
-                              label: step.level,
-                              icon: Icons.bar_chart_rounded,
-                              color: levelColor,
                             ),
                           ],
                         ),
@@ -613,7 +626,9 @@ class _StepDetailScreenState extends State<StepDetailScreen>
                     children: [
                       Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 5),
+                          horizontal: 10,
+                          vertical: 5,
+                        ),
                         decoration: BoxDecoration(
                           color: Colors.white.withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(20),
@@ -621,8 +636,11 @@ class _StepDetailScreenState extends State<StepDetailScreen>
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Icon(Icons.schedule_rounded,
-                                color: Colors.white, size: 13),
+                            const Icon(
+                              Icons.schedule_rounded,
+                              color: Colors.white,
+                              size: 13,
+                            ),
                             const SizedBox(width: 5),
                             Text(
                               step.duration,
@@ -638,7 +656,9 @@ class _StepDetailScreenState extends State<StepDetailScreen>
                       const SizedBox(width: 8),
                       Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 5),
+                          horizontal: 10,
+                          vertical: 5,
+                        ),
                         decoration: BoxDecoration(
                           color: Colors.white.withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(20),
@@ -646,8 +666,11 @@ class _StepDetailScreenState extends State<StepDetailScreen>
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Icon(Icons.checklist_rounded,
-                                color: Colors.white, size: 13),
+                            const Icon(
+                              Icons.checklist_rounded,
+                              color: Colors.white,
+                              size: 13,
+                            ),
                             const SizedBox(width: 5),
                             Text(
                               '$totalTopics topics',
@@ -659,6 +682,12 @@ class _StepDetailScreenState extends State<StepDetailScreen>
                             ),
                           ],
                         ),
+                      ),
+                      const SizedBox(width: 6),
+                      _HeroBadge(
+                        label: step.level,
+                        icon: Icons.bar_chart_rounded,
+                        color: levelColor,
                       ),
                       const Spacer(),
                       _ProgressRing(
@@ -722,21 +751,20 @@ class _StepDetailScreenState extends State<StepDetailScreen>
           onPressed: () {
             if (!isAllCompleted) {
               setState(() {
-                _completedTopics =
-                    List<bool>.filled(widget.step.subtopics.length, true);
+                _completedTopics = List<bool>.filled(
+                  widget.step.subtopics.length,
+                  true,
+                );
               });
               progressController.saveProgress(progressKey, _completedTopics);
               progressController.saveLastOpenedStep(
-                  widget.roadmapTitle, step.id);
-              Get.snackbar(
-                '🎉 Step Mastered!',
-                'All topics for "${step.title}" are complete!',
-                snackPosition: SnackPosition.BOTTOM,
-                backgroundColor: surfaceColor,
-                colorText: textPrimaryColor,
-                margin: const EdgeInsets.all(16),
-                borderRadius: 14,
-                duration: const Duration(seconds: 3),
+                widget.roadmapTitle,
+                step.id,
+              );
+              AppSnackBar.show(
+                title: '🎉 Step Mastered!',
+                message: 'All topics for "${step.title}" are complete!',
+                type: SnackBarType.success,
               );
             } else {
               Get.back();
@@ -838,10 +866,10 @@ class _TopicsTab extends StatelessWidget {
               ),
             ),
             Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
               decoration: BoxDecoration(
-                color: completedCount == completedTopics.length &&
+                color:
+                    completedCount == completedTopics.length &&
                         completedTopics.isNotEmpty
                     ? AppColor.success.withValues(alpha: 0.12)
                     : AppColor.primary.withValues(alpha: 0.1),
@@ -852,7 +880,8 @@ class _TopicsTab extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.bold,
-                  color: completedCount == completedTopics.length &&
+                  color:
+                      completedCount == completedTopics.length &&
                           completedTopics.isNotEmpty
                       ? AppColor.success
                       : AppColor.primary,
@@ -943,14 +972,17 @@ class _TopicItem extends StatelessWidget {
                   color: isChecked
                       ? AppColor.primary
                       : isDark
-                          ? const Color(0xFF1E293B)
-                          : const Color(0xFFF1F5F9),
+                      ? const Color(0xFF1E293B)
+                      : const Color(0xFFF1F5F9),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Center(
                   child: isChecked
-                      ? const Icon(Icons.check_rounded,
-                          size: 18, color: Colors.white)
+                      ? const Icon(
+                          Icons.check_rounded,
+                          size: 18,
+                          color: Colors.white,
+                        )
                       : Text(
                           '${index + 1}',
                           style: TextStyle(
@@ -970,11 +1002,8 @@ class _TopicItem extends StatelessWidget {
                     topic,
                     style: TextStyle(
                       fontSize: 13.5,
-                      fontWeight:
-                          isChecked ? FontWeight.w500 : FontWeight.w600,
-                      color: isChecked
-                          ? textSecondaryColor
-                          : textPrimaryColor,
+                      fontWeight: isChecked ? FontWeight.w500 : FontWeight.w600,
+                      color: isChecked ? textSecondaryColor : textPrimaryColor,
                       decoration: isChecked
                           ? TextDecoration.lineThrough
                           : TextDecoration.none,
@@ -1015,14 +1044,8 @@ class _ObjectivesBanner extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: isDark
-              ? [
-                  const Color(0xFF1E3A5F),
-                  const Color(0xFF172235),
-                ]
-              : [
-                  const Color(0xFFE0EFFF),
-                  const Color(0xFFEEF7FF),
-                ],
+              ? [const Color(0xFF1E3A5F), const Color(0xFF172235)]
+              : [const Color(0xFFE0EFFF), const Color(0xFFEEF7FF)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -1146,8 +1169,11 @@ class _ExercisesTab extends StatelessWidget {
                   color: const Color(0xFF8B5CF6).withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: const Icon(Icons.code_rounded,
-                    color: Color(0xFF8B5CF6), size: 22),
+                child: const Icon(
+                  Icons.code_rounded,
+                  color: Color(0xFF8B5CF6),
+                  size: 22,
+                ),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -1166,10 +1192,7 @@ class _ExercisesTab extends StatelessWidget {
                     ),
                     Text(
                       '${exercises.length} hands-on coding challenges',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: textSecondaryColor,
-                      ),
+                      style: TextStyle(fontSize: 12, color: textSecondaryColor),
                     ),
                   ],
                 ),
@@ -1238,17 +1261,20 @@ class _ExercisesTab extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         Clipboard.setData(
-                            ClipboardData(text: exercises[index]));
-                        Get.snackbar(
-                          'Copied to Clipboard',
-                          'Exercise prompt copied.',
-                          snackPosition: SnackPosition.BOTTOM,
+                          ClipboardData(text: exercises[index]),
+                        );
+                        AppSnackBar.show(
+                          title: 'Copied to Clipboard',
+                          message: 'Exercise prompt copied.',
+                          type: SnackBarType.success,
                           duration: const Duration(seconds: 2),
                         );
                       },
                       child: Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 4),
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
                         decoration: BoxDecoration(
                           color: color.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(8),
@@ -1313,23 +1339,26 @@ class _ResourcesTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hasResources =
-        step.resources != null && step.resources!.isNotEmpty;
+    final hasResources = step.resources != null && step.resources!.isNotEmpty;
 
     if (!hasResources) {
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.link_off_rounded,
-                size: 56, color: textSecondaryColor.withValues(alpha: 0.5)),
+            Icon(
+              Icons.link_off_rounded,
+              size: 56,
+              color: textSecondaryColor.withValues(alpha: 0.5),
+            ),
             const SizedBox(height: 12),
             Text(
               'No resources added yet',
               style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600,
-                  color: textSecondaryColor),
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+                color: textSecondaryColor,
+              ),
             ),
           ],
         ),
@@ -1345,15 +1374,12 @@ class _ResourcesTab extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
           margin: const EdgeInsets.only(bottom: 16),
           decoration: BoxDecoration(
-            color: isDark
-                ? const Color(0xFF1E293B)
-                : AppColor.lightBlue,
+            color: isDark ? const Color(0xFF1E293B) : AppColor.lightBlue,
             borderRadius: BorderRadius.circular(14),
           ),
           child: Row(
             children: [
-              Icon(Icons.bookmark_rounded,
-                  color: AppColor.secondary, size: 18),
+              Icon(Icons.bookmark_rounded, color: AppColor.secondary, size: 18),
               const SizedBox(width: 10),
               Expanded(
                 child: Text(
@@ -1419,8 +1445,7 @@ class _ResourcesTab extends StatelessWidget {
                 border: Border.all(color: borderColor),
                 boxShadow: [
                   BoxShadow(
-                    color:
-                        Colors.black.withValues(alpha: isDark ? 0.2 : 0.04),
+                    color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.04),
                     blurRadius: 10,
                     offset: const Offset(0, 2),
                   ),
@@ -1446,7 +1471,9 @@ class _ResourcesTab extends StatelessWidget {
                           children: [
                             Container(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 6, vertical: 2),
+                                horizontal: 6,
+                                vertical: 2,
+                              ),
                               decoration: BoxDecoration(
                                 color: color.withValues(alpha: 0.12),
                                 borderRadius: BorderRadius.circular(6),
@@ -1478,10 +1505,7 @@ class _ResourcesTab extends StatelessWidget {
                             url,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontSize: 11,
-                              color: color,
-                            ),
+                            style: TextStyle(fontSize: 11, color: color),
                           ),
                         ],
                       ],
@@ -1494,8 +1518,11 @@ class _ResourcesTab extends StatelessWidget {
                       color: color.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Icon(Icons.open_in_new_rounded,
-                        color: color, size: 16),
+                    child: Icon(
+                      Icons.open_in_new_rounded,
+                      color: color,
+                      size: 16,
+                    ),
                   ),
                 ],
               ),
@@ -1540,8 +1567,7 @@ class _NotesTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      final stepNotes =
-          noteController.getNotesForStep(roadmapTitle, step.id);
+      final stepNotes = noteController.getNotesForStep(roadmapTitle, step.id);
 
       return ListView(
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 100),
@@ -1570,8 +1596,11 @@ class _NotesTab extends StatelessWidget {
                       color: AppColor.primary.withValues(alpha: 0.1),
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(Icons.add_rounded,
-                        color: AppColor.primary, size: 18),
+                    child: const Icon(
+                      Icons.add_rounded,
+                      color: AppColor.primary,
+                      size: 18,
+                    ),
                   ),
                   const SizedBox(width: 10),
                   Text(
@@ -1639,8 +1668,9 @@ class _NotesTab extends StatelessWidget {
                   border: Border.all(color: borderColor),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black
-                          .withValues(alpha: isDark ? 0.2 : 0.04),
+                      color: Colors.black.withValues(
+                        alpha: isDark ? 0.2 : 0.04,
+                      ),
                       blurRadius: 10,
                       offset: const Offset(0, 2),
                     ),
@@ -1657,8 +1687,11 @@ class _NotesTab extends StatelessWidget {
                             color: AppColor.primary.withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: const Icon(Icons.sticky_note_2_rounded,
-                              color: AppColor.primary, size: 16),
+                          child: const Icon(
+                            Icons.sticky_note_2_rounded,
+                            color: AppColor.primary,
+                            size: 16,
+                          ),
                         ),
                         const SizedBox(width: 10),
                         Expanded(
@@ -1681,15 +1714,17 @@ class _NotesTab extends StatelessWidget {
                               color: AppColor.secondary.withValues(alpha: 0.1),
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: const Icon(Icons.edit_outlined,
-                                color: AppColor.secondary, size: 15),
+                            child: const Icon(
+                              Icons.edit_outlined,
+                              color: AppColor.secondary,
+                              size: 15,
+                            ),
                           ),
                         ),
                         const SizedBox(width: 6),
                         // Delete button
                         GestureDetector(
-                          onTap: () =>
-                              noteController.deleteNote(note.id),
+                          onTap: () => noteController.deleteNote(note.id),
                           child: Container(
                             padding: const EdgeInsets.all(6),
                             decoration: BoxDecoration(
@@ -1697,8 +1732,11 @@ class _NotesTab extends StatelessWidget {
                                   .withValues(alpha: 0.1),
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: const Icon(Icons.delete_outline_rounded,
-                                color: Color(0xFFEF4444), size: 15),
+                            child: const Icon(
+                              Icons.delete_outline_rounded,
+                              color: Color(0xFFEF4444),
+                              size: 15,
+                            ),
                           ),
                         ),
                       ],
@@ -1737,11 +1775,7 @@ class _HeroBadge extends StatelessWidget {
   final IconData icon;
   final Color? color;
 
-  const _HeroBadge({
-    required this.label,
-    required this.icon,
-    this.color,
-  });
+  const _HeroBadge({required this.label, required this.icon, this.color});
 
   @override
   Widget build(BuildContext context) {

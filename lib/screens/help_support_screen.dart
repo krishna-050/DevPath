@@ -1,3 +1,4 @@
+import 'package:dev_path/Widgets/app_snackbar.dart';
 import 'package:dev_path/app/theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,30 +11,24 @@ class HelpSupportScreen extends StatelessWidget {
     final uri = Uri(
       scheme: 'mailto',
       path: 'support@learningpath.app',
-      queryParameters: {
-        'subject': 'Learning Path App Support Request',
-      },
+      queryParameters: {'subject': 'Learning Path App Support Request'},
     );
 
     try {
       if (await canLaunchUrl(uri)) {
         await launchUrl(uri);
       } else {
-        Get.snackbar(
-          'Contact Support',
-          'Reach us at support@learningpath.app',
-          snackPosition: SnackPosition.BOTTOM,
-          margin: const EdgeInsets.all(16),
-          borderRadius: 12,
+        AppSnackBar.show(
+          title: 'Contact Support',
+          message: 'Reach us at support@learningpath.app',
+          type: SnackBarType.info,
         );
       }
     } catch (_) {
-      Get.snackbar(
-        'Contact Support',
-        'Reach us at support@learningpath.app',
-        snackPosition: SnackPosition.BOTTOM,
-        margin: const EdgeInsets.all(16),
-        borderRadius: 12,
+      AppSnackBar.show(
+        title: 'Contact Support',
+        message: 'Reach us at support@learningpath.app',
+        type: SnackBarType.info,
       );
     }
   }
@@ -43,22 +38,19 @@ class HelpSupportScreen extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
     final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
 
     return Scaffold(
       backgroundColor: isDark ? const Color(0xFF0B1220) : AppColor.background,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor:
-            isDark ? const Color(0xFF0B1220) : AppColor.background,
+        backgroundColor: isDark ? const Color(0xFF0B1220) : AppColor.background,
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: textPrimaryColor,
-          ),
+          icon: Icon(Icons.arrow_back_rounded, color: textPrimaryColor),
           onPressed: () => Get.back(),
         ),
         title: Text(
@@ -82,9 +74,7 @@ class HelpSupportScreen extends StatelessWidget {
                 width: double.infinity,
                 padding: const EdgeInsets.all(18),
                 decoration: BoxDecoration(
-                  color: isDark
-                      ? const Color(0xFF172235)
-                      : AppColor.lightBlue,
+                  color: isDark ? const Color(0xFF172235) : AppColor.lightBlue,
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
                     color: isDark
@@ -181,32 +171,28 @@ class HelpSupportScreen extends StatelessWidget {
               _buildFaqItem(
                 isDark: isDark,
                 question: 'How do I track my learning progress?',
-                answer:
-                    'Open any roadmap from Explore or Home, select a step, and check off completed topics. Your streak, points, and completion percentage update automatically.',
+                answer: 'Open any roadmap from Explore or Home, select a step, and check off completed topics. Your streak, points, and completion percentage update automatically.',
               ),
               const SizedBox(height: 10),
 
               _buildFaqItem(
                 isDark: isDark,
                 question: 'Can I use Learning Path offline?',
-                answer:
-                    'Yes! Your completed progress, personal notes, and saved roadmaps are stored locally on your device and remain accessible anytime.',
+                answer: 'Yes! Your completed progress, personal notes, and saved roadmaps are stored locally on your device and remain accessible anytime.',
               ),
               const SizedBox(height: 10),
 
               _buildFaqItem(
                 isDark: isDark,
                 question: 'How do I add personal notes to topics?',
-                answer:
-                    'Navigate to any learning step detail and tap the "Add Note" section. All your notes can be managed together in "My Notes".',
+                answer: 'Navigate to any learning step detail and tap the "Add Note" section. All your notes can be managed together in "My Notes".',
               ),
               const SizedBox(height: 10),
 
               _buildFaqItem(
                 isDark: isDark,
                 question: 'How do I earn badges and trophies?',
-                answer:
-                    'Complete roadmap steps, keep up your daily streak, and master topics to automatically unlock achievements and badges in your Profile.',
+                answer: 'Complete roadmap steps, keep up your daily streak, and master topics to automatically unlock achievements and badges in your Profile.',
               ),
 
               const SizedBox(height: 20),
@@ -224,8 +210,9 @@ class HelpSupportScreen extends StatelessWidget {
   }) {
     final surfaceColor = isDark ? const Color(0xFF172235) : AppColor.surface;
     final textPrimaryColor = isDark ? Colors.white : AppColor.textPrimary;
-    final textSecondaryColor =
-        isDark ? const Color(0xFF94A3B8) : AppColor.textSecondary;
+    final textSecondaryColor = isDark
+        ? const Color(0xFF94A3B8)
+        : AppColor.textSecondary;
     final borderColor = isDark ? const Color(0xFF334155) : AppColor.border;
 
     return Container(
@@ -240,8 +227,11 @@ class HelpSupportScreen extends StatelessWidget {
           iconColor: AppColor.secondary,
           collapsedIconColor: textSecondaryColor,
           tilePadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-          childrenPadding:
-              const EdgeInsets.only(left: 16, right: 16, bottom: 14),
+          childrenPadding: const EdgeInsets.only(
+            left: 16,
+            right: 16,
+            bottom: 14,
+          ),
           title: Text(
             question,
             style: TextStyle(

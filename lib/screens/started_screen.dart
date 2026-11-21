@@ -111,8 +111,9 @@ class StartedScreen extends StatelessWidget {
                             backgroundColor: AppColor.primary,
                             foregroundColor: Colors.white,
                             elevation: 4,
-                            shadowColor:
-                                AppColor.primary.withValues(alpha: 0.4),
+                            shadowColor: AppColor.primary.withValues(
+                              alpha: 0.4,
+                            ),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16),
                             ),
@@ -133,10 +134,7 @@ class StartedScreen extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(width: 8),
-                              Icon(
-                                Icons.arrow_forward_rounded,
-                                size: 22,
-                              ),
+                              Icon(Icons.arrow_forward_rounded, size: 22),
                             ],
                           ),
                         ),
@@ -184,9 +182,3 @@ class StartedScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
